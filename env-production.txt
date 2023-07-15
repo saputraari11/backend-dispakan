@@ -1,0 +1,7 @@
+DB_HOST=my-mysql-01.internal
+DB_PORT=3306
+DB_USERNAME=root
+DB_PASSWORD=saputra11
+DB_NAME=dispakan
+APP_SECRET=aplikasi
+PORT=8080
