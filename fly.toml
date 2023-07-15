@@ -1,24 +1,17 @@
-app = "backend-dispakan"
+# fly.toml app configuration file generated for backend-dispakan-1 on 2023-07-15T23:42:30+07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-[build]
-  build = "npm run build"
+app = "backend-dispakan-1"
+primary_region = "sin"
 
-[[services]]
+[env]
+  PORT = "8080"
+
+[http_service]
   internal_port = 8080
-  protocol = "tcp"
-
-  [services.concurrency]
-    hard_limit = 25
-    soft_limit = 20
-
-  [[services.ports]]
-    handlers = ["http"]
-    port = 80
-
-[[services]]
-  internal_port = 3306
-  protocol = "tcp"
-
-  [[services.ports]]
-    port = 3306
-    handlers = ["tcp"]
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
