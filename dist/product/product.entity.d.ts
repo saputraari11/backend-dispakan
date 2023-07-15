@@ -6,9 +6,20 @@ export declare class Product extends BaseEntity {
     sale: number;
     price: number;
     description: string;
-    image: string;
-    loved: number;
+    filenameSaved: string;
+    imagesSaved: string;
+    othersSaved: string;
+    categorySaved: string;
+    varianSaved: string;
+    typesSaved: string;
     createdAt: Date;
     updatedAt: Date;
     store: Store;
+    images: string[];
+    others: string[];
+    category: string[];
+    varian: string[];
+    types: string[];
+    files: string[];
+    convertStringToArray(): Promise<void>;
 }

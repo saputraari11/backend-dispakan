@@ -21,4 +21,4 @@ app = "backend-dispakan"
 
   [[services.ports]]
     port = 3306
-    handlers = ["tcp"]
+    handlers = ["pg_tls"]

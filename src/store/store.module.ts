@@ -7,15 +7,8 @@ import { UsersService } from 'src/users/users.service'
 import { User } from 'src/users/user.entity'
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([
-      Store,
-      User
-    ]),
-  ],
+  imports: [TypeOrmModule.forFeature([Store, User])],
   controllers: [StoreController],
-  providers: [StoreService,UsersService],
+  providers: [StoreService, UsersService],
 })
 export class StoreModule {}
-
-

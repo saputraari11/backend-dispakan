@@ -17,7 +17,7 @@ export class User extends BaseEntity {
   id: string
 
   @Column({
-    nullable:true
+    nullable: true,
   })
   name: string
 
@@ -41,16 +41,16 @@ export class User extends BaseEntity {
 
   @Column({ default: true })
   status: boolean
-    
-  @Column('text',{
-        nullable:true
-  })
-  filename: string;
 
-  @Column('text',{
-        nullable:true
+  @Column('text', {
+    nullable: true,
   })
-  image: string;
+  filename: string
+
+  @Column('text', {
+    nullable: true,
+  })
+  image: string
 
   @CreateDateColumn({
     type: 'timestamp',

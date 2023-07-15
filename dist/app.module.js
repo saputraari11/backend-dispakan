@@ -15,6 +15,7 @@ const users_module_1 = require("./users/users.module");
 const auth_middleware_1 = require("./auth/auth.middleware");
 const news_module_1 = require("./news/news.module");
 const store_module_1 = require("./store/store.module");
+const product_module_1 = require("./product/product.module");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
@@ -31,7 +32,8 @@ AppModule = __decorate([
             auth_module_1.AuthModule,
             users_module_1.UsersModule,
             news_module_1.NewsModule,
-            store_module_1.StoreModule
+            store_module_1.StoreModule,
+            product_module_1.ProductModule
         ],
     })
 ], AppModule);

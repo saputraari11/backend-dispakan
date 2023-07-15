@@ -19,7 +19,7 @@ export class DatabaseConfig implements TypeOrmOptionsFactory {
     return {
       ...this.config,
       type: 'mysql',
-      entities: [User,Comment,Product,Store,News],
+      entities: [User, Comment, Product, Store, News],
     }
   }
 }

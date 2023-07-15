@@ -22,6 +22,7 @@ const path = require("path");
 const passport_1 = require("@nestjs/passport");
 const store_service_1 = require("./store.service");
 const create_store_dto_1 = require("./dto/create-store.dto");
+const app_utils_1 = require("../app.utils");
 const os = require("os");
 const dir = `${os.homedir()}/dispakan/assets/store`;
 const storage = multer.diskStorage({
@@ -62,7 +63,12 @@ let StoreController = class StoreController {
         return result;
     }
     seeFile(image, res) {
-        return res.sendFile(image, { root: dir });
+        if (!fs.existsSync(`${dir}/${image}`)) {
+            return res.send(app_utils_1.responseTemplate("400", "Failed file didn't exist", {}, true));
+        }
+        else {
+            return res.sendFile(image, { root: dir });
+        }
     }
 };
 __decorate([
@@ -127,7 +133,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], StoreController.prototype, "seeFile", null);
 StoreController = __decorate([
-    swagger_1.ApiTags('Store'),
+    swagger_1.ApiTags('UMKM'),
     common_1.Controller('store'),
     __metadata("design:paramtypes", [store_service_1.StoreService])
 ], StoreController);

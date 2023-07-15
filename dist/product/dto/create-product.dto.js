@@ -9,40 +9,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateStoreDto = void 0;
+exports.CreateProductDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
-class CreateStoreDto {
+class CreateProductDto {
 }
 __decorate([
     swagger_1.ApiProperty({
         required: false
     }),
     __metadata("design:type", String)
-], CreateStoreDto.prototype, "name", void 0);
+], CreateProductDto.prototype, "name", void 0);
 __decorate([
     swagger_1.ApiProperty({
         required: true
     }),
     __metadata("design:type", String)
-], CreateStoreDto.prototype, "id_owner", void 0);
+], CreateProductDto.prototype, "id_umkm", void 0);
+__decorate([
+    swagger_1.ApiProperty({
+        required: false,
+        default: 0
+    }),
+    __metadata("design:type", Number)
+], CreateProductDto.prototype, "sale", void 0);
 __decorate([
     swagger_1.ApiProperty({
         required: false
     }),
     __metadata("design:type", String)
-], CreateStoreDto.prototype, "address", void 0);
+], CreateProductDto.prototype, "description", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
+        default: 0
     }),
-    __metadata("design:type", String)
-], CreateStoreDto.prototype, "phone", void 0);
-__decorate([
-    swagger_1.ApiProperty({
-        required: false
-    }),
-    __metadata("design:type", String)
-], CreateStoreDto.prototype, "aspek", void 0);
+    __metadata("design:type", Number)
+], CreateProductDto.prototype, "price", void 0);
 __decorate([
     swagger_1.ApiProperty({
         required: false,
@@ -50,7 +52,7 @@ __decorate([
         type: String
     }),
     __metadata("design:type", Array)
-], CreateStoreDto.prototype, "category", void 0);
+], CreateProductDto.prototype, "categorySaved", void 0);
 __decorate([
     swagger_1.ApiProperty({
         isArray: true,
@@ -58,7 +60,7 @@ __decorate([
         type: String
     }),
     __metadata("design:type", Array)
-], CreateStoreDto.prototype, "mediaOrder", void 0);
+], CreateProductDto.prototype, "other", void 0);
 __decorate([
     swagger_1.ApiProperty({
         isArray: true,
@@ -66,16 +68,25 @@ __decorate([
         type: String
     }),
     __metadata("design:type", Array)
-], CreateStoreDto.prototype, "mediaContact", void 0);
+], CreateProductDto.prototype, "varian", void 0);
 __decorate([
     swagger_1.ApiProperty({
+        isArray: true,
+        required: false,
+        type: String
+    }),
+    __metadata("design:type", Array)
+], CreateProductDto.prototype, "tipe", void 0);
+__decorate([
+    swagger_1.ApiProperty({
+        type: 'array',
+        items: {
+            type: 'string',
+            format: 'binary',
+        },
         required: false
     }),
-    __metadata("design:type", String)
-], CreateStoreDto.prototype, "omset", void 0);
-__decorate([
-    swagger_1.ApiProperty({ type: 'string', format: 'binary', required: false }),
-    __metadata("design:type", Object)
-], CreateStoreDto.prototype, "file", void 0);
-exports.CreateStoreDto = CreateStoreDto;
-//# sourceMappingURL=create-store.dto.js.map
+    __metadata("design:type", Array)
+], CreateProductDto.prototype, "files", void 0);
+exports.CreateProductDto = CreateProductDto;
+//# sourceMappingURL=create-product.dto.js.map

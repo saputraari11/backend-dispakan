@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger'
 
-export class CreateStoreDto {
+export class CreateProductDto {
   @ApiProperty({
     required: false,
   })
@@ -9,49 +9,60 @@ export class CreateStoreDto {
   @ApiProperty({
     required: true,
   })
-  id_owner: string
+  id_umkm: string
+
+  @ApiProperty({
+    required: false,
+    default: 0,
+  })
+  sale: number
 
   @ApiProperty({
     required: false,
   })
-  address: string
+  description: string
 
   @ApiProperty({
     required: false,
+    default: 0,
   })
-  phone: string
-
-  @ApiProperty({
-    required: false,
-  })
-  aspek: string
+  price: number
 
   @ApiProperty({
     required: false,
     isArray: true,
     type: String,
   })
-  category: string[]
+  categorySaved: string[]
 
   @ApiProperty({
     isArray: true,
     required: false,
     type: String,
   })
-  mediaOrder: string[]
+  other: string[]
 
   @ApiProperty({
     isArray: true,
     required: false,
     type: String,
   })
-  mediaContact: string[]
+  varian: string[]
 
   @ApiProperty({
+    isArray: true,
+    required: false,
+    type: String,
+  })
+  tipe: string[]
+
+  @ApiProperty({
+    type: 'array',
+    items: {
+      type: 'string',
+      format: 'binary',
+    },
     required: false,
   })
-  omset: string
-
-  @ApiProperty({ type: 'string', format: 'binary', required: false })
-  file: Express.Multer.File
+  files: Express.Multer.File[]
 }

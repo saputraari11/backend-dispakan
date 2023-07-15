@@ -5,13 +5,8 @@ import { NewsController } from './news.controller'
 import { NewsService } from './news.service'
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([
-      News,
-    ]),
-  ],
+  imports: [TypeOrmModule.forFeature([News])],
   controllers: [NewsController],
   providers: [NewsService],
 })
 export class NewsModule {}
-

@@ -43,7 +43,8 @@ let UsersController = class UsersController {
     }
     getIpAddress(request) {
         const ipAddress = request.ip;
-        return ipAddress;
+        console.log(request.ips, request.ip);
+        return;
     }
     async allUmkm() {
         const result = await this.userService.userUmkm();
@@ -71,7 +72,12 @@ let UsersController = class UsersController {
         return result;
     }
     seeFile(image, res) {
-        return res.sendFile(image, { root: dir });
+        if (!fs.existsSync(`${dir}/${image}`)) {
+            return res.send(app_utils_1.responseTemplate("400", "Failed file didn't exist", {}, true));
+        }
+        else {
+            return res.sendFile(image, { root: dir });
+        }
     }
 };
 __decorate([

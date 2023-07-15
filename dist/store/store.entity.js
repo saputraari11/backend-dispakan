@@ -14,9 +14,19 @@ const product_entity_1 = require("../product/product.entity");
 const user_entity_1 = require("../users/user.entity");
 const typeorm_1 = require("typeorm");
 let Store = class Store extends typeorm_1.BaseEntity {
+    constructor() {
+        super(...arguments);
+        this.media_ordered = null;
+        this.media_contact = null;
+        this.katagori_umkm = null;
+    }
     async convertStringToArray() {
-        this.katagori = JSON.parse(this.katagoriSaved).split(',');
-        this.link = JSON.parse(this.linkSaved).split(',');
+        if (this.katagoriSaved)
+            this.katagori_umkm = JSON.parse(this.katagoriSaved).split(',');
+        if (this.mediaOrdered)
+            this.media_ordered = JSON.parse(this.mediaOrdered).split(',');
+        if (this.mediaContact)
+            this.media_contact = JSON.parse(this.mediaContact).split(',');
     }
 };
 __decorate([
@@ -37,25 +47,38 @@ __decorate([
 ], Store.prototype, "phone", void 0);
 __decorate([
     typeorm_1.Column({
-        type: "text"
+        type: "text",
+        nullable: true
     }),
     __metadata("design:type", String)
-], Store.prototype, "linkSaved", void 0);
+], Store.prototype, "mediaOrdered", void 0);
+__decorate([
+    typeorm_1.Column({
+        type: "text",
+        nullable: true
+    }),
+    __metadata("design:type", String)
+], Store.prototype, "mediaContact", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], Store.prototype, "omset", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({
+        nullable: true
+    }),
     __metadata("design:type", String)
 ], Store.prototype, "filename", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({
+        nullable: true
+    }),
     __metadata("design:type", String)
 ], Store.prototype, "image", void 0);
 __decorate([
     typeorm_1.Column({
-        type: "text"
+        type: "text",
+        nullable: true
     }),
     __metadata("design:type", String)
 ], Store.prototype, "katagoriSaved", void 0);

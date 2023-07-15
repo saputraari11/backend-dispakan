@@ -3,22 +3,22 @@ import { IsBoolean, IsNotEmpty, IsString } from 'class-validator'
 
 export class CreateNewsDto {
   @ApiProperty({
-    required:false
+    required: false,
   })
   title: string
 
-@ApiProperty({
-    required:false
+  @ApiProperty({
+    required: false,
   })
   posted_date: string
 
-@ApiProperty({
-    required:false
+  @ApiProperty({
+    required: false,
   })
   status: boolean
 
- @ApiProperty({
-    required:false
+  @ApiProperty({
+    required: false,
   })
   description: string
 

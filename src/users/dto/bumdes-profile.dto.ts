@@ -3,29 +3,29 @@ import { IsNotEmpty, IsString, IsEnum, IsBoolean } from 'class-validator'
 
 export class BumdesProfileDto {
   @ApiProperty({
-    required:true
+    required: true,
   })
   id_bumdes_umkm: string
 
-@ApiProperty({
-    required:false
+  @ApiProperty({
+    required: false,
   })
   @IsString()
   name: string
 
-@ApiProperty({
-    required:false
+  @ApiProperty({
+    required: false,
   })
   @IsString()
   address: string
 
-@ApiProperty({
-    required:false
+  @ApiProperty({
+    required: false,
   })
   phone: string
 
-@ApiProperty({
-    required:false
+  @ApiProperty({
+    required: false,
   })
   status: boolean
 

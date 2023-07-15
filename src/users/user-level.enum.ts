@@ -1,4 +1,4 @@
 export enum UserLevel {
   BUMDES = 'BUMDES',
-  UMKM = 'UMKM', 
+  UMKM = 'UMKM',
 }

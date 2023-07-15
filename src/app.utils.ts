@@ -21,13 +21,18 @@ export const SETTINGS = {
   VALIDATION_PIPE,
 }
 
-export const responseTemplate = (code:string,message:string,data:any,error:boolean = false) => {
+export const responseTemplate = (
+  code: string,
+  message: string,
+  data: any,
+  error: boolean = false,
+) => {
   return {
-      error: error,
-      alerts: {
-          code: code,
-          message: message,
-      },
-      data: data
+    error: error,
+    alerts: {
+      code: code,
+      message: message,
+    },
+    data: data,
   }
 }

@@ -1,83 +1,100 @@
 import { Product } from 'src/product/product.entity'
 import { User } from 'src/users/user.entity'
 import {
-    BaseEntity,
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    CreateDateColumn,
-    UpdateDateColumn,
-    OneToMany,
-    ManyToOne,
-    JoinColumn,
+  BaseEntity,
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToMany,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm'
 
 @Entity()
 export class Store extends BaseEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: string
+  @PrimaryGeneratedColumn('uuid')
+  id: string
 
-    @Column()
-    name: string
+  @Column()
+  name: string
 
-    @Column()
-    address: string
+  @Column()
+  address: string
 
-    @Column()
-    phone: string
+  @Column()
+  phone: string
 
-    @Column({
-        type:"text"
-    })
-    linkSaved: string
+  @Column({
+    type: 'text',
+    nullable: true,
+  })
+  mediaOrdered: string
 
-    @Column()
-    omset:string
+  @Column({
+    type: 'text',
+    nullable: true,
+  })
+  mediaContact: string
 
-    @Column()
-    filename: string
+  @Column()
+  omset: string
 
-    @Column()
-    image: string
+  @Column({
+    nullable: true,
+  })
+  filename: string
 
-    @Column({
-        type:"text"
-    })
-    katagoriSaved:string
+  @Column({
+    nullable: true,
+  })
+  image: string
 
-    @Column()
-    aspek:string
+  @Column({
+    type: 'text',
+    nullable: true,
+  })
+  katagoriSaved: string
 
-    @CreateDateColumn({
-        type: 'timestamp',
-        name: 'createdAt',
-        default: () => 'CURRENT_TIMESTAMP(6)',
-    })
-    createdAt: Date
+  @Column()
+  aspek: string
 
-    @UpdateDateColumn({
-        type: 'timestamp',
-        name: 'updatedAt',
-        default: () => 'CURRENT_TIMESTAMP(6)',
-    })
-    updatedAt: Date
-    @ManyToOne(
-        type => User,
-        u => u.store,
-    )
-    user: User
+  @CreateDateColumn({
+    type: 'timestamp',
+    name: 'createdAt',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+  })
+  createdAt: Date
 
-    @OneToMany(
-        type => Product,
-        p => p.store,
-    )
-    product: Product[]
+  @UpdateDateColumn({
+    type: 'timestamp',
+    name: 'updatedAt',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+  })
+  updatedAt: Date
+  @ManyToOne(
+    type => User,
+    u => u.store,
+  )
+  user: User
 
-    link:any[]
-    katagori:any[]
+  @OneToMany(
+    type => Product,
+    p => p.store,
+  )
+  product: Product[]
 
-    public async convertStringToArray() {
-        this.katagori = JSON.parse(this.katagoriSaved).split(',')
-        this.link = JSON.parse(this.linkSaved).split(',')
-    }
+  media_ordered: any[] = null
+  media_contact: any[] = null
+  katagori_umkm: any[] = null
+
+  public async convertStringToArray() {
+    if (this.katagoriSaved)
+      this.katagori_umkm = JSON.parse(this.katagoriSaved).split(',')
+    if (this.mediaOrdered)
+      this.media_ordered = JSON.parse(this.mediaOrdered).split(',')
+    if (this.mediaContact)
+      this.media_contact = JSON.parse(this.mediaContact).split(',')
+  }
 }

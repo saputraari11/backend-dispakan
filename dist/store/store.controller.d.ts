@@ -45,5 +45,5 @@ export declare class StoreController {
         };
         data: any;
     }>;
-    seeFile(image: string, res: Response): void;
+    seeFile(image: string, res: Response): void | Response<any, Record<string, any>>;
 }

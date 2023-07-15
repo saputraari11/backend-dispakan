@@ -34,5 +34,5 @@ export class SignupCredentialsDto {
   })
   password: string
 
-  level:UserLevel
+  level: UserLevel
 }
