@@ -1,6 +1,6 @@
-import { News } from "./news.entity";
-import { Repository } from "typeorm";
-import { CreateNewsDto } from "./dto/create-news.dto";
+import { News } from './news.entity';
+import { Repository } from 'typeorm';
+import { CreateNewsDto } from './dto/create-news.dto';
 export declare class NewsService {
     private readonly newsRepository;
     constructor(newsRepository: Repository<News>);

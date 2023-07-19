@@ -23,7 +23,7 @@ exports.responseTemplate = (code, message, data, error = false) => {
             code: code,
             message: message,
         },
-        data: data
+        data: data,
     };
 };
 //# sourceMappingURL=app.utils.js.map

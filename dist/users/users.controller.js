@@ -24,7 +24,7 @@ const fs = require("fs");
 const path = require("path");
 const platform_express_1 = require("@nestjs/platform-express");
 const bumdes_profile_dto_1 = require("./dto/bumdes-profile.dto");
-const os = require("os");
+const os = require('os');
 const dir = `${os.homedir()}/dispakan/assets/bumdes`;
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + path.basename(file.originalname));
-    }
+    },
 });
 let UsersController = class UsersController {
     constructor(userService) {
@@ -56,7 +56,7 @@ let UsersController = class UsersController {
     }
     async detailUmkm(id) {
         const result = await this.userService.userDetail(id);
-        return app_utils_1.responseTemplate("200", "success", result);
+        return app_utils_1.responseTemplate('200', 'success', result);
     }
     async deleteUmkm(id) {
         const result = await this.userService.deleteUmkm(id);
@@ -73,7 +73,7 @@ let UsersController = class UsersController {
     }
     seeFile(image, res) {
         if (!fs.existsSync(`${dir}/${image}`)) {
-            return res.send(app_utils_1.responseTemplate("400", "Failed file didn't exist", {}, true));
+            return res.send(app_utils_1.responseTemplate('400', "Failed file didn't exist", {}, true));
         }
         else {
             return res.sendFile(image, { root: dir });
@@ -81,14 +81,14 @@ let UsersController = class UsersController {
     }
 };
 __decorate([
-    common_1.Get("ip"),
+    common_1.Get('ip'),
     __param(0, common_1.Req()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", String)
 ], UsersController.prototype, "getIpAddress", null);
 __decorate([
-    common_1.Get("umkm"),
+    common_1.Get('umkm'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __metadata("design:type", Function),
@@ -96,7 +96,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "allUmkm", null);
 __decorate([
-    common_1.Get("bumdes"),
+    common_1.Get('bumdes'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __metadata("design:type", Function),
@@ -104,7 +104,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "allBumdes", null);
 __decorate([
-    common_1.Get("umkm/:id"),
+    common_1.Get('umkm/:id'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Param('id')),
@@ -113,7 +113,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "detailUmkm", null);
 __decorate([
-    common_1.Get("delete-umkm/:id"),
+    common_1.Get('delete-umkm/:id'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Param('id')),
@@ -122,7 +122,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "deleteUmkm", null);
 __decorate([
-    common_1.Post("umkm/profil"),
+    common_1.Post('umkm/profil'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Body()),
@@ -131,12 +131,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "updateProfilUmkm", null);
 __decorate([
-    common_1.Post("bumdes/profil"),
+    common_1.Post('bumdes/profil'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
-        storage: storage
+        storage: storage,
     })),
     __param(0, common_1.Body()),
     __param(1, common_1.UploadedFile('file')),

@@ -22,7 +22,7 @@ const fs = require("fs");
 const path = require("path");
 const news_service_1 = require("./news.service");
 const passport_1 = require("@nestjs/passport");
-const os = require("os");
+const os = require('os');
 const dir = `${os.homedir()}/dispakan/assets/news`;
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -33,7 +33,7 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + path.basename(file.originalname));
-    }
+    },
 });
 let NewsController = class NewsController {
     constructor(newsService) {
@@ -74,27 +74,30 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], NewsController.prototype, "allNews", null);
 __decorate([
-    common_1.Post("upload"),
+    common_1.Post('upload'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
-        storage: storage
+        storage: storage,
     })),
-    __param(0, common_1.Body()), __param(1, common_1.UploadedFile('file')),
+    __param(0, common_1.Body()),
+    __param(1, common_1.UploadedFile('file')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_news_dto_1.CreateNewsDto, Object]),
     __metadata("design:returntype", Promise)
 ], NewsController.prototype, "uploadFile", null);
 __decorate([
-    common_1.Post("update/:id"),
+    common_1.Post('update/:id'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
-        storage: storage
+        storage: storage,
     })),
-    __param(0, common_1.Param('id')), __param(1, common_1.Body()), __param(2, common_1.UploadedFile('file')),
+    __param(0, common_1.Param('id')),
+    __param(1, common_1.Body()),
+    __param(2, common_1.UploadedFile('file')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_news_dto_1.CreateNewsDto, Object]),
     __metadata("design:returntype", Promise)

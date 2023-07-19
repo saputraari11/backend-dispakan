@@ -1,7 +1,7 @@
 /// <reference types="multer" />
-import { Response } from "express";
-import { StoreService } from "./store.service";
-import { CreateStoreDto } from "./dto/create-store.dto";
+import { Response } from 'express';
+import { StoreService } from './store.service';
+import { CreateStoreDto } from './dto/create-store.dto';
 export declare class StoreController {
     private storeService;
     constructor(storeService: StoreService);

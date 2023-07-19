@@ -47,15 +47,15 @@ __decorate([
 ], Store.prototype, "phone", void 0);
 __decorate([
     typeorm_1.Column({
-        type: "text",
-        nullable: true
+        type: 'text',
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], Store.prototype, "mediaOrdered", void 0);
 __decorate([
     typeorm_1.Column({
-        type: "text",
-        nullable: true
+        type: 'text',
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], Store.prototype, "mediaContact", void 0);
@@ -65,20 +65,20 @@ __decorate([
 ], Store.prototype, "omset", void 0);
 __decorate([
     typeorm_1.Column({
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], Store.prototype, "filename", void 0);
 __decorate([
     typeorm_1.Column({
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], Store.prototype, "image", void 0);
 __decorate([
     typeorm_1.Column({
-        type: "text",
-        nullable: true
+        type: 'text',
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], Store.prototype, "katagoriSaved", void 0);

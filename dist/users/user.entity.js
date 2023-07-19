@@ -25,7 +25,7 @@ __decorate([
 ], User.prototype, "id", void 0);
 __decorate([
     typeorm_1.Column({
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], User.prototype, "name", void 0);
@@ -59,13 +59,13 @@ __decorate([
 ], User.prototype, "status", void 0);
 __decorate([
     typeorm_1.Column('text', {
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], User.prototype, "filename", void 0);
 __decorate([
     typeorm_1.Column('text', {
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], User.prototype, "image", void 0);

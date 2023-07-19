@@ -1,7 +1,7 @@
 /// <reference types="multer" />
-import { CreateNewsDto } from "./dto/create-news.dto";
-import { NewsService } from "./news.service";
-import { Response } from "express";
+import { CreateNewsDto } from './dto/create-news.dto';
+import { NewsService } from './news.service';
+import { Response } from 'express';
 export declare class NewsController {
     private newsService;
     constructor(newsService: NewsService);

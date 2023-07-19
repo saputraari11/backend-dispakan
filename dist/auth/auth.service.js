@@ -22,9 +22,7 @@ let AuthService = class AuthService {
         this.jwtService = jwtService;
         this.userRepository = userRepository;
         this.configService = configService;
-        this.apiKeys = [
-            'admin2023'
-        ];
+        this.apiKeys = ['admin2023'];
     }
     generateToken(user) {
         const payload = {
@@ -39,11 +37,11 @@ let AuthService = class AuthService {
     async signIn(userLogin) {
         const user = await this.validate(userLogin.username, userLogin.password);
         if (!user) {
-            return app_utils_1.responseTemplate("400", "Email or Password is not found!", {}, true);
+            return app_utils_1.responseTemplate('400', 'Email or Password is not found!', {}, true);
         }
         const token = this.generateToken(user);
         const data = Object.assign({ user }, token);
-        return app_utils_1.responseTemplate("200", "success", data);
+        return app_utils_1.responseTemplate('200', 'success', data);
     }
     async signUp(userRegister, level = user_level_enum_1.UserLevel.BUMDES) {
         const userExist = await user_entity_1.User.findOne({

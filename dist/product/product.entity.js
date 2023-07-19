@@ -56,49 +56,49 @@ __decorate([
 __decorate([
     typeorm_1.Column({
         type: 'text',
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], Product.prototype, "description", void 0);
 __decorate([
     typeorm_1.Column({
         type: 'text',
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], Product.prototype, "filenameSaved", void 0);
 __decorate([
     typeorm_1.Column({
         type: 'text',
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], Product.prototype, "imagesSaved", void 0);
 __decorate([
     typeorm_1.Column({
         type: 'text',
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], Product.prototype, "othersSaved", void 0);
 __decorate([
     typeorm_1.Column({
         type: 'text',
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], Product.prototype, "categorySaved", void 0);
 __decorate([
     typeorm_1.Column({
         type: 'text',
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], Product.prototype, "varianSaved", void 0);
 __decorate([
     typeorm_1.Column({
         type: 'text',
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], Product.prototype, "typesSaved", void 0);

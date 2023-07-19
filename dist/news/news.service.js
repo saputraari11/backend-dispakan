@@ -26,16 +26,16 @@ let NewsService = class NewsService {
     async allNews() {
         const news = await this.newsRepository.find();
         if (news.length == 0) {
-            return app_utils_1.responseTemplate("400", "news doesn't exist", {}, true);
+            return app_utils_1.responseTemplate('400', "news doesn't exist", {}, true);
         }
-        return app_utils_1.responseTemplate("200", "success", news);
+        return app_utils_1.responseTemplate('200', 'success', news);
     }
     async detailNews(id) {
         const news = await this.newsRepository.findOne({ where: { id: id } });
         if (!news) {
             throw new common_1.NotFoundException(`news with id ${id} not found`);
         }
-        return app_utils_1.responseTemplate("200", "success", news);
+        return app_utils_1.responseTemplate('200', 'success', news);
     }
     async uploadNews(uploadNews) {
         const { file, status, title, posted_date } = uploadNews;
@@ -49,7 +49,7 @@ let NewsService = class NewsService {
             news.image = file.path;
         }
         await this.newsRepository.save(news);
-        return app_utils_1.responseTemplate("200", "success", news);
+        return app_utils_1.responseTemplate('200', 'success', news);
     }
     async updateNews(updateNews, id) {
         const news = (await this.detailNews(id)).data;
@@ -69,10 +69,10 @@ let NewsService = class NewsService {
         if (updateNews.description)
             news.description = updateNews.description;
         await this.newsRepository.save(news);
-        return app_utils_1.responseTemplate("200", "success", news);
+        return app_utils_1.responseTemplate('200', 'success', news);
     }
     async deleteNews(id) {
-        let response = "";
+        let response = '';
         const news = (await this.detailNews(id)).data;
         try {
             fs.unlinkSync(news.image);
@@ -82,7 +82,7 @@ let NewsService = class NewsService {
             response = `${news.postedAt}. ${news.image}, ${e.message}`;
         }
         await this.newsRepository.remove(news);
-        return app_utils_1.responseTemplate("200", "success", response);
+        return app_utils_1.responseTemplate('200', 'success', response);
     }
 };
 NewsService = __decorate([

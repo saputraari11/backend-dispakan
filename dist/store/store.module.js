@@ -18,12 +18,7 @@ let StoreModule = class StoreModule {
 };
 StoreModule = __decorate([
     common_1.Module({
-        imports: [
-            typeorm_1.TypeOrmModule.forFeature([
-                store_entity_1.Store,
-                user_entity_1.User
-            ]),
-        ],
+        imports: [typeorm_1.TypeOrmModule.forFeature([store_entity_1.Store, user_entity_1.User])],
         controllers: [store_controller_1.StoreController],
         providers: [store_service_1.StoreService, users_service_1.UsersService],
     })

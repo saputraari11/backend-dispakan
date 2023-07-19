@@ -26,24 +26,24 @@ let UsersService = class UsersService {
     async userUmkm() {
         const user = await this.userRepository.find({
             where: {
-                level: user_level_enum_1.UserLevel.UMKM
-            }
+                level: user_level_enum_1.UserLevel.UMKM,
+            },
         });
-        return app_utils_1.responseTemplate("200", "success", user);
+        return app_utils_1.responseTemplate('200', 'success', user);
     }
     async userBumdes() {
         const user = await this.userRepository.find({
             where: {
-                level: user_level_enum_1.UserLevel.BUMDES
-            }
+                level: user_level_enum_1.UserLevel.BUMDES,
+            },
         });
-        return app_utils_1.responseTemplate("200", "success", user);
+        return app_utils_1.responseTemplate('200', 'success', user);
     }
     async userDetail(id) {
         const user = await this.userRepository.findOne({
             where: {
-                id: id
-            }
+                id: id,
+            },
         });
         if (!user) {
             throw new common_1.NotFoundException(`User with id ${id} not Found!`);
@@ -61,7 +61,7 @@ let UsersService = class UsersService {
         if (updateProfile.status)
             user.status = updateProfile.status;
         await this.userRepository.save(user);
-        return app_utils_1.responseTemplate("200", "success", user);
+        return app_utils_1.responseTemplate('200', 'success', user);
     }
     async updateBumdes(updateProfile) {
         const user = await this.userDetail(updateProfile.id_bumdes_umkm);
@@ -81,12 +81,12 @@ let UsersService = class UsersService {
             user.image = updateProfile.file.path;
         }
         await this.userRepository.save(user);
-        return app_utils_1.responseTemplate("200", "success", user);
+        return app_utils_1.responseTemplate('200', 'success', user);
     }
     async deleteUmkm(id) {
         const user = await this.userDetail(id);
         await this.userRepository.remove(user);
-        return app_utils_1.responseTemplate("200", "success", {});
+        return app_utils_1.responseTemplate('200', 'success', {});
     }
 };
 UsersService = __decorate([

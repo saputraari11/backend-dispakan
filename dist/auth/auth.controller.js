@@ -45,7 +45,7 @@ __decorate([
 ], AuthController.prototype, "signin", null);
 __decorate([
     common_1.Post('signup/bumdes'),
-    swagger_1.ApiSecurity('X-API-KEY', ["X-API-KEY"]),
+    swagger_1.ApiSecurity('X-API-KEY', ['X-API-KEY']),
     __param(0, common_1.Body(app_utils_1.SETTINGS.VALIDATION_PIPE)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [signup_credentials_dto_1.SignupCredentialsDto]),

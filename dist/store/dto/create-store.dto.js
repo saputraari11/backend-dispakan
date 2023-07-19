@@ -15,31 +15,31 @@ class CreateStoreDto {
 }
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     __metadata("design:type", String)
 ], CreateStoreDto.prototype, "name", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: true
+        required: true,
     }),
     __metadata("design:type", String)
 ], CreateStoreDto.prototype, "id_owner", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     __metadata("design:type", String)
 ], CreateStoreDto.prototype, "address", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     __metadata("design:type", String)
 ], CreateStoreDto.prototype, "phone", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     __metadata("design:type", String)
 ], CreateStoreDto.prototype, "aspek", void 0);
@@ -47,7 +47,7 @@ __decorate([
     swagger_1.ApiProperty({
         required: false,
         isArray: true,
-        type: String
+        type: String,
     }),
     __metadata("design:type", Array)
 ], CreateStoreDto.prototype, "category", void 0);
@@ -55,7 +55,7 @@ __decorate([
     swagger_1.ApiProperty({
         isArray: true,
         required: false,
-        type: String
+        type: String,
     }),
     __metadata("design:type", Array)
 ], CreateStoreDto.prototype, "mediaOrder", void 0);
@@ -63,13 +63,13 @@ __decorate([
     swagger_1.ApiProperty({
         isArray: true,
         required: false,
-        type: String
+        type: String,
     }),
     __metadata("design:type", Array)
 ], CreateStoreDto.prototype, "mediaContact", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     __metadata("design:type", String)
 ], CreateStoreDto.prototype, "omset", void 0);

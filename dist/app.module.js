@@ -33,7 +33,7 @@ AppModule = __decorate([
             users_module_1.UsersModule,
             news_module_1.NewsModule,
             store_module_1.StoreModule,
-            product_module_1.ProductModule
+            product_module_1.ProductModule,
         ],
     })
 ], AppModule);

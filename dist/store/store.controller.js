@@ -23,7 +23,7 @@ const passport_1 = require("@nestjs/passport");
 const store_service_1 = require("./store.service");
 const create_store_dto_1 = require("./dto/create-store.dto");
 const app_utils_1 = require("../app.utils");
-const os = require("os");
+const os = require('os');
 const dir = `${os.homedir()}/dispakan/assets/store`;
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -34,7 +34,7 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + path.basename(file.originalname));
-    }
+    },
 });
 let StoreController = class StoreController {
     constructor(storeService) {
@@ -64,7 +64,7 @@ let StoreController = class StoreController {
     }
     seeFile(image, res) {
         if (!fs.existsSync(`${dir}/${image}`)) {
-            return res.send(app_utils_1.responseTemplate("400", "Failed file didn't exist", {}, true));
+            return res.send(app_utils_1.responseTemplate('400', "Failed file didn't exist", {}, true));
         }
         else {
             return res.sendFile(image, { root: dir });
@@ -80,27 +80,30 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], StoreController.prototype, "allNews", null);
 __decorate([
-    common_1.Post("upload"),
+    common_1.Post('upload'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
-        storage: storage
+        storage: storage,
     })),
-    __param(0, common_1.Body()), __param(1, common_1.UploadedFile('file')),
+    __param(0, common_1.Body()),
+    __param(1, common_1.UploadedFile('file')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_store_dto_1.CreateStoreDto, Object]),
     __metadata("design:returntype", Promise)
 ], StoreController.prototype, "uploadFile", null);
 __decorate([
-    common_1.Post("update/:id"),
+    common_1.Post('update/:id'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
-        storage: storage
+        storage: storage,
     })),
-    __param(0, common_1.Param('id')), __param(1, common_1.Body()), __param(2, common_1.UploadedFile('file')),
+    __param(0, common_1.Param('id')),
+    __param(1, common_1.Body()),
+    __param(2, common_1.UploadedFile('file')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_store_dto_1.CreateStoreDto, Object]),
     __metadata("design:returntype", Promise)

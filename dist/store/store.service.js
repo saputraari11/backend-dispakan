@@ -27,25 +27,25 @@ let StoreService = class StoreService {
     }
     async allStore() {
         const store = await this.storeRepository.find({
-            relations: ["user"]
+            relations: ['user'],
         });
         for (let item of store) {
             await item.convertStringToArray();
         }
         if (store.length == 0) {
-            return app_utils_1.responseTemplate("400", "store doesn't exist", {}, true);
+            return app_utils_1.responseTemplate('400', "store doesn't exist", {}, true);
         }
-        return app_utils_1.responseTemplate("200", "success", store);
+        return app_utils_1.responseTemplate('200', 'success', store);
     }
     async detailStore(id) {
         const store = await this.storeRepository.findOne({ where: { id: id } });
         if (!store) {
             throw new common_1.NotFoundException(`store with id ${id} not found`);
         }
-        return app_utils_1.responseTemplate("200", "success", store);
+        return app_utils_1.responseTemplate('200', 'success', store);
     }
     async uploadStore(uploadStore) {
-        const { file, name, address, aspek, category, id_owner, phone, omset, mediaContact, mediaOrder } = uploadStore;
+        const { file, name, address, aspek, category, id_owner, phone, omset, mediaContact, mediaOrder, } = uploadStore;
         const owner = await this.userService.userDetail(id_owner);
         const store = new store_entity_1.Store();
         store.name = name;
@@ -66,7 +66,7 @@ let StoreService = class StoreService {
         }
         await store.convertStringToArray();
         await this.storeRepository.save(store);
-        return app_utils_1.responseTemplate("200", "success", store);
+        return app_utils_1.responseTemplate('200', 'success', store);
     }
     async updateStore(updateStore, id) {
         const store = (await this.detailStore(id)).data;
@@ -104,10 +104,10 @@ let StoreService = class StoreService {
         store.user = owner;
         await store.convertStringToArray();
         await this.storeRepository.save(store);
-        return app_utils_1.responseTemplate("200", "success", store);
+        return app_utils_1.responseTemplate('200', 'success', store);
     }
     async deleteStore(id) {
-        let response = "";
+        let response = '';
         const store = (await this.detailStore(id)).data;
         try {
             fs.unlinkSync(store.image);
@@ -117,7 +117,7 @@ let StoreService = class StoreService {
             response = `${store.createdAt}. ${store.image}, ${e.message}`;
         }
         await this.storeRepository.remove(store);
-        return app_utils_1.responseTemplate("200", "success", response);
+        return app_utils_1.responseTemplate('200', 'success', response);
     }
 };
 StoreService = __decorate([

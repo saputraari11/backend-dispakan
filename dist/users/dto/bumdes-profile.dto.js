@@ -16,33 +16,33 @@ class BumdesProfileDto {
 }
 __decorate([
     swagger_1.ApiProperty({
-        required: true
+        required: true,
     }),
     __metadata("design:type", String)
 ], BumdesProfileDto.prototype, "id_bumdes_umkm", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     class_validator_1.IsString(),
     __metadata("design:type", String)
 ], BumdesProfileDto.prototype, "name", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     class_validator_1.IsString(),
     __metadata("design:type", String)
 ], BumdesProfileDto.prototype, "address", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     __metadata("design:type", String)
 ], BumdesProfileDto.prototype, "phone", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     __metadata("design:type", Boolean)
 ], BumdesProfileDto.prototype, "status", void 0);

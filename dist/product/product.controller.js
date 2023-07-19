@@ -23,7 +23,7 @@ const passport_1 = require("@nestjs/passport");
 const platform_express_1 = require("@nestjs/platform-express");
 const create_product_dto_1 = require("./dto/create-product.dto");
 const app_utils_1 = require("../app.utils");
-const os = require("os");
+const os = require('os');
 const dir = `${os.homedir()}/dispakan/assets/product`;
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -34,7 +34,7 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + path.basename(file.originalname));
-    }
+    },
 });
 let ProductController = class ProductController {
     constructor(productService) {
@@ -63,7 +63,7 @@ let ProductController = class ProductController {
     }
     seeFile(image, res) {
         if (!fs.existsSync(`${dir}/${image}`)) {
-            return res.send(app_utils_1.responseTemplate("400", "Failed file didn't exist", {}, true));
+            return res.send(app_utils_1.responseTemplate('400', "Failed file didn't exist", {}, true));
         }
         else {
             return res.sendFile(image, { root: dir });
@@ -76,7 +76,7 @@ __decorate([
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     common_1.UseInterceptors(platform_express_1.FilesInterceptor('files', 24, {
-        storage: storage
+        storage: storage,
     })),
     __param(0, common_1.UploadedFiles()),
     __param(1, common_1.Body()),
@@ -93,14 +93,16 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "allProduct", null);
 __decorate([
-    common_1.Post("update/:id"),
+    common_1.Post('update/:id'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FilesInterceptor('files', 24, {
-        storage: storage
+        storage: storage,
     })),
-    __param(0, common_1.Param('id')), __param(1, common_1.Body()), __param(2, common_1.UploadedFiles()),
+    __param(0, common_1.Param('id')),
+    __param(1, common_1.Body()),
+    __param(2, common_1.UploadedFiles()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_product_dto_1.CreateProductDto, Array]),
     __metadata("design:returntype", Promise)
@@ -133,7 +135,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductController.prototype, "seeFile", null);
 ProductController = __decorate([
-    swagger_1.ApiTags("Product UMKM"),
+    swagger_1.ApiTags('Product UMKM'),
     common_1.Controller('product'),
     __metadata("design:paramtypes", [product_service_1.ProductService])
 ], ProductController);

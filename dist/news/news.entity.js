@@ -24,19 +24,19 @@ __decorate([
 __decorate([
     typeorm_1.Column({
         type: 'timestamp',
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", Date)
 ], News.prototype, "posted_date", void 0);
 __decorate([
     typeorm_1.Column('text', {
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], News.prototype, "filename", void 0);
 __decorate([
     typeorm_1.Column('text', {
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], News.prototype, "image", void 0);
@@ -47,7 +47,7 @@ __decorate([
 __decorate([
     typeorm_1.Column({
         type: 'text',
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], News.prototype, "description", void 0);

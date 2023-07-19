@@ -16,11 +16,7 @@ let NewsModule = class NewsModule {
 };
 NewsModule = __decorate([
     common_1.Module({
-        imports: [
-            typeorm_1.TypeOrmModule.forFeature([
-                news_entity_1.News,
-            ]),
-        ],
+        imports: [typeorm_1.TypeOrmModule.forFeature([news_entity_1.News])],
         controllers: [news_controller_1.NewsController],
         providers: [news_service_1.NewsService],
     })

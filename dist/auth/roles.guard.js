@@ -23,7 +23,7 @@ let RolesGuard = class RolesGuard {
         const request = context.switchToHttp().getRequest();
         if (request.user) {
             const { id } = request.user;
-            const user = { level: "" };
+            const user = { level: '' };
             return roles.includes(user.level);
         }
         return false;

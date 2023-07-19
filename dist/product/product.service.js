@@ -27,25 +27,25 @@ let ProductService = class ProductService {
     }
     async allProduct() {
         const products = await this.productRepository.find({
-            relations: ["store"]
+            relations: ['store'],
         });
         for (let item of products) {
             await item.convertStringToArray();
         }
         if (products.length == 0) {
-            return app_utils_1.responseTemplate("400", "Product doesn't exist", {}, true);
+            return app_utils_1.responseTemplate('400', "Product doesn't exist", {}, true);
         }
-        return app_utils_1.responseTemplate("200", "success", products);
+        return app_utils_1.responseTemplate('200', 'success', products);
     }
     async detailProduct(id) {
         const product = await this.productRepository.findOne({ where: { id: id } });
         if (!product) {
             throw new common_1.NotFoundException(`Product with id ${id} not found`);
         }
-        return app_utils_1.responseTemplate("200", "success", product);
+        return app_utils_1.responseTemplate('200', 'success', product);
     }
     async saveProduct(uploadProduct) {
-        const { categorySaved, description, files, id_umkm, name, other, price, sale, tipe, varian } = uploadProduct;
+        const { categorySaved, description, files, id_umkm, name, other, price, sale, tipe, varian, } = uploadProduct;
         const umkm = (await this.storeService.detailStore(id_umkm)).data;
         const product = new product_entity_1.Product();
         product.name = name;
@@ -69,12 +69,12 @@ let ProductService = class ProductService {
         }
         await product.convertStringToArray();
         await this.productRepository.save(product);
-        return app_utils_1.responseTemplate("200", "success", product);
+        return app_utils_1.responseTemplate('200', 'success', product);
     }
     async updateProduct(updateProduct, id) {
         const product = (await this.detailProduct(id)).data;
         await product.convertStringToArray();
-        const { categorySaved, description, files, id_umkm, name, other, price, sale, tipe, varian } = updateProduct;
+        const { categorySaved, description, files, id_umkm, name, other, price, sale, tipe, varian, } = updateProduct;
         const umkm = (await this.storeService.detailStore(id_umkm)).data;
         product.name = name;
         product.price = price;
@@ -124,7 +124,7 @@ let ProductService = class ProductService {
         }
         await this.productRepository.save(product);
         await product.convertStringToArray();
-        return app_utils_1.responseTemplate("200", "success", product);
+        return app_utils_1.responseTemplate('200', 'success', product);
     }
     async deleteProduct(id) {
         let response = [];
@@ -134,7 +134,7 @@ let ProductService = class ProductService {
             product.images.map(item => {
                 try {
                     if (fs.existsSync(item)) {
-                        console.log("masuk");
+                        console.log('masuk');
                         fs.unlinkSync(item);
                         response.push(`${product.createdAt}. ${item} deleted`);
                     }
@@ -145,7 +145,7 @@ let ProductService = class ProductService {
             });
         }
         await this.productRepository.remove(product);
-        return app_utils_1.responseTemplate("200", "success", response);
+        return app_utils_1.responseTemplate('200', 'success', response);
     }
 };
 ProductService = __decorate([

@@ -20,11 +20,9 @@ let ProductModule = class ProductModule {
 };
 ProductModule = __decorate([
     common_1.Module({
-        imports: [
-            typeorm_1.TypeOrmModule.forFeature([product_entity_1.Product, store_entity_1.Store, user_entity_1.User])
-        ],
+        imports: [typeorm_1.TypeOrmModule.forFeature([product_entity_1.Product, store_entity_1.Store, user_entity_1.User])],
         providers: [product_service_1.ProductService, store_service_1.StoreService, users_service_1.UsersService],
-        controllers: [product_controller_1.ProductController]
+        controllers: [product_controller_1.ProductController],
     })
 ], ProductModule);
 exports.ProductModule = ProductModule;

@@ -15,33 +15,33 @@ class CreateProductDto {
 }
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     __metadata("design:type", String)
 ], CreateProductDto.prototype, "name", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: true
+        required: true,
     }),
     __metadata("design:type", String)
 ], CreateProductDto.prototype, "id_umkm", void 0);
 __decorate([
     swagger_1.ApiProperty({
         required: false,
-        default: 0
+        default: 0,
     }),
     __metadata("design:type", Number)
 ], CreateProductDto.prototype, "sale", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     __metadata("design:type", String)
 ], CreateProductDto.prototype, "description", void 0);
 __decorate([
     swagger_1.ApiProperty({
         required: false,
-        default: 0
+        default: 0,
     }),
     __metadata("design:type", Number)
 ], CreateProductDto.prototype, "price", void 0);
@@ -49,7 +49,7 @@ __decorate([
     swagger_1.ApiProperty({
         required: false,
         isArray: true,
-        type: String
+        type: String,
     }),
     __metadata("design:type", Array)
 ], CreateProductDto.prototype, "categorySaved", void 0);
@@ -57,7 +57,7 @@ __decorate([
     swagger_1.ApiProperty({
         isArray: true,
         required: false,
-        type: String
+        type: String,
     }),
     __metadata("design:type", Array)
 ], CreateProductDto.prototype, "other", void 0);
@@ -65,7 +65,7 @@ __decorate([
     swagger_1.ApiProperty({
         isArray: true,
         required: false,
-        type: String
+        type: String,
     }),
     __metadata("design:type", Array)
 ], CreateProductDto.prototype, "varian", void 0);
@@ -73,7 +73,7 @@ __decorate([
     swagger_1.ApiProperty({
         isArray: true,
         required: false,
-        type: String
+        type: String,
     }),
     __metadata("design:type", Array)
 ], CreateProductDto.prototype, "tipe", void 0);
@@ -84,7 +84,7 @@ __decorate([
             type: 'string',
             format: 'binary',
         },
-        required: false
+        required: false,
     }),
     __metadata("design:type", Array)
 ], CreateProductDto.prototype, "files", void 0);

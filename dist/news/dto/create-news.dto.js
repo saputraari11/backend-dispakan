@@ -15,25 +15,25 @@ class CreateNewsDto {
 }
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     __metadata("design:type", String)
 ], CreateNewsDto.prototype, "title", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     __metadata("design:type", String)
 ], CreateNewsDto.prototype, "posted_date", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     __metadata("design:type", Boolean)
 ], CreateNewsDto.prototype, "status", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: false
+        required: false,
     }),
     __metadata("design:type", String)
 ], CreateNewsDto.prototype, "description", void 0);

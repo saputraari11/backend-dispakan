@@ -1,7 +1,7 @@
-import { Repository } from "typeorm";
-import { Store } from "./store.entity";
-import { CreateStoreDto } from "./dto/create-store.dto";
-import { UsersService } from "src/users/users.service";
+import { Repository } from 'typeorm';
+import { Store } from './store.entity';
+import { CreateStoreDto } from './dto/create-store.dto';
+import { UsersService } from 'src/users/users.service';
 export declare class StoreService {
     private readonly storeRepository;
     private readonly userService;

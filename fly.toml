@@ -11,27 +11,7 @@ primary_region = "sin"
 
 [http_service]
   internal_port = 8080
-<<<<<<< HEAD
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 0
-=======
-  protocol = "tcp"
-
-  [services.concurrency]
-    hard_limit = 25
-    soft_limit = 20
-
-  [[services.ports]]
-    handlers = ["http"]
-    port = 80
-
-[[services]]
-  internal_port = 3306
-  protocol = "tcp"
-
-  [[services.ports]]
-    port = 3306
-    handlers = ["pg_tls"]
->>>>>>> 3998c3b7f650ed9712d76f7bf4f5f066bff14fed
