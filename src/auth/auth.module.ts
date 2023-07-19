@@ -24,7 +24,7 @@ import { ApiKeyStrategy } from './apikey.strategy'
     JwtStrategy,
     UsersService,
     UserRepository,
-    ApiKeyStrategy
+    ApiKeyStrategy,
   ],
   controllers: [AuthController],
   exports: [JwtStrategy, PassportModule, LocalStrategy],

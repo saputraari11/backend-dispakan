@@ -14,11 +14,9 @@ export class AuthService {
   constructor(
     private jwtService: JwtService,
     private userRepository: UserRepository,
-    private configService: ConfigService
+    private configService: ConfigService,
   ) {}
-  private apiKeys: string[] = [
-    'admin2023'
-  ];
+  private apiKeys: string[] = ['admin2023']
 
   generateToken(user: User) {
     const payload: JwtPayload = {
@@ -32,22 +30,25 @@ export class AuthService {
     }
   }
 
-  async signIn(
-    userLogin:SignInDto
-  ) {
-    const user = await this.validate(userLogin.username,userLogin.password)
+  async signIn(userLogin: SignInDto) {
+    const user = await this.validate(userLogin.username, userLogin.password)
 
-    if(!user) {
-      return responseTemplate("400","Email or Password is not found!",{},true)
+    if (!user) {
+      return responseTemplate(
+        '400',
+        'Email or Password is not found!',
+        {},
+        true,
+      )
     }
 
     const token = this.generateToken(user)
     const data = {
       user,
-      ...token
+      ...token,
     }
 
-    return responseTemplate("200","success",data)
+    return responseTemplate('200', 'success', data)
   }
 
   async signUp(
@@ -63,7 +64,7 @@ export class AuthService {
     if (userExist) {
       throw new ConflictException('User is Already Exist!')
     }
-  
+
     const user = this.userRepository.signup(userRegister)
 
     return user
@@ -84,7 +85,7 @@ export class AuthService {
     }
   }
 
-    validateApiKey(apiKey: string) {
-    return this.apiKeys.find(apiK => apiKey === apiK);
-    }
+  validateApiKey(apiKey: string) {
+    return this.apiKeys.find(apiK => apiKey === apiK)
+  }
 }

@@ -30,7 +30,7 @@ export class AuthController {
   }
 
   @Post('signup/bumdes')
-  @ApiSecurity('X-API-KEY',["X-API-KEY"])
+  @ApiSecurity('X-API-KEY', ['X-API-KEY'])
   async signUp(
     @Body(SETTINGS.VALIDATION_PIPE)
     signUpCredentialsDto: SignupCredentialsDto,

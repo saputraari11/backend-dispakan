@@ -13,6 +13,29 @@ exports.Product = void 0;
 const store_entity_1 = require("../store/store.entity");
 const typeorm_1 = require("typeorm");
 let Product = class Product extends typeorm_1.BaseEntity {
+    constructor() {
+        super(...arguments);
+        this.images = null;
+        this.others = null;
+        this.category = null;
+        this.varian = null;
+        this.types = null;
+        this.files = null;
+    }
+    async convertStringToArray() {
+        if (this.imagesSaved)
+            this.images = JSON.parse(this.imagesSaved);
+        if (this.filenameSaved)
+            this.files = JSON.parse(this.filenameSaved);
+        if (this.othersSaved)
+            this.others = JSON.parse(this.othersSaved).split(',');
+        if (this.categorySaved)
+            this.category = JSON.parse(this.categorySaved).split(',');
+        if (this.varianSaved)
+            this.varian = JSON.parse(this.varianSaved).split(',');
+        if (this.typesSaved)
+            this.types = JSON.parse(this.typesSaved).split(',');
+    }
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn('uuid'),
@@ -31,17 +54,54 @@ __decorate([
     __metadata("design:type", Number)
 ], Product.prototype, "price", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({
+        type: 'text',
+        nullable: true
+    }),
     __metadata("design:type", String)
 ], Product.prototype, "description", void 0);
 __decorate([
-    typeorm_1.Column('text'),
+    typeorm_1.Column({
+        type: 'text',
+        nullable: true
+    }),
     __metadata("design:type", String)
-], Product.prototype, "image", void 0);
+], Product.prototype, "filenameSaved", void 0);
 __decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", Number)
-], Product.prototype, "loved", void 0);
+    typeorm_1.Column({
+        type: 'text',
+        nullable: true
+    }),
+    __metadata("design:type", String)
+], Product.prototype, "imagesSaved", void 0);
+__decorate([
+    typeorm_1.Column({
+        type: 'text',
+        nullable: true
+    }),
+    __metadata("design:type", String)
+], Product.prototype, "othersSaved", void 0);
+__decorate([
+    typeorm_1.Column({
+        type: 'text',
+        nullable: true
+    }),
+    __metadata("design:type", String)
+], Product.prototype, "categorySaved", void 0);
+__decorate([
+    typeorm_1.Column({
+        type: 'text',
+        nullable: true
+    }),
+    __metadata("design:type", String)
+], Product.prototype, "varianSaved", void 0);
+__decorate([
+    typeorm_1.Column({
+        type: 'text',
+        nullable: true
+    }),
+    __metadata("design:type", String)
+], Product.prototype, "typesSaved", void 0);
 __decorate([
     typeorm_1.CreateDateColumn({
         type: 'timestamp',

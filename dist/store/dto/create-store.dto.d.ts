@@ -6,7 +6,8 @@ export declare class CreateStoreDto {
     phone: string;
     aspek: string;
     category: string[];
-    link: string[];
+    mediaOrder: string[];
+    mediaContact: string[];
     omset: string;
     file: Express.Multer.File;
 }

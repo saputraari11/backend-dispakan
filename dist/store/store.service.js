@@ -26,7 +26,9 @@ let StoreService = class StoreService {
         this.userService = userService;
     }
     async allStore() {
-        const store = await this.storeRepository.find();
+        const store = await this.storeRepository.find({
+            relations: ["user"]
+        });
         for (let item of store) {
             await item.convertStringToArray();
         }
@@ -43,22 +45,26 @@ let StoreService = class StoreService {
         return app_utils_1.responseTemplate("200", "success", store);
     }
     async uploadStore(uploadStore) {
-        const { file, name, address, aspek, category, id_owner, phone, omset, link } = uploadStore;
+        const { file, name, address, aspek, category, id_owner, phone, omset, mediaContact, mediaOrder } = uploadStore;
         const owner = await this.userService.userDetail(id_owner);
         const store = new store_entity_1.Store();
         store.name = name;
         store.address = address;
         store.aspek = aspek;
-        store.katagoriSaved = JSON.stringify(category);
+        if (category && category.length != 0)
+            store.katagoriSaved = JSON.stringify(category);
         store.user = owner;
         store.phone = phone;
         store.omset = omset;
-        store.linkSaved = JSON.stringify(link);
+        if (mediaContact && mediaContact.length != 0)
+            store.mediaContact = JSON.stringify(mediaContact);
+        if (mediaOrder && mediaContact.length != 0)
+            store.mediaOrdered = JSON.stringify(mediaOrder);
         if (uploadStore.file) {
             store.filename = file.filename;
             store.image = file.path;
         }
-        console.log(uploadStore, store);
+        await store.convertStringToArray();
         await this.storeRepository.save(store);
         return app_utils_1.responseTemplate("200", "success", store);
     }
@@ -75,10 +81,28 @@ let StoreService = class StoreService {
         store.name = updateStore.name;
         store.address = updateStore.address;
         store.aspek = updateStore.aspek;
-        store.katagoriSaved = JSON.stringify(updateStore.category);
+        if (updateStore.category && updateStore.category.length != 0) {
+            store.katagoriSaved = JSON.stringify(updateStore.category);
+        }
+        else {
+            store.katagoriSaved = null;
+        }
         store.phone = updateStore.phone;
         store.omset = updateStore.omset;
-        store.linkSaved = JSON.stringify(updateStore.link);
+        if (updateStore.mediaContact && updateStore.mediaContact.length != 0) {
+            store.mediaContact = JSON.stringify(updateStore.mediaContact);
+        }
+        else {
+            store.mediaContact = null;
+        }
+        if (updateStore.mediaOrder && updateStore.mediaOrder.length != 0) {
+            store.mediaOrdered = JSON.stringify(updateStore.mediaOrder);
+        }
+        else {
+            store.mediaOrdered = null;
+        }
+        store.user = owner;
+        await store.convertStringToArray();
         await this.storeRepository.save(store);
         return app_utils_1.responseTemplate("200", "success", store);
     }

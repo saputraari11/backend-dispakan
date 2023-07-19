@@ -12,6 +12,7 @@ import { UsersModule } from './users/users.module'
 import { AuthMiddleware } from './auth/auth.middleware'
 import { NewsModule } from './news/news.module'
 import { StoreModule } from './store/store.module'
+import { ProductModule } from './product/product.module'
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import { StoreModule } from './store/store.module'
     AuthModule,
     UsersModule,
     NewsModule,
-    StoreModule
+    StoreModule,
+    ProductModule,
   ],
 })
 export class AppModule implements NestModule {

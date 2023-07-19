@@ -6,7 +6,8 @@ export declare class Store extends BaseEntity {
     name: string;
     address: string;
     phone: string;
-    linkSaved: string;
+    mediaOrdered: string;
+    mediaContact: string;
     omset: string;
     filename: string;
     image: string;
@@ -16,7 +17,8 @@ export declare class Store extends BaseEntity {
     updatedAt: Date;
     user: User;
     product: Product[];
-    link: any[];
-    katagori: any[];
+    media_ordered: any[];
+    media_contact: any[];
+    katagori_umkm: any[];
     convertStringToArray(): Promise<void>;
 }
