@@ -63,11 +63,11 @@ export class ProductController {
   @Get()
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async allProduct(@Req() request:Request) {
-    const protocol = request.protocol;
-    const hostname = request.headers.host;
+  async allProduct(@Req() request: Request) {
+    const protocol = request.protocol
+    const hostname = request.headers.host
     const pathname = request.path
-    const url = `${protocol}://${hostname}${pathname}/image`;
+    const url = `${protocol}://${hostname}${pathname}/image`
     const result = await this.productService.allProduct(url)
     return result
   }
@@ -94,11 +94,11 @@ export class ProductController {
   @Get('detail/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async detailProdcut(@Param('id') id: string,@Req() request:Request) {
-    const protocol = request.protocol;
-    const hostname = request.headers.host;
-    const url = `${protocol}://${hostname}/product/image`;
-    const result = await this.productService.detailProduct(id,url)
+  async detailProdcut(@Param('id') id: string, @Req() request: Request) {
+    const protocol = request.protocol
+    const hostname = request.headers.host
+    const url = `${protocol}://${hostname}/product/image`
+    const result = await this.productService.detailProduct(id, url)
     return result
   }
 

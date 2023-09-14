@@ -72,7 +72,7 @@ export class User extends BaseEntity {
   )
   store: Store[]
 
-  url_image:string
+  url_image: string
 
   async validatePassword(password: string): Promise<boolean> {
     return await bcrypt.compare(password, this.password)

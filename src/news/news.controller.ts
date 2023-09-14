@@ -21,7 +21,7 @@ import { Request, Response } from 'express'
 import { AuthGuard } from '@nestjs/passport'
 
 let dir = `public/dispakan/assets/news`
-dir = path.join(__dirname,'..','..','..','..','..',dir)
+dir = path.join(__dirname, '..', '..', '..', '..', '..', dir)
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -45,11 +45,11 @@ export class NewsController {
   @Get()
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async allNews(@Req() request:Request) {
-    const protocol = request.protocol;
-    const hostname = request.headers.host;
+  async allNews(@Req() request: Request) {
+    const protocol = request.protocol
+    const hostname = request.headers.host
     const pathname = request.path
-    const url = `${protocol}://${hostname}${pathname}/image`;
+    const url = `${protocol}://${hostname}${pathname}/image`
     const result = await this.newsService.allNews(url)
     return result
   }
@@ -94,11 +94,11 @@ export class NewsController {
   @Get('detail/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async detailNews(@Param('id') id: string,@Req() request:Request) {
-    const protocol = request.protocol;
-    const hostname = request.headers.host;
-    const url = `${protocol}://${hostname}/news/image`;
-    const result = await this.newsService.detailNews(id,url)
+  async detailNews(@Param('id') id: string, @Req() request: Request) {
+    const protocol = request.protocol
+    const hostname = request.headers.host
+    const url = `${protocol}://${hostname}/news/image`
+    const result = await this.newsService.detailNews(id, url)
     return result
   }
 
@@ -112,7 +112,7 @@ export class NewsController {
 
   @Get('image/:img')
   seeFile(@Param('img') image: string, @Res() res: Response) {
-    if(!fs.existsSync(`${dir}/${image}`)) {
+    if (!fs.existsSync(`${dir}/${image}`)) {
       return res.status(404).send('Image not Found!')
     }
     return res.sendFile(image, { root: dir })

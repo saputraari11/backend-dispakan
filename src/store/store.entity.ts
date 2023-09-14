@@ -88,7 +88,7 @@ export class Store extends BaseEntity {
   media_ordered: any[] = null
   media_contact: any[] = null
   katagori_umkm: any[] = null
-  url_image:string
+  url_image: string
 
   public async convertStringToArray() {
     if (this.katagoriSaved)

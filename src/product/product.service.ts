@@ -14,18 +14,18 @@ export class ProductService {
     private readonly productRepository: Repository<Product>,
     private readonly storeService: StoreService,
   ) {}
-  async allProduct(url:string) {
+  async allProduct(url: string) {
     const products = await this.productRepository.find({
       relations: ['store'],
     })
 
     for (let item of products) {
-      if(item.sale && item.price) {
+      if (item.sale && item.price) {
         await item.countingDiscount()
       }
       await item.convertStringToArray()
 
-      if(item.files && item.files.length > 0) {
+      if (item.files && item.files.length > 0) {
         const urlImage = item.files.map(file => `${url}/${file}`)
         item.url_image = urlImage
       }
@@ -38,20 +38,20 @@ export class ProductService {
     return responseTemplate('200', 'success', products)
   }
 
-  async detailProduct(id: string,url?:string) {
+  async detailProduct(id: string, url?: string) {
     const product = await this.productRepository.findOne({ where: { id: id } })
     if (!product) {
       throw new NotFoundException(`Product with id ${id} not found`)
     }
 
-    if(product.sale && product.price) {
-        await product.countingDiscount()
+    if (product.sale && product.price) {
+      await product.countingDiscount()
     }
 
     await product.convertStringToArray()
-    if(product.files.length > 0) {
-        const urlImage = product.files.map(file => `${url}/${file}`)
-        product.url_image = urlImage
+    if (product.files.length > 0) {
+      const urlImage = product.files.map(file => `${url}/${file}`)
+      product.url_image = urlImage
     }
     return responseTemplate('200', 'success', product)
   }

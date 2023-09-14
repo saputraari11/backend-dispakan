@@ -14,7 +14,7 @@ export class CreateNewsDto {
 
   @ApiProperty({
     required: false,
-    type:Boolean
+    type: Boolean,
   })
   status: boolean
 

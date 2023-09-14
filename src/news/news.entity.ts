@@ -54,5 +54,5 @@ export class News extends BaseEntity {
   })
   updatedAt: Date
 
-  url_image:string
+  url_image: string
 }

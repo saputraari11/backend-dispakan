@@ -13,25 +13,25 @@ export class NewsService {
     private readonly newsRepository: Repository<News>,
   ) {}
 
-  async allNews(url:string) {
+  async allNews(url: string) {
     const news = await this.newsRepository.find()
 
     if (news.length == 0) {
       return responseTemplate('400', "news doesn't exist", {}, true)
     }
 
-    news.map(item => item.url_image = `${url}/${item.filename}`)
+    news.map(item => (item.url_image = `${url}/${item.filename}`))
 
     return responseTemplate('200', 'success', news)
   }
 
-  async detailNews(id: string,url?:string) {
+  async detailNews(id: string, url?: string) {
     const news = await this.newsRepository.findOne({ where: { id: id } })
     if (!news) {
       throw new NotFoundException(`news with id ${id} not found`)
     }
 
-    if(url) {
+    if (url) {
       news.url_image = `${url}/${news.filename}`
     }
 
@@ -50,7 +50,7 @@ export class NewsService {
       news.filename = file.filename
       news.image = file.path
     }
-    
+
     await this.newsRepository.save(news)
     return responseTemplate('200', 'success', news)
   }

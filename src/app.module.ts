@@ -32,6 +32,6 @@ export class AppModule implements NestModule {
     consumer
       .apply(AuthMiddleware)
       .forRoutes({ path: '/auth/signup/bumdes', method: RequestMethod.POST })
-    consumer.apply(AppLoggerMiddleware).forRoutes("*")
+    consumer.apply(AppLoggerMiddleware).forRoutes('*')
   }
 }

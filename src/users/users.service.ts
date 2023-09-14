@@ -22,22 +22,21 @@ export class UsersService {
       },
     })
 
-
     return responseTemplate('200', 'success', user)
   }
 
-  async userBumdes(url:string) {
+  async userBumdes(url: string) {
     const user = await this.userRepository.find({
       where: {
         level: UserLevel.BUMDES,
       },
     })
 
-    user.map(item => item.url_image = `${url}/${item.filename}`)
+    user.map(item => (item.url_image = `${url}/${item.filename}`))
     return responseTemplate('200', 'success', user)
   }
 
-  async userDetail(id: string,url?:string) {
+  async userDetail(id: string, url?: string) {
     const user = await this.userRepository.findOne({
       where: {
         id: id,
@@ -84,18 +83,21 @@ export class UsersService {
     return responseTemplate('200', 'success', user)
   }
 
-async updatePassword(updatePassword: UpdatePasswordDto) {
+  async updatePassword(updatePassword: UpdatePasswordDto) {
     const user = await this.userDetail(updatePassword.id_user)
     const isValid = await user.validatePassword(updatePassword.old_password)
-    if(!isValid) {
-      return responseTemplate('400', 'Password is Wrong!', [],true)
+    if (!isValid) {
+      return responseTemplate('400', 'Password is Wrong!', [], true)
     }
-    const newPassword = await this.userRepository.hashPassword(updatePassword.new_password,user.salt)
+    const newPassword = await this.userRepository.hashPassword(
+      updatePassword.new_password,
+      user.salt,
+    )
     user.password = newPassword
     await this.userRepository.save(user)
 
     return responseTemplate('200', 'success', user)
-}
+  }
 
   async deleteUmkm(id: string) {
     const user = await this.userDetail(id)

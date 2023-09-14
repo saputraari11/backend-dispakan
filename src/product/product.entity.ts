@@ -47,7 +47,7 @@ export class Product extends BaseEntity {
   })
   othersSaved: string
 
-  @Column({nullable:null})
+  @Column({ nullable: null })
   category: string
 
   @Column({
@@ -87,9 +87,9 @@ export class Product extends BaseEntity {
   varian: string[] = null
   types: string[] = null
   files: string[] = null
-  price_discount:number
-  discount:number
-  url_image:string[]
+  price_discount: number
+  discount: number
+  url_image: string[]
 
   public async countingDiscount() {
     const discount = (this.sale / 100) * this.price

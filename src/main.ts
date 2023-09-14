@@ -7,8 +7,8 @@ import * as express from 'express'
 
 import * as bodyParser from 'body-parser'
 import { join } from 'path'
-import { Logger } from 'winston';
-import { TimeoutInterceptor } from './commons/interceptors/timeout.interceptor';
+import { Logger } from 'winston'
+import { TimeoutInterceptor } from './commons/interceptors/timeout.interceptor'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -21,16 +21,15 @@ async function bootstrap() {
     .addBearerAuth()
     .build()
 
-
-  let logger: Logger;
+  let logger: Logger
   const document = SwaggerModule.createDocument(app, options)
   SwaggerModule.setup('docs', app, document)
 
   app.use(bodyParser.json({ limit: '50mb' }))
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
   app.use(express.static(join(process.cwd(), '../temp/qrcode/')))
-  app.useGlobalInterceptors(new TimeoutInterceptor(logger));
-  
+  app.useGlobalInterceptors(new TimeoutInterceptor(logger))
+
   app.enableCors()
 
   await app.listen(process.env.PORT || '4000')

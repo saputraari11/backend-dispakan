@@ -5,11 +5,11 @@ import {
   InternalServerErrorException,
   NestInterceptor,
   RequestTimeoutException,
-} from '@nestjs/common';
-import { Observable, throwError, TimeoutError } from 'rxjs';
-import { timeout, catchError } from 'rxjs/operators';
-import { Inject } from '@nestjs/common';
-import { Logger } from 'winston';
+} from '@nestjs/common'
+import { Observable, throwError, TimeoutError } from 'rxjs'
+import { timeout, catchError } from 'rxjs/operators'
+import { Inject } from '@nestjs/common'
+import { Logger } from 'winston'
 
 @Injectable()
 export class TimeoutInterceptor implements NestInterceptor {
@@ -20,19 +20,19 @@ export class TimeoutInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     return next.handle().pipe(
       timeout(150000),
-      catchError((err) => {
+      catchError(err => {
         // console.log(context.switchToHttp().getResponse().req);
-        const { body, url, method } = context.switchToHttp().getResponse().req;
+        const { body, url, method } = context.switchToHttp().getResponse().req
 
         if (err instanceof TimeoutError) {
-          this.logger.error(`${method} ${url} - ${err}`, { data: body });
-          return throwError(() => new RequestTimeoutException());
+          this.logger.error(`${method} ${url} - ${err}`, { data: body })
+          return throwError(() => new RequestTimeoutException())
         }
         if (err instanceof InternalServerErrorException) {
-          this.logger.error(`${method} ${url} - ${err}`, { data: body });
+          this.logger.error(`${method} ${url} - ${err}`, { data: body })
         }
-        return throwError(() => err);
+        return throwError(() => err)
       }),
-    );
+    )
   }
 }

@@ -22,7 +22,7 @@ import { CreateStoreDto } from './dto/create-store.dto'
 import { responseTemplate } from 'src/app.utils'
 
 let dir = `public/dispakan/assets/store`
-dir = path.join(__dirname,'..','..','..','..','..',dir)
+dir = path.join(__dirname, '..', '..', '..', '..', '..', dir)
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -46,11 +46,11 @@ export class StoreController {
   @Get()
   @ApiBearerAuth()
   // @UseGuards(AuthGuard('jwt'))
-  async allStore(@Req() request:Request) {
-    const protocol = request.protocol;
-    const hostname = request.headers.host;
+  async allStore(@Req() request: Request) {
+    const protocol = request.protocol
+    const hostname = request.headers.host
     const pathname = request.path
-    const url = `${protocol}://${hostname}${pathname}/image`;
+    const url = `${protocol}://${hostname}${pathname}/image`
     const result = await this.storeService.allStore(url)
     return result
   }
@@ -95,11 +95,11 @@ export class StoreController {
   @Get('detail/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async detailStore(@Param('id') id: string,@Req() request:Request) {
-    const protocol = request.protocol;
-    const hostname = request.headers.host;
-    const url = `${protocol}://${hostname}/store/image`;
-    const result = await this.storeService.detailStore(id,url)
+  async detailStore(@Param('id') id: string, @Req() request: Request) {
+    const protocol = request.protocol
+    const hostname = request.headers.host
+    const url = `${protocol}://${hostname}/store/image`
+    const result = await this.storeService.detailStore(id, url)
     return result
   }
 

@@ -28,7 +28,7 @@ import { BumdesProfileDto } from './dto/bumdes-profile.dto'
 import { UpdatePasswordDto } from './dto/update-password.dto'
 
 let dir = `public/dispakan/assets/bumdes`
-dir = path.join(__dirname,'..','..','..','..','..',dir)
+dir = path.join(__dirname, '..', '..', '..', '..', '..', dir)
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -66,10 +66,10 @@ export class UsersController {
   @Get('bumdes')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async allBumdes(@Req() request:Request) {
-    const protocol = request.protocol;
-    const hostname = request.headers.host;
-    const url = `${protocol}://${hostname}/bumdes/profile/image`;
+  async allBumdes(@Req() request: Request) {
+    const protocol = request.protocol
+    const hostname = request.headers.host
+    const url = `${protocol}://${hostname}/bumdes/profile/image`
     const result = await this.userService.userBumdes(url)
     return result
   }
@@ -77,11 +77,11 @@ export class UsersController {
   @Get('detail/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async detailUser(@Param('id') id: string,@Req() request:Request) {
-    const protocol = request.protocol;
-    const hostname = request.headers.host;
-    const url = `${protocol}://${hostname}/bumdes/profile/image`;
-    const result = await this.userService.userDetail(id,url)
+  async detailUser(@Param('id') id: string, @Req() request: Request) {
+    const protocol = request.protocol
+    const hostname = request.headers.host
+    const url = `${protocol}://${hostname}/bumdes/profile/image`
+    const result = await this.userService.userDetail(id, url)
     return responseTemplate('200', 'success', result)
   }
 
@@ -133,7 +133,10 @@ export class UsersController {
   @Post('update/password/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async updatePassword(@Body() body: UpdatePasswordDto,@Param('id') id:string) {
+  async updatePassword(
+    @Body() body: UpdatePasswordDto,
+    @Param('id') id: string,
+  ) {
     body.id_user = id
     const result = await this.userService.updatePassword(body)
     return result
