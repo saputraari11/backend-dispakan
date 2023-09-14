@@ -5,7 +5,7 @@ export declare class CreateProductDto {
     sale: number;
     description: string;
     price: number;
-    categorySaved: string[];
+    category: string;
     other: string[];
     varian: string[];
     tipe: string[];

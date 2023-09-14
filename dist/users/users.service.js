@@ -31,20 +31,22 @@ let UsersService = class UsersService {
         });
         return app_utils_1.responseTemplate('200', 'success', user);
     }
-    async userBumdes() {
+    async userBumdes(url) {
         const user = await this.userRepository.find({
             where: {
                 level: user_level_enum_1.UserLevel.BUMDES,
             },
         });
+        user.map(item => item.url_image = `${url}/${item.filename}`);
         return app_utils_1.responseTemplate('200', 'success', user);
     }
-    async userDetail(id) {
+    async userDetail(id, url) {
         const user = await this.userRepository.findOne({
             where: {
                 id: id,
             },
         });
+        user.url_image = `${url}/${user.filename}`;
         if (!user) {
             throw new common_1.NotFoundException(`User with id ${id} not Found!`);
         }
@@ -58,8 +60,7 @@ let UsersService = class UsersService {
             user.phone = updateProfile.phone;
         if (updateProfile.address)
             user.address = updateProfile.address;
-        if (updateProfile.status)
-            user.status = updateProfile.status;
+        user.status = updateProfile.status;
         await this.userRepository.save(user);
         return app_utils_1.responseTemplate('200', 'success', user);
     }
@@ -80,6 +81,17 @@ let UsersService = class UsersService {
             user.filename = updateProfile.file.filename;
             user.image = updateProfile.file.path;
         }
+        await this.userRepository.save(user);
+        return app_utils_1.responseTemplate('200', 'success', user);
+    }
+    async updatePassword(updatePassword) {
+        const user = await this.userDetail(updatePassword.id_user);
+        const isValid = await user.validatePassword(updatePassword.old_password);
+        if (!isValid) {
+            return app_utils_1.responseTemplate('400', 'Password is Wrong!', [], true);
+        }
+        const newPassword = await this.userRepository.hashPassword(updatePassword.new_password, user.salt);
+        user.password = newPassword;
         await this.userRepository.save(user);
         return app_utils_1.responseTemplate('200', 'success', user);
     }

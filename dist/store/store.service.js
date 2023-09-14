@@ -25,23 +25,25 @@ let StoreService = class StoreService {
         this.storeRepository = storeRepository;
         this.userService = userService;
     }
-    async allStore() {
+    async allStore(url) {
         const store = await this.storeRepository.find({
             relations: ['user'],
         });
         for (let item of store) {
             await item.convertStringToArray();
+            item.url_image = `${url}/${item.filename}`;
         }
         if (store.length == 0) {
             return app_utils_1.responseTemplate('400', "store doesn't exist", {}, true);
         }
         return app_utils_1.responseTemplate('200', 'success', store);
     }
-    async detailStore(id) {
+    async detailStore(id, url) {
         const store = await this.storeRepository.findOne({ where: { id: id } });
         if (!store) {
             throw new common_1.NotFoundException(`store with id ${id} not found`);
         }
+        store.url_image = `${url}/${store.filename}`;
         return app_utils_1.responseTemplate('200', 'success', store);
     }
     async uploadStore(uploadStore) {

@@ -4,6 +4,7 @@ import {
   Get,
   Param,
   Post,
+  Req,
   Res,
   UploadedFiles,
   UseGuards,
@@ -17,11 +18,11 @@ import * as path from 'path'
 import { AuthGuard } from '@nestjs/passport'
 import { FilesInterceptor } from '@nestjs/platform-express'
 import { CreateProductDto } from './dto/create-product.dto'
-import { Response, response } from 'express'
+import { Request, Response, response } from 'express'
 import { responseTemplate } from 'src/app.utils'
 
 const os = require('os')
-const dir = `${os.homedir()}/dispakan/assets/product`
+const dir = `public/dispakan/assets/product`
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -62,8 +63,12 @@ export class ProductController {
   @Get()
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async allProduct() {
-    const result = await this.productService.allProduct()
+  async allProduct(@Req() request:Request) {
+    const protocol = request.protocol;
+    const hostname = request.headers.host;
+    const pathname = request.path
+    const url = `${protocol}://${hostname}${pathname}/image`;
+    const result = await this.productService.allProduct(url)
     return result
   }
 
@@ -89,8 +94,11 @@ export class ProductController {
   @Get('detail/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async detailProdcut(@Param('id') id: string) {
-    const result = await this.productService.detailProduct(id)
+  async detailProdcut(@Param('id') id: string,@Req() request:Request) {
+    const protocol = request.protocol;
+    const hostname = request.headers.host;
+    const url = `${protocol}://${hostname}/product/image`;
+    const result = await this.productService.detailProduct(id,url)
     return result
   }
 
@@ -104,7 +112,6 @@ export class ProductController {
 
   @Get(':img')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   seeFile(@Param('img') image: string, @Res() res: Response) {
     if (!fs.existsSync(`${dir}/${image}`)) {
       return res.send(

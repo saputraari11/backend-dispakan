@@ -6,7 +6,7 @@ export declare class StoreService {
     private readonly storeRepository;
     private readonly userService;
     constructor(storeRepository: Repository<Store>, userService: UsersService);
-    allStore(): Promise<{
+    allStore(url: string): Promise<{
         error: boolean;
         alerts: {
             code: string;
@@ -14,7 +14,7 @@ export declare class StoreService {
         };
         data: any;
     }>;
-    detailStore(id: string): Promise<{
+    detailStore(id: string, url?: string): Promise<{
         error: boolean;
         alerts: {
             code: string;

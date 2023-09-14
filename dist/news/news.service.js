@@ -23,24 +23,28 @@ let NewsService = class NewsService {
     constructor(newsRepository) {
         this.newsRepository = newsRepository;
     }
-    async allNews() {
+    async allNews(url) {
         const news = await this.newsRepository.find();
         if (news.length == 0) {
             return app_utils_1.responseTemplate('400', "news doesn't exist", {}, true);
         }
+        news.map(item => item.url_image = `${url}/${item.filename}`);
         return app_utils_1.responseTemplate('200', 'success', news);
     }
-    async detailNews(id) {
+    async detailNews(id, url) {
         const news = await this.newsRepository.findOne({ where: { id: id } });
         if (!news) {
             throw new common_1.NotFoundException(`news with id ${id} not found`);
+        }
+        if (url) {
+            news.url_image = `${url}/${news.filename}`;
         }
         return app_utils_1.responseTemplate('200', 'success', news);
     }
     async uploadNews(uploadNews) {
         const { file, status, title, posted_date } = uploadNews;
         const news = new news_entity_1.News();
-        news.status = status;
+        news.status = !!status;
         news.title = title;
         news.posted_date = new Date(posted_date);
         news.description = uploadNews.description;
@@ -61,7 +65,7 @@ let NewsService = class NewsService {
             news.image = updateNews.file.path;
         }
         if (updateNews.status)
-            news.status = updateNews.status;
+            news.status = !!updateNews.status;
         if (updateNews.title)
             news.title = updateNews.title;
         if (updateNews.posted_date)

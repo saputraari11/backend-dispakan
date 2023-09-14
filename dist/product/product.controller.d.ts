@@ -1,7 +1,7 @@
 /// <reference types="multer" />
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 export declare class ProductController {
     private readonly productService;
     constructor(productService: ProductService);
@@ -13,7 +13,7 @@ export declare class ProductController {
         };
         data: any;
     }>;
-    allProduct(): Promise<{
+    allProduct(request: Request): Promise<{
         error: boolean;
         alerts: {
             code: string;
@@ -29,7 +29,7 @@ export declare class ProductController {
         };
         data: any;
     }>;
-    detailProdcut(id: string): Promise<{
+    detailProdcut(id: string, request: Request): Promise<{
         error: boolean;
         alerts: {
             code: string;

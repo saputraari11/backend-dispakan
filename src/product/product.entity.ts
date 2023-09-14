@@ -47,11 +47,8 @@ export class Product extends BaseEntity {
   })
   othersSaved: string
 
-  @Column({
-    type: 'text',
-    nullable: true,
-  })
-  categorySaved: string
+  @Column({nullable:null})
+  category: string
 
   @Column({
     type: 'text',
@@ -87,17 +84,23 @@ export class Product extends BaseEntity {
 
   images: string[] = null
   others: string[] = null
-  category: string[] = null
   varian: string[] = null
   types: string[] = null
   files: string[] = null
+  price_discount:number
+  discount:number
+  url_image:string[]
+
+  public async countingDiscount() {
+    const discount = (this.sale / 100) * this.price
+    this.discount = discount
+    this.price_discount = this.price - discount
+  }
 
   public async convertStringToArray() {
     if (this.imagesSaved) this.images = JSON.parse(this.imagesSaved)
     if (this.filenameSaved) this.files = JSON.parse(this.filenameSaved)
     if (this.othersSaved) this.others = JSON.parse(this.othersSaved).split(',')
-    if (this.categorySaved)
-      this.category = JSON.parse(this.categorySaved).split(',')
     if (this.varianSaved) this.varian = JSON.parse(this.varianSaved).split(',')
     if (this.typesSaved) this.types = JSON.parse(this.typesSaved).split(',')
   }

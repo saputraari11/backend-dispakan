@@ -4,7 +4,7 @@ import { CreateNewsDto } from './dto/create-news.dto';
 export declare class NewsService {
     private readonly newsRepository;
     constructor(newsRepository: Repository<News>);
-    allNews(): Promise<{
+    allNews(url: string): Promise<{
         error: boolean;
         alerts: {
             code: string;
@@ -12,7 +12,7 @@ export declare class NewsService {
         };
         data: any;
     }>;
-    detailNews(id: string): Promise<{
+    detailNews(id: string, url?: string): Promise<{
         error: boolean;
         alerts: {
             code: string;

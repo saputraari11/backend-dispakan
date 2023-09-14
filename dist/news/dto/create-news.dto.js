@@ -28,6 +28,7 @@ __decorate([
 __decorate([
     swagger_1.ApiProperty({
         required: false,
+        type: Boolean
     }),
     __metadata("design:type", Boolean)
 ], CreateNewsDto.prototype, "status", void 0);

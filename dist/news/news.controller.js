@@ -22,8 +22,8 @@ const fs = require("fs");
 const path = require("path");
 const news_service_1 = require("./news.service");
 const passport_1 = require("@nestjs/passport");
-const os = require('os');
-const dir = `${os.homedir()}/dispakan/assets/news`;
+let dir = `public/dispakan/assets/news`;
+dir = path.join(__dirname, '..', '..', '..', '..', '..', dir);
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         if (!fs.existsSync(dir)) {
@@ -39,8 +39,12 @@ let NewsController = class NewsController {
     constructor(newsService) {
         this.newsService = newsService;
     }
-    async allNews() {
-        const result = await this.newsService.allNews();
+    async allNews(request) {
+        const protocol = request.protocol;
+        const hostname = request.headers.host;
+        const pathname = request.path;
+        const url = `${protocol}://${hostname}${pathname}/image`;
+        const result = await this.newsService.allNews(url);
         return result;
     }
     async uploadFile(data, file) {
@@ -53,8 +57,11 @@ let NewsController = class NewsController {
         const result = await this.newsService.updateNews(data, id);
         return result;
     }
-    async detailNews(id) {
-        const result = await this.newsService.detailNews(id);
+    async detailNews(id, request) {
+        const protocol = request.protocol;
+        const hostname = request.headers.host;
+        const url = `${protocol}://${hostname}/news/image`;
+        const result = await this.newsService.detailNews(id, url);
         return result;
     }
     async deleteNews(id) {
@@ -62,6 +69,9 @@ let NewsController = class NewsController {
         return result;
     }
     seeFile(image, res) {
+        if (!fs.existsSync(`${dir}/${image}`)) {
+            return res.status(404).send('Image not Found!');
+        }
         return res.sendFile(image, { root: dir });
     }
 };
@@ -69,14 +79,14 @@ __decorate([
     common_1.Get(),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    __param(0, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], NewsController.prototype, "allNews", null);
 __decorate([
     common_1.Post('upload'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
         storage: storage,
@@ -106,9 +116,9 @@ __decorate([
     common_1.Get('detail/:id'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
-    __param(0, common_1.Param('id')),
+    __param(0, common_1.Param('id')), __param(1, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], NewsController.prototype, "detailNews", null);
 __decorate([
@@ -121,9 +131,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], NewsController.prototype, "deleteNews", null);
 __decorate([
-    common_1.Get(':img'),
-    swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    common_1.Get('image/:img'),
     __param(0, common_1.Param('img')), __param(1, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),

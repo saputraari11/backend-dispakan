@@ -25,27 +25,42 @@ let ProductService = class ProductService {
         this.productRepository = productRepository;
         this.storeService = storeService;
     }
-    async allProduct() {
+    async allProduct(url) {
         const products = await this.productRepository.find({
             relations: ['store'],
         });
         for (let item of products) {
+            if (item.sale && item.price) {
+                await item.countingDiscount();
+            }
             await item.convertStringToArray();
+            if (item.files && item.files.length > 0) {
+                const urlImage = item.files.map(file => `${url}/${file}`);
+                item.url_image = urlImage;
+            }
         }
         if (products.length == 0) {
             return app_utils_1.responseTemplate('400', "Product doesn't exist", {}, true);
         }
         return app_utils_1.responseTemplate('200', 'success', products);
     }
-    async detailProduct(id) {
+    async detailProduct(id, url) {
         const product = await this.productRepository.findOne({ where: { id: id } });
         if (!product) {
             throw new common_1.NotFoundException(`Product with id ${id} not found`);
         }
+        if (product.sale && product.price) {
+            await product.countingDiscount();
+        }
+        await product.convertStringToArray();
+        if (product.files.length > 0) {
+            const urlImage = product.files.map(file => `${url}/${file}`);
+            product.url_image = urlImage;
+        }
         return app_utils_1.responseTemplate('200', 'success', product);
     }
     async saveProduct(uploadProduct) {
-        const { categorySaved, description, files, id_umkm, name, other, price, sale, tipe, varian, } = uploadProduct;
+        const { category, description, files, id_umkm, name, other, price, sale, tipe, varian, } = uploadProduct;
         const umkm = (await this.storeService.detailStore(id_umkm)).data;
         const product = new product_entity_1.Product();
         product.name = name;
@@ -53,8 +68,7 @@ let ProductService = class ProductService {
         product.sale = sale;
         product.description = description;
         product.store = umkm;
-        if (categorySaved && categorySaved.length != 0)
-            product.categorySaved = JSON.stringify(categorySaved);
+        product.category = category;
         if (other && other.length != 0)
             product.othersSaved = JSON.stringify(other);
         if (tipe && tipe.length != 0)
@@ -74,19 +88,14 @@ let ProductService = class ProductService {
     async updateProduct(updateProduct, id) {
         const product = (await this.detailProduct(id)).data;
         await product.convertStringToArray();
-        const { categorySaved, description, files, id_umkm, name, other, price, sale, tipe, varian, } = updateProduct;
+        const { category, description, files, id_umkm, name, other, price, sale, tipe, varian, } = updateProduct;
         const umkm = (await this.storeService.detailStore(id_umkm)).data;
         product.name = name;
         product.price = price;
         product.sale = sale;
         product.description = description;
         product.store = umkm;
-        if (categorySaved && categorySaved.length != 0) {
-            product.categorySaved = JSON.stringify(categorySaved);
-        }
-        else {
-            product.categorySaved = null;
-        }
+        product.category = category;
         if (other && other.length != 0) {
             product.othersSaved = JSON.stringify(other);
         }

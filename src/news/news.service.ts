@@ -13,20 +13,26 @@ export class NewsService {
     private readonly newsRepository: Repository<News>,
   ) {}
 
-  async allNews() {
+  async allNews(url:string) {
     const news = await this.newsRepository.find()
 
     if (news.length == 0) {
       return responseTemplate('400', "news doesn't exist", {}, true)
     }
 
+    news.map(item => item.url_image = `${url}/${item.filename}`)
+
     return responseTemplate('200', 'success', news)
   }
 
-  async detailNews(id: string) {
+  async detailNews(id: string,url?:string) {
     const news = await this.newsRepository.findOne({ where: { id: id } })
     if (!news) {
       throw new NotFoundException(`news with id ${id} not found`)
+    }
+
+    if(url) {
+      news.url_image = `${url}/${news.filename}`
     }
 
     return responseTemplate('200', 'success', news)
@@ -35,7 +41,7 @@ export class NewsService {
   async uploadNews(uploadNews: CreateNewsDto) {
     const { file, status, title, posted_date } = uploadNews
     const news = new News()
-    news.status = status
+    news.status = !!status
     news.title = title
     news.posted_date = new Date(posted_date)
     news.description = uploadNews.description
@@ -44,7 +50,7 @@ export class NewsService {
       news.filename = file.filename
       news.image = file.path
     }
-
+    
     await this.newsRepository.save(news)
     return responseTemplate('200', 'success', news)
   }
@@ -61,7 +67,7 @@ export class NewsService {
       news.image = updateNews.file.path
     }
 
-    if (updateNews.status) news.status = updateNews.status
+    if (updateNews.status) news.status = !!updateNews.status
     if (updateNews.title) news.title = updateNews.title
     if (updateNews.posted_date)
       news.posted_date = new Date(updateNews.posted_date)

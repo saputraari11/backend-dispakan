@@ -16,5 +16,6 @@ export declare class User extends BaseEntity {
     createdAt: Date;
     updatedAt: Date;
     store: Store[];
+    url_image: string;
     validatePassword(password: string): Promise<boolean>;
 }

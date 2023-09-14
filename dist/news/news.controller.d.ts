@@ -1,11 +1,11 @@
 /// <reference types="multer" />
 import { CreateNewsDto } from './dto/create-news.dto';
 import { NewsService } from './news.service';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 export declare class NewsController {
     private newsService;
     constructor(newsService: NewsService);
-    allNews(): Promise<{
+    allNews(request: Request): Promise<{
         error: boolean;
         alerts: {
             code: string;
@@ -29,7 +29,7 @@ export declare class NewsController {
         };
         data: any;
     }>;
-    detailNews(id: string): Promise<{
+    detailNews(id: string, request: Request): Promise<{
         error: boolean;
         alerts: {
             code: string;
@@ -45,5 +45,5 @@ export declare class NewsController {
         };
         data: any;
     }>;
-    seeFile(image: string, res: Response): void;
+    seeFile(image: string, res: Response): void | Response<any, Record<string, any>>;
 }

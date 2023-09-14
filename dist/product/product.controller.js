@@ -24,7 +24,7 @@ const platform_express_1 = require("@nestjs/platform-express");
 const create_product_dto_1 = require("./dto/create-product.dto");
 const app_utils_1 = require("../app.utils");
 const os = require('os');
-const dir = `${os.homedir()}/dispakan/assets/product`;
+const dir = `public/dispakan/assets/product`;
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         if (!fs.existsSync(dir)) {
@@ -44,8 +44,12 @@ let ProductController = class ProductController {
         uploadsDto.files = files;
         return this.productService.saveProduct(uploadsDto);
     }
-    async allProduct() {
-        const result = await this.productService.allProduct();
+    async allProduct(request) {
+        const protocol = request.protocol;
+        const hostname = request.headers.host;
+        const pathname = request.path;
+        const url = `${protocol}://${hostname}${pathname}/image`;
+        const result = await this.productService.allProduct(url);
         return result;
     }
     async updateProduct(id, data, files) {
@@ -53,8 +57,11 @@ let ProductController = class ProductController {
         const result = await this.productService.updateProduct(data, id);
         return result;
     }
-    async detailProdcut(id) {
-        const result = await this.productService.detailProduct(id);
+    async detailProdcut(id, request) {
+        const protocol = request.protocol;
+        const hostname = request.headers.host;
+        const url = `${protocol}://${hostname}/product/image`;
+        const result = await this.productService.detailProduct(id, url);
         return result;
     }
     async deleteProduct(id) {
@@ -88,8 +95,9 @@ __decorate([
     common_1.Get(),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    __param(0, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "allProduct", null);
 __decorate([
@@ -111,9 +119,9 @@ __decorate([
     common_1.Get('detail/:id'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
-    __param(0, common_1.Param('id')),
+    __param(0, common_1.Param('id')), __param(1, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "detailProdcut", null);
 __decorate([
@@ -128,7 +136,6 @@ __decorate([
 __decorate([
     common_1.Get(':img'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Param('img')), __param(1, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),

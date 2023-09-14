@@ -9,4 +9,5 @@ export declare class News extends BaseEntity {
     description: string;
     createdAt: Date;
     updatedAt: Date;
+    url_image: string;
 }

@@ -1,11 +1,11 @@
 /// <reference types="multer" />
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { StoreService } from './store.service';
 import { CreateStoreDto } from './dto/create-store.dto';
 export declare class StoreController {
     private storeService;
     constructor(storeService: StoreService);
-    allNews(): Promise<{
+    allStore(request: Request): Promise<{
         error: boolean;
         alerts: {
             code: string;
@@ -29,7 +29,7 @@ export declare class StoreController {
         };
         data: any;
     }>;
-    detailNews(id: string): Promise<{
+    detailStore(id: string, request: Request): Promise<{
         error: boolean;
         alerts: {
             code: string;
@@ -37,7 +37,7 @@ export declare class StoreController {
         };
         data: any;
     }>;
-    deleteNews(id: string): Promise<{
+    deleteStore(id: string): Promise<{
         error: boolean;
         alerts: {
             code: string;

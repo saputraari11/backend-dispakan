@@ -15,13 +15,14 @@ export class StoreService {
     private readonly userService: UsersService,
   ) {}
 
-  async allStore() {
+  async allStore(url:string) {
     const store = await this.storeRepository.find({
       relations: ['user'],
     })
 
     for (let item of store) {
       await item.convertStringToArray()
+      item.url_image = `${url}/${item.filename}`
     }
 
     if (store.length == 0) {
@@ -31,11 +32,14 @@ export class StoreService {
     return responseTemplate('200', 'success', store)
   }
 
-  async detailStore(id: string) {
+  async detailStore(id: string,url?:string) {
     const store = await this.storeRepository.findOne({ where: { id: id } })
     if (!store) {
       throw new NotFoundException(`store with id ${id} not found`)
     }
+
+
+    store.url_image = `${url}/${store.filename}`
 
     return responseTemplate('200', 'success', store)
   }

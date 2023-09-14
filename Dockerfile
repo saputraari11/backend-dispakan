@@ -6,12 +6,13 @@ FROM node:${NODE_VERSION}-slim as base
 
 LABEL fly_launch_runtime="NodeJS"
 
+RUN mkdir -p -m 777 /home/public/dispakan/asset
+
 # NodeJS app lives here
-WORKDIR /app
+WORKDIR /home/app
 
 # Set production environment
 ENV NODE_ENV=production
-
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
@@ -36,7 +37,7 @@ RUN npm prune --production
 FROM base
 
 # Copy built application
-COPY --from=build /app /app
+COPY --from=build /home/app /home/app
 
 # Start the server by default, this can be overwritten at runtime
 CMD [ "npm", "run", "start:prod" ]

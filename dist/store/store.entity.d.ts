@@ -20,5 +20,6 @@ export declare class Store extends BaseEntity {
     media_ordered: any[];
     media_contact: any[];
     katagori_umkm: any[];
+    url_image: string;
     convertStringToArray(): Promise<void>;
 }

@@ -14,13 +14,21 @@ export class ProductService {
     private readonly productRepository: Repository<Product>,
     private readonly storeService: StoreService,
   ) {}
-  async allProduct() {
+  async allProduct(url:string) {
     const products = await this.productRepository.find({
       relations: ['store'],
     })
 
     for (let item of products) {
+      if(item.sale && item.price) {
+        await item.countingDiscount()
+      }
       await item.convertStringToArray()
+
+      if(item.files && item.files.length > 0) {
+        const urlImage = item.files.map(file => `${url}/${file}`)
+        item.url_image = urlImage
+      }
     }
 
     if (products.length == 0) {
@@ -30,18 +38,27 @@ export class ProductService {
     return responseTemplate('200', 'success', products)
   }
 
-  async detailProduct(id: string) {
+  async detailProduct(id: string,url?:string) {
     const product = await this.productRepository.findOne({ where: { id: id } })
     if (!product) {
       throw new NotFoundException(`Product with id ${id} not found`)
     }
 
+    if(product.sale && product.price) {
+        await product.countingDiscount()
+    }
+
+    await product.convertStringToArray()
+    if(product.files.length > 0) {
+        const urlImage = product.files.map(file => `${url}/${file}`)
+        product.url_image = urlImage
+    }
     return responseTemplate('200', 'success', product)
   }
 
   async saveProduct(uploadProduct: CreateProductDto) {
     const {
-      categorySaved,
+      category,
       description,
       files,
       id_umkm,
@@ -60,9 +77,8 @@ export class ProductService {
     product.sale = sale
     product.description = description
     product.store = umkm
+    product.category = category
 
-    if (categorySaved && categorySaved.length != 0)
-      product.categorySaved = JSON.stringify(categorySaved)
     if (other && other.length != 0) product.othersSaved = JSON.stringify(other)
     if (tipe && tipe.length != 0) product.typesSaved = JSON.stringify(tipe)
     if (varian && varian.length != 0)
@@ -84,7 +100,7 @@ export class ProductService {
     const product: Product = (await this.detailProduct(id)).data
     await product.convertStringToArray()
     const {
-      categorySaved,
+      category,
       description,
       files,
       id_umkm,
@@ -102,12 +118,7 @@ export class ProductService {
     product.sale = sale
     product.description = description
     product.store = umkm
-
-    if (categorySaved && categorySaved.length != 0) {
-      product.categorySaved = JSON.stringify(categorySaved)
-    } else {
-      product.categorySaved = null
-    }
+    product.category = category
 
     if (other && other.length != 0) {
       product.othersSaved = JSON.stringify(other)

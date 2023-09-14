@@ -24,8 +24,9 @@ const fs = require("fs");
 const path = require("path");
 const platform_express_1 = require("@nestjs/platform-express");
 const bumdes_profile_dto_1 = require("./dto/bumdes-profile.dto");
-const os = require('os');
-const dir = `${os.homedir()}/dispakan/assets/bumdes`;
+const update_password_dto_1 = require("./dto/update-password.dto");
+let dir = `public/dispakan/assets/bumdes`;
+dir = path.join(__dirname, '..', '..', '..', '..', '..', dir);
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         if (!fs.existsSync(dir)) {
@@ -50,12 +51,18 @@ let UsersController = class UsersController {
         const result = await this.userService.userUmkm();
         return result;
     }
-    async allBumdes() {
-        const result = await this.userService.userBumdes();
+    async allBumdes(request) {
+        const protocol = request.protocol;
+        const hostname = request.headers.host;
+        const url = `${protocol}://${hostname}/bumdes/profile/image`;
+        const result = await this.userService.userBumdes(url);
         return result;
     }
-    async detailUmkm(id) {
-        const result = await this.userService.userDetail(id);
+    async detailUser(id, request) {
+        const protocol = request.protocol;
+        const hostname = request.headers.host;
+        const url = `${protocol}://${hostname}/bumdes/profile/image`;
+        const result = await this.userService.userDetail(id, url);
         return app_utils_1.responseTemplate('200', 'success', result);
     }
     async deleteUmkm(id) {
@@ -79,6 +86,11 @@ let UsersController = class UsersController {
             return res.sendFile(image, { root: dir });
         }
     }
+    async updatePassword(body, id) {
+        body.id_user = id;
+        const result = await this.userService.updatePassword(body);
+        return result;
+    }
 };
 __decorate([
     common_1.Get('ip'),
@@ -99,19 +111,20 @@ __decorate([
     common_1.Get('bumdes'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    __param(0, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "allBumdes", null);
 __decorate([
-    common_1.Get('umkm/:id'),
+    common_1.Get('detail/:id'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
-    __param(0, common_1.Param('id')),
+    __param(0, common_1.Param('id')), __param(1, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
-], UsersController.prototype, "detailUmkm", null);
+], UsersController.prototype, "detailUser", null);
 __decorate([
     common_1.Get('delete-umkm/:id'),
     swagger_1.ApiBearerAuth(),
@@ -147,12 +160,20 @@ __decorate([
 __decorate([
     common_1.Get('bumdes/profile/:img'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Param('img')), __param(1, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "seeFile", null);
+__decorate([
+    common_1.Post('update/password/:id'),
+    swagger_1.ApiBearerAuth(),
+    common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    __param(0, common_1.Body()), __param(1, common_1.Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [update_password_dto_1.UpdatePasswordDto, String]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "updatePassword", null);
 UsersController = __decorate([
     swagger_1.ApiTags('User'),
     common_1.Controller('user'),

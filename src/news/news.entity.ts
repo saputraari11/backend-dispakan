@@ -53,4 +53,6 @@ export class News extends BaseEntity {
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
   updatedAt: Date
+
+  url_image:string
 }

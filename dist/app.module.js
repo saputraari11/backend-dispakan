@@ -16,11 +16,13 @@ const auth_middleware_1 = require("./auth/auth.middleware");
 const news_module_1 = require("./news/news.module");
 const store_module_1 = require("./store/store.module");
 const product_module_1 = require("./product/product.module");
+const app_logger_middleware_1 = require("./commons/middlewares/app-logger-middleware");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
             .apply(auth_middleware_1.AuthMiddleware)
             .forRoutes({ path: '/auth/signup/bumdes', method: common_1.RequestMethod.POST });
+        consumer.apply(app_logger_middleware_1.AppLoggerMiddleware).forRoutes("*");
     }
 };
 AppModule = __decorate([

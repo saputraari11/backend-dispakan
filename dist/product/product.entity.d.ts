@@ -9,7 +9,7 @@ export declare class Product extends BaseEntity {
     filenameSaved: string;
     imagesSaved: string;
     othersSaved: string;
-    categorySaved: string;
+    category: string;
     varianSaved: string;
     typesSaved: string;
     createdAt: Date;
@@ -17,9 +17,12 @@ export declare class Product extends BaseEntity {
     store: Store;
     images: string[];
     others: string[];
-    category: string[];
     varian: string[];
     types: string[];
     files: string[];
+    price_discount: number;
+    discount: number;
+    url_image: string[];
+    countingDiscount(): Promise<void>;
     convertStringToArray(): Promise<void>;
 }

@@ -17,10 +17,14 @@ let Product = class Product extends typeorm_1.BaseEntity {
         super(...arguments);
         this.images = null;
         this.others = null;
-        this.category = null;
         this.varian = null;
         this.types = null;
         this.files = null;
+    }
+    async countingDiscount() {
+        const discount = (this.sale / 100) * this.price;
+        this.discount = discount;
+        this.price_discount = this.price - discount;
     }
     async convertStringToArray() {
         if (this.imagesSaved)
@@ -29,8 +33,6 @@ let Product = class Product extends typeorm_1.BaseEntity {
             this.files = JSON.parse(this.filenameSaved);
         if (this.othersSaved)
             this.others = JSON.parse(this.othersSaved).split(',');
-        if (this.categorySaved)
-            this.category = JSON.parse(this.categorySaved).split(',');
         if (this.varianSaved)
             this.varian = JSON.parse(this.varianSaved).split(',');
         if (this.typesSaved)
@@ -82,12 +84,9 @@ __decorate([
     __metadata("design:type", String)
 ], Product.prototype, "othersSaved", void 0);
 __decorate([
-    typeorm_1.Column({
-        type: 'text',
-        nullable: true,
-    }),
+    typeorm_1.Column({ nullable: null }),
     __metadata("design:type", String)
-], Product.prototype, "categorySaved", void 0);
+], Product.prototype, "category", void 0);
 __decorate([
     typeorm_1.Column({
         type: 'text',

@@ -3,6 +3,7 @@ import { UsersService } from './users.service';
 import { Request, Response } from 'express';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { BumdesProfileDto } from './dto/bumdes-profile.dto';
+import { UpdatePasswordDto } from './dto/update-password.dto';
 export declare class UsersController {
     private userService;
     constructor(userService: UsersService);
@@ -15,7 +16,7 @@ export declare class UsersController {
         };
         data: any;
     }>;
-    allBumdes(): Promise<{
+    allBumdes(request: Request): Promise<{
         error: boolean;
         alerts: {
             code: string;
@@ -23,7 +24,7 @@ export declare class UsersController {
         };
         data: any;
     }>;
-    detailUmkm(id: string): Promise<{
+    detailUser(id: string, request: Request): Promise<{
         error: boolean;
         alerts: {
             code: string;
@@ -56,4 +57,12 @@ export declare class UsersController {
         data: any;
     }>;
     seeFile(image: string, res: Response): void | Response<any, Record<string, any>>;
+    updatePassword(body: UpdatePasswordDto, id: string): Promise<{
+        error: boolean;
+        alerts: {
+            code: string;
+            message: string;
+        };
+        data: any;
+    }>;
 }
