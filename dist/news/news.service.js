@@ -28,7 +28,7 @@ let NewsService = class NewsService {
         if (news.length == 0) {
             return app_utils_1.responseTemplate('400', "news doesn't exist", {}, true);
         }
-        news.map(item => item.url_image = `${url}/${item.filename}`);
+        news.map(item => (item.url_image = `${url}/${item.filename}`));
         return app_utils_1.responseTemplate('200', 'success', news);
     }
     async detailNews(id, url) {

@@ -22,7 +22,7 @@ let AppModule = class AppModule {
         consumer
             .apply(auth_middleware_1.AuthMiddleware)
             .forRoutes({ path: '/auth/signup/bumdes', method: common_1.RequestMethod.POST });
-        consumer.apply(app_logger_middleware_1.AppLoggerMiddleware).forRoutes("*");
+        consumer.apply(app_logger_middleware_1.AppLoggerMiddleware).forRoutes('*');
     }
 };
 AppModule = __decorate([

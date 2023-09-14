@@ -169,7 +169,8 @@ __decorate([
     common_1.Post('update/password/:id'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
-    __param(0, common_1.Body()), __param(1, common_1.Param('id')),
+    __param(0, common_1.Body()),
+    __param(1, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [update_password_dto_1.UpdatePasswordDto, String]),
     __metadata("design:returntype", Promise)

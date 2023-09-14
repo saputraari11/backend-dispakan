@@ -37,7 +37,7 @@ let UsersService = class UsersService {
                 level: user_level_enum_1.UserLevel.BUMDES,
             },
         });
-        user.map(item => item.url_image = `${url}/${item.filename}`);
+        user.map(item => (item.url_image = `${url}/${item.filename}`));
         return app_utils_1.responseTemplate('200', 'success', user);
     }
     async userDetail(id, url) {
