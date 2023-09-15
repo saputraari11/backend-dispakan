@@ -4017,7 +4017,7 @@
         "affectsGlobalScope": false
       },
       "../src/database/database.config.ts": {
-        "version": "1ccc4979392e6e5bc4b0dff91675ecbbd16697d42f1c665e211f3fa6f6e94900",
+        "version": "44abb6466e8a32acc308469d314bf97c8c79094bd7bbbbb14d26a96057b2de47",
         "signature": "f42de03df50171ba69d51407ce81453a74c9b79105becb92e5d85e87568c6223",
         "affectsGlobalScope": false
       },

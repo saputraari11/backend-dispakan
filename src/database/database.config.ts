@@ -18,8 +18,9 @@ export class DatabaseConfig implements TypeOrmOptionsFactory {
   createTypeOrmOptions(): TypeOrmModuleOptions {
     return {
       ...this.config,
-      type: 'mysql',
+      type: 'postgres',
       entities: [User, Comment, Product, Store, News],
+      ssl:true
     }
   }
 }
