@@ -2777,18 +2777,18 @@
         "affectsGlobalScope": false
       },
       "../src/product/product.entity.ts": {
-        "version": "151a749449eeec6fa315ed9375f1cc2578def8fc909318b2a992a18a5624fee7",
-        "signature": "5ba6da2977091560642833368276e25a39d170d66d7e10f72aab8c748d870591",
+        "version": "d1fd69bbdd8b4d561d2722a66b4650a41aad1fffcf0579f25f3098e19c043c96",
+        "signature": "804d7ddd74a0560829913f271a4fdca27e5ee77566f3326658ceca68ff20fd72",
         "affectsGlobalScope": false
       },
       "../src/store/store.entity.ts": {
-        "version": "ee1c4e36dbdbdfca2356a99103d5fe615dd26c67cf28d5c9e1c18f30e23a944e",
-        "signature": "a23b023746e6f16f2ecd068384e12c67681859d58ffb99f3272bbca4e4c67e8a",
+        "version": "ed981c971afdc7e7a488f71fe47cf6cd8dcb75bf8bf8479b33af9755f40f3e82",
+        "signature": "a53e1b89e65498810fa85e82afdc3eb9f2a49901a785ef5e7872ffe7504d7fc8",
         "affectsGlobalScope": false
       },
       "../src/users/user.entity.ts": {
-        "version": "a8c5c6800231cd71968a943801698f8528619045dd2e7fddefe05a5691c23256",
-        "signature": "e3e6db615c5c0f9c55953a2beaa155f02b7f702c31f48185e324b922605614f0",
+        "version": "4230cac71f285ce39ef2c62e645fc10f6038d26df7cbf59546817516ffbd5fd8",
+        "signature": "c3d8c486dec151ea2c7b0a7dcb641696fd928566e2e557146c1b223e317e95d0",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/swagger/dist/decorators/api-basic.decorator.d.ts": {
@@ -3592,12 +3592,12 @@
         "affectsGlobalScope": false
       },
       "../src/auth/dto/signup-credentials.dto.ts": {
-        "version": "11f711cab72fa87e1afb843ce073fd20c375e4bc8f118159b1191f4c240f8344",
-        "signature": "686d6cafa007cb4a5c00156f18db662b650f448827b302e097a07e63c92c1492",
+        "version": "6e711f0e6e9723c040e3f8f3650429ccadb0cbd0c53dfc185f8980e9dc1ef09d",
+        "signature": "8e3064bfdf6e4757ed63f1974ad066d77a49f1915ed0502a0eedc1a6bd5b5afe",
         "affectsGlobalScope": false
       },
       "../src/users/user.repository.ts": {
-        "version": "2bee08049c95ce9e8bdbe295fac481c90825fd39721628ac4da57def8f0fcd74",
+        "version": "afa3fedc4dd4b8ad8eb602fc67df8d3aae5f120fecc875ecc47c44968d442940",
         "signature": "42a85ec15692241db1119ee95dc8f016b8e388b90c59ce7cc2f1d3d6185569d9",
         "affectsGlobalScope": false
       },
@@ -3677,43 +3677,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/dto/signin.dto.ts": {
-        "version": "7608f99e4d1a8c67e0dbbb647a965eeff9a64c62ce859d5290211cb81cf84000",
-        "signature": "b04891aeb1bc047af1e676116522b8bdf075f09dc7328e1de9c429ef166728e4",
-        "affectsGlobalScope": false
-      },
-      "../src/auth/auth.service.ts": {
-        "version": "9e204f307d0ae952f18b64da5e58502096e9af5a27286578b6353e25aa0cfd06",
-        "signature": "75173563e8f49c24361655376cc2acdf11317cfbca2d363c136bfd34a6eabd52",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
-        "version": "ba63131c5e91f797736444933af16ffa42f9f8c150d859ec65f568f037a416ea",
-        "signature": "ba63131c5e91f797736444933af16ffa42f9f8c150d859ec65f568f037a416ea",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/passport/dist/interfaces/auth-module.options.d.ts": {
-        "version": "142e2e1abd8603dfdeaa1c88d73003a7912aa949b3a19234fa91f729ebfa2fcc",
-        "signature": "142e2e1abd8603dfdeaa1c88d73003a7912aa949b3a19234fa91f729ebfa2fcc",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/passport/dist/interfaces/type.interface.d.ts": {
-        "version": "340a45cd77b41d8a6deda248167fa23d3dc67ec798d411bd282f7b3d555b1695",
-        "signature": "340a45cd77b41d8a6deda248167fa23d3dc67ec798d411bd282f7b3d555b1695",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/passport/dist/interfaces/index.d.ts": {
-        "version": "0e9aa853b5eb2ca09e0e3e3eb94cbd1d5fb3d682ab69817d4d11fe225953fc57",
-        "signature": "0e9aa853b5eb2ca09e0e3e3eb94cbd1d5fb3d682ab69817d4d11fe225953fc57",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/passport/dist/auth.guard.d.ts": {
-        "version": "ffa1885ad546522fa1046644db93b17de7a29191a547edeeac57391909a73846",
-        "signature": "ffa1885ad546522fa1046644db93b17de7a29191a547edeeac57391909a73846",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/passport/dist/passport.module.d.ts": {
-        "version": "793c353144f16601da994fa4e62c09b7525836ce999c44f69c28929072ca206a",
-        "signature": "793c353144f16601da994fa4e62c09b7525836ce999c44f69c28929072ca206a",
+        "version": "a68be2802321e149f3adac11efb5aa29e21d353ca90449e71f6e2fba3f6bd25f",
+        "signature": "93123d41354ad962599595874bb194e8ba34b695adbd5386315b51b8db908c0d",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/range-parser/index.d.ts": {
@@ -3761,6 +3726,61 @@
         "signature": "d9aa2c3d6bb462015bb36be4282ec9dfeca33d687aae1b7d726c6c9543165dd1",
         "affectsGlobalScope": true
       },
+      "../node_modules/@types/passport-strategy/index.d.ts": {
+        "version": "29d59e921bc723594bbfc98230d24f38f0d5a669f28fcf989b7468f4f95b7c52",
+        "signature": "29d59e921bc723594bbfc98230d24f38f0d5a669f28fcf989b7468f4f95b7c52",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/passport-headerapikey/lib/Strategy.d.ts": {
+        "version": "0fee54f18b904dc46d765f6fcb547f5d1bf3df6a7a9590d7918c8b510d299179",
+        "signature": "0fee54f18b904dc46d765f6fcb547f5d1bf3df6a7a9590d7918c8b510d299179",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/passport-headerapikey/lib/errors/BadRequestError.d.ts": {
+        "version": "3435ec1b32fe958882f0849d5266962d6089d4ad73ff80f8d5911c0ad711bfd5",
+        "signature": "3435ec1b32fe958882f0849d5266962d6089d4ad73ff80f8d5911c0ad711bfd5",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/passport-headerapikey/lib/index.d.ts": {
+        "version": "eb06e926a093da2582b35bef5879c32a594fa423418272b65fdbf0d06f8e67e5",
+        "signature": "eb06e926a093da2582b35bef5879c32a594fa423418272b65fdbf0d06f8e67e5",
+        "affectsGlobalScope": false
+      },
+      "../src/auth/auth.service.ts": {
+        "version": "c29470eddb9797df36aa349d11a8b6b1d54c09d2413b93e0f46fe2ff8074ef60",
+        "signature": "d2f0b5f9f203ccc3d84cebc537dfc778e69ac26a59f06d465ae7c65e2a8cda89",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
+        "version": "ba63131c5e91f797736444933af16ffa42f9f8c150d859ec65f568f037a416ea",
+        "signature": "ba63131c5e91f797736444933af16ffa42f9f8c150d859ec65f568f037a416ea",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/passport/dist/interfaces/auth-module.options.d.ts": {
+        "version": "142e2e1abd8603dfdeaa1c88d73003a7912aa949b3a19234fa91f729ebfa2fcc",
+        "signature": "142e2e1abd8603dfdeaa1c88d73003a7912aa949b3a19234fa91f729ebfa2fcc",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/passport/dist/interfaces/type.interface.d.ts": {
+        "version": "340a45cd77b41d8a6deda248167fa23d3dc67ec798d411bd282f7b3d555b1695",
+        "signature": "340a45cd77b41d8a6deda248167fa23d3dc67ec798d411bd282f7b3d555b1695",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/passport/dist/interfaces/index.d.ts": {
+        "version": "0e9aa853b5eb2ca09e0e3e3eb94cbd1d5fb3d682ab69817d4d11fe225953fc57",
+        "signature": "0e9aa853b5eb2ca09e0e3e3eb94cbd1d5fb3d682ab69817d4d11fe225953fc57",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/passport/dist/auth.guard.d.ts": {
+        "version": "ffa1885ad546522fa1046644db93b17de7a29191a547edeeac57391909a73846",
+        "signature": "ffa1885ad546522fa1046644db93b17de7a29191a547edeeac57391909a73846",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/passport/dist/passport.module.d.ts": {
+        "version": "793c353144f16601da994fa4e62c09b7525836ce999c44f69c28929072ca206a",
+        "signature": "793c353144f16601da994fa4e62c09b7525836ce999c44f69c28929072ca206a",
+        "affectsGlobalScope": false
+      },
       "../node_modules/@nestjs/passport/dist/passport/passport.serializer.d.ts": {
         "version": "599ac4a84b7aa6a298731179ec1663a623ff8ac324cdc1dabb9c73c1259dc854",
         "signature": "599ac4a84b7aa6a298731179ec1663a623ff8ac324cdc1dabb9c73c1259dc854",
@@ -3782,13 +3802,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.controller.ts": {
-        "version": "6cd5852bd987db9c30a7d6bf43df7bfee48da8ded15473ddc50bfd2d86a6bf25",
-        "signature": "b523372e12cb3cb5cd14a04f5cf6cb54432adea4706d95a8d7aab5fd35ca8c57",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/passport-strategy/index.d.ts": {
-        "version": "29d59e921bc723594bbfc98230d24f38f0d5a669f28fcf989b7468f4f95b7c52",
-        "signature": "29d59e921bc723594bbfc98230d24f38f0d5a669f28fcf989b7468f4f95b7c52",
+        "version": "7f4989bf478b0733a3f2ab7a9640a3a5401a3fc9dce3fede8668c2f576aec282",
+        "signature": "7c0f46f89bd812df83d67327ad57d9d913e6c2864d66907819c383da711e91f6",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-local/index.d.ts": {
@@ -3797,8 +3812,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/local.strategy.ts": {
-        "version": "b24f34b953acb7bde701f5c0520fe4713864d09b720f8a3dc8f1f018cadfbd6b",
-        "signature": "5c6b439eaf5629d67c26390c075ea6d5e9d37f0c6d81ac050a57c925e26e6988",
+        "version": "eba52e73587407516ce8c04031396060e42880af9f2420bd0d38ab743bda35cd",
+        "signature": "e52457d5b774052201ba60b961a3605cae576eaac1091ea3381566ec328c2f7c",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type.d.ts": {
@@ -3847,13 +3862,13 @@
         "affectsGlobalScope": false
       },
       "../src/users/dto/update-profile.dto.ts": {
-        "version": "ea7e0c282abae2b8c1578ec18bdee03e5aa2873ee31c888c4c2a7b340893bce0",
-        "signature": "451dc8341d1ae9c00cabc8b67b06822873b066f4d03b9fec3759723d47eca829",
+        "version": "25fbebe75bcde8b14966234c5414477c6bf5fea13f94d401461b5026fc42de10",
+        "signature": "34951a56663cfe6e55cff1a8890478169950cfa63c0a43ec9a1c8aa002a254ad",
         "affectsGlobalScope": false
       },
       "../src/users/dto/bumdes-profile.dto.ts": {
-        "version": "dde42df9f42c7c10ef077dc78f812080fd7038be461862f2d99987f94bad7d12",
-        "signature": "0c0aa4d8a34a5e0dfd85f1e03a85dbfaa67aeb2cd4e2296306d18245a6c5a315",
+        "version": "bf06994192b0cd4a7a141219e04ed0595926ba8031bfb19d1719260feaa1b0b3",
+        "signature": "df8e47777bbc65de4fb226a3529caf59f57662f39a7448e299d9719ec1f624fa",
         "affectsGlobalScope": false
       },
       "../src/users/dto/update-password.dto.ts": {
@@ -3861,9 +3876,254 @@
         "signature": "8d6b1bbb1f6ee8b5160e3ee5cf00ed39fc20961cdf4270524c0d848284eecddc",
         "affectsGlobalScope": false
       },
+      "../node_modules/event-target-shim/index.d.ts": {
+        "version": "2859adaa4f2db3d4f0fc37ad86f056045341496b58fba0dbc16a222f9d5d55b1",
+        "signature": "2859adaa4f2db3d4f0fc37ad86f056045341496b58fba0dbc16a222f9d5d55b1",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/abort-controller/dist/abort-controller.d.ts": {
+        "version": "655ed305e8f4cb95d3f578040301a4e4d6ace112b1bd8824cd32bda66c3677d1",
+        "signature": "655ed305e8f4cb95d3f578040301a4e4d6ace112b1bd8824cd32bda66c3677d1",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/gaxios/build/src/common.d.ts": {
+        "version": "f4ab8874e2d8fcfa22d239e84c59d00b7f4f3a4a14f4f06d7974b9512c59e9c3",
+        "signature": "f4ab8874e2d8fcfa22d239e84c59d00b7f4f3a4a14f4f06d7974b9512c59e9c3",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/gaxios/build/src/gaxios.d.ts": {
+        "version": "8da65c108ea40f3009b7c00ac811efa43e77e7a2afb2471a69526ca9192e9849",
+        "signature": "8da65c108ea40f3009b7c00ac811efa43e77e7a2afb2471a69526ca9192e9849",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/gaxios/build/src/index.d.ts": {
+        "version": "cb789da1f75dc9d53848949aed3bb1d521de13c6340e5792a6b3f2c5e0c53e29",
+        "signature": "cb789da1f75dc9d53848949aed3bb1d521de13c6340e5792a6b3f2c5e0c53e29",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/transporters.d.ts": {
+        "version": "82b70e72d3e16b95c6f933b0d146240214ef01dfe8e270f6e50f349223b0615d",
+        "signature": "82b70e72d3e16b95c6f933b0d146240214ef01dfe8e270f6e50f349223b0615d",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/crypto/crypto.d.ts": {
+        "version": "e4f1aa581dce6c84a244b5b5f1160f6e7465d0c6d48948ff6f1069a630fe9925",
+        "signature": "e4f1aa581dce6c84a244b5b5f1160f6e7465d0c6d48948ff6f1069a630fe9925",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/credentials.d.ts": {
+        "version": "60b042f1a2a32d4d5e065e7fb229399562b9949984e63e09fd6a42dbc8e22c35",
+        "signature": "60b042f1a2a32d4d5e065e7fb229399562b9949984e63e09fd6a42dbc8e22c35",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/authclient.d.ts": {
+        "version": "5f07468c2f5315f463874d73b8293cb135b228f59280e164a840e5d919b565fa",
+        "signature": "5f07468c2f5315f463874d73b8293cb135b228f59280e164a840e5d919b565fa",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/loginticket.d.ts": {
+        "version": "f025aff69699033567ebb4925578dedb18f63b4aa185f85005451cfd5fc53343",
+        "signature": "f025aff69699033567ebb4925578dedb18f63b4aa185f85005451cfd5fc53343",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts": {
+        "version": "9b9e004c2bee844a5a58e8803a1ae0c8075a2caab3d567f69a6eec72f154626a",
+        "signature": "9b9e004c2bee844a5a58e8803a1ae0c8075a2caab3d567f69a6eec72f154626a",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/computeclient.d.ts": {
+        "version": "64cc158e07ce953307a95ee711b67fc8cd980380d12aee33670d483ba6f642f3",
+        "signature": "64cc158e07ce953307a95ee711b67fc8cd980380d12aee33670d483ba6f642f3",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/idtokenclient.d.ts": {
+        "version": "01b8fe09ea0b18ceba458308fd349bd2545227995c1b370a6897ea7c8f4ae577",
+        "signature": "01b8fe09ea0b18ceba458308fd349bd2545227995c1b370a6897ea7c8f4ae577",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/envDetect.d.ts": {
+        "version": "a24a9c59b7baecbb85c0ace2c07c9c5b7c2330bb5a2ae5d766f6bbf68f75e727",
+        "signature": "a24a9c59b7baecbb85c0ace2c07c9c5b7c2330bb5a2ae5d766f6bbf68f75e727",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/gtoken/build/src/index.d.ts": {
+        "version": "2ee6c6e12729bd41bf99cd5a1158650d3afe9cd435e2d3ce6746de2dbf93a2ad",
+        "signature": "2ee6c6e12729bd41bf99cd5a1158650d3afe9cd435e2d3ce6746de2dbf93a2ad",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/jwtclient.d.ts": {
+        "version": "4484870aac79f12400497cea19aba493150811f10eb720f4cd52095d928ebe6f",
+        "signature": "4484870aac79f12400497cea19aba493150811f10eb720f4cd52095d928ebe6f",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/refreshclient.d.ts": {
+        "version": "e9203259c5f820618a0c10df0e0e28df87f2469770461540919b23d864b0e2f8",
+        "signature": "e9203259c5f820618a0c10df0e0e28df87f2469770461540919b23d864b0e2f8",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/impersonated.d.ts": {
+        "version": "faa0ccaee1e4151600c618b91f22e29d7c3090555841fbc7cfcba0bb8dc78dda",
+        "signature": "faa0ccaee1e4151600c618b91f22e29d7c3090555841fbc7cfcba0bb8dc78dda",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts": {
+        "version": "23809dc5154c50a704bf5903da3cca5e2d8770f9a8ac77217d5cebc494eebeeb",
+        "signature": "23809dc5154c50a704bf5903da3cca5e2d8770f9a8ac77217d5cebc494eebeeb",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/identitypoolclient.d.ts": {
+        "version": "363b99235b46cfdd75b8308c71c1ff2d492e383593350b33f307e0746aca3789",
+        "signature": "363b99235b46cfdd75b8308c71c1ff2d492e383593350b33f307e0746aca3789",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/awsclient.d.ts": {
+        "version": "6df3174b7fff6ce47402ffa987624c82c772afc5bcbc68d7cecc3d08406278a2",
+        "signature": "6df3174b7fff6ce47402ffa987624c82c772afc5bcbc68d7cecc3d08406278a2",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/externalclient.d.ts": {
+        "version": "9d47eb88df11d4e049b2bb0b7236944cf4a517444f805e0c2f9f00b5b8a722ce",
+        "signature": "9d47eb88df11d4e049b2bb0b7236944cf4a517444f805e0c2f9f00b5b8a722ce",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/googleauth.d.ts": {
+        "version": "42c3d521301dba91d2841f7f176b8803e5524c6cf7ce6a90b6708385f2ece433",
+        "signature": "42c3d521301dba91d2841f7f176b8803e5524c6cf7ce6a90b6708385f2ece433",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/iam.d.ts": {
+        "version": "71725ba9235f9d2aa02839162b1df2df59fd9dd91c110a54ea02112243d7a4d9",
+        "signature": "71725ba9235f9d2aa02839162b1df2df59fd9dd91c110a54ea02112243d7a4d9",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/jwtaccess.d.ts": {
+        "version": "2260e58465ee7adc7184c7e3011bd6f69e5dfa4c9847e1f1c5d2c5fe39b5c50c",
+        "signature": "2260e58465ee7adc7184c7e3011bd6f69e5dfa4c9847e1f1c5d2c5fe39b5c50c",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/auth/downscopedclient.d.ts": {
+        "version": "e38903e3ceaa0b1ad18686596cb633f37112b4c1e421dbeec709a0393abab34e",
+        "signature": "e38903e3ceaa0b1ad18686596cb633f37112b4c1e421dbeec709a0393abab34e",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/google-auth-library/build/src/index.d.ts": {
+        "version": "f0cfc87e830959608e727239836d9e0c759894b419758961839d308c42b79b09",
+        "signature": "f0cfc87e830959608e727239836d9e0c759894b419758961839d308c42b79b09",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/teeny-request/build/src/TeenyStatistics.d.ts": {
+        "version": "779dd1c0139286daa1f4f7f87a59c167b97a2e10300ce8227ecbc7aacdabd291",
+        "signature": "779dd1c0139286daa1f4f7f87a59c167b97a2e10300ce8227ecbc7aacdabd291",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/teeny-request/build/src/index.d.ts": {
+        "version": "7b7ecc734b9ecab075cf987a9cdd9325d90a6e31052a6a914fd8b0afe244eca4",
+        "signature": "7b7ecc734b9ecab075cf987a9cdd9325d90a6e31052a6a914fd8b0afe244eca4",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts": {
+        "version": "dc37f2c69e324a04a6982c5f24bc5037c587dbcb1e9803cf03cb8eba22f821e2",
+        "signature": "dc37f2c69e324a04a6982c5f24bc5037c587dbcb1e9803cf03cb8eba22f821e2",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/service-object.d.ts": {
+        "version": "a4a4f87e2d5310c7da32bc300942e4eb70e9c33bc1f2ecd7c3c7f5eebbaf54da",
+        "signature": "a4a4f87e2d5310c7da32bc300942e4eb70e9c33bc1f2ecd7c3c7f5eebbaf54da",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/service.d.ts": {
+        "version": "aab03b6aba7e0cdda9bb25a813c2cfd0cc508e77995aa3dcdad4d79192b47cc5",
+        "signature": "aab03b6aba7e0cdda9bb25a813c2cfd0cc508e77995aa3dcdad4d79192b47cc5",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts": {
+        "version": "a2b6a8daca35a895795d144d325b2b5b570af258b395b20588a288da779ba1a1",
+        "signature": "a2b6a8daca35a895795d144d325b2b5b570af258b395b20588a288da779ba1a1",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/acl.d.ts": {
+        "version": "838924581ac474085743e581ffef284f2d8a2a8f950a5d8fe28963f617889d7b",
+        "signature": "838924581ac474085743e581ffef284f2d8a2a8f950a5d8fe28963f617889d7b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/signer.d.ts": {
+        "version": "1944214af32e397058c735adb42493cb5108e5f69d7089c3e950668d136677ae",
+        "signature": "1944214af32e397058c735adb42493cb5108e5f69d7089c3e950668d136677ae",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/file.d.ts": {
+        "version": "b6a8ad07479a944c4d22771ec213fa6fd4e9ace407637084be3e8e57b7aa7781",
+        "signature": "b6a8ad07479a944c4d22771ec213fa6fd4e9ace407637084be3e8e57b7aa7781",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/hmacKey.d.ts": {
+        "version": "a634159a8f6c4ab159fce1c00b030ee28bd75e3e7287d3ad4f7e7d6c3caa5c02",
+        "signature": "a634159a8f6c4ab159fce1c00b030ee28bd75e3e7287d3ad4f7e7d6c3caa5c02",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/storage.d.ts": {
+        "version": "1380846b21049dccabc2bdd824a8fa4e3afa6d9c843312f2ac2fd98dd3f387e3",
+        "signature": "1380846b21049dccabc2bdd824a8fa4e3afa6d9c843312f2ac2fd98dd3f387e3",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/channel.d.ts": {
+        "version": "147bc53b0b41fb56823927e8054607c847fa9892a791124a259da0da3efeee72",
+        "signature": "147bc53b0b41fb56823927e8054607c847fa9892a791124a259da0da3efeee72",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/iam.d.ts": {
+        "version": "3dc06096ecd10383f9edc56fe90f5629cd74a0f7ffe27017999d37dbceee5404",
+        "signature": "3dc06096ecd10383f9edc56fe90f5629cd74a0f7ffe27017999d37dbceee5404",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/notification.d.ts": {
+        "version": "592c738460de36fb0bfdf1f87579aa87021c8bf297df6fb36d934f32bc114a70",
+        "signature": "592c738460de36fb0bfdf1f87579aa87021c8bf297df6fb36d934f32bc114a70",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/bucket.d.ts": {
+        "version": "0965fd7b0829a23d6528dc93da8e5e2270eaa7a5cb1a54b973e17f51480a909f",
+        "signature": "0965fd7b0829a23d6528dc93da8e5e2270eaa7a5cb1a54b973e17f51480a909f",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@google-cloud/storage/build/src/index.d.ts": {
+        "version": "cb09e8a73f6435e29e71b545ecab09889c68aa3faabc18b36a021b1bbee74f6d",
+        "signature": "cb09e8a73f6435e29e71b545ecab09889c68aa3faabc18b36a021b1bbee74f6d",
+        "affectsGlobalScope": false
+      },
+      "../src/commons/storage/storage-file.ts": {
+        "version": "3185bf794cfae1e15d7c8bae6f02e1ee0a7144c0f8d8464f7ef71a81e166991f",
+        "signature": "358ebbc3668caee050f6873558916f2e42b3b88eb7f49737f080274e44f3bc2b",
+        "affectsGlobalScope": false
+      },
+      "../src/commons/storage/storage.service.ts": {
+        "version": "b15d9c1e3b5acae785cf545a1d61d766886e9473531e6967b6d5a323f95ec28c",
+        "signature": "d9d8ab37f194634d364d3140f3ee31a50fc9fb15cd8865a2ea13035204e26dc2",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/uuid/interfaces.d.ts": {
+        "version": "045334b3d5ad607b12489d4a0e73b5491542b776f1e371d3aacaff5291e730e0",
+        "signature": "045334b3d5ad607b12489d4a0e73b5491542b776f1e371d3aacaff5291e730e0",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/uuid/index.d.ts": {
+        "version": "9473ee1ca40f9a3d7727087ec6e4976923583878763b789636026b26f7f6cd3c",
+        "signature": "9473ee1ca40f9a3d7727087ec6e4976923583878763b789636026b26f7f6cd3c",
+        "affectsGlobalScope": false
+      },
+      "../src/users/dto/update-status.dto.ts": {
+        "version": "d726f068ab1998b285283ee39bd5973a862421467af287a86ef855e54b2ca5e3",
+        "signature": "383dc71107569a0f003544dea050303df152b71d1f41afc3041960d0b19822ca",
+        "affectsGlobalScope": false
+      },
+      "../src/users/dto/filter-all.dto.ts": {
+        "version": "e75e7a5f7720d2d1f7bd695e332a6d9acd410b1b4d1171282a586653069fd292",
+        "signature": "cc4e01268bc0abc65f551ad084fea086ea7f5d6086ed32e1f65c54e5c3419f7f",
+        "affectsGlobalScope": false
+      },
       "../src/users/users.service.ts": {
-        "version": "cd37353dfeba91caefc94733670da963393d6311bb5e369fbcc8acdc0f0eb3b8",
-        "signature": "182a2ba0377592547612ecb9b26fb3baeb6b5e20df2ec8f9c5fbabf2931a6455",
+        "version": "a7c42daeb9cc25a0cf225ce22277789671c56c50cbf0944f544c6c37d4811040",
+        "signature": "925bb4a0bd31393e6eb750a0e400157f848ae22b5f1d2d0c39513527509443b4",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/multer/index.d.ts": {
@@ -3957,12 +4217,12 @@
         "affectsGlobalScope": false
       },
       "../src/users/users.controller.ts": {
-        "version": "43b8af8e7d87529ba325fba823b87b425cd409445baf592c1a7107285016686f",
-        "signature": "e7cb506c1081aa0a6540466280904a7f4ad82d2b42143e7e29422d15c6497bc2",
+        "version": "797b22a6bede4899cd160bc5cbfc22629e5b66255149ec60471403e96088ee9f",
+        "signature": "299ce3c0f6a6047c806d2faa6812b9cb4d4c45abc0cef34fcbd32f7a4680ffe9",
         "affectsGlobalScope": false
       },
       "../src/users/users.module.ts": {
-        "version": "bd4a20dd5020f0b17eaadda69ee1f90b44925df199696ef33389eef2eb409a4e",
+        "version": "e34eb139b07d9a6729acf99b34c3534fc385ae2962358be5a1822295e4053403",
         "signature": "aa1725e38b5a0b4009f6a74f296f173e7926c119a60454dbd2e523861735df69",
         "affectsGlobalScope": false
       },
@@ -3971,28 +4231,13 @@
         "signature": "451dedba7cc01a395fd62b3e5fcab65dc9f8119ad7147f032cf9f762e21842b1",
         "affectsGlobalScope": false
       },
-      "../node_modules/passport-headerapikey/lib/Strategy.d.ts": {
-        "version": "0fee54f18b904dc46d765f6fcb547f5d1bf3df6a7a9590d7918c8b510d299179",
-        "signature": "0fee54f18b904dc46d765f6fcb547f5d1bf3df6a7a9590d7918c8b510d299179",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/passport-headerapikey/lib/errors/BadRequestError.d.ts": {
-        "version": "3435ec1b32fe958882f0849d5266962d6089d4ad73ff80f8d5911c0ad711bfd5",
-        "signature": "3435ec1b32fe958882f0849d5266962d6089d4ad73ff80f8d5911c0ad711bfd5",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/passport-headerapikey/lib/index.d.ts": {
-        "version": "eb06e926a093da2582b35bef5879c32a594fa423418272b65fdbf0d06f8e67e5",
-        "signature": "eb06e926a093da2582b35bef5879c32a594fa423418272b65fdbf0d06f8e67e5",
-        "affectsGlobalScope": false
-      },
       "../src/auth/apikey.strategy.ts": {
         "version": "7a5dfc41cdd76d26cfc64e17b983915483d9b9573b86ad2748a08a10a8289f0d",
         "signature": "7e7a55687289d053511418aa0fdaf96a2033b73467051b1aeb6c7876726a9feb",
         "affectsGlobalScope": false
       },
       "../src/auth/auth.module.ts": {
-        "version": "3f43416858d4d2a2dac651cfe241da84addfafff6435ee0b6ad7d715e46eed4c",
+        "version": "48bebd8487d0c9a455b90973f2fa65c1a907eb92637025003daab02dcb507dcb",
         "signature": "a28b5c0c372fb375910b3fe3c3ce4331509bc18ccef7cc39c9ee9d8daf8225d1",
         "affectsGlobalScope": false
       },
@@ -4006,18 +4251,18 @@
         "signature": "c48d3c8e74439f840510a6a91fe5687a6e4caa7ce814de9892ecb78e592144d1",
         "affectsGlobalScope": false
       },
-      "../src/comment/comment.entity.ts": {
-        "version": "476a571c3b53fd096f5c3fdda7b2100fdfe6468f873ef2c7c29cd6d55b1d69a8",
-        "signature": "8a06ea55d8e0e0e3248aa6dc65258c70e2e4294dbf593a542c1e0463d77ec1c2",
+      "../src/news/news.entity.ts": {
+        "version": "fcd8ddfc3f294959ea11b57acd5c668fd2648a5e60416a060f99837779d6ffb9",
+        "signature": "a3ec7ebe18e64d1dafa6b26fe99c10fa61a07acbf6aa1626eb4502d783bff162",
         "affectsGlobalScope": false
       },
-      "../src/news/news.entity.ts": {
-        "version": "acb8dbd37d65859c72704e8525e826a90e84c8b3ed585332c51d7ebb217204ef",
-        "signature": "d7aba0849be45abcdccb3da2b0456900d7ce20f1cb69a750cfc658eb3660f9d7",
+      "../src/comment/comment.entity.ts": {
+        "version": "e71c31df6a7b695d11cd8fd6c2aa15f133d59cfb8dec473eabda340f01a2510c",
+        "signature": "58bf77a7165c79a9cbe1cb0b37e5e9ca376554ef885f6192800054dcbc8f3d9b",
         "affectsGlobalScope": false
       },
       "../src/database/database.config.ts": {
-        "version": "44abb6466e8a32acc308469d314bf97c8c79094bd7bbbbb14d26a96057b2de47",
+        "version": "9017d6e47239a37e39302ecaf9a374ddecd9ee996b9bafe3da98c67e2010c7f2",
         "signature": "f42de03df50171ba69d51407ce81453a74c9b79105becb92e5d85e87568c6223",
         "affectsGlobalScope": false
       },
@@ -4037,62 +4282,77 @@
         "affectsGlobalScope": false
       },
       "../src/news/dto/create-news.dto.ts": {
-        "version": "7d9ffe4f914abbd11c0f7f5aeedf556cba0e48d52e2d348c6196bb31915d6600",
-        "signature": "5ac612bb4ee492cf3bc4cea753e1918c7a1246e7be3772b7e1604c4e5181ff06",
+        "version": "186e05cbe0ab85f3c78ff8d95716ee48425a590fd80bb623a3a89bb366d8fab7",
+        "signature": "87c050a264fb4b15f944d7d05ced6aafa838da590e96934cd0cabb3696bbc21e",
+        "affectsGlobalScope": false
+      },
+      "../src/news/dto/filter-all.dto.ts": {
+        "version": "fdbc980fd45025509f0decb874547605d2adfe5bf7ef478864e4980ef5bac65e",
+        "signature": "a201ad9cbbc8d37bfcb586341eb1c4f00f1a5de31ff4be970f3f0da9aa2e35b6",
         "affectsGlobalScope": false
       },
       "../src/news/news.service.ts": {
-        "version": "1958d750ce3d3ed2b0b1e3b4dd2158a99c984e2c8a3061008f7e35daee97a936",
-        "signature": "a37527132be479a2631a117d9d595cb561396761edb7af6e11d3d6da55e9eb53",
+        "version": "9a99bdc44fbe974606d4d37c9739220ba9d537509e159b83532c001162c0c7f3",
+        "signature": "981501b538c28b4401728599929f567ed51f9d4f9fc7350b1e940e2eba9997fc",
         "affectsGlobalScope": false
       },
       "../src/news/news.controller.ts": {
-        "version": "7f9bc8c05cbe2d76829d5a2fabf266529585122b797b924e93cfedff5be0020c",
-        "signature": "4a9a8e648a893c54f8c7a6b695d78d57622cda37285a45ec990edadb80a2e29c",
+        "version": "d0b7dfd2a26e375199a177550139f0d8c92e8721ffcb1ee2f7dfb3b8b2ddd9eb",
+        "signature": "162fb79d4d180a066cdc1c85fa3f15b7b9470fb27fb4df6519e479450534dd61",
         "affectsGlobalScope": false
       },
       "../src/news/news.module.ts": {
-        "version": "dd1d02f643f6fcb827769250a0da5b31ff00ae8fa9f30a1dcee21c7c5b71a4f4",
+        "version": "bd9bd5e49cc9cc58c89903eb3cc22c6cf89ccfc91a05b6ab3b12483355e953d9",
         "signature": "c2e1c36ea0b9a84c44c052c92127dd00f0437b69ec2313a4e5296e0ad9457fda",
         "affectsGlobalScope": false
       },
       "../src/store/dto/create-store.dto.ts": {
-        "version": "d154bdbaff77f0931dc5f2290eb13f774e7b2ed2447f6d106db788d67e852a0c",
-        "signature": "bfe9134c9a13d48ffc22d3d4979232ddef6c6975bf5b50c53c6bdc0c80d5471b",
+        "version": "95e791952769a8267fafcec413ae44e639f29d75c65f3200d81b3d6fa822fa70",
+        "signature": "6430712a23f78fc01f4a0d9fdad957aeb6581fcf9003856ffaddaa2fbf3a4ff2",
+        "affectsGlobalScope": false
+      },
+      "../src/store/dto/filter-all.dto.ts": {
+        "version": "c3c6ddb40b88a66ffb794fb833f3d1d0cc9efd6c9b495c2b87602c5e360e0dda",
+        "signature": "1b45d87e3bfd843958cf6b034b86acf2c3362434a60de790c3fdd6faa804081e",
+        "affectsGlobalScope": false
+      },
+      "../src/store/dto/update-status.dto.ts": {
+        "version": "f78c29e4a5df72ec3bde8297e2d05f525407a9b6b1e3e2bbc20b567ee5bdf5f8",
+        "signature": "a0d3cb138c58059a74642be1fcdc91b6e6a14aceaefb9b4b627e613a398a4052",
         "affectsGlobalScope": false
       },
       "../src/store/store.service.ts": {
-        "version": "867afc602b910c723b6f239c391ac82477804d9c141282a231e1236e1ce46d8d",
-        "signature": "fbe007123eab31c1dd91c146c4a61f9567ac8fcbba3a79ba29e44ace196d11f8",
+        "version": "1c6465070c673693fa823a024a69bf6401010df032e00246ac280ac33b670fcd",
+        "signature": "582db77454ca261e95556981a3b4e4a38761e9060edfea4025312ef36b3c584f",
         "affectsGlobalScope": false
       },
       "../src/store/store.controller.ts": {
-        "version": "953a473ffbcf3c5b66804216fc54af01b26aa8556f26be5fe481f37b7096a152",
-        "signature": "5d3ab1958a414b4003e9955d0412e659493d2f100a8207f8a2aa69a4b277e2d4",
+        "version": "8670e7ddc6db252b1e1b812bd1620c4881b3790aff27eb1907f73dfac08815eb",
+        "signature": "22aaaa682976daf9854c387c9434f1a620364c7cac766ad412cc7c410c929dab",
         "affectsGlobalScope": false
       },
       "../src/store/store.module.ts": {
-        "version": "720a9f4b19f6984ce6cc5960e534217fa4e8239d44452cb20d665e81278f57fb",
+        "version": "593fe68c8e0f3608c1fa8fbf645b8475eb94c4fce8728aeb006c23a70f29d478",
         "signature": "7a0d6f87dba454046cd268b23f4fc4883e9679bddbbf65e4a514c57b63d447ad",
         "affectsGlobalScope": false
       },
       "../src/product/dto/create-product.dto.ts": {
-        "version": "61e5ae22391c4dfa6374d228b2cba7b6dfacdc8d96d525d090c7dd697e128648",
-        "signature": "1282c63582121d3ef9991f3b337640008ffbaae49c389b996f3cd54c46ad4240",
+        "version": "2ce07b12a3e1461ce52c6622213cd257e0e3bd88f3e4272bf815975c4fd13ed4",
+        "signature": "d710ac221eb662c405fac5fe56243c10f1273e5a15ff7f29f10df443b1ef21ec",
         "affectsGlobalScope": false
       },
       "../src/product/product.service.ts": {
-        "version": "da37326b4d936a29136e34e01d9f027c0daaa887eef0560bdf6c1712f29f4b72",
-        "signature": "fb946a6d50952c7d8d824b3d22a279430eac88f580dc1c66522cbf6193ad052b",
+        "version": "a67f04be8c3a1d317091411c9b09840f3deba98ed9db8e76a2c97ac1612f69f8",
+        "signature": "69e9b2deb56006385752ede7cb41f74d821128aaa3d9f50df0d17f917fd2f44b",
         "affectsGlobalScope": false
       },
       "../src/product/product.controller.ts": {
-        "version": "7c356081fa9d8cbb4215aed13b71920c9f881fca19631c0432c7c0e8c2aeb178",
+        "version": "1e9131c7501a765dbe8609a4d00f5a0be8bcadab518aa968af1ba39fe4d61a72",
         "signature": "a2cd2f0dc4fc8347a2af69e5a220e6d4926907e429ce380487da38a15a45e08f",
         "affectsGlobalScope": false
       },
       "../src/product/product.module.ts": {
-        "version": "1bc32861c318848cf322b24b27d006d4b5335ebb537138dbdc25040f847b1857",
+        "version": "6161f71d6cc39124f6c2307d7632ba16ae8928b9d9da8fdc0fa8244fa43ed6db",
         "signature": "7f8b34d3314e0b7048eab6a82a4f0bf423213dfd64d60f0c5e178bde34c23841",
         "affectsGlobalScope": false
       },
@@ -4101,8 +4361,43 @@
         "signature": "1be689a049058d5a313abe7fe9458265b685c70820d5024618bcb5b36380f31f",
         "affectsGlobalScope": false
       },
+      "../src/comment/dto/create-comment.dto.ts": {
+        "version": "b049c9d2523567bd5d6e7f9824390382f21aa5cde85f04c2b8a1748768e7fb00",
+        "signature": "f450b26456c43194025a890bae0b3f6087763a7e03ca4f98cbc74cafbbe80a17",
+        "affectsGlobalScope": false
+      },
+      "../src/comment/dto/filter-all.dto.ts": {
+        "version": "a95a1a26f17e0b8ef887d5709b16773b6f056fc33f767848654f636a4193f839",
+        "signature": "ea8ab8b57201f0d85bf0d37daca8c9160a8794b2260c29fdf8607438c012672c",
+        "affectsGlobalScope": false
+      },
+      "../src/comment/dto/update-status-comment.dto.ts": {
+        "version": "0b6130c4afced3ee936f2f097a26b13ab71ab9eb4b3db205053b20ca58306c63",
+        "signature": "74f941f769b77bb223d9ca6d797fef27093dab8ee2c4826bea2bb7aaefc0470e",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/moment/ts3.1-typings/moment.d.ts": {
+        "version": "4051f6311deb0ce6052329eeb1cd4b1b104378fe52f882f483130bea75f92197",
+        "signature": "4051f6311deb0ce6052329eeb1cd4b1b104378fe52f882f483130bea75f92197",
+        "affectsGlobalScope": false
+      },
+      "../src/comment/comment.service.ts": {
+        "version": "14c720ebe948050b7fc68d4f898de93849b4f31c56224e8edf0e416150671bf5",
+        "signature": "76407fec715d53736c58c1f30a75621010928443e90eb86e9a2caa22e454b9da",
+        "affectsGlobalScope": false
+      },
+      "../src/comment/comment.controller.ts": {
+        "version": "75e96c5f73bdd92ac4508310b3454b30031ca8396a6a9b7d28c50ce2445115e9",
+        "signature": "617fcad0ee232d7db166beaa6c1b7dece2197fc9e79bec11e83ab45e31085d6f",
+        "affectsGlobalScope": false
+      },
+      "../src/comment/comment.module.ts": {
+        "version": "7e6eeb3f7ed3f9d4d24d5e101d568c13948ebe10ffb36d1bef1a18489d018943",
+        "signature": "4369d448739e3965956ba81a97fa053f67d8b5a75edfbed914f44228e0bdff04",
+        "affectsGlobalScope": false
+      },
       "../src/app.module.ts": {
-        "version": "9ef3381e8170c5159ab37829c8d902f225693bcd010eb4a71595c7593f13168f",
+        "version": "7a2562e1f9f37e68cec1d46f1bb280bacf2dcc61a5024a301c595f275f425a81",
         "signature": "9e55d69c2879e4c1f6039d177c0daf79a72435ac51ec7d4f46fc72e8b0c503d6",
         "affectsGlobalScope": false
       },
@@ -4837,7 +5132,7 @@
         "affectsGlobalScope": false
       },
       "../src/main.ts": {
-        "version": "32298bad1b91fa4e5bd804f799b6d58214b1db1da403918bce31d1a5ef182944",
+        "version": "c834a5b610c8480b4fccd82cf7509f5aa05e6043cbcc43c003c607e9dc6b1602",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -5086,16 +5381,6 @@
         "signature": "76232dbb982272b182a76ad8745a9b02724dc9896e2328ce360e2c56c64c9778",
         "affectsGlobalScope": false
       },
-      "../node_modules/@types/uuid/interfaces.d.ts": {
-        "version": "045334b3d5ad607b12489d4a0e73b5491542b776f1e371d3aacaff5291e730e0",
-        "signature": "045334b3d5ad607b12489d4a0e73b5491542b776f1e371d3aacaff5291e730e0",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/uuid/index.d.ts": {
-        "version": "9473ee1ca40f9a3d7727087ec6e4976923583878763b789636026b26f7f6cd3c",
-        "signature": "9473ee1ca40f9a3d7727087ec6e4976923583878763b789636026b26f7f6cd3c",
-        "affectsGlobalScope": false
-      },
       "../node_modules/@types/yargs-parser/index.d.ts": {
         "version": "70e9a18da08294f75bf23e46c7d69e67634c0765d355887b9b41f0d959e1426e",
         "signature": "70e9a18da08294f75bf23e46c7d69e67634c0765d355887b9b41f0d959e1426e",
@@ -5133,6 +5418,113 @@
         "../node_modules/@types/node/util.d.ts"
       ],
       "../node_modules/@babel/types/lib/index.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/acl.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/bucket.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/acl.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/channel.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/file.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/iam.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/notification.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/signer.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/storage.d.ts",
+        "../node_modules/@types/node/http.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/channel.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/storage.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/file.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/acl.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/bucket.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/signer.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/storage.d.ts",
+        "../node_modules/@types/node/http.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/hmacKey.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/storage.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/iam.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/bucket.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/index.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/acl.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/bucket.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/channel.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/file.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/hmacKey.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/iam.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/notification.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/signer.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/storage.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/service-object.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/service.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/index.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/service-object.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts",
+        "../node_modules/@types/node/events.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/teeny-request/build/src/index.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/service.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/service-object.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/index.d.ts",
+        "../node_modules/teeny-request/build/src/index.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/service-object.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/index.d.ts",
+        "../node_modules/teeny-request/build/src/index.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/notification.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/bucket.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/signer.d.ts": [
+        "../node_modules/@types/node/http.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/storage.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/bucket.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/channel.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/file.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/hmacKey.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
       "../node_modules/@nestjs/common/cache/cache.constants.d.ts": [
@@ -7037,6 +7429,10 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/yargs-parser/index.d.ts"
       ],
+      "../node_modules/abort-controller/dist/abort-controller.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/event-target-shim/index.d.ts"
+      ],
       "../node_modules/buffer/index.d.ts": [
         "../node_modules/@types/node/util.d.ts"
       ],
@@ -7660,6 +8056,179 @@
       "../node_modules/class-validator/types/validation/ValidatorOptions.d.ts": [
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../node_modules/event-target-shim/index.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/gaxios/build/src/common.d.ts": [
+        "../node_modules/@types/node/http.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/url.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/abort-controller/dist/abort-controller.d.ts"
+      ],
+      "../node_modules/gaxios/build/src/gaxios.d.ts": [
+        "../node_modules/@types/node/http.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/url.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/common.d.ts"
+      ],
+      "../node_modules/gaxios/build/src/index.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/common.d.ts",
+        "../node_modules/gaxios/build/src/gaxios.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/authclient.d.ts": [
+        "../node_modules/@types/node/events.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts",
+        "../node_modules/google-auth-library/build/src/transporters.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/awsclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/authclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts",
+        "../node_modules/google-auth-library/build/src/transporters.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/computeclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/credentials.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/downscopedclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/authclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts",
+        "../node_modules/google-auth-library/build/src/transporters.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/envDetect.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/externalclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/awsclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/identitypoolclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/googleauth.d.ts": [
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/authclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/computeclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/envDetect.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/externalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/idtokenclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/impersonated.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/jwtclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/refreshclient.d.ts",
+        "../node_modules/google-auth-library/build/src/transporters.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/iam.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/identitypoolclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/idtokenclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/impersonated.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/authclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/jwtaccess.d.ts": [
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/jwtclient.d.ts": [
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/idtokenclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts",
+        "../node_modules/gtoken/build/src/index.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/loginticket.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/authclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/loginticket.d.ts",
+        "../node_modules/google-auth-library/build/src/crypto/crypto.d.ts",
+        "../node_modules/google-auth-library/build/src/transporters.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/refreshclient.d.ts": [
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/crypto/crypto.d.ts": [
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/index.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/authclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/awsclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/computeclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/downscopedclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/envDetect.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/externalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/googleauth.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/iam.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/identitypoolclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/idtokenclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/impersonated.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/jwtaccess.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/jwtclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/loginticket.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/refreshclient.d.ts",
+        "../node_modules/google-auth-library/build/src/transporters.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/transporters.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts"
+      ],
+      "../node_modules/gtoken/build/src/index.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../node_modules/jest-diff/build/cleanupSemantic.d.ts": [
         "../node_modules/@types/node/util.d.ts"
       ],
@@ -7686,6 +8255,9 @@
       "../node_modules/logform/index.d.ts": [
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/triple-beam/index.d.ts"
+      ],
+      "../node_modules/moment/ts3.1-typings/moment.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
       ],
       "../node_modules/passport-headerapikey/lib/Strategy.d.ts": [
         "../node_modules/@types/express/ts4.0/index.d.ts",
@@ -8668,6 +9240,17 @@
         "../node_modules/rxjs/internal/operators/withLatestFrom.d.ts",
         "../node_modules/rxjs/internal/operators/zip.d.ts",
         "../node_modules/rxjs/internal/operators/zipAll.d.ts"
+      ],
+      "../node_modules/teeny-request/build/src/TeenyStatistics.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/teeny-request/build/src/index.d.ts": [
+        "../node_modules/@types/node/http.d.ts",
+        "../node_modules/@types/node/https.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/teeny-request/build/src/TeenyStatistics.d.ts"
       ],
       "../node_modules/typeorm/cache/QueryResultCache.d.ts": [
         "../node_modules/@types/node/util.d.ts",
@@ -10307,6 +10890,7 @@
         "../node_modules/@types/node/util.d.ts",
         "../src/auth/auth.middleware.ts",
         "../src/auth/auth.module.ts",
+        "../src/comment/comment.module.ts",
         "../src/commons/middlewares/app-logger-middleware.ts",
         "../src/config/config.module.ts",
         "../src/database/database.module.ts",
@@ -10331,7 +10915,9 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/passport/index.d.ts",
         "../node_modules/@nestjs/swagger/index.d.ts",
+        "../node_modules/@types/express/ts4.0/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../node_modules/passport-headerapikey/lib/index.d.ts",
         "../src/app.utils.ts",
         "../src/auth/auth.service.ts",
         "../src/auth/dto/signin.dto.ts",
@@ -10354,6 +10940,7 @@
         "../src/auth/auth.service.ts",
         "../src/auth/jwt.strategy.ts",
         "../src/auth/local.strategy.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/users/user.repository.ts",
         "../src/users/users.module.ts",
         "../src/users/users.service.ts"
@@ -10363,6 +10950,7 @@
         "../node_modules/@nestjs/config/index.d.ts",
         "../node_modules/@nestjs/jwt/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../node_modules/passport-headerapikey/lib/index.d.ts",
         "../src/app.utils.ts",
         "../src/auth/dto/signin.dto.ts",
         "../src/auth/dto/signup-credentials.dto.ts",
@@ -10414,9 +11002,65 @@
         "../node_modules/@types/node/util.d.ts",
         "../src/users/users.service.ts"
       ],
+      "../src/comment/comment.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/passport/index.d.ts",
+        "../node_modules/@nestjs/platform-express/index.d.ts",
+        "../node_modules/@nestjs/swagger/index.d.ts",
+        "../node_modules/@types/express/ts4.0/index.d.ts",
+        "../node_modules/@types/multer/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/path.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/comment/comment.service.ts",
+        "../src/comment/dto/create-comment.dto.ts",
+        "../src/comment/dto/filter-all.dto.ts",
+        "../src/comment/dto/update-status-comment.dto.ts",
+        "../src/commons/storage/storage-file.ts",
+        "../src/commons/storage/storage.service.ts"
+      ],
       "../src/comment/comment.entity.ts": [
         "../node_modules/@types/node/util.d.ts",
-        "../node_modules/typeorm/index.d.ts"
+        "../node_modules/typeorm/index.d.ts",
+        "../src/news/news.entity.ts"
+      ],
+      "../src/comment/comment.module.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/typeorm/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/comment/comment.controller.ts",
+        "../src/comment/comment.entity.ts",
+        "../src/comment/comment.service.ts",
+        "../src/commons/storage/storage.service.ts",
+        "../src/news/news.entity.ts",
+        "../src/news/news.service.ts"
+      ],
+      "../src/comment/comment.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/typeorm/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/moment/ts3.1-typings/moment.d.ts",
+        "../node_modules/typeorm/index.d.ts",
+        "../src/app.utils.ts",
+        "../src/comment/comment.entity.ts",
+        "../src/comment/dto/create-comment.dto.ts",
+        "../src/comment/dto/filter-all.dto.ts",
+        "../src/comment/dto/update-status-comment.dto.ts",
+        "../src/news/news.entity.ts",
+        "../src/news/news.service.ts"
+      ],
+      "../src/comment/dto/create-comment.dto.ts": [
+        "../node_modules/@nestjs/swagger/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/class-validator/types/index.d.ts"
+      ],
+      "../src/comment/dto/filter-all.dto.ts": [
+        "../node_modules/@nestjs/swagger/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../src/comment/dto/update-status-comment.dto.ts": [
+        "../node_modules/@nestjs/swagger/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
       ],
       "../src/commons/interceptors/timeout.interceptor.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -10429,6 +11073,15 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/express/ts4.0/index.d.ts",
         "../node_modules/@types/node/util.d.ts"
+      ],
+      "../src/commons/storage/storage-file.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../src/commons/storage/storage.service.ts": [
+        "../node_modules/@google-cloud/storage/build/src/index.d.ts",
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/commons/storage/storage-file.ts"
       ],
       "../src/config/config.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -10476,6 +11129,10 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/class-validator/types/index.d.ts"
       ],
+      "../src/news/dto/filter-all.dto.ts": [
+        "../node_modules/@nestjs/swagger/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../src/news/news.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/passport/index.d.ts",
@@ -10486,17 +11143,22 @@
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/path.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/commons/storage/storage-file.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/news/dto/create-news.dto.ts",
+        "../src/news/dto/filter-all.dto.ts",
         "../src/news/news.service.ts"
       ],
       "../src/news/news.entity.ts": [
         "../node_modules/@types/node/util.d.ts",
-        "../node_modules/typeorm/index.d.ts"
+        "../node_modules/typeorm/index.d.ts",
+        "../src/comment/comment.entity.ts"
       ],
       "../src/news/news.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/news/news.controller.ts",
         "../src/news/news.entity.ts",
         "../src/news/news.service.ts"
@@ -10506,9 +11168,12 @@
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/uuid/index.d.ts",
         "../node_modules/typeorm/index.d.ts",
         "../src/app.utils.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/news/dto/create-news.dto.ts",
+        "../src/news/dto/filter-all.dto.ts",
         "../src/news/news.entity.ts"
       ],
       "../src/product/dto/create-product.dto.ts": [
@@ -10539,6 +11204,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/product/product.controller.ts",
         "../src/product/product.entity.ts",
         "../src/product/product.service.ts",
@@ -10552,15 +11218,27 @@
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/uuid/index.d.ts",
         "../node_modules/typeorm/index.d.ts",
         "../src/app.utils.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/product/dto/create-product.dto.ts",
         "../src/product/product.entity.ts",
         "../src/store/store.service.ts"
       ],
       "../src/store/dto/create-store.dto.ts": [
         "../node_modules/@nestjs/swagger/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/class-validator/types/index.d.ts"
+      ],
+      "../src/store/dto/filter-all.dto.ts": [
+        "../node_modules/@nestjs/swagger/index.d.ts",
         "../node_modules/@types/node/util.d.ts"
+      ],
+      "../src/store/dto/update-status.dto.ts": [
+        "../node_modules/@nestjs/swagger/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/class-validator/types/index.d.ts"
       ],
       "../src/store/store.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -10574,6 +11252,7 @@
         "../node_modules/@types/node/util.d.ts",
         "../src/app.utils.ts",
         "../src/store/dto/create-store.dto.ts",
+        "../src/store/dto/filter-all.dto.ts",
         "../src/store/store.service.ts"
       ],
       "../src/store/store.entity.ts": [
@@ -10586,6 +11265,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/store/store.controller.ts",
         "../src/store/store.entity.ts",
         "../src/store/store.service.ts",
@@ -10597,9 +11277,13 @@
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/uuid/index.d.ts",
         "../node_modules/typeorm/index.d.ts",
         "../src/app.utils.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/store/dto/create-store.dto.ts",
+        "../src/store/dto/filter-all.dto.ts",
+        "../src/store/dto/update-status.dto.ts",
         "../src/store/store.entity.ts",
         "../src/users/users.service.ts"
       ],
@@ -10607,6 +11291,10 @@
         "../node_modules/@nestjs/swagger/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/class-validator/types/index.d.ts"
+      ],
+      "../src/users/dto/filter-all.dto.ts": [
+        "../node_modules/@nestjs/swagger/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
       ],
       "../src/users/dto/filter-user.dto.ts": [
         "../node_modules/@types/node/util.d.ts",
@@ -10622,6 +11310,10 @@
         "../node_modules/@nestjs/swagger/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/class-validator/types/index.d.ts"
+      ],
+      "../src/users/dto/update-status.dto.ts": [
+        "../node_modules/@nestjs/swagger/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
       ],
       "../src/users/user-level.enum.ts": [
         "../node_modules/@types/node/util.d.ts"
@@ -10650,8 +11342,10 @@
         "../node_modules/@types/node/util.d.ts",
         "../src/app.utils.ts",
         "../src/users/dto/bumdes-profile.dto.ts",
+        "../src/users/dto/filter-all.dto.ts",
         "../src/users/dto/update-password.dto.ts",
         "../src/users/dto/update-profile.dto.ts",
+        "../src/users/dto/update-status.dto.ts",
         "../src/users/users.service.ts"
       ],
       "../src/users/users.middleware.ts": [
@@ -10663,6 +11357,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/users/user.repository.ts",
         "../src/users/users.controller.ts",
         "../src/users/users.service.ts"
@@ -10672,11 +11367,16 @@
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/uuid/index.d.ts",
         "../src/app.utils.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/users/dto/bumdes-profile.dto.ts",
+        "../src/users/dto/filter-all.dto.ts",
         "../src/users/dto/update-password.dto.ts",
         "../src/users/dto/update-profile.dto.ts",
+        "../src/users/dto/update-status.dto.ts",
         "../src/users/user-level.enum.ts",
+        "../src/users/user.entity.ts",
         "../src/users/user.repository.ts"
       ]
     },
@@ -10686,6 +11386,113 @@
         "../node_modules/@types/node/util.d.ts"
       ],
       "../node_modules/@babel/types/lib/index.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/acl.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/bucket.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/acl.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/channel.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/file.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/iam.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/notification.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/signer.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/storage.d.ts",
+        "../node_modules/@types/node/http.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/channel.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/storage.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/file.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/acl.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/bucket.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/signer.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/storage.d.ts",
+        "../node_modules/@types/node/http.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/hmacKey.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/storage.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/iam.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/bucket.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/index.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/acl.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/bucket.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/channel.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/file.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/hmacKey.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/iam.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/notification.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/signer.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/storage.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/service-object.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/service.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/index.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/service-object.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts",
+        "../node_modules/@types/node/events.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/teeny-request/build/src/index.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/service.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/service-object.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/index.d.ts",
+        "../node_modules/teeny-request/build/src/index.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/service-object.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/index.d.ts",
+        "../node_modules/teeny-request/build/src/index.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/notification.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/bucket.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/signer.d.ts": [
+        "../node_modules/@types/node/http.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@google-cloud/storage/build/src/storage.d.ts": [
+        "../node_modules/@google-cloud/storage/build/src/bucket.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/channel.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/file.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/hmacKey.d.ts",
+        "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
       "../node_modules/@nestjs/common/cache/cache.constants.d.ts": [
@@ -12590,6 +13397,10 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/yargs-parser/index.d.ts"
       ],
+      "../node_modules/abort-controller/dist/abort-controller.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/event-target-shim/index.d.ts"
+      ],
       "../node_modules/buffer/index.d.ts": [
         "../node_modules/@types/node/util.d.ts"
       ],
@@ -13213,6 +14024,179 @@
       "../node_modules/class-validator/types/validation/ValidatorOptions.d.ts": [
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../node_modules/event-target-shim/index.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/gaxios/build/src/common.d.ts": [
+        "../node_modules/@types/node/http.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/url.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/abort-controller/dist/abort-controller.d.ts"
+      ],
+      "../node_modules/gaxios/build/src/gaxios.d.ts": [
+        "../node_modules/@types/node/http.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/url.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/common.d.ts"
+      ],
+      "../node_modules/gaxios/build/src/index.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/common.d.ts",
+        "../node_modules/gaxios/build/src/gaxios.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/authclient.d.ts": [
+        "../node_modules/@types/node/events.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts",
+        "../node_modules/google-auth-library/build/src/transporters.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/awsclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/authclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts",
+        "../node_modules/google-auth-library/build/src/transporters.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/computeclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/credentials.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/downscopedclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/authclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts",
+        "../node_modules/google-auth-library/build/src/transporters.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/envDetect.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/externalclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/awsclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/identitypoolclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/googleauth.d.ts": [
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/authclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/computeclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/envDetect.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/externalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/idtokenclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/impersonated.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/jwtclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/refreshclient.d.ts",
+        "../node_modules/google-auth-library/build/src/transporters.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/iam.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/identitypoolclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/idtokenclient.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/impersonated.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/authclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/jwtaccess.d.ts": [
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/jwtclient.d.ts": [
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/idtokenclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts",
+        "../node_modules/gtoken/build/src/index.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/loginticket.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/authclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/loginticket.d.ts",
+        "../node_modules/google-auth-library/build/src/crypto/crypto.d.ts",
+        "../node_modules/google-auth-library/build/src/transporters.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/auth/refreshclient.d.ts": [
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/crypto/crypto.d.ts": [
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/index.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/authclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/awsclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/computeclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/downscopedclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/envDetect.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/externalclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/googleauth.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/iam.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/identitypoolclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/idtokenclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/impersonated.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/jwtaccess.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/jwtclient.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/loginticket.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts",
+        "../node_modules/google-auth-library/build/src/auth/refreshclient.d.ts",
+        "../node_modules/google-auth-library/build/src/transporters.d.ts"
+      ],
+      "../node_modules/google-auth-library/build/src/transporters.d.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/gaxios/build/src/index.d.ts"
+      ],
+      "../node_modules/gtoken/build/src/index.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../node_modules/jest-diff/build/cleanupSemantic.d.ts": [
         "../node_modules/@types/node/util.d.ts"
       ],
@@ -13239,6 +14223,9 @@
       "../node_modules/logform/index.d.ts": [
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/triple-beam/index.d.ts"
+      ],
+      "../node_modules/moment/ts3.1-typings/moment.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
       ],
       "../node_modules/passport-headerapikey/lib/Strategy.d.ts": [
         "../node_modules/@types/express/ts4.0/index.d.ts",
@@ -14221,6 +15208,17 @@
         "../node_modules/rxjs/internal/operators/withLatestFrom.d.ts",
         "../node_modules/rxjs/internal/operators/zip.d.ts",
         "../node_modules/rxjs/internal/operators/zipAll.d.ts"
+      ],
+      "../node_modules/teeny-request/build/src/TeenyStatistics.d.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/teeny-request/build/src/index.d.ts": [
+        "../node_modules/@types/node/http.d.ts",
+        "../node_modules/@types/node/https.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/teeny-request/build/src/TeenyStatistics.d.ts"
       ],
       "../node_modules/typeorm/cache/QueryResultCache.d.ts": [
         "../node_modules/@types/node/util.d.ts",
@@ -15866,6 +16864,7 @@
         "../src/auth/auth.service.ts"
       ],
       "../src/auth/auth.controller.ts": [
+        "../node_modules/@types/express/ts4.0/index.d.ts",
         "../src/auth/auth.service.ts",
         "../src/auth/dto/signin.dto.ts",
         "../src/auth/dto/signup-credentials.dto.ts",
@@ -15906,8 +16905,23 @@
         "../node_modules/@nestjs/core/index.d.ts",
         "../src/users/users.service.ts"
       ],
+      "../src/comment/comment.controller.ts": [
+        "../src/comment/comment.service.ts",
+        "../src/comment/dto/create-comment.dto.ts",
+        "../src/comment/dto/filter-all.dto.ts",
+        "../src/comment/dto/update-status-comment.dto.ts"
+      ],
       "../src/comment/comment.entity.ts": [
-        "../node_modules/typeorm/index.d.ts"
+        "../node_modules/typeorm/index.d.ts",
+        "../src/news/news.entity.ts"
+      ],
+      "../src/comment/comment.service.ts": [
+        "../node_modules/typeorm/index.d.ts",
+        "../src/comment/comment.entity.ts",
+        "../src/comment/dto/create-comment.dto.ts",
+        "../src/comment/dto/filter-all.dto.ts",
+        "../src/comment/dto/update-status-comment.dto.ts",
+        "../src/news/news.service.ts"
       ],
       "../src/commons/interceptors/timeout.interceptor.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -15917,6 +16931,9 @@
       "../src/commons/middlewares/app-logger-middleware.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/express/ts4.0/index.d.ts"
+      ],
+      "../src/commons/storage/storage.service.ts": [
+        "../src/commons/storage/storage-file.ts"
       ],
       "../src/config/database.config.ts": [
         "../node_modules/@nestjs/config/index.d.ts"
@@ -15928,15 +16945,20 @@
       ],
       "../src/news/news.controller.ts": [
         "../node_modules/@types/express/ts4.0/index.d.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/news/dto/create-news.dto.ts",
+        "../src/news/dto/filter-all.dto.ts",
         "../src/news/news.service.ts"
       ],
       "../src/news/news.entity.ts": [
-        "../node_modules/typeorm/index.d.ts"
+        "../node_modules/typeorm/index.d.ts",
+        "../src/comment/comment.entity.ts"
       ],
       "../src/news/news.service.ts": [
         "../node_modules/typeorm/index.d.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/news/dto/create-news.dto.ts",
+        "../src/news/dto/filter-all.dto.ts",
         "../src/news/news.entity.ts"
       ],
       "../src/product/product.controller.ts": [
@@ -15950,6 +16972,7 @@
       ],
       "../src/product/product.service.ts": [
         "../node_modules/typeorm/index.d.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/product/dto/create-product.dto.ts",
         "../src/product/product.entity.ts",
         "../src/store/store.service.ts"
@@ -15957,6 +16980,7 @@
       "../src/store/store.controller.ts": [
         "../node_modules/@types/express/ts4.0/index.d.ts",
         "../src/store/dto/create-store.dto.ts",
+        "../src/store/dto/filter-all.dto.ts",
         "../src/store/store.service.ts"
       ],
       "../src/store/store.entity.ts": [
@@ -15966,7 +16990,10 @@
       ],
       "../src/store/store.service.ts": [
         "../node_modules/typeorm/index.d.ts",
+        "../src/commons/storage/storage.service.ts",
         "../src/store/dto/create-store.dto.ts",
+        "../src/store/dto/filter-all.dto.ts",
+        "../src/store/dto/update-status.dto.ts",
         "../src/store/store.entity.ts",
         "../src/users/users.service.ts"
       ],
@@ -15986,8 +17013,10 @@
       "../src/users/users.controller.ts": [
         "../node_modules/@types/express/ts4.0/index.d.ts",
         "../src/users/dto/bumdes-profile.dto.ts",
+        "../src/users/dto/filter-all.dto.ts",
         "../src/users/dto/update-password.dto.ts",
         "../src/users/dto/update-profile.dto.ts",
+        "../src/users/dto/update-status.dto.ts",
         "../src/users/users.service.ts"
       ],
       "../src/users/users.middleware.ts": [
@@ -15995,9 +17024,12 @@
         "../node_modules/@types/express/ts4.0/index.d.ts"
       ],
       "../src/users/users.service.ts": [
+        "../src/commons/storage/storage.service.ts",
         "../src/users/dto/bumdes-profile.dto.ts",
+        "../src/users/dto/filter-all.dto.ts",
         "../src/users/dto/update-password.dto.ts",
         "../src/users/dto/update-profile.dto.ts",
+        "../src/users/dto/update-status.dto.ts",
         "../src/users/user.entity.ts",
         "../src/users/user.repository.ts"
       ]
@@ -16005,6 +17037,20 @@
     "semanticDiagnosticsPerFile": [
       "../node_modules/@babel/parser/typings/babel-parser.d.ts",
       "../node_modules/@babel/types/lib/index.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/acl.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/bucket.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/channel.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/file.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/hmacKey.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/iam.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/index.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/index.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/service-object.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/service.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/nodejs-common/util.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/notification.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/signer.d.ts",
+      "../node_modules/@google-cloud/storage/build/src/storage.d.ts",
       "../node_modules/@nestjs/common/cache/cache.constants.d.ts",
       "../node_modules/@nestjs/common/cache/cache.module.d.ts",
       "../node_modules/@nestjs/common/cache/decorators/cache-key.decorator.d.ts",
@@ -16376,6 +17422,7 @@
       "../node_modules/@types/validator/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
+      "../node_modules/abort-controller/dist/abort-controller.d.ts",
       "../node_modules/buffer/index.d.ts",
       "../node_modules/class-validator/types/container.d.ts",
       "../node_modules/class-validator/types/decorator/ValidationOptions.d.ts",
@@ -16499,12 +17546,39 @@
       "../node_modules/class-validator/types/validation/Validator.d.ts",
       "../node_modules/class-validator/types/validation/ValidatorConstraintInterface.d.ts",
       "../node_modules/class-validator/types/validation/ValidatorOptions.d.ts",
+      "../node_modules/event-target-shim/index.d.ts",
+      "../node_modules/gaxios/build/src/common.d.ts",
+      "../node_modules/gaxios/build/src/gaxios.d.ts",
+      "../node_modules/gaxios/build/src/index.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/authclient.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/awsclient.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/computeclient.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/credentials.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/downscopedclient.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/envDetect.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/externalclient.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/googleauth.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/iam.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/identitypoolclient.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/idtokenclient.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/impersonated.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/jwtaccess.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/jwtclient.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/loginticket.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/oauth2client.d.ts",
+      "../node_modules/google-auth-library/build/src/auth/refreshclient.d.ts",
+      "../node_modules/google-auth-library/build/src/crypto/crypto.d.ts",
+      "../node_modules/google-auth-library/build/src/index.d.ts",
+      "../node_modules/google-auth-library/build/src/transporters.d.ts",
+      "../node_modules/gtoken/build/src/index.d.ts",
       "../node_modules/jest-diff/build/cleanupSemantic.d.ts",
       "../node_modules/jest-diff/build/diffLines.d.ts",
       "../node_modules/jest-diff/build/index.d.ts",
       "../node_modules/jest-diff/build/printDiffs.d.ts",
       "../node_modules/jest-diff/build/types.d.ts",
       "../node_modules/logform/index.d.ts",
+      "../node_modules/moment/ts3.1-typings/moment.d.ts",
       "../node_modules/passport-headerapikey/lib/Strategy.d.ts",
       "../node_modules/passport-headerapikey/lib/errors/BadRequestError.d.ts",
       "../node_modules/passport-headerapikey/lib/index.d.ts",
@@ -16679,6 +17753,8 @@
       "../node_modules/rxjs/internal/util/noop.d.ts",
       "../node_modules/rxjs/internal/util/pipe.d.ts",
       "../node_modules/rxjs/operators/index.d.ts",
+      "../node_modules/teeny-request/build/src/TeenyStatistics.d.ts",
+      "../node_modules/teeny-request/build/src/index.d.ts",
       "../node_modules/typeorm/cache/QueryResultCache.d.ts",
       "../node_modules/typeorm/cache/QueryResultCacheOptions.d.ts",
       "../node_modules/typeorm/common/DeepPartial.d.ts",
@@ -16990,15 +18066,24 @@
       "../src/auth/local.strategy.ts",
       "../src/auth/roles.decorator.ts",
       "../src/auth/roles.guard.ts",
+      "../src/comment/comment.controller.ts",
       "../src/comment/comment.entity.ts",
+      "../src/comment/comment.module.ts",
+      "../src/comment/comment.service.ts",
+      "../src/comment/dto/create-comment.dto.ts",
+      "../src/comment/dto/filter-all.dto.ts",
+      "../src/comment/dto/update-status-comment.dto.ts",
       "../src/commons/interceptors/timeout.interceptor.ts",
       "../src/commons/middlewares/app-logger-middleware.ts",
+      "../src/commons/storage/storage-file.ts",
+      "../src/commons/storage/storage.service.ts",
       "../src/config/config.module.ts",
       "../src/config/database.config.ts",
       "../src/database/database.config.ts",
       "../src/database/database.module.ts",
       "../src/main.ts",
       "../src/news/dto/create-news.dto.ts",
+      "../src/news/dto/filter-all.dto.ts",
       "../src/news/news.controller.ts",
       "../src/news/news.entity.ts",
       "../src/news/news.module.ts",
@@ -17009,14 +18094,18 @@
       "../src/product/product.module.ts",
       "../src/product/product.service.ts",
       "../src/store/dto/create-store.dto.ts",
+      "../src/store/dto/filter-all.dto.ts",
+      "../src/store/dto/update-status.dto.ts",
       "../src/store/store.controller.ts",
       "../src/store/store.entity.ts",
       "../src/store/store.module.ts",
       "../src/store/store.service.ts",
       "../src/users/dto/bumdes-profile.dto.ts",
+      "../src/users/dto/filter-all.dto.ts",
       "../src/users/dto/filter-user.dto.ts",
       "../src/users/dto/update-password.dto.ts",
       "../src/users/dto/update-profile.dto.ts",
+      "../src/users/dto/update-status.dto.ts",
       "../src/users/user-level.enum.ts",
       "../src/users/user.entity.ts",
       "../src/users/user.repository.ts",

@@ -29,9 +29,6 @@ __decorate([
 ], SignupCredentialsDto.prototype, "phone", void 0);
 __decorate([
     swagger_1.ApiProperty(),
-    class_validator_1.IsString(),
-    class_validator_1.IsNotEmpty(),
-    class_validator_1.IsEmail(),
     __metadata("design:type", String)
 ], SignupCredentialsDto.prototype, "email", void 0);
 __decorate([
@@ -44,5 +41,9 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], SignupCredentialsDto.prototype, "password", void 0);
+__decorate([
+    swagger_1.ApiProperty(),
+    __metadata("design:type", String)
+], SignupCredentialsDto.prototype, "active_on", void 0);
 exports.SignupCredentialsDto = SignupCredentialsDto;
 //# sourceMappingURL=signup-credentials.dto.js.map

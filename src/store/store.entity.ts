@@ -60,6 +60,21 @@ export class Store extends BaseEntity {
   @Column()
   aspek: string
 
+  @Column({
+    nullable: true,
+  })
+  mediaId: string
+
+  @Column({
+    nullable: true,
+  })
+  active_on: string
+
+  @Column({
+    default: false,
+  })
+  status: boolean
+
   @CreateDateColumn({
     type: 'timestamp',
     name: 'createdAt',
@@ -73,6 +88,7 @@ export class Store extends BaseEntity {
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
   updatedAt: Date
+
   @ManyToOne(
     type => User,
     u => u.store,

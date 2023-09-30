@@ -3,5 +3,7 @@ export declare class UpdateProfileDto {
     name?: string;
     address?: string;
     phone?: string;
-    status?: boolean;
+    email?: string;
+    new_password?: string;
+    old_password?: string;
 }

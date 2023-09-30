@@ -45,11 +45,7 @@ let ProductController = class ProductController {
         return this.productService.saveProduct(uploadsDto);
     }
     async allProduct(request) {
-        const protocol = request.protocol;
-        const hostname = request.headers.host;
-        const pathname = request.path;
-        const url = `${protocol}://${hostname}${pathname}/image`;
-        const result = await this.productService.allProduct(url);
+        const result = await this.productService.allProduct();
         return result;
     }
     async updateProduct(id, data, files) {
@@ -83,7 +79,10 @@ __decorate([
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     common_1.UseInterceptors(platform_express_1.FilesInterceptor('files', 24, {
-        storage: storage,
+        limits: {
+            files: 24,
+            fileSize: 1024 * 1024,
+        }
     })),
     __param(0, common_1.UploadedFiles()),
     __param(1, common_1.Body()),
@@ -106,7 +105,10 @@ __decorate([
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FilesInterceptor('files', 24, {
-        storage: storage,
+        limits: {
+            files: 24,
+            fileSize: 1024 * 1024,
+        }
     })),
     __param(0, common_1.Param('id')),
     __param(1, common_1.Body()),

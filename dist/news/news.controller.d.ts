@@ -1,11 +1,14 @@
 /// <reference types="multer" />
 import { CreateNewsDto } from './dto/create-news.dto';
 import { NewsService } from './news.service';
-import { Request, Response } from 'express';
+import { Request } from 'express';
+import { StorageService } from 'src/commons/storage/storage.service';
+import { FilterAllNews } from './dto/filter-all.dto';
 export declare class NewsController {
     private newsService;
-    constructor(newsService: NewsService);
-    allNews(request: Request): Promise<{
+    private storageService;
+    constructor(newsService: NewsService, storageService: StorageService);
+    allNews(filterDto: FilterAllNews): Promise<{
         error: boolean;
         alerts: {
             code: string;
@@ -45,5 +48,4 @@ export declare class NewsController {
         };
         data: any;
     }>;
-    seeFile(image: string, res: Response): void | Response<any, Record<string, any>>;
 }

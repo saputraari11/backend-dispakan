@@ -49,7 +49,10 @@ export class ProductController {
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(
     FilesInterceptor('files', 24, {
-      storage: storage,
+      limits: {
+        files: 24,
+        fileSize: 1024 * 1024,
+      }
     }),
   )
   createProduct(
@@ -64,11 +67,7 @@ export class ProductController {
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   async allProduct(@Req() request: Request) {
-    const protocol = request.protocol
-    const hostname = request.headers.host
-    const pathname = request.path
-    const url = `${protocol}://${hostname}${pathname}/image`
-    const result = await this.productService.allProduct(url)
+    const result = await this.productService.allProduct()
     return result
   }
 
@@ -78,7 +77,10 @@ export class ProductController {
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FilesInterceptor('files', 24, {
-      storage: storage,
+      limits: {
+        files: 24,
+        fileSize: 1024 * 1024,
+      }
     }),
   )
   async updateProduct(

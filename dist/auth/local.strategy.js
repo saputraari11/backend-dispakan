@@ -19,8 +19,8 @@ let LocalStrategy = class LocalStrategy extends passport_1.PassportStrategy(pass
         super();
         this.authService = authService;
     }
-    async validate(username, password) {
-        const user = await this.authService.validate(username, password);
+    async validate(username, password, active_on) {
+        const user = await this.authService.validate(username, password, active_on);
         if (!user) {
             throw new common_1.UnauthorizedException('The username or password you entered is incorrect');
         }

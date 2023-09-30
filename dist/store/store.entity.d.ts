@@ -13,6 +13,9 @@ export declare class Store extends BaseEntity {
     image: string;
     katagoriSaved: string;
     aspek: string;
+    mediaId: string;
+    active_on: string;
+    status: boolean;
     createdAt: Date;
     updatedAt: Date;
     user: User;

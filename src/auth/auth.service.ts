@@ -1,4 +1,4 @@
-import { ConflictException, Injectable } from '@nestjs/common'
+import { BadRequestException, ConflictException, Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { UserLevel } from 'src/users/user-level.enum'
 import { UserRepository } from 'src/users/user.repository'
@@ -8,6 +8,7 @@ import { JwtPayload } from './jwt-payload.interface'
 import { ConfigService } from '@nestjs/config'
 import { SignInDto } from './dto/signin.dto'
 import { responseTemplate } from 'src/app.utils'
+import { BadRequestError } from 'passport-headerapikey'
 
 @Injectable()
 export class AuthService {
@@ -31,7 +32,7 @@ export class AuthService {
   }
 
   async signIn(userLogin: SignInDto) {
-    const user = await this.validate(userLogin.username, userLogin.password)
+    const user = await this.validate(userLogin.email, userLogin.password,userLogin.active_on)
 
     if (!user) {
       return responseTemplate(
@@ -55,28 +56,35 @@ export class AuthService {
     userRegister: SignupCredentialsDto,
     level: UserLevel = UserLevel.BUMDES,
   ): Promise<User> {
-    const userExist = await User.findOne({
-      where: { email: userRegister.email },
-    })
+      const userExist = await User.findOne({
+        where: { email: userRegister.email,active_on:userRegister.active_on },
+      })
 
-    userRegister.level = level
+      userRegister.level = level
 
-    if (userExist) {
-      throw new ConflictException('User is Already Exist!')
-    }
+      if (userExist) {
+        throw new ConflictException('User is Already Exist!')
+      }
 
-    const user = this.userRepository.signup(userRegister)
-
-    return user
+      try {
+          const user = this.userRepository.signup(userRegister)
+          return user
+      } catch(err) {
+        console.log("error query",err);
+        return err
+      }
   }
 
-  async validate(username: string, password: string) {
+  async validate(username: string, password: string,active_on:string) {
     const user = await User.getRepository()
       .createQueryBuilder('user')
       .where('user.email = :email', {
-        email: username,
-      })
+        email: username
+      }).andWhere('user.active_on = :activeOn',{activeOn:active_on})
       .getOne()
+
+      console.log(active_on);
+      
 
     if (user && (await user.validatePassword(password))) {
       return user

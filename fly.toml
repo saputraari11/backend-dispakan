@@ -1,17 +1,21 @@
-# fly.toml app configuration file generated for backend-dispakan-1 on 2023-07-15T23:42:30+07:00
+# fly.toml app configuration file generated for dispakan-api on 2023-09-16T01:56:18+07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "backend-dispakan-1"
+app = "dispakan-api"
 primary_region = "sin"
 
 [env]
-  PORT = "8080"
+PHX_HOST = "dispakan-api.fly.dev"
+PORT = "8080"
+HOST = "0.0.0.0"
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = true
-  auto_start_machines = true
+  auto_stop_machines = false
+  auto_start_machines = false
   min_machines_running = 0
+
+

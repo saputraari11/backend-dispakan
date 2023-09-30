@@ -20,6 +20,7 @@ let Product = class Product extends typeorm_1.BaseEntity {
         this.varian = null;
         this.types = null;
         this.files = null;
+        this.mediaIds = null;
     }
     async countingDiscount() {
         const discount = (this.sale / 100) * this.price;
@@ -31,6 +32,8 @@ let Product = class Product extends typeorm_1.BaseEntity {
             this.images = JSON.parse(this.imagesSaved);
         if (this.filenameSaved)
             this.files = JSON.parse(this.filenameSaved);
+        if (this.mediaId)
+            this.mediaIds = JSON.parse(this.mediaId);
         if (this.othersSaved)
             this.others = JSON.parse(this.othersSaved).split(',');
         if (this.varianSaved)
@@ -101,6 +104,19 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], Product.prototype, "typesSaved", void 0);
+__decorate([
+    typeorm_1.Column({
+        type: 'text',
+        nullable: true,
+    }),
+    __metadata("design:type", String)
+], Product.prototype, "mediaId", void 0);
+__decorate([
+    typeorm_1.Column({
+        nullable: true,
+    }),
+    __metadata("design:type", String)
+], Product.prototype, "active_on", void 0);
 __decorate([
     typeorm_1.CreateDateColumn({
         type: 'timestamp',

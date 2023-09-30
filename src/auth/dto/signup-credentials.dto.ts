@@ -20,9 +20,6 @@ export class SignupCredentialsDto {
   phone?: string
 
   @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
-  @IsEmail()
   email: string
 
   @ApiProperty()
@@ -35,4 +32,9 @@ export class SignupCredentialsDto {
   password: string
 
   level: UserLevel
+
+  @ApiProperty()
+  active_on: string
+
+  createdBy: any
 }

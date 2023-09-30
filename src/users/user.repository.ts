@@ -13,6 +13,8 @@ export class UserRepository extends Repository<User> {
       level,
       address,
       phone,
+      active_on,
+      createdBy
     } = signupCredentialsDto
 
     const user = new User()
@@ -23,8 +25,9 @@ export class UserRepository extends Repository<User> {
     user.salt = await bcrypt.genSalt()
     user.password = await this.hashPassword(password, user.salt)
     user.level = level
+    user.active_on = active_on
+    if(createdBy) user.createdBy = createdBy.email
     const savedUser = await user.save()
-
     return savedUser
   }
 

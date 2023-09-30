@@ -1,10 +1,13 @@
 import { News } from './news.entity';
 import { Repository } from 'typeorm';
 import { CreateNewsDto } from './dto/create-news.dto';
+import { StorageService } from 'src/commons/storage/storage.service';
+import { FilterAllNews } from './dto/filter-all.dto';
 export declare class NewsService {
     private readonly newsRepository;
-    constructor(newsRepository: Repository<News>);
-    allNews(url: string): Promise<{
+    private storageService;
+    constructor(newsRepository: Repository<News>, storageService: StorageService);
+    allNews(filterAllNews: FilterAllNews): Promise<{
         error: boolean;
         alerts: {
             code: string;

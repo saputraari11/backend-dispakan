@@ -26,18 +26,24 @@ let AuthController = class AuthController {
         this.authService = authService;
     }
     async signin(signInCredentialsDto) {
-        return this.authService.signIn(signInCredentialsDto);
+        try {
+            return this.authService.signIn(signInCredentialsDto);
+        }
+        catch (err) {
+            return err;
+        }
     }
-    async signUp(signUpCredentialsDto) {
-        return await this.authService.signUp(signUpCredentialsDto);
+    async signUp(signUpCredentialsDto, res) {
+        const data = await this.authService.signUp(signUpCredentialsDto);
+        return data;
     }
-    async signUpUser(signUpCredentialsDto) {
+    async signUpUser(signUpCredentialsDto, request) {
+        signUpCredentialsDto.createdBy = request.user;
         return await this.authService.signUp(signUpCredentialsDto, user_level_enum_1.UserLevel.UMKM);
     }
 };
 __decorate([
     common_1.Post('signin'),
-    common_1.UseGuards(passport_1.AuthGuard('local')),
     __param(0, common_1.Body(app_utils_1.SETTINGS.VALIDATION_PIPE)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [signin_dto_1.SignInDto]),
@@ -47,8 +53,9 @@ __decorate([
     common_1.Post('signup/bumdes'),
     swagger_1.ApiSecurity('X-API-KEY', ['X-API-KEY']),
     __param(0, common_1.Body(app_utils_1.SETTINGS.VALIDATION_PIPE)),
+    __param(1, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [signup_credentials_dto_1.SignupCredentialsDto]),
+    __metadata("design:paramtypes", [signup_credentials_dto_1.SignupCredentialsDto, Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "signUp", null);
 __decorate([
@@ -56,8 +63,9 @@ __decorate([
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Body(app_utils_1.SETTINGS.VALIDATION_PIPE)),
+    __param(1, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [signup_credentials_dto_1.SignupCredentialsDto]),
+    __metadata("design:paramtypes", [signup_credentials_dto_1.SignupCredentialsDto, Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "signUpUser", null);
 AuthController = __decorate([

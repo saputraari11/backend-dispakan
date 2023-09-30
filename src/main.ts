@@ -28,10 +28,9 @@ async function bootstrap() {
   app.use(bodyParser.json({ limit: '50mb' }))
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
   app.use(express.static(join(process.cwd(), '../temp/qrcode/')))
-  app.useGlobalInterceptors(new TimeoutInterceptor(logger))
-
+  // app.useGlobalInterceptors(new TimeoutInterceptor(logger))
   app.enableCors()
 
-  await app.listen(process.env.PORT || '4000')
+  await app.listen(process.env.PORT || '4000',process.env.HOST)
 }
 bootstrap()

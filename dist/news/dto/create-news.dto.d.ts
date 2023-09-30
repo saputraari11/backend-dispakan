@@ -5,4 +5,5 @@ export declare class CreateNewsDto {
     status: boolean;
     description: string;
     file: Express.Multer.File;
+    active_on: string;
 }

@@ -2,11 +2,13 @@ import { Product } from './product.entity';
 import { Repository } from 'typeorm';
 import { CreateProductDto } from './dto/create-product.dto';
 import { StoreService } from 'src/store/store.service';
+import { StorageService } from 'src/commons/storage/storage.service';
 export declare class ProductService {
     private readonly productRepository;
     private readonly storeService;
-    constructor(productRepository: Repository<Product>, storeService: StoreService);
-    allProduct(url: string): Promise<{
+    private readonly storageService;
+    constructor(productRepository: Repository<Product>, storeService: StoreService, storageService: StorageService);
+    allProduct(): Promise<{
         error: boolean;
         alerts: {
             code: string;

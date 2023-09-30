@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "dispakan-gcp",
+  "private_key_id": "9132cef5e69d6ebcabc6ec2340a0cb9fe978cf4c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDwL2vRxatLS00N\nnBCoyPXF+2m1tJY7MGrIuyOCg6uuJgIgiYRa3P8cTBanadrckMEY50W0A1xsuzzu\njqCM4aSnilZufsFAk7mn4P28DbU5+JDep5C5msb6COXShGMpkrhINUYGg9sdyfgS\nie2OvQYhUeGyTulhVhd9xT2TAr+eHPavs97FEg9EKB6KdL0PFTGM70BOGmkRK2zc\nY4sf9jBEAv45Hf/xvJbPGseJJA3zriS3su//eJCQZmecc/VTj8ccgG7o8+mr0D41\nZoGQUE9BI0+gNnLJSmqL6J+l8kr/hZoWebZMxRUP74bqJIz4rfCBaLiTcKDvayFV\nWboGbSrHAgMBAAECggEAZx9VIYnHE9rOyGsbU/yEWW6qYlOYtO0CzBBdHKo/ydOT\n0jh41TJRberVRyfRyiV0YqbZbIKM6jox3RLrp9ExiqWAmoxdmMZUTdnx1w3jo3Iv\ncQlsv+POTogHdK1WjgDqkkYdPKrcJxwSIJOLpV9PBHtNdesflKUMDPnkh/wEHXPp\nEFBD/FHNT3KZG0jTMymJTTvm0sMp8n9AAKhI0OSVGBB4QswPPlCRKq5Nn7BR+3Fc\nSaNjRAtJpgnMwhtzcAnvVCyHTeubERLlGNXevCSn3mjR2La2jnakyMslqcJIYt6t\ngtNnkpPqcaGKIgJ+MNsmMSxA9zr9ncaLR1rUHi7AEQKBgQD+DoumDZ84HZ/iDY+Y\njfAWrScUQgm1CKIa9CnsE/cOu76clJTkzCezZjSxBFBnP0Mi7fim9PslFTmD0g66\n1l2P9VApEhlJ6XxpCvf14M7R32kmEGjxHhSXUu5Y4TK/iFr7JVHDyyThqiGH9HBP\n0yOs66qhB94NymOlbTdX5tC5RQKBgQDyBbbpgQIL7QPtiU4vE5R14jo5akjQONqr\nfK8U2wAKeNdBwHID0OrL6EadepnhvB7zNDIUbFfZC6zRob5bVmhtW6rPRRPJefZS\nW17PW0ODk6/vENNj9lAEGiwhIYMYo1Y3ELxsXYeN1gm3q/x5rC21ndXyGjrYEHK0\nIikVkEXmmwKBgQCsV92wFcmO3bnaNWzWBmN6XpgGDA5duq+NLVlLBvgwDHhv6/Nd\niojcEFdqRgztHWNDzL9DMykzrMRJgjPv1v+9aqKoWdjB5Rw6ffBb4dcrVC0WX0dx\nWgCJ7v41WP9+ItflSxm+go5Qb4MzoUSXQhoPcgdcGeQu4r7aN861WKT7KQKBgQC/\nlpZ9soqUNkRtvcwOqElWKIg++0w4yUkRh9pxgAxAPfjpLBcVvkSgtndwIqW+dNVr\nYV5jnIDOaNed+5RdacGxEGffPKe1Tr8X4wziyTRg7IDRl1hAQbSGCtH0SDsnPeX6\nIV2Hy2KLfWyj4Zo0F4D3zMKYrPr4H80tm/05/MPZEQKBgQCr1y6bwQhcpX6TCR8v\ncXBifpnMayTSuphaoHmDJ0/8wOhpxOif5/ynX2KD9EeVLnUGsbKb4W3oFP8eV7fJ\nTR+7in+YYnJkkR+D+TRhs4B3uIfJ+FEstR964KYPppGJMa4a63A+C7wFzLV5eUqA\nlKYsoXlnfMi7FjaYRJh7iW+pXQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "dispakan-readwrite-general@dispakan-gcp.iam.gserviceaccount.com",
+  "client_id": "110484268639194466039",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dispakan-readwrite-general%40dispakan-gcp.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

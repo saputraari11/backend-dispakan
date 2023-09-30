@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
+import { IsNotEmpty, IsString } from 'class-validator'
 
 export class CreateStoreDto {
   @ApiProperty({
@@ -51,6 +52,11 @@ export class CreateStoreDto {
     required: false,
   })
   omset: string
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  active_on: string
 
   @ApiProperty({ type: 'string', format: 'binary', required: false })
   file: Express.Multer.File

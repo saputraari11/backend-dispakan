@@ -20,12 +20,15 @@ const typeorm_2 = require("typeorm");
 const app_utils_1 = require("../app.utils");
 const store_service_1 = require("../store/store.service");
 const fs = require("fs");
+const storage_service_1 = require("../commons/storage/storage.service");
+const uuid_1 = require("uuid");
 let ProductService = class ProductService {
-    constructor(productRepository, storeService) {
+    constructor(productRepository, storeService, storageService) {
         this.productRepository = productRepository;
         this.storeService = storeService;
+        this.storageService = storageService;
     }
-    async allProduct(url) {
+    async allProduct() {
         const products = await this.productRepository.find({
             relations: ['store'],
         });
@@ -34,8 +37,8 @@ let ProductService = class ProductService {
                 await item.countingDiscount();
             }
             await item.convertStringToArray();
-            if (item.files && item.files.length > 0) {
-                const urlImage = item.files.map(file => `${url}/${file}`);
+            if (item.mediaIds && item.mediaIds.length > 0) {
+                const urlImage = item.mediaIds.map(file => `${process.env.LINK_GCP}/products/${item.active_on}/${file}.png`);
                 item.url_image = urlImage;
             }
         }
@@ -54,7 +57,7 @@ let ProductService = class ProductService {
         }
         await product.convertStringToArray();
         if (product.files.length > 0) {
-            const urlImage = product.files.map(file => `${url}/${file}`);
+            const urlImage = product.files.map(file => `${process.env.LINK_GCP}/products/${product.active_on}/${product.mediaId}.png`);
             product.url_image = urlImage;
         }
         return app_utils_1.responseTemplate('200', 'success', product);
@@ -69,6 +72,7 @@ let ProductService = class ProductService {
         product.description = description;
         product.store = umkm;
         product.category = category;
+        product.active_on = uploadProduct.active_on;
         if (other && other.length != 0)
             product.othersSaved = JSON.stringify(other);
         if (tipe && tipe.length != 0)
@@ -76,10 +80,13 @@ let ProductService = class ProductService {
         if (varian && varian.length != 0)
             product.varianSaved = JSON.stringify(varian);
         if (files.length != 0) {
-            const filename = files.map(item => item.filename);
-            const image = files.map(item => item.path);
-            product.filenameSaved = JSON.stringify(filename);
-            product.imagesSaved = JSON.stringify(image);
+            const mediaIds = [];
+            for (let item of files) {
+                const mediaId = uuid_1.v4();
+                await this.storageService.save(`products/${product.active_on}/${product.mediaId}`, item.mimetype, item.buffer, [{ mediaId: mediaId }]);
+                mediaIds.push(mediaId);
+            }
+            product.mediaId = JSON.stringify(mediaIds);
         }
         await product.convertStringToArray();
         await this.productRepository.save(product);
@@ -161,7 +168,8 @@ ProductService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_1.InjectRepository(product_entity_1.Product)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
-        store_service_1.StoreService])
+        store_service_1.StoreService,
+        storage_service_1.StorageService])
 ], ProductService);
 exports.ProductService = ProductService;
 //# sourceMappingURL=product.service.js.map

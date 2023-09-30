@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.News = void 0;
+const comment_entity_1 = require("../comment/comment.entity");
 const typeorm_1 = require("typeorm");
 let News = class News extends typeorm_1.BaseEntity {
 };
@@ -52,6 +53,18 @@ __decorate([
     __metadata("design:type", String)
 ], News.prototype, "description", void 0);
 __decorate([
+    typeorm_1.Column({
+        nullable: true,
+    }),
+    __metadata("design:type", String)
+], News.prototype, "active_on", void 0);
+__decorate([
+    typeorm_1.Column({
+        nullable: true,
+    }),
+    __metadata("design:type", String)
+], News.prototype, "mediaId", void 0);
+__decorate([
     typeorm_1.CreateDateColumn({
         type: 'timestamp',
         name: 'createdAt',
@@ -67,6 +80,10 @@ __decorate([
     }),
     __metadata("design:type", Date)
 ], News.prototype, "updatedAt", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => comment_entity_1.Comment, c => c.news),
+    __metadata("design:type", Array)
+], News.prototype, "comments", void 0);
 News = __decorate([
     typeorm_1.Entity()
 ], News);

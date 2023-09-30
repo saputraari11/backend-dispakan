@@ -15,5 +15,11 @@ export class UpdateProfileDto {
   phone?: string
 
   @ApiProperty()
-  status?: boolean
+  email?: string
+
+  @ApiProperty()
+  new_password?: string
+
+  @ApiProperty()
+  old_password?: string
 }

@@ -87,6 +87,24 @@ __decorate([
     __metadata("design:type", String)
 ], Store.prototype, "aspek", void 0);
 __decorate([
+    typeorm_1.Column({
+        nullable: true,
+    }),
+    __metadata("design:type", String)
+], Store.prototype, "mediaId", void 0);
+__decorate([
+    typeorm_1.Column({
+        nullable: true,
+    }),
+    __metadata("design:type", String)
+], Store.prototype, "active_on", void 0);
+__decorate([
+    typeorm_1.Column({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], Store.prototype, "status", void 0);
+__decorate([
     typeorm_1.CreateDateColumn({
         type: 'timestamp',
         name: 'createdAt',

@@ -35,7 +35,7 @@ let AuthService = class AuthService {
         };
     }
     async signIn(userLogin) {
-        const user = await this.validate(userLogin.username, userLogin.password);
+        const user = await this.validate(userLogin.email, userLogin.password, userLogin.active_on);
         if (!user) {
             return app_utils_1.responseTemplate('400', 'Email or Password is not found!', {}, true);
         }
@@ -45,22 +45,29 @@ let AuthService = class AuthService {
     }
     async signUp(userRegister, level = user_level_enum_1.UserLevel.BUMDES) {
         const userExist = await user_entity_1.User.findOne({
-            where: { email: userRegister.email },
+            where: { email: userRegister.email, active_on: userRegister.active_on },
         });
         userRegister.level = level;
         if (userExist) {
             throw new common_1.ConflictException('User is Already Exist!');
         }
-        const user = this.userRepository.signup(userRegister);
-        return user;
+        try {
+            const user = this.userRepository.signup(userRegister);
+            return user;
+        }
+        catch (err) {
+            console.log("error query", err);
+            return err;
+        }
     }
-    async validate(username, password) {
+    async validate(username, password, active_on) {
         const user = await user_entity_1.User.getRepository()
             .createQueryBuilder('user')
             .where('user.email = :email', {
-            email: username,
-        })
+            email: username
+        }).andWhere('user.active_on = :activeOn', { activeOn: active_on })
             .getOne();
+        console.log(active_on);
         if (user && (await user.validatePassword(password))) {
             return user;
         }

@@ -6,6 +6,8 @@ import { responseTemplate } from 'src/app.utils'
 import { CreateProductDto } from './dto/create-product.dto'
 import { StoreService } from 'src/store/store.service'
 import * as fs from 'fs'
+import { StorageService } from 'src/commons/storage/storage.service'
+import { v4 } from 'uuid'
 
 @Injectable()
 export class ProductService {
@@ -13,8 +15,9 @@ export class ProductService {
     @InjectRepository(Product)
     private readonly productRepository: Repository<Product>,
     private readonly storeService: StoreService,
+    private readonly storageService:StorageService
   ) {}
-  async allProduct(url: string) {
+  async allProduct() {
     const products = await this.productRepository.find({
       relations: ['store'],
     })
@@ -25,8 +28,8 @@ export class ProductService {
       }
       await item.convertStringToArray()
 
-      if (item.files && item.files.length > 0) {
-        const urlImage = item.files.map(file => `${url}/${file}`)
+      if (item.mediaIds && item.mediaIds.length > 0) {
+        const urlImage = item.mediaIds.map(file => `${process.env.LINK_GCP}/products/${item.active_on}/${file}.png`)
         item.url_image = urlImage
       }
     }
@@ -50,7 +53,7 @@ export class ProductService {
 
     await product.convertStringToArray()
     if (product.files.length > 0) {
-      const urlImage = product.files.map(file => `${url}/${file}`)
+      const urlImage = product.files.map(file => `${process.env.LINK_GCP}/products/${product.active_on}/${product.mediaId}.png`)
       product.url_image = urlImage
     }
     return responseTemplate('200', 'success', product)
@@ -78,6 +81,7 @@ export class ProductService {
     product.description = description
     product.store = umkm
     product.category = category
+    product.active_on = uploadProduct.active_on
 
     if (other && other.length != 0) product.othersSaved = JSON.stringify(other)
     if (tipe && tipe.length != 0) product.typesSaved = JSON.stringify(tipe)
@@ -85,10 +89,20 @@ export class ProductService {
       product.varianSaved = JSON.stringify(varian)
 
     if (files.length != 0) {
-      const filename = files.map(item => item.filename)
-      const image = files.map(item => item.path)
-      product.filenameSaved = JSON.stringify(filename)
-      product.imagesSaved = JSON.stringify(image)
+      const mediaIds = []
+      for(let item of files) {
+        const mediaId = v4()
+        await this.storageService.save(
+          `products/${product.active_on}/${product.mediaId}`,
+          item.mimetype,
+          item.buffer,
+          [{mediaId:mediaId}]
+        )
+
+        mediaIds.push(mediaId)
+      }
+
+      product.mediaId = JSON.stringify(mediaIds)
     }
 
     await product.convertStringToArray()

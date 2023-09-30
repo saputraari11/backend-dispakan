@@ -26,6 +26,8 @@ import * as path from 'path'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { BumdesProfileDto } from './dto/bumdes-profile.dto'
 import { UpdatePasswordDto } from './dto/update-password.dto'
+import { UpdateStatusDto } from './dto/update-status.dto'
+import { FilterUmkmDto } from './dto/filter-all.dto'
 
 let dir = `public/dispakan/assets/bumdes`
 dir = path.join(__dirname, '..', '..', '..', '..', '..', dir)
@@ -58,8 +60,8 @@ export class UsersController {
   @Get('umkm')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async allUmkm() {
-    const result = await this.userService.userUmkm()
+  async allUmkm(@Query() filterAllUmkm:FilterUmkmDto) {
+    const result = await this.userService.userUmkm(filterAllUmkm)
     return result
   }
 
@@ -107,7 +109,10 @@ export class UsersController {
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FileInterceptor('file', {
-      storage: storage,
+      limits: {
+        files: 1,
+        fileSize: 1024 * 1024,
+      }
     }),
   )
   async updateProfilBumdes(
@@ -117,17 +122,6 @@ export class UsersController {
     body.file = file
     const result = await this.userService.updateBumdes(body)
     return result
-  }
-  @Get('bumdes/profile/:img')
-  @ApiBearerAuth()
-  seeFile(@Param('img') image: string, @Res() res: Response) {
-    if (!fs.existsSync(`${dir}/${image}`)) {
-      return res.send(
-        responseTemplate('400', "Failed file didn't exist", {}, true),
-      )
-    } else {
-      return res.sendFile(image, { root: dir })
-    }
   }
 
   @Post('update/password/:id')
@@ -139,6 +133,17 @@ export class UsersController {
   ) {
     body.id_user = id
     const result = await this.userService.updatePassword(body)
+    return result
+  }
+
+  @Post('update/status/:id')
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
+  async updateStatus(
+    @Body() body: UpdateStatusDto,
+    @Param('id') id: string,
+  ) {
+    const result = await this.userService.updateStatus(body,id)
     return result
   }
 }

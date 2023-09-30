@@ -18,72 +18,105 @@ const typeorm_1 = require("@nestjs/typeorm");
 const news_entity_1 = require("./news.entity");
 const typeorm_2 = require("typeorm");
 const app_utils_1 = require("../app.utils");
-const fs = require("fs");
+const storage_service_1 = require("../commons/storage/storage.service");
+const uuid_1 = require("uuid");
 let NewsService = class NewsService {
-    constructor(newsRepository) {
+    constructor(newsRepository, storageService) {
         this.newsRepository = newsRepository;
+        this.storageService = storageService;
     }
-    async allNews(url) {
-        const news = await this.newsRepository.find();
+    async allNews(filterAllNews) {
+        let request_news = this.newsRepository.createQueryBuilder('news').where('news.active_on = :activeOn', { activeOn: filterAllNews.active_on });
+        if (filterAllNews && filterAllNews.search) {
+            request_news = request_news.andWhere('news.title ILIKE :searchTerm or news.description ILIKE :searchTerm', { searchTerm: `%${filterAllNews.search}%` });
+        }
+        const news = await request_news.getMany();
         if (news.length == 0) {
             return app_utils_1.responseTemplate('400', "news doesn't exist", {}, true);
         }
-        news.map(item => (item.url_image = `${url}/${item.filename}`));
+        news.map(item => (item.url_image = `${process.env.LINK_GCP}/news/${item.active_on}/${item.mediaId}.png`));
         return app_utils_1.responseTemplate('200', 'success', news);
     }
     async detailNews(id, url) {
         const news = await this.newsRepository.findOne({ where: { id: id } });
         if (!news) {
-            throw new common_1.NotFoundException(`news with id ${id} not found`);
+            return app_utils_1.responseTemplate('404', 'gagal', {});
         }
-        if (url) {
-            news.url_image = `${url}/${news.filename}`;
+        if (news.mediaId) {
+            news.url_image = `${process.env.LINK_GCP}/news/${news.active_on}/${news.mediaId}.png`;
         }
         return app_utils_1.responseTemplate('200', 'success', news);
     }
     async uploadNews(uploadNews) {
-        const { file, status, title, posted_date } = uploadNews;
+        const { file, status, title, posted_date, active_on } = uploadNews;
         const news = new news_entity_1.News();
         news.status = !!status;
-        news.title = title;
-        news.posted_date = new Date(posted_date);
-        news.description = uploadNews.description;
+        news.title = title || '';
+        news.posted_date = posted_date ? new Date(posted_date) : new Date();
+        news.description = uploadNews.description || '';
+        news.active_on = active_on || '';
         if (uploadNews.file) {
-            news.filename = file.filename;
-            news.image = file.path;
+            news.mediaId = uuid_1.v4();
+            await this.storageService.save(`news/${news.active_on}/${news.mediaId}`, file.mimetype, file.buffer, [{ mediaId: news.mediaId }]);
         }
-        await this.newsRepository.save(news);
+        try {
+            await this.newsRepository.save(news);
+        }
+        catch (err) {
+            console.log('error query', err);
+        }
         return app_utils_1.responseTemplate('200', 'success', news);
     }
     async updateNews(updateNews, id) {
         const news = (await this.detailNews(id)).data;
-        if (updateNews.file) {
-            if (fs.existsSync(news.image)) {
-                fs.unlinkSync(news.image);
-            }
-            news.filename = updateNews.file.filename;
-            news.image = updateNews.file.path;
+        if (!news.title) {
+            return app_utils_1.responseTemplate('404', 'gagal', {});
         }
-        if (updateNews.status)
-            news.status = !!updateNews.status;
-        if (updateNews.title)
-            news.title = updateNews.title;
-        if (updateNews.posted_date)
-            news.posted_date = new Date(updateNews.posted_date);
-        if (updateNews.description)
-            news.description = updateNews.description;
-        await this.newsRepository.save(news);
+        if (updateNews.file) {
+            try {
+                await this.storageService.delete(`news/${news.active_on}/${news.mediaId}`);
+            }
+            catch (err) {
+                console.log('error delete', err);
+            }
+            news.mediaId = uuid_1.v4();
+            try {
+                await this.storageService.save(`news/${news.active_on}/${news.mediaId}`, updateNews.file.mimetype, updateNews.file.buffer, [{ mediaId: news.mediaId }]);
+            }
+            catch (err) {
+                console.log('error upload', err);
+            }
+        }
+        try {
+            if (updateNews.status)
+                news.status = !!updateNews.status;
+            if (updateNews.title)
+                news.title = updateNews.title;
+            if (updateNews.posted_date)
+                news.posted_date = updateNews.posted_date ? new Date(updateNews.posted_date) : new Date();
+            if (updateNews.description)
+                news.description = updateNews.description;
+        }
+        catch (err) {
+            console.log('error parsing data', err);
+        }
+        try {
+            await this.newsRepository.save(news);
+        }
+        catch (err) {
+            console.log('error query', err);
+        }
         return app_utils_1.responseTemplate('200', 'success', news);
     }
     async deleteNews(id) {
         let response = '';
         const news = (await this.detailNews(id)).data;
         try {
-            fs.unlinkSync(news.image);
-            response = `${news.postedAt}. ${news.image} deleted`;
+            await this.storageService.delete(`news/${news.active_on}/${news.mediaId}`);
+            response = `${news.posted_date}. ${news.mediaId} deleted`;
         }
         catch (e) {
-            response = `${news.postedAt}. ${news.image}, ${e.message}`;
+            response = `${news.posted_date}. ${news.mediaId}, ${e.message}`;
         }
         await this.newsRepository.remove(news);
         return app_utils_1.responseTemplate('200', 'success', response);
@@ -92,7 +125,8 @@ let NewsService = class NewsService {
 NewsService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_1.InjectRepository(news_entity_1.News)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        storage_service_1.StorageService])
 ], NewsService);
 exports.NewsService = NewsService;
 //# sourceMappingURL=news.service.js.map

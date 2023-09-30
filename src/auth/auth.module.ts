@@ -9,6 +9,7 @@ import { JwtStrategy } from './jwt.strategy'
 import { UserRepository } from 'src/users/user.repository'
 import { UsersService } from 'src/users/users.service'
 import { ApiKeyStrategy } from './apikey.strategy'
+import { StorageService } from 'src/commons/storage/storage.service'
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ApiKeyStrategy } from './apikey.strategy'
     UsersService,
     UserRepository,
     ApiKeyStrategy,
+    StorageService
   ],
   controllers: [AuthController],
   exports: [JwtStrategy, PassportModule, LocalStrategy],

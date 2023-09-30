@@ -31,7 +31,15 @@ __decorate([
 ], UpdateProfileDto.prototype, "phone", void 0);
 __decorate([
     swagger_1.ApiProperty(),
-    __metadata("design:type", Boolean)
-], UpdateProfileDto.prototype, "status", void 0);
+    __metadata("design:type", String)
+], UpdateProfileDto.prototype, "email", void 0);
+__decorate([
+    swagger_1.ApiProperty(),
+    __metadata("design:type", String)
+], UpdateProfileDto.prototype, "new_password", void 0);
+__decorate([
+    swagger_1.ApiProperty(),
+    __metadata("design:type", String)
+], UpdateProfileDto.prototype, "old_password", void 0);
 exports.UpdateProfileDto = UpdateProfileDto;
 //# sourceMappingURL=update-profile.dto.js.map

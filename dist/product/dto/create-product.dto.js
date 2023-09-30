@@ -54,6 +54,12 @@ __decorate([
     __metadata("design:type", String)
 ], CreateProductDto.prototype, "category", void 0);
 __decorate([
+    swagger_1.ApiProperty(),
+    class_validator_1.IsString(),
+    class_validator_1.IsNotEmpty(),
+    __metadata("design:type", String)
+], CreateProductDto.prototype, "active_on", void 0);
+__decorate([
     swagger_1.ApiProperty({
         isArray: true,
         required: false,

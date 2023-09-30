@@ -9,5 +9,6 @@ export declare class CreateStoreDto {
     mediaOrder: string[];
     mediaContact: string[];
     omset: string;
+    active_on: string;
     file: Express.Multer.File;
 }

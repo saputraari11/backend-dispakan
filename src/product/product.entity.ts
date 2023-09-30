@@ -62,6 +62,17 @@ export class Product extends BaseEntity {
   })
   typesSaved: string
 
+  @Column({
+    type: 'text',
+    nullable: true,
+  })
+  mediaId: string
+
+  @Column({
+    nullable: true,
+  })
+  active_on: string
+
   @CreateDateColumn({
     type: 'timestamp',
     name: 'createdAt',
@@ -87,6 +98,7 @@ export class Product extends BaseEntity {
   varian: string[] = null
   types: string[] = null
   files: string[] = null
+  mediaIds: string[] = null
   price_discount: number
   discount: number
   url_image: string[]
@@ -100,6 +112,7 @@ export class Product extends BaseEntity {
   public async convertStringToArray() {
     if (this.imagesSaved) this.images = JSON.parse(this.imagesSaved)
     if (this.filenameSaved) this.files = JSON.parse(this.filenameSaved)
+    if (this.mediaId) this.mediaIds = JSON.parse(this.mediaId)
     if (this.othersSaved) this.others = JSON.parse(this.othersSaved).split(',')
     if (this.varianSaved) this.varian = JSON.parse(this.varianSaved).split(',')
     if (this.typesSaved) this.types = JSON.parse(this.typesSaved).split(',')

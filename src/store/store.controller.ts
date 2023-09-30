@@ -4,6 +4,7 @@ import {
   Get,
   Param,
   Post,
+  Query,
   Req,
   Res,
   UploadedFile,
@@ -20,23 +21,7 @@ import { AuthGuard } from '@nestjs/passport'
 import { StoreService } from './store.service'
 import { CreateStoreDto } from './dto/create-store.dto'
 import { responseTemplate } from 'src/app.utils'
-
-let dir = `public/dispakan/assets/store`
-dir = path.join(__dirname, '..', '..', '..', '..', '..', dir)
-
-const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true })
-    }
-
-    cb(null, dir)
-  },
-
-  filename: function(req, file, cb) {
-    cb(null, Date.now() + '-' + path.basename(file.originalname))
-  },
-})
+import { FilterStoreDto } from './dto/filter-all.dto'
 
 @ApiTags('UMKM')
 @Controller('store')
@@ -45,13 +30,9 @@ export class StoreController {
 
   @Get()
   @ApiBearerAuth()
-  // @UseGuards(AuthGuard('jwt'))
-  async allStore(@Req() request: Request) {
-    const protocol = request.protocol
-    const hostname = request.headers.host
-    const pathname = request.path
-    const url = `${protocol}://${hostname}${pathname}/image`
-    const result = await this.storeService.allStore(url)
+  @UseGuards(AuthGuard('jwt'))
+  async allStore(@Query() request: FilterStoreDto) {
+    const result = await this.storeService.allStore(request)
     return result
   }
 
@@ -61,7 +42,10 @@ export class StoreController {
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FileInterceptor('file', {
-      storage: storage,
+      limits: {
+        files: 1,
+        fileSize: 1024 * 1024,
+      }
     }),
   )
   async uploadFile(
@@ -79,10 +63,35 @@ export class StoreController {
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FileInterceptor('file', {
-      storage: storage,
+      limits: {
+        files: 1,
+        fileSize: 1024 * 1024,
+      }
     }),
   )
   async updateFile(
+    @Param('id') id: string,
+    @Body() data: CreateStoreDto,
+    @UploadedFile('file') file: Express.Multer.File,
+  ) {
+    data.file = file
+    const result = await this.storeService.updateStore(data, id)
+    return result
+  }
+
+  @Post('update/status/:id')
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
+  @ApiConsumes('multipart/form-data')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      limits: {
+        files: 1,
+        fileSize: 1024 * 1024,
+      }
+    }),
+  )
+  async updateStatus(
     @Param('id') id: string,
     @Body() data: CreateStoreDto,
     @UploadedFile('file') file: Express.Multer.File,
@@ -109,17 +118,5 @@ export class StoreController {
   async deleteStore(@Param('id') id: string) {
     const result = await this.storeService.deleteStore(id)
     return result
-  }
-
-  @Get(':img')
-  @ApiBearerAuth()
-  seeFile(@Param('img') image: string, @Res() res: Response) {
-    if (!fs.existsSync(`${dir}/${image}`)) {
-      return res.send(
-        responseTemplate('400', "Failed file didn't exist", {}, true),
-      )
-    } else {
-      return res.sendFile(image, { root: dir })
-    }
   }
 }

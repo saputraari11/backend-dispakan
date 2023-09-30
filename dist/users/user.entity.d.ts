@@ -11,11 +11,14 @@ export declare class User extends BaseEntity {
     phone: string;
     address: string;
     status: boolean;
+    createdBy: string;
     filename: string;
     image: string;
+    mediaId: string;
     createdAt: Date;
     updatedAt: Date;
     store: Store[];
+    active_on: string;
     url_image: string;
     validatePassword(password: string): Promise<boolean>;
 }

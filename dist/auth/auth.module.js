@@ -18,6 +18,7 @@ const jwt_strategy_1 = require("./jwt.strategy");
 const user_repository_1 = require("../users/user.repository");
 const users_service_1 = require("../users/users.service");
 const apikey_strategy_1 = require("./apikey.strategy");
+const storage_service_1 = require("../commons/storage/storage.service");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
@@ -36,6 +37,7 @@ AuthModule = __decorate([
             users_service_1.UsersService,
             user_repository_1.UserRepository,
             apikey_strategy_1.ApiKeyStrategy,
+            storage_service_1.StorageService
         ],
         controllers: [auth_controller_1.AuthController],
         exports: [jwt_strategy_1.JwtStrategy, passport_1.PassportModule, local_strategy_1.LocalStrategy],

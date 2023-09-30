@@ -17,68 +17,94 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const app_utils_1 = require("../app.utils");
-const fs = require("fs");
 const store_entity_1 = require("./store.entity");
 const users_service_1 = require("../users/users.service");
+const uuid_1 = require("uuid");
+const storage_service_1 = require("../commons/storage/storage.service");
 let StoreService = class StoreService {
-    constructor(storeRepository, userService) {
+    constructor(storeRepository, userService, storageService) {
         this.storeRepository = storeRepository;
         this.userService = userService;
+        this.storageService = storageService;
     }
-    async allStore(url) {
-        const store = await this.storeRepository.find({
-            relations: ['user'],
-        });
-        for (let item of store) {
-            await item.convertStringToArray();
-            item.url_image = `${url}/${item.filename}`;
+    async allStore(filterDto) {
+        let request_store = this.storeRepository.createQueryBuilder('store');
+        try {
+            if (filterDto.active_on) {
+                request_store = request_store
+                    .andWhere('store.active_on = :activeOn', { activeOn: filterDto.active_on });
+            }
+            if (filterDto.search) {
+                request_store = request_store.andWhere('store.name ILIKE :searchTerm or store.address ILIKE :searchTerm or store.phone ILIKE :searchTerm or store.omset ILIKE :searchTerm or store.aspek ILIKE :searchTerm', { searchTerm: `%${filterDto.search}%` });
+            }
+            const store = await request_store.getMany();
+            for (let item of store) {
+                item.url_image = `${process.env.LINK_GCP}/umkm/${item.active_on}/${item.mediaId}.png`;
+            }
+            if (store.length == 0) {
+                return app_utils_1.responseTemplate('400', "store doesn't exist", {}, true);
+            }
+            return app_utils_1.responseTemplate('200', 'success', store);
         }
-        if (store.length == 0) {
-            return app_utils_1.responseTemplate('400', "store doesn't exist", {}, true);
+        catch (err) {
+            console.log("error query", err);
         }
-        return app_utils_1.responseTemplate('200', 'success', store);
     }
     async detailStore(id, url) {
         const store = await this.storeRepository.findOne({ where: { id: id } });
         if (!store) {
             throw new common_1.NotFoundException(`store with id ${id} not found`);
         }
-        store.url_image = `${url}/${store.filename}`;
+        store.url_image = `${process.env.LINK_GCP}/umkm/${store.active_on}/${store.mediaId}.png`;
         return app_utils_1.responseTemplate('200', 'success', store);
     }
     async uploadStore(uploadStore) {
         const { file, name, address, aspek, category, id_owner, phone, omset, mediaContact, mediaOrder, } = uploadStore;
         const owner = await this.userService.userDetail(id_owner);
         const store = new store_entity_1.Store();
-        store.name = name;
-        store.address = address;
-        store.aspek = aspek;
+        store.name = name || '';
+        store.address = address || '';
+        store.aspek = aspek || '';
         if (category && category.length != 0)
             store.katagoriSaved = JSON.stringify(category);
         store.user = owner;
-        store.phone = phone;
-        store.omset = omset;
+        store.phone = phone || '';
+        store.omset = omset || '';
+        store.active_on = uploadStore.active_on;
         if (mediaContact && mediaContact.length != 0)
             store.mediaContact = JSON.stringify(mediaContact);
         if (mediaOrder && mediaContact.length != 0)
             store.mediaOrdered = JSON.stringify(mediaOrder);
         if (uploadStore.file) {
-            store.filename = file.filename;
-            store.image = file.path;
+            store.mediaId = uuid_1.v4();
+            await this.storageService.save(`umkm/${store.active_on}/${store.mediaId}`, file.mimetype, file.buffer, [{ mediaId: store.mediaId }]);
         }
         await store.convertStringToArray();
-        await this.storeRepository.save(store);
+        try {
+            await this.storeRepository.save(store);
+        }
+        catch (err) {
+            console.log("error query", err);
+        }
         return app_utils_1.responseTemplate('200', 'success', store);
     }
     async updateStore(updateStore, id) {
         const store = (await this.detailStore(id)).data;
         const owner = await this.userService.userDetail(updateStore.id_owner);
         if (updateStore.file) {
-            if (fs.existsSync(store.image)) {
-                fs.unlinkSync(store.image);
+            try {
+                await this.storageService.delete(`umkm/${store.active_on}/${store.mediaId}`);
             }
-            store.filename = updateStore.file.filename;
-            store.image = updateStore.file.path;
+            catch (err) {
+                console.log('error delete', err);
+            }
+            store.mediaId = uuid_1.v4();
+            try {
+                await this.storageService.save(`umkm/${store.active_on}/${store.mediaId}`, updateStore.file.mimetype, updateStore.file.buffer, [{ mediaId: store.mediaId }]);
+            }
+            catch (err) {
+                console.log('error upload', err);
+            }
         }
         store.name = updateStore.name;
         store.address = updateStore.address;
@@ -108,15 +134,34 @@ let StoreService = class StoreService {
         await this.storeRepository.save(store);
         return app_utils_1.responseTemplate('200', 'success', store);
     }
+    async updateStatus(updateComment, id) {
+        const store = (await this.detailStore(id)).data;
+        if (!store.id) {
+            return app_utils_1.responseTemplate('404', 'gagal', {});
+        }
+        try {
+            store.status = String(updateComment.status) === 'true' ? true : false;
+        }
+        catch (err) {
+            console.log('error parsing data', err);
+        }
+        try {
+            await this.storeRepository.save(store);
+        }
+        catch (err) {
+            console.log('error query', err);
+        }
+        return app_utils_1.responseTemplate('200', 'success', store);
+    }
     async deleteStore(id) {
         let response = '';
         const store = (await this.detailStore(id)).data;
         try {
-            fs.unlinkSync(store.image);
-            response = `${store.createdAt}. ${store.image} deleted`;
+            await this.storageService.delete(`umkm/${store.active_on}/${store.mediaId}`);
+            response = `${store.createdAt}. ${store.mediaId} deleted`;
         }
         catch (e) {
-            response = `${store.createdAt}. ${store.image}, ${e.message}`;
+            response = `${store.createdAt}. ${store.mediaId}, ${e.message}`;
         }
         await this.storeRepository.remove(store);
         return app_utils_1.responseTemplate('200', 'success', response);
@@ -126,7 +171,8 @@ StoreService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_1.InjectRepository(store_entity_1.Store)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
-        users_service_1.UsersService])
+        users_service_1.UsersService,
+        storage_service_1.StorageService])
 ], StoreService);
 exports.StoreService = StoreService;
 //# sourceMappingURL=store.service.js.map

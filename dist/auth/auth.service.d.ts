@@ -23,6 +23,6 @@ export declare class AuthService {
         data: any;
     }>;
     signUp(userRegister: SignupCredentialsDto, level?: UserLevel): Promise<User>;
-    validate(username: string, password: string): Promise<User>;
+    validate(username: string, password: string, active_on: string): Promise<User>;
     validateApiKey(apiKey: string): string;
 }

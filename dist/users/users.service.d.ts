@@ -2,10 +2,15 @@ import { UserRepository } from './user.repository';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { BumdesProfileDto } from './dto/bumdes-profile.dto';
 import { UpdatePasswordDto } from './dto/update-password.dto';
+import { StorageService } from 'src/commons/storage/storage.service';
+import { User } from './user.entity';
+import { UpdateStatusDto } from './dto/update-status.dto';
+import { FilterUmkmDto } from './dto/filter-all.dto';
 export declare class UsersService {
     private userRepository;
-    constructor(userRepository: UserRepository);
-    userUmkm(): Promise<{
+    private storageService;
+    constructor(userRepository: UserRepository, storageService: StorageService);
+    userUmkm(filterUmkm: FilterUmkmDto): Promise<{
         error: boolean;
         alerts: {
             code: string;
@@ -21,7 +26,7 @@ export declare class UsersService {
         };
         data: any;
     }>;
-    userDetail(id: string, url?: string): Promise<import("./user.entity").User>;
+    userDetail(id: string, url?: string): Promise<User>;
     updateProfile(updateProfile: UpdateProfileDto): Promise<{
         error: boolean;
         alerts: {
@@ -39,6 +44,14 @@ export declare class UsersService {
         data: any;
     }>;
     updatePassword(updatePassword: UpdatePasswordDto): Promise<{
+        error: boolean;
+        alerts: {
+            code: string;
+            message: string;
+        };
+        data: any;
+    }>;
+    updateStatus(updateStatus: UpdateStatusDto, id: string): Promise<{
         error: boolean;
         alerts: {
             code: string;

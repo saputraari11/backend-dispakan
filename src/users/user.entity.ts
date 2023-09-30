@@ -21,7 +21,7 @@ export class User extends BaseEntity {
   })
   name: string
 
-  @Column({ unique: true })
+  @Column()
   email: string
 
   @Column()
@@ -39,8 +39,11 @@ export class User extends BaseEntity {
   @Column({ nullable: true })
   address: string
 
-  @Column({ default: true })
+  @Column({ default: false })
   status: boolean
+
+  @Column({ default: '' })
+  createdBy: string
 
   @Column('text', {
     nullable: true,
@@ -51,6 +54,11 @@ export class User extends BaseEntity {
     nullable: true,
   })
   image: string
+
+  @Column({
+    nullable: true,
+  })
+  mediaId: string
 
   @CreateDateColumn({
     type: 'timestamp',
@@ -71,6 +79,11 @@ export class User extends BaseEntity {
     s => s.user,
   )
   store: Store[]
+
+  @Column({
+    nullable: true,
+  })
+  active_on: string
 
   url_image: string
 

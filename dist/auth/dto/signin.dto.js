@@ -18,20 +18,26 @@ class SignInDto {
 __decorate([
     swagger_1.ApiProperty({
         description: 'Email address of the user',
-        example: 'reachme@amitavroy.com',
     }),
     class_validator_1.IsEmail(),
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
-], SignInDto.prototype, "username", void 0);
+], SignInDto.prototype, "email", void 0);
 __decorate([
     swagger_1.ApiProperty({
         description: 'Password in plain text',
-        example: 'Password@123',
     }),
     class_validator_1.IsNotEmpty(),
     class_validator_1.Matches(app_utils_1.REGEX.PASSWORD_RULE),
     __metadata("design:type", String)
 ], SignInDto.prototype, "password", void 0);
+__decorate([
+    swagger_1.ApiProperty({
+        description: 'Active of the user',
+    }),
+    class_validator_1.IsString(),
+    class_validator_1.IsNotEmpty(),
+    __metadata("design:type", String)
+], SignInDto.prototype, "active_on", void 0);
 exports.SignInDto = SignInDto;
 //# sourceMappingURL=signin.dto.js.map

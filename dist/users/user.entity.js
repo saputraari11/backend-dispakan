@@ -30,7 +30,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "name", void 0);
 __decorate([
-    typeorm_1.Column({ unique: true }),
+    typeorm_1.Column(),
     __metadata("design:type", String)
 ], User.prototype, "email", void 0);
 __decorate([
@@ -54,9 +54,13 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "address", void 0);
 __decorate([
-    typeorm_1.Column({ default: true }),
+    typeorm_1.Column({ default: false }),
     __metadata("design:type", Boolean)
 ], User.prototype, "status", void 0);
+__decorate([
+    typeorm_1.Column({ default: '' }),
+    __metadata("design:type", String)
+], User.prototype, "createdBy", void 0);
 __decorate([
     typeorm_1.Column('text', {
         nullable: true,
@@ -69,6 +73,12 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], User.prototype, "image", void 0);
+__decorate([
+    typeorm_1.Column({
+        nullable: true,
+    }),
+    __metadata("design:type", String)
+], User.prototype, "mediaId", void 0);
 __decorate([
     typeorm_1.CreateDateColumn({
         type: 'timestamp',
@@ -89,6 +99,12 @@ __decorate([
     typeorm_1.OneToMany(type => store_entity_1.Store, s => s.user),
     __metadata("design:type", Array)
 ], User.prototype, "store", void 0);
+__decorate([
+    typeorm_1.Column({
+        nullable: true,
+    }),
+    __metadata("design:type", String)
+], User.prototype, "active_on", void 0);
 User = __decorate([
     typeorm_1.Entity()
 ], User);

@@ -1,3 +1,4 @@
+import { Comment } from 'src/comment/comment.entity'
 import {
   BaseEntity,
   Entity,
@@ -5,6 +6,7 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm'
 
 @Entity()
@@ -40,6 +42,16 @@ export class News extends BaseEntity {
   })
   description: string
 
+  @Column({
+    nullable: true,
+  })
+  active_on: string
+
+  @Column({
+    nullable: true,
+  })
+  mediaId: string
+
   @CreateDateColumn({
     type: 'timestamp',
     name: 'createdAt',
@@ -53,6 +65,12 @@ export class News extends BaseEntity {
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
   updatedAt: Date
+
+  @OneToMany(
+    type => Comment,
+    c => c.news,
+  )
+  comments: Comment[]
 
   url_image: string
 }

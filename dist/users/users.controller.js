@@ -25,6 +25,8 @@ const path = require("path");
 const platform_express_1 = require("@nestjs/platform-express");
 const bumdes_profile_dto_1 = require("./dto/bumdes-profile.dto");
 const update_password_dto_1 = require("./dto/update-password.dto");
+const update_status_dto_1 = require("./dto/update-status.dto");
+const filter_all_dto_1 = require("./dto/filter-all.dto");
 let dir = `public/dispakan/assets/bumdes`;
 dir = path.join(__dirname, '..', '..', '..', '..', '..', dir);
 const storage = multer.diskStorage({
@@ -47,8 +49,8 @@ let UsersController = class UsersController {
         console.log(request.ips, request.ip);
         return;
     }
-    async allUmkm() {
-        const result = await this.userService.userUmkm();
+    async allUmkm(filterAllUmkm) {
+        const result = await this.userService.userUmkm(filterAllUmkm);
         return result;
     }
     async allBumdes(request) {
@@ -78,17 +80,13 @@ let UsersController = class UsersController {
         const result = await this.userService.updateBumdes(body);
         return result;
     }
-    seeFile(image, res) {
-        if (!fs.existsSync(`${dir}/${image}`)) {
-            return res.send(app_utils_1.responseTemplate('400', "Failed file didn't exist", {}, true));
-        }
-        else {
-            return res.sendFile(image, { root: dir });
-        }
-    }
     async updatePassword(body, id) {
         body.id_user = id;
         const result = await this.userService.updatePassword(body);
+        return result;
+    }
+    async updateStatus(body, id) {
+        const result = await this.userService.updateStatus(body, id);
         return result;
     }
 };
@@ -103,8 +101,9 @@ __decorate([
     common_1.Get('umkm'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    __param(0, common_1.Query()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [filter_all_dto_1.FilterUmkmDto]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "allUmkm", null);
 __decorate([
@@ -149,7 +148,10 @@ __decorate([
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
-        storage: storage,
+        limits: {
+            files: 1,
+            fileSize: 1024 * 1024,
+        }
     })),
     __param(0, common_1.Body()),
     __param(1, common_1.UploadedFile('file')),
@@ -157,14 +159,6 @@ __decorate([
     __metadata("design:paramtypes", [bumdes_profile_dto_1.BumdesProfileDto, Object]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "updateProfilBumdes", null);
-__decorate([
-    common_1.Get('bumdes/profile/:img'),
-    swagger_1.ApiBearerAuth(),
-    __param(0, common_1.Param('img')), __param(1, common_1.Res()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", void 0)
-], UsersController.prototype, "seeFile", null);
 __decorate([
     common_1.Post('update/password/:id'),
     swagger_1.ApiBearerAuth(),
@@ -175,6 +169,16 @@ __decorate([
     __metadata("design:paramtypes", [update_password_dto_1.UpdatePasswordDto, String]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "updatePassword", null);
+__decorate([
+    common_1.Post('update/status/:id'),
+    swagger_1.ApiBearerAuth(),
+    common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    __param(0, common_1.Body()),
+    __param(1, common_1.Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [update_status_dto_1.UpdateStatusDto, String]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "updateStatus", null);
 UsersController = __decorate([
     swagger_1.ApiTags('User'),
     common_1.Controller('user'),

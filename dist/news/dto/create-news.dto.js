@@ -42,5 +42,11 @@ __decorate([
     swagger_1.ApiProperty({ type: 'string', format: 'binary', required: false }),
     __metadata("design:type", Object)
 ], CreateNewsDto.prototype, "file", void 0);
+__decorate([
+    swagger_1.ApiProperty({
+        required: true,
+    }),
+    __metadata("design:type", String)
+], CreateNewsDto.prototype, "active_on", void 0);
 exports.CreateNewsDto = CreateNewsDto;
 //# sourceMappingURL=create-news.dto.js.map

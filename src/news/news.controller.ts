@@ -2,10 +2,13 @@ import {
   Body,
   Controller,
   Get,
+  NotFoundException,
   Param,
   Post,
+  Query,
   Req,
   Res,
+  ServiceUnavailableException,
   UploadedFile,
   UseGuards,
   UseInterceptors,
@@ -19,48 +22,33 @@ import * as path from 'path'
 import { NewsService } from './news.service'
 import { Request, Response } from 'express'
 import { AuthGuard } from '@nestjs/passport'
-
-let dir = `public/dispakan/assets/news`
-dir = path.join(__dirname, '..', '..', '..', '..', '..', dir)
-
-const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true })
-    }
-
-    cb(null, dir)
-  },
-
-  filename: function(req, file, cb) {
-    cb(null, Date.now() + '-' + path.basename(file.originalname))
-  },
-})
+import { StorageFile } from 'src/commons/storage/storage-file'
+import { StorageService } from 'src/commons/storage/storage.service'
+import { FilterAllNews } from './dto/filter-all.dto'
 
 @ApiTags('News')
 @Controller('news')
 export class NewsController {
-  constructor(private newsService: NewsService) {}
+  constructor(private newsService: NewsService,private storageService:StorageService) {}
 
   @Get()
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async allNews(@Req() request: Request) {
-    const protocol = request.protocol
-    const hostname = request.headers.host
-    const pathname = request.path
-    const url = `${protocol}://${hostname}${pathname}/image`
-    const result = await this.newsService.allNews(url)
+  async allNews(@Query() filterDto:FilterAllNews) {
+    const result = await this.newsService.allNews(filterDto)
     return result
   }
 
   @Post('upload')
   @ApiBearerAuth()
-  // @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'))
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FileInterceptor('file', {
-      storage: storage,
+      limits: {
+        files: 1,
+        fileSize: 1024 * 1024,
+      }
     }),
   )
   async uploadFile(
@@ -78,7 +66,10 @@ export class NewsController {
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FileInterceptor('file', {
-      storage: storage,
+      limits: {
+        files: 1,
+        fileSize: 1024 * 1024,
+      }
     }),
   )
   async updateFile(
@@ -108,13 +99,5 @@ export class NewsController {
   async deleteNews(@Param('id') id: string) {
     const result = await this.newsService.deleteNews(id)
     return result
-  }
-
-  @Get('image/:img')
-  seeFile(@Param('img') image: string, @Res() res: Response) {
-    if (!fs.existsSync(`${dir}/${image}`)) {
-      return res.status(404).send('Image not Found!')
-    }
-    return res.sendFile(image, { root: dir })
   }
 }

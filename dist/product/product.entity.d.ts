@@ -12,6 +12,8 @@ export declare class Product extends BaseEntity {
     category: string;
     varianSaved: string;
     typesSaved: string;
+    mediaId: string;
+    active_on: string;
     createdAt: Date;
     updatedAt: Date;
     store: Store;
@@ -20,6 +22,7 @@ export declare class Product extends BaseEntity {
     varian: string[];
     types: string[];
     files: string[];
+    mediaIds: string[];
     price_discount: number;
     discount: number;
     url_image: string[];

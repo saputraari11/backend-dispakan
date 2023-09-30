@@ -16,36 +16,17 @@ exports.StoreController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const platform_express_1 = require("@nestjs/platform-express");
-const multer = require("multer");
-const fs = require("fs");
-const path = require("path");
 const passport_1 = require("@nestjs/passport");
 const store_service_1 = require("./store.service");
 const create_store_dto_1 = require("./dto/create-store.dto");
 const app_utils_1 = require("../app.utils");
-let dir = `public/dispakan/assets/store`;
-dir = path.join(__dirname, '..', '..', '..', '..', '..', dir);
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir, { recursive: true });
-        }
-        cb(null, dir);
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + path.basename(file.originalname));
-    },
-});
+const filter_all_dto_1 = require("./dto/filter-all.dto");
 let StoreController = class StoreController {
     constructor(storeService) {
         this.storeService = storeService;
     }
     async allStore(request) {
-        const protocol = request.protocol;
-        const hostname = request.headers.host;
-        const pathname = request.path;
-        const url = `${protocol}://${hostname}${pathname}/image`;
-        const result = await this.storeService.allStore(url);
+        const result = await this.storeService.allStore(request);
         return result;
     }
     async uploadFile(data, file) {
@@ -54,6 +35,11 @@ let StoreController = class StoreController {
         return result;
     }
     async updateFile(id, data, file) {
+        data.file = file;
+        const result = await this.storeService.updateStore(data, id);
+        return result;
+    }
+    async updateStatus(id, data, file) {
         data.file = file;
         const result = await this.storeService.updateStore(data, id);
         return result;
@@ -69,21 +55,14 @@ let StoreController = class StoreController {
         const result = await this.storeService.deleteStore(id);
         return result;
     }
-    seeFile(image, res) {
-        if (!fs.existsSync(`${dir}/${image}`)) {
-            return res.send(app_utils_1.responseTemplate('400', "Failed file didn't exist", {}, true));
-        }
-        else {
-            return res.sendFile(image, { root: dir });
-        }
-    }
 };
 __decorate([
     common_1.Get(),
     swagger_1.ApiBearerAuth(),
-    __param(0, common_1.Req()),
+    common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    __param(0, common_1.Query()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [filter_all_dto_1.FilterStoreDto]),
     __metadata("design:returntype", Promise)
 ], StoreController.prototype, "allStore", null);
 __decorate([
@@ -92,7 +71,10 @@ __decorate([
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
-        storage: storage,
+        limits: {
+            files: 1,
+            fileSize: 1024 * 1024,
+        }
     })),
     __param(0, common_1.Body()),
     __param(1, common_1.UploadedFile('file')),
@@ -106,7 +88,10 @@ __decorate([
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
-        storage: storage,
+        limits: {
+            files: 1,
+            fileSize: 1024 * 1024,
+        }
     })),
     __param(0, common_1.Param('id')),
     __param(1, common_1.Body()),
@@ -115,6 +100,24 @@ __decorate([
     __metadata("design:paramtypes", [String, create_store_dto_1.CreateStoreDto, Object]),
     __metadata("design:returntype", Promise)
 ], StoreController.prototype, "updateFile", null);
+__decorate([
+    common_1.Post('update/status/:id'),
+    swagger_1.ApiBearerAuth(),
+    common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    swagger_1.ApiConsumes('multipart/form-data'),
+    common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
+        limits: {
+            files: 1,
+            fileSize: 1024 * 1024,
+        }
+    })),
+    __param(0, common_1.Param('id')),
+    __param(1, common_1.Body()),
+    __param(2, common_1.UploadedFile('file')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, create_store_dto_1.CreateStoreDto, Object]),
+    __metadata("design:returntype", Promise)
+], StoreController.prototype, "updateStatus", null);
 __decorate([
     common_1.Get('detail/:id'),
     swagger_1.ApiBearerAuth(),
@@ -133,14 +136,6 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], StoreController.prototype, "deleteStore", null);
-__decorate([
-    common_1.Get(':img'),
-    swagger_1.ApiBearerAuth(),
-    __param(0, common_1.Param('img')), __param(1, common_1.Res()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", void 0)
-], StoreController.prototype, "seeFile", null);
 StoreController = __decorate([
     swagger_1.ApiTags('UMKM'),
     common_1.Controller('store'),

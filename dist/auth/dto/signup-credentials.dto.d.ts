@@ -6,4 +6,6 @@ export declare class SignupCredentialsDto {
     email: string;
     password: string;
     level: UserLevel;
+    active_on: string;
+    createdBy: any;
 }

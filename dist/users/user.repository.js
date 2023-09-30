@@ -12,7 +12,7 @@ const bcrypt = require("bcrypt");
 const user_entity_1 = require("./user.entity");
 let UserRepository = class UserRepository extends typeorm_1.Repository {
     async signup(signupCredentialsDto) {
-        const { name, password, email, level, address, phone, } = signupCredentialsDto;
+        const { name, password, email, level, address, phone, active_on, createdBy } = signupCredentialsDto;
         const user = new user_entity_1.User();
         if (name)
             user.name = name;
@@ -24,6 +24,9 @@ let UserRepository = class UserRepository extends typeorm_1.Repository {
         user.salt = await bcrypt.genSalt();
         user.password = await this.hashPassword(password, user.salt);
         user.level = level;
+        user.active_on = active_on;
+        if (createdBy)
+            user.createdBy = createdBy.email;
         const savedUser = await user.save();
         return savedUser;
     }

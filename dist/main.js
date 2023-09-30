@@ -6,7 +6,6 @@ const app_module_1 = require("./app.module");
 const express = require("express");
 const bodyParser = require("body-parser");
 const path_1 = require("path");
-const timeout_interceptor_1 = require("./commons/interceptors/timeout.interceptor");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const options = new swagger_1.DocumentBuilder()
@@ -23,9 +22,8 @@ async function bootstrap() {
     app.use(bodyParser.json({ limit: '50mb' }));
     app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
     app.use(express.static(path_1.join(process.cwd(), '../temp/qrcode/')));
-    app.useGlobalInterceptors(new timeout_interceptor_1.TimeoutInterceptor(logger));
     app.enableCors();
-    await app.listen(process.env.PORT || '4000');
+    await app.listen(process.env.PORT || '4000', process.env.HOST);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

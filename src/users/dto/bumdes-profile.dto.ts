@@ -10,24 +10,22 @@ export class BumdesProfileDto {
   @ApiProperty({
     required: false,
   })
-  @IsString()
   name: string
 
   @ApiProperty({
     required: false,
   })
-  @IsString()
   address: string
 
   @ApiProperty({
     required: false,
   })
-  phone: string
+  phone?: string
 
   @ApiProperty({
     required: false,
   })
-  status: boolean
+  status?: boolean
 
   @ApiProperty({ type: 'string', format: 'binary', required: false })
   file: Express.Multer.File

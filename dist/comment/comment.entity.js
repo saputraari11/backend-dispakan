@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Comment = void 0;
+const news_entity_1 = require("../news/news.entity");
 const typeorm_1 = require("typeorm");
 let Comment = class Comment extends typeorm_1.BaseEntity {
 };
@@ -18,13 +19,27 @@ __decorate([
     __metadata("design:type", String)
 ], Comment.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ default: 'anonymous' }),
     __metadata("design:type", String)
 ], Comment.prototype, "name", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], Comment.prototype, "description", void 0);
+__decorate([
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", Date)
+], Comment.prototype, "periode", void 0);
+__decorate([
+    typeorm_1.Column({ default: 'belum disetujui' }),
+    __metadata("design:type", String)
+], Comment.prototype, "is_proved", void 0);
+__decorate([
+    typeorm_1.Column({
+        nullable: true,
+    }),
+    __metadata("design:type", String)
+], Comment.prototype, "active_on", void 0);
 __decorate([
     typeorm_1.CreateDateColumn({
         type: 'timestamp',
@@ -41,6 +56,10 @@ __decorate([
     }),
     __metadata("design:type", Date)
 ], Comment.prototype, "updatedAt", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => news_entity_1.News, n => n.comments),
+    __metadata("design:type", news_entity_1.News)
+], Comment.prototype, "news", void 0);
 Comment = __decorate([
     typeorm_1.Entity()
 ], Comment);
