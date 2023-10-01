@@ -18,14 +18,19 @@ export class ProductService {
     private readonly storeService: StoreService,
     private readonly storageService: StorageService,
   ) {}
-  async allProduct(filterAllProducts:FilterAllProducts) {
-    let queryProducts = this.productRepository.createQueryBuilder('products').innerJoinAndSelect('products.store','store').where('products.active_on = :active',{active:filterAllProducts.active_on})
+  async allProduct(filterAllProducts: FilterAllProducts) {
+    let queryProducts = this.productRepository
+      .createQueryBuilder('products')
+      .innerJoinAndSelect('products.store', 'store')
+      .where('products.active_on = :active', {
+        active: filterAllProducts.active_on,
+      })
 
-    if(filterAllProducts && filterAllProducts.search) {
-         queryProducts = queryProducts.andWhere(
-          'products.name ILIKE :searchTerm or products.description ILIKE :searchTerm',
-          { searchTerm: `%${filterAllProducts.search}%` },
-        )
+    if (filterAllProducts && filterAllProducts.search) {
+      queryProducts = queryProducts.andWhere(
+        'products.name ILIKE :searchTerm or products.description ILIKE :searchTerm',
+        { searchTerm: `%${filterAllProducts.search}%` },
+      )
     }
 
     const products = await queryProducts.getMany()
@@ -67,13 +72,13 @@ export class ProductService {
     await product.convertStringToArray()
 
     if (product.mediaIds && product.mediaIds.length > 0) {
-        const urlImage = product.mediaIds.map(
-          file =>
-            `${process.env.LINK_GCP}/products/${product.active_on}/${file}.png`,
-        )
+      const urlImage = product.mediaIds.map(
+        file =>
+          `${process.env.LINK_GCP}/products/${product.active_on}/${file}.png`,
+      )
 
-        product.images = urlImage
-      }
+      product.images = urlImage
+    }
 
     return responseTemplate('200', 'success', product)
   }
@@ -89,7 +94,7 @@ export class ProductService {
         others_description,
         sale,
         files,
-        status
+        status,
       } = uploadProduct
 
       const umkm = (await this.storeService.detailStore(id_umkm)).data
@@ -103,7 +108,8 @@ export class ProductService {
       product.category = category
       product.active_on = uploadProduct.active_on
       product.status = String(status) === 'true' ? true : false
-      if(others_description) product.othersSaved = JSON.parse(others_description)
+      if (others_description)
+        product.othersSaved = JSON.parse(others_description)
 
       const medias = []
       try {
@@ -123,18 +129,17 @@ export class ProductService {
             }
           }
         }
-      }
-      catch (err) {
-        console.log("gagal up foto",err);
+      } catch (err) {
+        console.log('gagal up foto', err)
       }
 
-     if(medias.length > 0) product.mediaId = JSON.stringify(medias)
+      if (medias.length > 0) product.mediaId = JSON.stringify(medias)
 
       await this.productRepository.save(product)
       await product.convertStringToArray()
       return responseTemplate('200', 'success', product)
-    } catch(err) {
-      console.log(err);
+    } catch (err) {
+      console.log(err)
     }
   }
 
@@ -150,36 +155,36 @@ export class ProductService {
       others_description,
       price,
       sale,
-      status
+      status,
     } = updateProduct
 
     const umkm = (await this.storeService.detailStore(id_umkm)).data
-    
+
     const medias = []
 
-    if(name) product.name = name
-    if(price) product.price = price
-    if(sale) product.sale = sale
-    if(description) product.description = description
-    if(umkm) product.store = umkm
-    if(category) product.category = category
-    if(others_description) product.othersSaved = others_description
-    if(status)  product.status = String(status) === 'true' ? true : false
+    if (name) product.name = name
+    if (price) product.price = price
+    if (sale) product.sale = sale
+    if (description) product.description = description
+    if (umkm) product.store = umkm
+    if (category) product.category = category
+    if (others_description) product.othersSaved = others_description
+    if (status) product.status = String(status) === 'true' ? true : false
 
     if (files && files.length > 0) {
       for (let file of files) {
-      try {
-        if(product.mediaIds && product.mediaIds.length) {
-          for(let mediaId of product.mediaIds) {
-            await this.storageService.delete(
-              `products/${product.active_on}/${mediaId}`,
-            )
+        try {
+          if (product.mediaIds && product.mediaIds.length) {
+            for (let mediaId of product.mediaIds) {
+              await this.storageService.delete(
+                `products/${product.active_on}/${mediaId}`,
+              )
+            }
           }
-        } 
-      } catch (err) {
-        console.log('error delete', err)
-      }
-      
+        } catch (err) {
+          console.log('error delete', err)
+        }
+
         const mediaId = v4()
         try {
           await this.storageService.save(
@@ -195,7 +200,7 @@ export class ProductService {
       }
     }
 
-    if(medias.length > 0) product.mediaId = JSON.stringify(medias)
+    if (medias.length > 0) product.mediaId = JSON.stringify(medias)
 
     await this.productRepository.save(product)
     await product.convertStringToArray()
@@ -208,17 +213,15 @@ export class ProductService {
     await product.convertStringToArray()
 
     if (product) {
-        if(product.mediaIds && product.mediaIds.length) {
-          for(let mediaId of product.mediaIds) {
-            console.log(
-              `products/${product.active_on}/${mediaId}`
-            );
-            
-            await this.storageService.delete(
-              `products/${product.active_on}/${mediaId}`,
-            )
-          }
+      if (product.mediaIds && product.mediaIds.length) {
+        for (let mediaId of product.mediaIds) {
+          console.log(`products/${product.active_on}/${mediaId}`)
+
+          await this.storageService.delete(
+            `products/${product.active_on}/${mediaId}`,
+          )
         }
+      }
     }
 
     // await this.productRepository.remove(product)

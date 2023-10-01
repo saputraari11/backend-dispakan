@@ -161,7 +161,7 @@ export class StoreService {
     store.name = updateStore.name
     store.address = updateStore.address
     store.aspek = updateStore.aspek
-    store.status = String(updateStore.status) === 'true' ? true :false
+    store.status = String(updateStore.status) === 'true' ? true : false
     if (updateStore.category && updateStore.category.length != 0) {
       store.katagoriSaved = JSON.stringify(updateStore.category)
     } else {
@@ -204,8 +204,8 @@ export class StoreService {
 
     if (products.length > 0) {
       for (let product of products) {
-        if(product.mediaIds && product.mediaIds.length) {
-          for(let mediaId of product.mediaIds) {
+        if (product.mediaIds && product.mediaIds.length) {
+          for (let mediaId of product.mediaIds) {
             await this.storageService.delete(
               `products/${product.active_on}/${mediaId}`,
             )

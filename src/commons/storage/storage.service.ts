@@ -21,8 +21,8 @@ export class StorageService {
         .bucket(this.bucket)
         .file(`${path}.png`)
         .delete()
-    } catch(err) {
-      console.log("gagal hapus foto",err);
+    } catch (err) {
+      console.log('gagal hapus foto', err)
     }
   }
 

@@ -101,6 +101,7 @@ export class Product extends BaseEntity {
   public async convertStringToArray() {
     if (this.imagesSaved) this.images = JSON.parse(this.imagesSaved)
     if (this.mediaId) this.mediaIds = JSON.parse(this.mediaId)
-    if (this.othersSaved) this.others_descriptions = JSON.parse(this.othersSaved)
+    if (this.othersSaved)
+      this.others_descriptions = JSON.parse(this.othersSaved)
   }
 }

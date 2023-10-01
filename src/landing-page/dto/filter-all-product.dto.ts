@@ -7,10 +7,8 @@ export class SortedBy {
   })
   description: boolean
 
-  @ApiProperty(
-    {required:false}
-  )
-  like:boolean
+  @ApiProperty({ required: false })
+  like: boolean
 }
 
 export class FilterAllProducts {
@@ -20,7 +18,7 @@ export class FilterAllProducts {
   search: string
 
   @ApiProperty({
-    required:false,
+    required: false,
   })
   @IsObject()
   sort_by: string
@@ -31,5 +29,3 @@ export class FilterAllProducts {
   @IsNotEmpty()
   active_on: string
 }
-
-
