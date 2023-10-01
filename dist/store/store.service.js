@@ -21,25 +21,33 @@ const store_entity_1 = require("./store.entity");
 const users_service_1 = require("../users/users.service");
 const uuid_1 = require("uuid");
 const storage_service_1 = require("../commons/storage/storage.service");
+const product_entity_1 = require("../product/product.entity");
 let StoreService = class StoreService {
-    constructor(storeRepository, userService, storageService) {
+    constructor(storeRepository, userService, storageService, productRepository) {
         this.storeRepository = storeRepository;
         this.userService = userService;
         this.storageService = storageService;
+        this.productRepository = productRepository;
     }
     async allStore(filterDto) {
-        let request_store = this.storeRepository.createQueryBuilder('store');
+        let request_store = this.storeRepository.createQueryBuilder('store')
+            .innerJoinAndSelect('store.user', 'user');
         try {
             if (filterDto.active_on) {
-                request_store = request_store
-                    .andWhere('store.active_on = :activeOn', { activeOn: filterDto.active_on });
+                request_store = request_store.andWhere('store.active_on = :activeOn', {
+                    activeOn: filterDto.active_on,
+                });
             }
             if (filterDto.search) {
                 request_store = request_store.andWhere('store.name ILIKE :searchTerm or store.address ILIKE :searchTerm or store.phone ILIKE :searchTerm or store.omset ILIKE :searchTerm or store.aspek ILIKE :searchTerm', { searchTerm: `%${filterDto.search}%` });
             }
+            if (filterDto.id_mitra) {
+                request_store = request_store.andWhere('user.id = :idMitra', { idMitra: filterDto.id_mitra });
+            }
             const store = await request_store.getMany();
             for (let item of store) {
                 item.url_image = `${process.env.LINK_GCP}/umkm/${item.active_on}/${item.mediaId}.png`;
+                await item.convertStringToArray();
             }
             if (store.length == 0) {
                 return app_utils_1.responseTemplate('400', "store doesn't exist", {}, true);
@@ -47,15 +55,16 @@ let StoreService = class StoreService {
             return app_utils_1.responseTemplate('200', 'success', store);
         }
         catch (err) {
-            console.log("error query", err);
+            console.log('error query', err);
         }
     }
-    async detailStore(id, url) {
+    async detailStore(id) {
         const store = await this.storeRepository.findOne({ where: { id: id } });
         if (!store) {
             throw new common_1.NotFoundException(`store with id ${id} not found`);
         }
         store.url_image = `${process.env.LINK_GCP}/umkm/${store.active_on}/${store.mediaId}.png`;
+        await store.convertStringToArray();
         return app_utils_1.responseTemplate('200', 'success', store);
     }
     async uploadStore(uploadStore) {
@@ -84,7 +93,7 @@ let StoreService = class StoreService {
             await this.storeRepository.save(store);
         }
         catch (err) {
-            console.log("error query", err);
+            console.log('error query', err);
         }
         return app_utils_1.responseTemplate('200', 'success', store);
     }
@@ -156,6 +165,19 @@ let StoreService = class StoreService {
     async deleteStore(id) {
         let response = '';
         const store = (await this.detailStore(id)).data;
+        const products = await this.productRepository.find({
+            where: {
+                store: {
+                    id: id
+                }
+            },
+            relations: ['store']
+        });
+        if (products.length > 0) {
+            for (let product of products) {
+                await this.productRepository.delete({ id: product.id });
+            }
+        }
         try {
             await this.storageService.delete(`umkm/${store.active_on}/${store.mediaId}`);
             response = `${store.createdAt}. ${store.mediaId} deleted`;
@@ -170,9 +192,11 @@ let StoreService = class StoreService {
 StoreService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_1.InjectRepository(store_entity_1.Store)),
+    __param(3, typeorm_1.InjectRepository(product_entity_1.Product)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
         users_service_1.UsersService,
-        storage_service_1.StorageService])
+        storage_service_1.StorageService,
+        typeorm_2.Repository])
 ], StoreService);
 exports.StoreService = StoreService;
 //# sourceMappingURL=store.service.js.map

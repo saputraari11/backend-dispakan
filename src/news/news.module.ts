@@ -8,6 +8,6 @@ import { StorageService } from 'src/commons/storage/storage.service'
 @Module({
   imports: [TypeOrmModule.forFeature([News])],
   controllers: [NewsController],
-  providers: [NewsService,StorageService],
+  providers: [NewsService, StorageService],
 })
 export class NewsModule {}

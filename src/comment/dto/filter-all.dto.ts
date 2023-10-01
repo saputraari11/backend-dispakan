@@ -1,24 +1,23 @@
 import { ApiProperty } from '@nestjs/swagger'
 
-export class FilterAllComment{
-    @ApiProperty({
+export class FilterAllComment {
+  @ApiProperty({
     required: false,
-    })
-    search:string
+  })
+  search: string
 
-    @ApiProperty({
+  @ApiProperty({
     required: false,
-    })
-    active_on:string
+  })
+  active_on: string
 
-    @ApiProperty({
+  @ApiProperty({
     required: false,
-    })
-    id_news:string
+  })
+  id_news: string
 
-    @ApiProperty({
+  @ApiProperty({
     required: false,
-    })
-    status:string
+  })
+  status: string
 }
-

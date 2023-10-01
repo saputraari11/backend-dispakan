@@ -1,14 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger'
 
 export class FilterUmkmDto {
-    @ApiProperty({
+  @ApiProperty({
     required: false,
-    })
-    search:string
+  })
+  search: string
 
-    @ApiProperty({
+  @ApiProperty({
     required: false,
-    })
-    active_on:string
+  })
+  active_on: string
 }
-

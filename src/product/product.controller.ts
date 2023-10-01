@@ -111,16 +111,4 @@ export class ProductController {
     const result = await this.productService.deleteProduct(id)
     return result
   }
-
-  @Get(':img')
-  @ApiBearerAuth()
-  seeFile(@Param('img') image: string, @Res() res: Response) {
-    if (!fs.existsSync(`${dir}/${image}`)) {
-      return res.send(
-        responseTemplate('400', "Failed file didn't exist", {}, true),
-      )
-    } else {
-      return res.sendFile(image, { root: dir })
-    }
-  }
 }

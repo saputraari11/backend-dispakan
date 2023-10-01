@@ -1,14 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger'
 
 export class FilterStoreDto {
-    @ApiProperty({
+  @ApiProperty({
     required: false,
-    })
-    search:string
+  })
+  search: string
 
-    @ApiProperty({
+  @ApiProperty({
     required: false,
-    })
-    active_on:string
+  })
+  active_on: string
+
+  @ApiProperty({
+    required: false,
+  })
+  id_mitra: string
 }
-

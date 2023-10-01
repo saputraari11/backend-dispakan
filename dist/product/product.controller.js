@@ -64,14 +64,6 @@ let ProductController = class ProductController {
         const result = await this.productService.deleteProduct(id);
         return result;
     }
-    seeFile(image, res) {
-        if (!fs.existsSync(`${dir}/${image}`)) {
-            return res.send(app_utils_1.responseTemplate('400', "Failed file didn't exist", {}, true));
-        }
-        else {
-            return res.sendFile(image, { root: dir });
-        }
-    }
 };
 __decorate([
     common_1.Post('upload'),
@@ -135,14 +127,6 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "deleteProduct", null);
-__decorate([
-    common_1.Get(':img'),
-    swagger_1.ApiBearerAuth(),
-    __param(0, common_1.Param('img')), __param(1, common_1.Res()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", void 0)
-], ProductController.prototype, "seeFile", null);
 ProductController = __decorate([
     swagger_1.ApiTags('Product UMKM'),
     common_1.Controller('product'),

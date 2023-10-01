@@ -1,5 +1,4 @@
 /// <reference types="multer" />
-import { Request } from 'express';
 import { StoreService } from './store.service';
 import { CreateStoreDto } from './dto/create-store.dto';
 import { FilterStoreDto } from './dto/filter-all.dto';
@@ -30,7 +29,7 @@ export declare class StoreController {
         };
         data: any;
     }>;
-    updateStatus(id: string, data: CreateStoreDto, file: Express.Multer.File): Promise<{
+    updateFileStatus(id: string, data: CreateStoreDto, file: Express.Multer.File): Promise<{
         error: boolean;
         alerts: {
             code: string;
@@ -38,7 +37,7 @@ export declare class StoreController {
         };
         data: any;
     }>;
-    detailStore(id: string, request: Request): Promise<{
+    detailStore(id: string): Promise<{
         error: boolean;
         alerts: {
             code: string;

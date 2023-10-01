@@ -14,16 +14,20 @@ export class NewsService {
   constructor(
     @InjectRepository(News)
     private readonly newsRepository: Repository<News>,
-    private storageService:StorageService
+    private storageService: StorageService,
   ) {}
 
-  async allNews(filterAllNews:FilterAllNews) {
-    let request_news = this.newsRepository.createQueryBuilder('news').where('news.active_on = :activeOn',{activeOn:filterAllNews.active_on})
+  async allNews(filterAllNews: FilterAllNews) {
+    let request_news = this.newsRepository
+      .createQueryBuilder('news')
+      .where('news.active_on = :activeOn', {
+        activeOn: filterAllNews.active_on,
+      })
 
-    if(filterAllNews && filterAllNews.search){
+    if (filterAllNews && filterAllNews.search) {
       request_news = request_news.andWhere(
         'news.title ILIKE :searchTerm or news.description ILIKE :searchTerm',
-        { searchTerm: `%${filterAllNews.search}%` }
+        { searchTerm: `%${filterAllNews.search}%` },
       )
     }
 
@@ -33,7 +37,10 @@ export class NewsService {
       return responseTemplate('400', "news doesn't exist", {}, true)
     }
 
-    news.map(item => (item.url_image = `${process.env.LINK_GCP}/news/${item.active_on}/${item.mediaId}.png`))
+    news.map(
+      item =>
+        (item.url_image = `${process.env.LINK_GCP}/news/${item.active_on}/${item.mediaId}.png`),
+    )
 
     return responseTemplate('200', 'success', news)
   }
@@ -42,7 +49,7 @@ export class NewsService {
     const news = await this.newsRepository.findOne({ where: { id: id } })
 
     if (!news) {
-      return responseTemplate('404','gagal',{})
+      return responseTemplate('404', 'gagal', {})
     }
 
     if (news.mediaId) {
@@ -53,7 +60,7 @@ export class NewsService {
   }
 
   async uploadNews(uploadNews: CreateNewsDto) {
-    const { file, status, title, posted_date,active_on } = uploadNews
+    const { file, status, title, posted_date, active_on } = uploadNews
 
     const news = new News()
     news.status = !!status
@@ -68,14 +75,14 @@ export class NewsService {
         `news/${news.active_on}/${news.mediaId}`,
         file.mimetype,
         file.buffer,
-        [{mediaId:news.mediaId}]
+        [{ mediaId: news.mediaId }],
       )
     }
 
     try {
       await this.newsRepository.save(news)
-    } catch(err) {
-      console.log('error query',err);
+    } catch (err) {
+      console.log('error query', err)
     }
 
     return responseTemplate('200', 'success', news)
@@ -84,15 +91,17 @@ export class NewsService {
   async updateNews(updateNews: CreateNewsDto, id: string) {
     const news = (await this.detailNews(id)).data
 
-    if(!news.title) {
+    if (!news.title) {
       return responseTemplate('404', 'gagal', {})
     }
 
     if (updateNews.file) {
       try {
-      await this.storageService.delete(`news/${news.active_on}/${news.mediaId}`)
-      } catch(err) {
-        console.log('error delete',err);
+        await this.storageService.delete(
+          `news/${news.active_on}/${news.mediaId}`,
+        )
+      } catch (err) {
+        console.log('error delete', err)
       }
 
       news.mediaId = v4()
@@ -102,25 +111,28 @@ export class NewsService {
           `news/${news.active_on}/${news.mediaId}`,
           updateNews.file.mimetype,
           updateNews.file.buffer,
-          [{mediaId:news.mediaId}]
+          [{ mediaId: news.mediaId }],
         )
-      } catch(err) {
-        console.log('error upload',err);
+      } catch (err) {
+        console.log('error upload', err)
       }
     }
-  
+
     try {
       if (updateNews.status) news.status = !!updateNews.status
       if (updateNews.title) news.title = updateNews.title
-      if (updateNews.posted_date) news.posted_date = updateNews.posted_date ? new Date(updateNews.posted_date) : new Date()
+      if (updateNews.posted_date)
+        news.posted_date = updateNews.posted_date
+          ? new Date(updateNews.posted_date)
+          : new Date()
       if (updateNews.description) news.description = updateNews.description
-    } catch(err) {
-        console.log('error parsing data',err);
+    } catch (err) {
+      console.log('error parsing data', err)
     }
-        try {
+    try {
       await this.newsRepository.save(news)
-    } catch(err) {
-      console.log('error query',err);
+    } catch (err) {
+      console.log('error query', err)
     }
 
     return responseTemplate('200', 'success', news)

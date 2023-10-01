@@ -15,12 +15,12 @@ export class CreateCommantDto {
   @ApiProperty({
     required: true,
   })
-  active_on:string
+  active_on: string
 
   @ApiProperty({
     required: true,
   })
-  id_news:string
+  id_news: string
 
   @ApiProperty({
     required: false,

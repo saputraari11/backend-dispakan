@@ -26,7 +26,7 @@ import { StorageService } from 'src/commons/storage/storage.service'
     UsersService,
     UserRepository,
     ApiKeyStrategy,
-    StorageService
+    StorageService,
   ],
   controllers: [AuthController],
   exports: [JwtStrategy, PassportModule, LocalStrategy],

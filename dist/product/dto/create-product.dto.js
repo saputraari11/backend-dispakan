@@ -48,7 +48,7 @@ __decorate([
 ], CreateProductDto.prototype, "price", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        required: true,
+        required: false,
     }),
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
@@ -61,28 +61,11 @@ __decorate([
 ], CreateProductDto.prototype, "active_on", void 0);
 __decorate([
     swagger_1.ApiProperty({
-        isArray: true,
-        required: false,
-        type: String,
+        type: 'string',
+        required: false
     }),
-    __metadata("design:type", Array)
-], CreateProductDto.prototype, "other", void 0);
-__decorate([
-    swagger_1.ApiProperty({
-        isArray: true,
-        required: false,
-        type: String,
-    }),
-    __metadata("design:type", Array)
-], CreateProductDto.prototype, "varian", void 0);
-__decorate([
-    swagger_1.ApiProperty({
-        isArray: true,
-        required: false,
-        type: String,
-    }),
-    __metadata("design:type", Array)
-], CreateProductDto.prototype, "tipe", void 0);
+    __metadata("design:type", String)
+], CreateProductDto.prototype, "others", void 0);
 __decorate([
     swagger_1.ApiProperty({
         type: 'array',

@@ -31,6 +31,6 @@ async function bootstrap() {
   // app.useGlobalInterceptors(new TimeoutInterceptor(logger))
   app.enableCors()
 
-  await app.listen(process.env.PORT || '4000',process.env.HOST)
+  await app.listen(process.env.PORT || '4000', process.env.HOST)
 }
 bootstrap()

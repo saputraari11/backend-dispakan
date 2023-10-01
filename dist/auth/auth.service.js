@@ -56,7 +56,7 @@ let AuthService = class AuthService {
             return user;
         }
         catch (err) {
-            console.log("error query", err);
+            console.log('error query', err);
             return err;
         }
     }
@@ -64,8 +64,9 @@ let AuthService = class AuthService {
         const user = await user_entity_1.User.getRepository()
             .createQueryBuilder('user')
             .where('user.email = :email', {
-            email: username
-        }).andWhere('user.active_on = :activeOn', { activeOn: active_on })
+            email: username,
+        })
+            .andWhere('user.active_on = :activeOn', { activeOn: active_on })
             .getOne();
         console.log(active_on);
         if (user && (await user.validatePassword(password))) {

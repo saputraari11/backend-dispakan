@@ -151,7 +151,7 @@ __decorate([
         limits: {
             files: 1,
             fileSize: 1024 * 1024,
-        }
+        },
     })),
     __param(0, common_1.Body()),
     __param(1, common_1.UploadedFile('file')),
@@ -173,8 +173,7 @@ __decorate([
     common_1.Post('update/status/:id'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
-    __param(0, common_1.Body()),
-    __param(1, common_1.Param('id')),
+    __param(0, common_1.Body()), __param(1, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [update_status_dto_1.UpdateStatusDto, String]),
     __metadata("design:returntype", Promise)

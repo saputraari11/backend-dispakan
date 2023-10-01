@@ -71,7 +71,7 @@ __decorate([
         limits: {
             files: 1,
             fileSize: 1024 * 1024,
-        }
+        },
     })),
     __param(0, common_1.Body()),
     __param(1, common_1.UploadedFile('file')),
@@ -88,7 +88,7 @@ __decorate([
         limits: {
             files: 1,
             fileSize: 1024 * 1024,
-        }
+        },
     })),
     __param(0, common_1.Param('id')),
     __param(1, common_1.Body()),
@@ -118,7 +118,8 @@ __decorate([
 NewsController = __decorate([
     swagger_1.ApiTags('News'),
     common_1.Controller('news'),
-    __metadata("design:paramtypes", [news_service_1.NewsService, storage_service_1.StorageService])
+    __metadata("design:paramtypes", [news_service_1.NewsService,
+        storage_service_1.StorageService])
 ], NewsController);
 exports.NewsController = NewsController;
 //# sourceMappingURL=news.controller.js.map

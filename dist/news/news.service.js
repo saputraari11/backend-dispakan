@@ -26,7 +26,11 @@ let NewsService = class NewsService {
         this.storageService = storageService;
     }
     async allNews(filterAllNews) {
-        let request_news = this.newsRepository.createQueryBuilder('news').where('news.active_on = :activeOn', { activeOn: filterAllNews.active_on });
+        let request_news = this.newsRepository
+            .createQueryBuilder('news')
+            .where('news.active_on = :activeOn', {
+            activeOn: filterAllNews.active_on,
+        });
         if (filterAllNews && filterAllNews.search) {
             request_news = request_news.andWhere('news.title ILIKE :searchTerm or news.description ILIKE :searchTerm', { searchTerm: `%${filterAllNews.search}%` });
         }
@@ -93,7 +97,9 @@ let NewsService = class NewsService {
             if (updateNews.title)
                 news.title = updateNews.title;
             if (updateNews.posted_date)
-                news.posted_date = updateNews.posted_date ? new Date(updateNews.posted_date) : new Date();
+                news.posted_date = updateNews.posted_date
+                    ? new Date(updateNews.posted_date)
+                    : new Date();
             if (updateNews.description)
                 news.description = updateNews.description;
         }

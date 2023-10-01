@@ -30,7 +30,7 @@ export class CreateProductDto {
   price: number
 
   @ApiProperty({
-    required: true,
+    required: false,
   })
   @IsNotEmpty()
   category: string
@@ -41,25 +41,10 @@ export class CreateProductDto {
   active_on: string
 
   @ApiProperty({
-    isArray: true,
-    required: false,
-    type: String,
+    type:'string',
+    required:false
   })
-  other: string[]
-
-  @ApiProperty({
-    isArray: true,
-    required: false,
-    type: String,
-  })
-  varian: string[]
-
-  @ApiProperty({
-    isArray: true,
-    required: false,
-    type: String,
-  })
-  tipe: string[]
+  others: string
 
   @ApiProperty({
     type: 'array',

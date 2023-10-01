@@ -15,25 +15,35 @@ export class CommentService {
   constructor(
     @InjectRepository(Comment)
     private readonly commenntRepository: Repository<Comment>,
-    private readonly newsService:NewsService
+    private readonly newsService: NewsService,
   ) {}
 
-  async allComment(filterAllComment:FilterAllComment) {
-    let request_comment = this.commenntRepository.createQueryBuilder('comment').innerJoinAndSelect('comment.news', 'news').where('comment.active_on = :activeOn',{activeOn:filterAllComment.active_on})
+  async allComment(filterAllComment: FilterAllComment) {
+    let request_comment = this.commenntRepository
+      .createQueryBuilder('comment')
+      .innerJoinAndSelect('comment.news', 'news')
+      .where('comment.active_on = :activeOn', {
+        activeOn: filterAllComment.active_on,
+      })
 
-    if(filterAllComment && filterAllComment.search){
+    if (filterAllComment && filterAllComment.search) {
       request_comment = request_comment.andWhere(
         'comment.name ILIKE :searchTerm or comment.description ILIKE :searchTerm',
-        { searchTerm: `%${filterAllComment.search}%` }
+        { searchTerm: `%${filterAllComment.search}%` },
       )
     }
 
-    if(filterAllComment && filterAllComment.id_news) {
-      request_comment = request_comment.andWhere('news.id = :idNews',{idNews:filterAllComment.id_news})
+    if (filterAllComment && filterAllComment.id_news) {
+      request_comment = request_comment.andWhere('news.id = :idNews', {
+        idNews: filterAllComment.id_news,
+      })
     }
 
-    if(filterAllComment && filterAllComment.status) {
-      request_comment = request_comment.andWhere('comment.is_proved = :status',{status:filterAllComment.status})
+    if (filterAllComment && filterAllComment.status) {
+      request_comment = request_comment.andWhere(
+        'comment.is_proved = :status',
+        { status: filterAllComment.status },
+      )
     }
 
     const comment = await request_comment.getMany()
@@ -49,7 +59,7 @@ export class CommentService {
     const comment = await this.commenntRepository.findOne({ where: { id: id } })
 
     if (!comment) {
-      return responseTemplate('404','gagal',{})
+      return responseTemplate('404', 'gagal', {})
     }
 
     return responseTemplate('200', 'success', comment)
@@ -60,20 +70,22 @@ export class CommentService {
     comment.active_on = uploadComment.active_on
     comment.description = uploadComment.description
     comment.name = uploadComment.name
-    comment.periode = uploadComment.periode ? moment(uploadComment.periode).toDate() : moment().toDate()
+    comment.periode = uploadComment.periode
+      ? moment(uploadComment.periode).toDate()
+      : moment().toDate()
 
     const news = (await this.newsService.detailNews(uploadComment.id_news)).data
-    
-    if(!news.id) {
-      throw new NotFoundException("beritanya tidak ada kawan!")
+
+    if (!news.id) {
+      throw new NotFoundException('beritanya tidak ada kawan!')
     }
 
     comment.news = news
 
     try {
       await this.commenntRepository.save(comment)
-    } catch(err) {
-      console.log('error query',err);
+    } catch (err) {
+      console.log('error query', err)
     }
 
     return responseTemplate('200', 'success', comment)
@@ -82,21 +94,22 @@ export class CommentService {
   async updateComment(updateComment: CreateCommantDto, id: string) {
     const comment = (await this.detailComment(id)).data
 
-    if(!comment.id) {
+    if (!comment.id) {
       return responseTemplate('404', 'gagal', {})
     }
 
     try {
       if (updateComment.name) comment.name = updateComment.name
-      if (updateComment.description) comment.description = updateComment.description
-    } catch(err) {
-        console.log('error parsing data',err);
+      if (updateComment.description)
+        comment.description = updateComment.description
+    } catch (err) {
+      console.log('error parsing data', err)
     }
-    
+
     try {
       await this.commenntRepository.save(comment)
-    } catch(err) {
-      console.log('error query',err);
+    } catch (err) {
+      console.log('error query', err)
     }
 
     return responseTemplate('200', 'success', comment)
@@ -105,20 +118,20 @@ export class CommentService {
   async updateStatus(updateComment: UpdateStatusCommentDto, id: string) {
     const comment = (await this.detailComment(id)).data
 
-    if(!comment.id) {
+    if (!comment.id) {
       return responseTemplate('404', 'gagal', {})
     }
 
     try {
       comment.is_proved = updateComment.status
-    } catch(err) {
-        console.log('error parsing data',err);
+    } catch (err) {
+      console.log('error parsing data', err)
     }
-    
+
     try {
       await this.commenntRepository.save(comment)
-    } catch(err) {
-      console.log('error query',err);
+    } catch (err) {
+      console.log('error query', err)
     }
 
     return responseTemplate('200', 'success', comment)
@@ -128,6 +141,6 @@ export class CommentService {
     const comment = (await this.detailComment(id)).data
     await this.commenntRepository.remove(comment)
 
-    return responseTemplate('200', 'success',{})
+    return responseTemplate('200', 'success', {})
   }
 }

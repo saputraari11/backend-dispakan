@@ -14,16 +14,16 @@ export class Comment extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @Column({default:'anonymous'})
+  @Column({ default: 'anonymous' })
   name: string
 
   @Column()
   description: string
 
-  @Column({nullable:true})
+  @Column({ nullable: true })
   periode: Date
 
-  @Column({default:'belum disetujui'})
+  @Column({ default: 'belum disetujui' })
   is_proved: string
 
   @Column({

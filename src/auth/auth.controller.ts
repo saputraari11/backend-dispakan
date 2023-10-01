@@ -1,4 +1,15 @@
-import { BadRequestException, Body, Controller, HttpException, HttpStatus, Post, Req, Res, UnauthorizedException, UseGuards } from '@nestjs/common'
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  HttpException,
+  HttpStatus,
+  Post,
+  Req,
+  Res,
+  UnauthorizedException,
+  UseGuards,
+} from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
 import {
   ApiBadRequestResponse,
@@ -29,7 +40,7 @@ export class AuthController {
   ) {
     try {
       return this.authService.signIn(signInCredentialsDto)
-    } catch(err) {
+    } catch (err) {
       return err
     }
   }
@@ -39,7 +50,7 @@ export class AuthController {
   async signUp(
     @Body(SETTINGS.VALIDATION_PIPE)
     signUpCredentialsDto: SignupCredentialsDto,
-    @Res() res:Response
+    @Res() res: Response,
   ): Promise<User> {
     const data = await this.authService.signUp(signUpCredentialsDto)
     return data
@@ -51,7 +62,7 @@ export class AuthController {
   async signUpUser(
     @Body(SETTINGS.VALIDATION_PIPE)
     signUpCredentialsDto: SignupCredentialsDto,
-    @Req() request:Request
+    @Req() request: Request,
   ): Promise<User> {
     signUpCredentialsDto.createdBy = request.user
     return await this.authService.signUp(signUpCredentialsDto, UserLevel.UMKM)

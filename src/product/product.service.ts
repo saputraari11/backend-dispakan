@@ -15,7 +15,7 @@ export class ProductService {
     @InjectRepository(Product)
     private readonly productRepository: Repository<Product>,
     private readonly storeService: StoreService,
-    private readonly storageService:StorageService
+    private readonly storageService: StorageService,
   ) {}
   async allProduct() {
     const products = await this.productRepository.find({
@@ -26,12 +26,18 @@ export class ProductService {
       if (item.sale && item.price) {
         await item.countingDiscount()
       }
+
       await item.convertStringToArray()
 
       if (item.mediaIds && item.mediaIds.length > 0) {
-        const urlImage = item.mediaIds.map(file => `${process.env.LINK_GCP}/products/${item.active_on}/${file}.png`)
-        item.url_image = urlImage
+        const urlImage = item.mediaIds.map(
+          file =>
+            `${process.env.LINK_GCP}/products/${item.active_on}/${file}.png`,
+        )
+
+        item.images = urlImage
       }
+
     }
 
     if (products.length == 0) {
@@ -52,10 +58,6 @@ export class ProductService {
     }
 
     await product.convertStringToArray()
-    if (product.files.length > 0) {
-      const urlImage = product.files.map(file => `${process.env.LINK_GCP}/products/${product.active_on}/${product.mediaId}.png`)
-      product.url_image = urlImage
-    }
     return responseTemplate('200', 'success', product)
   }
 
@@ -63,14 +65,12 @@ export class ProductService {
     const {
       category,
       description,
-      files,
       id_umkm,
       name,
-      other,
       price,
+      others,
       sale,
-      tipe,
-      varian,
+      files
     } = uploadProduct
     const umkm = (await this.storeService.detailStore(id_umkm)).data
     const product = new Product()
@@ -82,28 +82,28 @@ export class ProductService {
     product.store = umkm
     product.category = category
     product.active_on = uploadProduct.active_on
+    product.othersSaved = JSON.parse(others)
 
-    if (other && other.length != 0) product.othersSaved = JSON.stringify(other)
-    if (tipe && tipe.length != 0) product.typesSaved = JSON.stringify(tipe)
-    if (varian && varian.length != 0)
-      product.varianSaved = JSON.stringify(varian)
+    const medias = []
 
-    if (files.length != 0) {
-      const mediaIds = []
-      for(let item of files) {
+   if (files && files.length > 0) {
+    for(let file of files) {
         const mediaId = v4()
-        await this.storageService.save(
-          `products/${product.active_on}/${product.mediaId}`,
-          item.mimetype,
-          item.buffer,
-          [{mediaId:mediaId}]
-        )
-
-        mediaIds.push(mediaId)
+        try {
+          await this.storageService.save(
+            `products/${product.active_on}/${mediaId}`,
+            file.mimetype,
+            file.buffer,
+            [{ mediaId:mediaId }],
+          )
+          medias.push(mediaId)
+        } catch (err) {
+          console.log('error upload', err)
+        }
       }
-
-      product.mediaId = JSON.stringify(mediaIds)
     }
+
+    product.mediaId = JSON.stringify(medias)
 
     await product.convertStringToArray()
     await this.productRepository.save(product)
@@ -119,11 +119,9 @@ export class ProductService {
       files,
       id_umkm,
       name,
-      other,
+      others,
       price,
       sale,
-      tipe,
-      varian,
     } = updateProduct
     const umkm = (await this.storeService.detailStore(id_umkm)).data
 
@@ -133,24 +131,8 @@ export class ProductService {
     product.description = description
     product.store = umkm
     product.category = category
-
-    if (other && other.length != 0) {
-      product.othersSaved = JSON.stringify(other)
-    } else {
-      product.othersSaved = null
-    }
-
-    if (tipe && tipe.length != 0) {
-      product.typesSaved = JSON.stringify(tipe)
-    } else {
-      product.typesSaved = null
-    }
-
-    if (varian && varian.length != 0) {
-      product.varianSaved = JSON.stringify(varian)
-    } else {
-      product.varianSaved = null
-    }
+    product.othersSaved = others
+    
 
     if (files && files.length != 0) {
       if (product.images && product.images.length != 0) {

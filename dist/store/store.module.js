@@ -15,11 +15,12 @@ const store_controller_1 = require("./store.controller");
 const users_service_1 = require("../users/users.service");
 const user_entity_1 = require("../users/user.entity");
 const storage_service_1 = require("../commons/storage/storage.service");
+const product_entity_1 = require("../product/product.entity");
 let StoreModule = class StoreModule {
 };
 StoreModule = __decorate([
     common_1.Module({
-        imports: [typeorm_1.TypeOrmModule.forFeature([store_entity_1.Store, user_entity_1.User])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([store_entity_1.Store, user_entity_1.User, product_entity_1.Product])],
         controllers: [store_controller_1.StoreController],
         providers: [store_service_1.StoreService, users_service_1.UsersService, storage_service_1.StorageService],
     })

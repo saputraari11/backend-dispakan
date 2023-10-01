@@ -91,7 +91,7 @@ export class StoreController {
       }
     }),
   )
-  async updateStatus(
+  async updateFileStatus(
     @Param('id') id: string,
     @Body() data: CreateStoreDto,
     @UploadedFile('file') file: Express.Multer.File,
@@ -104,11 +104,8 @@ export class StoreController {
   @Get('detail/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async detailStore(@Param('id') id: string, @Req() request: Request) {
-    const protocol = request.protocol
-    const hostname = request.headers.host
-    const url = `${protocol}://${hostname}/store/image`
-    const result = await this.storeService.detailStore(id, url)
+  async detailStore(@Param('id') id: string) {
+    const result = await this.storeService.detailStore(id)
     return result
   }
 

@@ -7,8 +7,6 @@ export declare class CreateProductDto {
     price: number;
     category: string;
     active_on: string;
-    other: string[];
-    varian: string[];
-    tipe: string[];
+    others: string;
     files: Express.Multer.File[];
 }

@@ -5,11 +5,13 @@ import { UsersService } from 'src/users/users.service';
 import { StorageService } from 'src/commons/storage/storage.service';
 import { FilterStoreDto } from './dto/filter-all.dto';
 import { UpdateStatusStore } from './dto/update-status.dto';
+import { Product } from 'src/product/product.entity';
 export declare class StoreService {
     private readonly storeRepository;
     private readonly userService;
     private readonly storageService;
-    constructor(storeRepository: Repository<Store>, userService: UsersService, storageService: StorageService);
+    private readonly productRepository;
+    constructor(storeRepository: Repository<Store>, userService: UsersService, storageService: StorageService, productRepository: Repository<Product>);
     allStore(filterDto: FilterStoreDto): Promise<{
         error: boolean;
         alerts: {
@@ -18,7 +20,7 @@ export declare class StoreService {
         };
         data: any;
     }>;
-    detailStore(id: string, url?: string): Promise<{
+    detailStore(id: string): Promise<{
         error: boolean;
         alerts: {
             code: string;

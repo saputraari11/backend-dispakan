@@ -35,7 +35,7 @@ export class CommentController {
   @Get()
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async allComment(@Query() filterDto:FilterAllComment) {
+  async allComment(@Query() filterDto: FilterAllComment) {
     const result = await this.commentService.allComment(filterDto)
     return result
   }
@@ -43,9 +43,7 @@ export class CommentController {
   @Post('upload')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async uploadFile(
-    @Body() data: CreateCommantDto,
-  ) {
+  async uploadFile(@Body() data: CreateCommantDto) {
     const result = await this.commentService.uploadComment(data)
     return result
   }
@@ -64,10 +62,7 @@ export class CommentController {
   @Post('update/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async updateComment(
-    @Param('id') id: string,
-    @Body() data: CreateCommantDto,
-  ) {
+  async updateComment(@Param('id') id: string, @Body() data: CreateCommantDto) {
     const result = await this.commentService.updateComment(data, id)
     return result
   }

@@ -18,13 +18,18 @@ export class UsersService {
   constructor(
     @InjectRepository(UserRepository)
     private userRepository: UserRepository,
-    private storageService:StorageService
+    private storageService: StorageService,
   ) {}
 
-  async userUmkm(filterUmkm:FilterUmkmDto) {
-    let request_user = this.userRepository.createQueryBuilder('user').where('user.level = :level',{level:UserLevel.UMKM}).andWhere('user.active_on = :activeOn',{activeOn:filterUmkm.active_on})
+  async userUmkm(filterUmkm: FilterUmkmDto) {
+    let request_user = this.userRepository
+      .createQueryBuilder('user')
+      .where('user.level = :level', { level: UserLevel.UMKM })
+      .andWhere('user.active_on = :activeOn', {
+        activeOn: filterUmkm.active_on,
+      })
 
-    if(filterUmkm.search){
+    if (filterUmkm.search) {
       request_user = request_user.andWhere(
         'user.name ILIKE :searchTerm or user.address ILIKE :searchTerm or user.phone ILIKE :searchTerm or user.email ILIKE :searchTerm',
       )
@@ -42,7 +47,10 @@ export class UsersService {
       },
     })
 
-    user.map(item => (item.url_image = `${process.env.LINK_GCP}/users/${item.active_on}/${item.mediaId}.png`))
+    user.map(
+      item =>
+        (item.url_image = `${process.env.LINK_GCP}/users/${item.active_on}/${item.mediaId}.png`),
+    )
     return responseTemplate('200', 'success', user)
   }
 
@@ -63,7 +71,7 @@ export class UsersService {
 
   async updateProfile(updateProfile: UpdateProfileDto) {
     const user = await this.userDetail(updateProfile.id_owner_umkm)
-    if(!user.id) {
+    if (!user.id) {
       return responseTemplate('404', 'gagal', user)
     }
 
@@ -73,7 +81,11 @@ export class UsersService {
     if (updateProfile.email) user.email = updateProfile.email
 
     if (updateProfile.new_password && updateProfile.old_password) {
-      await this.updatePassword({new_password:updateProfile.new_password,old_password:updateProfile.old_password,id_user:user.id})
+      await this.updatePassword({
+        new_password: updateProfile.new_password,
+        old_password: updateProfile.old_password,
+        id_user: user.id,
+      })
     }
 
     await this.userRepository.save(user)
@@ -84,7 +96,7 @@ export class UsersService {
   async updateBumdes(updateProfile: BumdesProfileDto) {
     const user = await this.userDetail(updateProfile.id_bumdes_umkm)
 
-    if(!user.id) {
+    if (!user.id) {
       return responseTemplate('404', 'gagal', user)
     }
 
@@ -95,9 +107,11 @@ export class UsersService {
 
     if (updateProfile.file) {
       try {
-        await this.storageService.delete(`users/${user.active_on}/${user.mediaId}`)
-      } catch(err) {
-        console.log('error delete',err);
+        await this.storageService.delete(
+          `users/${user.active_on}/${user.mediaId}`,
+        )
+      } catch (err) {
+        console.log('error delete', err)
       }
 
       user.mediaId = v4()
@@ -107,10 +121,10 @@ export class UsersService {
           `users/${user.active_on}/${user.mediaId}`,
           updateProfile.file.mimetype,
           updateProfile.file.buffer,
-          [{mediaId:user.mediaId}]
+          [{ mediaId: user.mediaId }],
         )
-      } catch(err) {
-        console.log('error upload',err);
+      } catch (err) {
+        console.log('error upload', err)
       }
     }
 
@@ -135,7 +149,7 @@ export class UsersService {
     return responseTemplate('200', 'success', user)
   }
 
-  async updateStatus(updateStatus: UpdateStatusDto,id:string) {
+  async updateStatus(updateStatus: UpdateStatusDto, id: string) {
     const user = await this.userDetail(id)
     user.status = updateStatus.status
     await this.userRepository.save(user)

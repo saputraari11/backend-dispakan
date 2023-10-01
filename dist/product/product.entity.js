@@ -17,9 +17,6 @@ let Product = class Product extends typeorm_1.BaseEntity {
         super(...arguments);
         this.images = null;
         this.others = null;
-        this.varian = null;
-        this.types = null;
-        this.files = null;
         this.mediaIds = null;
     }
     async countingDiscount() {
@@ -30,16 +27,10 @@ let Product = class Product extends typeorm_1.BaseEntity {
     async convertStringToArray() {
         if (this.imagesSaved)
             this.images = JSON.parse(this.imagesSaved);
-        if (this.filenameSaved)
-            this.files = JSON.parse(this.filenameSaved);
         if (this.mediaId)
             this.mediaIds = JSON.parse(this.mediaId);
         if (this.othersSaved)
-            this.others = JSON.parse(this.othersSaved).split(',');
-        if (this.varianSaved)
-            this.varian = JSON.parse(this.varianSaved).split(',');
-        if (this.typesSaved)
-            this.types = JSON.parse(this.typesSaved).split(',');
+            this.others = JSON.parse(this.othersSaved);
     }
 };
 __decorate([
@@ -90,20 +81,6 @@ __decorate([
     typeorm_1.Column({ nullable: null }),
     __metadata("design:type", String)
 ], Product.prototype, "category", void 0);
-__decorate([
-    typeorm_1.Column({
-        type: 'text',
-        nullable: true,
-    }),
-    __metadata("design:type", String)
-], Product.prototype, "varianSaved", void 0);
-__decorate([
-    typeorm_1.Column({
-        type: 'text',
-        nullable: true,
-    }),
-    __metadata("design:type", String)
-], Product.prototype, "typesSaved", void 0);
 __decorate([
     typeorm_1.Column({
         type: 'text',

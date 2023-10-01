@@ -14,7 +14,7 @@ export class UserRepository extends Repository<User> {
       address,
       phone,
       active_on,
-      createdBy
+      createdBy,
     } = signupCredentialsDto
 
     const user = new User()
@@ -26,7 +26,7 @@ export class UserRepository extends Repository<User> {
     user.password = await this.hashPassword(password, user.salt)
     user.level = level
     user.active_on = active_on
-    if(createdBy) user.createdBy = createdBy.email
+    if (createdBy) user.createdBy = createdBy.email
     const savedUser = await user.save()
     return savedUser
   }

@@ -39,16 +39,13 @@ let StoreController = class StoreController {
         const result = await this.storeService.updateStore(data, id);
         return result;
     }
-    async updateStatus(id, data, file) {
+    async updateFileStatus(id, data, file) {
         data.file = file;
         const result = await this.storeService.updateStore(data, id);
         return result;
     }
-    async detailStore(id, request) {
-        const protocol = request.protocol;
-        const hostname = request.headers.host;
-        const url = `${protocol}://${hostname}/store/image`;
-        const result = await this.storeService.detailStore(id, url);
+    async detailStore(id) {
+        const result = await this.storeService.detailStore(id);
         return result;
     }
     async deleteStore(id) {
@@ -117,14 +114,14 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_store_dto_1.CreateStoreDto, Object]),
     __metadata("design:returntype", Promise)
-], StoreController.prototype, "updateStatus", null);
+], StoreController.prototype, "updateFileStatus", null);
 __decorate([
     common_1.Get('detail/:id'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
-    __param(0, common_1.Param('id')), __param(1, common_1.Req()),
+    __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], StoreController.prototype, "detailStore", null);
 __decorate([

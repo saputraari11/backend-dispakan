@@ -60,7 +60,7 @@ export class UsersController {
   @Get('umkm')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async allUmkm(@Query() filterAllUmkm:FilterUmkmDto) {
+  async allUmkm(@Query() filterAllUmkm: FilterUmkmDto) {
     const result = await this.userService.userUmkm(filterAllUmkm)
     return result
   }
@@ -112,7 +112,7 @@ export class UsersController {
       limits: {
         files: 1,
         fileSize: 1024 * 1024,
-      }
+      },
     }),
   )
   async updateProfilBumdes(
@@ -139,11 +139,8 @@ export class UsersController {
   @Post('update/status/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async updateStatus(
-    @Body() body: UpdateStatusDto,
-    @Param('id') id: string,
-  ) {
-    const result = await this.userService.updateStatus(body,id)
+  async updateStatus(@Body() body: UpdateStatusDto, @Param('id') id: string) {
+    const result = await this.userService.updateStatus(body, id)
     return result
   }
 }

@@ -29,12 +29,15 @@ import { FilterAllNews } from './dto/filter-all.dto'
 @ApiTags('News')
 @Controller('news')
 export class NewsController {
-  constructor(private newsService: NewsService,private storageService:StorageService) {}
+  constructor(
+    private newsService: NewsService,
+    private storageService: StorageService,
+  ) {}
 
   @Get()
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async allNews(@Query() filterDto:FilterAllNews) {
+  async allNews(@Query() filterDto: FilterAllNews) {
     const result = await this.newsService.allNews(filterDto)
     return result
   }
@@ -48,7 +51,7 @@ export class NewsController {
       limits: {
         files: 1,
         fileSize: 1024 * 1024,
-      }
+      },
     }),
   )
   async uploadFile(
@@ -69,7 +72,7 @@ export class NewsController {
       limits: {
         files: 1,
         fileSize: 1024 * 1024,
-      }
+      },
     }),
   )
   async updateFile(

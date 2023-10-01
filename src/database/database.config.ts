@@ -19,7 +19,7 @@ export class DatabaseConfig implements TypeOrmOptionsFactory {
     return {
       ...this.config,
       type: 'postgres',
-      entities: [User, Product, Store, News,Comment],
+      entities: [User, Product, Store, News, Comment],
       ssl: true,
     }
   }

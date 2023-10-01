@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { Store } from './store.entity'
-import { StoreService } from './store.service'
-import { StoreController } from './store.controller'
 import { UsersService } from 'src/users/users.service'
 import { User } from 'src/users/user.entity'
 import { StorageService } from 'src/commons/storage/storage.service'
 import { Product } from 'src/product/product.entity'
+import { Store } from 'src/store/store.entity'
+import { LandingPageService } from './landing-page.service'
+import { LandingPageController } from './landing-page.controller'
 
 @Module({
   imports: [TypeOrmModule.forFeature([Store,User,Product])],
-  controllers: [StoreController],
-  providers: [StoreService, UsersService,StorageService],
+  controllers: [LandingPageController],
+  providers: [UsersService,StorageService,LandingPageService],
 })
-export class StoreModule {}
+export class LandingPageModule {}

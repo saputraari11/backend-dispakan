@@ -27,7 +27,12 @@ let UsersService = class UsersService {
         this.storageService = storageService;
     }
     async userUmkm(filterUmkm) {
-        let request_user = this.userRepository.createQueryBuilder('user').where('user.level = :level', { level: user_level_enum_1.UserLevel.UMKM }).andWhere('user.active_on = :activeOn', { activeOn: filterUmkm.active_on });
+        let request_user = this.userRepository
+            .createQueryBuilder('user')
+            .where('user.level = :level', { level: user_level_enum_1.UserLevel.UMKM })
+            .andWhere('user.active_on = :activeOn', {
+            activeOn: filterUmkm.active_on,
+        });
         if (filterUmkm.search) {
             request_user = request_user.andWhere('user.name ILIKE :searchTerm or user.address ILIKE :searchTerm or user.phone ILIKE :searchTerm or user.email ILIKE :searchTerm');
         }
@@ -69,7 +74,11 @@ let UsersService = class UsersService {
         if (updateProfile.email)
             user.email = updateProfile.email;
         if (updateProfile.new_password && updateProfile.old_password) {
-            await this.updatePassword({ new_password: updateProfile.new_password, old_password: updateProfile.old_password, id_user: user.id });
+            await this.updatePassword({
+                new_password: updateProfile.new_password,
+                old_password: updateProfile.old_password,
+                id_user: user.id,
+            });
         }
         await this.userRepository.save(user);
         return app_utils_1.responseTemplate('200', 'success', user);

@@ -15,6 +15,7 @@ import { StoreModule } from './store/store.module'
 import { ProductModule } from './product/product.module'
 import { AppLoggerMiddleware } from './commons/middlewares/app-logger-middleware'
 import { CommentModule } from './comment/comment.module'
+import { LandingPageModule } from './landing-page/landing-page.module'
 
 @Module({
   imports: [
@@ -26,7 +27,8 @@ import { CommentModule } from './comment/comment.module'
     NewsModule,
     StoreModule,
     ProductModule,
-    CommentModule
+    CommentModule,
+    LandingPageModule
   ],
 })
 export class AppModule implements NestModule {

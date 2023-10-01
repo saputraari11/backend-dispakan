@@ -1,7 +1,7 @@
 /// <reference types="multer" />
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
-import { Request, Response } from 'express';
+import { Request } from 'express';
 export declare class ProductController {
     private readonly productService;
     constructor(productService: ProductService);
@@ -45,5 +45,4 @@ export declare class ProductController {
         };
         data: any;
     }>;
-    seeFile(image: string, res: Response): void | Response<any, Record<string, any>>;
 }

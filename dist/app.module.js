@@ -18,6 +18,7 @@ const store_module_1 = require("./store/store.module");
 const product_module_1 = require("./product/product.module");
 const app_logger_middleware_1 = require("./commons/middlewares/app-logger-middleware");
 const comment_module_1 = require("./comment/comment.module");
+const landing_page_module_1 = require("./landing-page/landing-page.module");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
@@ -37,7 +38,8 @@ AppModule = __decorate([
             news_module_1.NewsModule,
             store_module_1.StoreModule,
             product_module_1.ProductModule,
-            comment_module_1.CommentModule
+            comment_module_1.CommentModule,
+            landing_page_module_1.LandingPageModule
         ],
     })
 ], AppModule);

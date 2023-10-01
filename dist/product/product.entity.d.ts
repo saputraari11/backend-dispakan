@@ -10,8 +10,6 @@ export declare class Product extends BaseEntity {
     imagesSaved: string;
     othersSaved: string;
     category: string;
-    varianSaved: string;
-    typesSaved: string;
     mediaId: string;
     active_on: string;
     createdAt: Date;
@@ -19,13 +17,9 @@ export declare class Product extends BaseEntity {
     store: Store;
     images: string[];
     others: string[];
-    varian: string[];
-    types: string[];
-    files: string[];
     mediaIds: string[];
     price_discount: number;
     discount: number;
-    url_image: string[];
     countingDiscount(): Promise<void>;
     convertStringToArray(): Promise<void>;
 }

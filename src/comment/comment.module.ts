@@ -8,9 +8,8 @@ import { NewsService } from 'src/news/news.service'
 import { StorageService } from 'src/commons/storage/storage.service'
 
 @Module({
-  imports: [TypeOrmModule.forFeature([News,Comment])],
+  imports: [TypeOrmModule.forFeature([News, Comment])],
   controllers: [CommentController],
-  providers: [CommentService,NewsService,StorageService],
+  providers: [CommentService, NewsService, StorageService],
 })
 export class CommentModule {}
-

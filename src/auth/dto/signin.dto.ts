@@ -23,5 +23,4 @@ export class SignInDto {
   @IsString()
   @IsNotEmpty()
   active_on: string
-
 }

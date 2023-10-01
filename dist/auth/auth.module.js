@@ -37,7 +37,7 @@ AuthModule = __decorate([
             users_service_1.UsersService,
             user_repository_1.UserRepository,
             apikey_strategy_1.ApiKeyStrategy,
-            storage_service_1.StorageService
+            storage_service_1.StorageService,
         ],
         controllers: [auth_controller_1.AuthController],
         exports: [jwt_strategy_1.JwtStrategy, passport_1.PassportModule, local_strategy_1.LocalStrategy],
