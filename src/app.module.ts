@@ -28,7 +28,7 @@ import { LandingPageModule } from './landing-page/landing-page.module'
     StoreModule,
     ProductModule,
     CommentModule,
-    LandingPageModule
+    LandingPageModule,
   ],
 })
 export class AppModule implements NestModule {

@@ -11,7 +11,7 @@ import { StorageService } from 'src/commons/storage/storage.service'
 
 @Module({
   imports: [TypeOrmModule.forFeature([Product, Store, User])],
-  providers: [ProductService, StoreService, UsersService,StorageService],
+  providers: [ProductService, StoreService, UsersService, StorageService],
   controllers: [ProductController],
 })
 export class ProductModule {}

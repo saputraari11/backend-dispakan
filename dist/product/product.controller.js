@@ -74,7 +74,7 @@ __decorate([
         limits: {
             files: 24,
             fileSize: 1024 * 1024,
-        }
+        },
     })),
     __param(0, common_1.UploadedFiles()),
     __param(1, common_1.Body()),
@@ -100,7 +100,7 @@ __decorate([
         limits: {
             files: 24,
             fileSize: 1024 * 1024,
-        }
+        },
     })),
     __param(0, common_1.Param('id')),
     __param(1, common_1.Body()),

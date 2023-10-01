@@ -16,6 +16,5 @@ export class LandingPageService {
     private readonly productRepository: Repository<Product>,
   ) {}
 
-  async allProductByStore(){}
-
+  async allProductByStore() {}
 }

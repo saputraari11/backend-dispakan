@@ -39,7 +39,7 @@ AppModule = __decorate([
             store_module_1.StoreModule,
             product_module_1.ProductModule,
             comment_module_1.CommentModule,
-            landing_page_module_1.LandingPageModule
+            landing_page_module_1.LandingPageModule,
         ],
     })
 ], AppModule);

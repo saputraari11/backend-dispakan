@@ -4322,37 +4322,37 @@
         "affectsGlobalScope": false
       },
       "../src/store/store.service.ts": {
-        "version": "37b37a740eaadf0aea930d861e9c17fd0192f7b8c4c9639e8ccbab7e13a83cbe",
+        "version": "c45cc045950b79257ebad47f782002b9a50fd78347ee92f2505446202e61f7f1",
         "signature": "c8b266ae951733b1e1421d26127792a1872aa989c5e2fe76906b009444f0aa0a",
         "affectsGlobalScope": false
       },
       "../src/store/store.controller.ts": {
-        "version": "5a9753a2b1f58c723a7404122e5ee00e76807cf08cde00b6e6643fade49d5f3b",
+        "version": "4068513ebbb2362d871c187cd15a062c25c1076166e844262a3b240e94abaa6f",
         "signature": "af407a0e57d9ea39d6a4e21747cd8ce278f33b393c228e08e97b63eea333d1ce",
         "affectsGlobalScope": false
       },
       "../src/store/store.module.ts": {
-        "version": "2cc1df49827e38d823bc8a74613cf61e7da0d0c51b40d0721cceaa1ca1c3ebed",
+        "version": "29138bbfa4e13a9b0926c4385cb42c482fbb3c3a2b612f5a2e315ff2a0a83549",
         "signature": "7a0d6f87dba454046cd268b23f4fc4883e9679bddbbf65e4a514c57b63d447ad",
         "affectsGlobalScope": false
       },
       "../src/product/dto/create-product.dto.ts": {
-        "version": "d3d2fb5be93115ffa3b4098944616e538f79502434cff886223956871622f43d",
+        "version": "5930ba505b59e8d9c3112563f6383496814246f3f2dec2661aae094f7bceed2f",
         "signature": "8f6c5e6f21223dd370f1d65157054f9e63de1800f4c812304702c836f5249ba9",
         "affectsGlobalScope": false
       },
       "../src/product/product.service.ts": {
-        "version": "a3424070975d87a702dc546431b033af76cc5c43f6eeb5d6474cf7c8b54ca569",
+        "version": "bc6df3c3facf4ff22b9a6494b66ba9437008604e135ae97eaa58c0b0fe15a053",
         "signature": "69e9b2deb56006385752ede7cb41f74d821128aaa3d9f50df0d17f917fd2f44b",
         "affectsGlobalScope": false
       },
       "../src/product/product.controller.ts": {
-        "version": "9a44db39e99f4bb5194147fb5c1e1c05e7f0d68aabe8148e4a1f3898a505be6b",
+        "version": "e3e2c223713182165b88056819829233fe72d8ee7ecf281a65f3a4a7ab282ff2",
         "signature": "5c9bb2bb17c0267742d964f80bc4ce93374b834efd40ee31fb8b0497b37c1e76",
         "affectsGlobalScope": false
       },
       "../src/product/product.module.ts": {
-        "version": "6161f71d6cc39124f6c2307d7632ba16ae8928b9d9da8fdc0fa8244fa43ed6db",
+        "version": "e4bf224fb40190da49832c4e83cc135802131db67ba7a96899d02df1ade2bb06",
         "signature": "7f8b34d3314e0b7048eab6a82a4f0bf423213dfd64d60f0c5e178bde34c23841",
         "affectsGlobalScope": false
       },
@@ -4397,22 +4397,22 @@
         "affectsGlobalScope": false
       },
       "../src/landing-page/landing-page.service.ts": {
-        "version": "cd0e7eecbbd9ceaa608d2c072559b4b021a16011b39d101ccd8570dbc46a90fc",
+        "version": "cea19d0007b8f8809793161945e47e031da0bedad61b0634226c621989dc7b68",
         "signature": "96840b456de95f4df904906e61ec65f776ea7e25df265baaacae9af18d872744",
         "affectsGlobalScope": false
       },
       "../src/landing-page/landing-page.controller.ts": {
-        "version": "2ecfc618c7e578f12cea797d2081201bcf03e8179d05ba0eb9c1dda55ba7de29",
-        "signature": "9fa2361d55f8664e3acf9fd729fd8a0694aea9e316f31daee7106134d0a71781",
+        "version": "c61c66614495f90dacc20fc6db5cb0fcc6c7de874e26fc851038ffaeb61f979f",
+        "signature": "8bca8a2504b8d285de2f6d75e7e0c95fe30f29df7a3681131481e35545ae7b49",
         "affectsGlobalScope": false
       },
       "../src/landing-page/landing-page.module.ts": {
-        "version": "ad4101a4b906ff68030c8f36563f896ee95ea88c798f5af57f8001e18cdcd412",
+        "version": "c7645b7b62fdff15db3f7122c5ec6ec14ca48e788103c4c386a841aa93762ba4",
         "signature": "1adaf429151d2b4e64532226c7525c7b339c540ae8482638fdc7f5953a0587c6",
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
-        "version": "a1dfa7fe3681023dc8fe8f37efc678fda251cab0aabf65cec072a328646ea49b",
+        "version": "560bcc4fab9ba84fc2eb3dcde57d212f5bd09ae3a09134ec0a9edcaab06901b2",
         "signature": "9e55d69c2879e4c1f6039d177c0daf79a72435ac51ec7d4f46fc72e8b0c503d6",
         "affectsGlobalScope": false
       },

@@ -52,7 +52,7 @@ export class ProductController {
       limits: {
         files: 24,
         fileSize: 1024 * 1024,
-      }
+      },
     }),
   )
   createProduct(
@@ -80,7 +80,7 @@ export class ProductController {
       limits: {
         files: 24,
         fileSize: 1024 * 1024,
-      }
+      },
     }),
   )
   async updateProduct(

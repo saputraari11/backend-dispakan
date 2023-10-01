@@ -41,8 +41,8 @@ export class CreateProductDto {
   active_on: string
 
   @ApiProperty({
-    type:'string',
-    required:false
+    type: 'string',
+    required: false,
   })
   others: string
 

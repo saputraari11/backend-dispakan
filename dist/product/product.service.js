@@ -59,7 +59,7 @@ let ProductService = class ProductService {
         return app_utils_1.responseTemplate('200', 'success', product);
     }
     async saveProduct(uploadProduct) {
-        const { category, description, id_umkm, name, price, others, sale, files } = uploadProduct;
+        const { category, description, id_umkm, name, price, others, sale, files, } = uploadProduct;
         const umkm = (await this.storeService.detailStore(id_umkm)).data;
         const product = new product_entity_1.Product();
         product.name = name;

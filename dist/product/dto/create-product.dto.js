@@ -62,7 +62,7 @@ __decorate([
 __decorate([
     swagger_1.ApiProperty({
         type: 'string',
-        required: false
+        required: false,
     }),
     __metadata("design:type", String)
 ], CreateProductDto.prototype, "others", void 0);

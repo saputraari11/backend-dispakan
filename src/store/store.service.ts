@@ -24,8 +24,9 @@ export class StoreService {
   ) {}
 
   async allStore(filterDto: FilterStoreDto) {
-    let request_store = this.storeRepository.createQueryBuilder('store')
-    .innerJoinAndSelect('store.user', 'user')
+    let request_store = this.storeRepository
+      .createQueryBuilder('store')
+      .innerJoinAndSelect('store.user', 'user')
 
     try {
       if (filterDto.active_on) {
@@ -42,10 +43,9 @@ export class StoreService {
       }
 
       if (filterDto.id_mitra) {
-        request_store = request_store.andWhere(
-          'user.id = :idMitra',
-          {idMitra:filterDto.id_mitra}
-        )
+        request_store = request_store.andWhere('user.id = :idMitra', {
+          idMitra: filterDto.id_mitra,
+        })
       }
 
       const store = await request_store.getMany()
@@ -54,7 +54,6 @@ export class StoreService {
         item.url_image = `${process.env.LINK_GCP}/umkm/${item.active_on}/${item.mediaId}.png`
         await item.convertStringToArray()
       }
-
 
       if (store.length == 0) {
         return responseTemplate('400', "store doesn't exist", {}, true)
@@ -218,16 +217,16 @@ export class StoreService {
     const store = (await this.detailStore(id)).data
     const products = await this.productRepository.find({
       where: {
-        store:{
-          id:id
-        }
+        store: {
+          id: id,
+        },
       },
-      relations:['store']
+      relations: ['store'],
     })
 
-    if(products.length > 0 ) {
-      for(let product of products) {
-        await this.productRepository.delete({id:product.id})
+    if (products.length > 0) {
+      for (let product of products) {
+        await this.productRepository.delete({ id: product.id })
       }
     }
 

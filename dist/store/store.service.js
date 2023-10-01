@@ -30,7 +30,8 @@ let StoreService = class StoreService {
         this.productRepository = productRepository;
     }
     async allStore(filterDto) {
-        let request_store = this.storeRepository.createQueryBuilder('store')
+        let request_store = this.storeRepository
+            .createQueryBuilder('store')
             .innerJoinAndSelect('store.user', 'user');
         try {
             if (filterDto.active_on) {
@@ -42,7 +43,9 @@ let StoreService = class StoreService {
                 request_store = request_store.andWhere('store.name ILIKE :searchTerm or store.address ILIKE :searchTerm or store.phone ILIKE :searchTerm or store.omset ILIKE :searchTerm or store.aspek ILIKE :searchTerm', { searchTerm: `%${filterDto.search}%` });
             }
             if (filterDto.id_mitra) {
-                request_store = request_store.andWhere('user.id = :idMitra', { idMitra: filterDto.id_mitra });
+                request_store = request_store.andWhere('user.id = :idMitra', {
+                    idMitra: filterDto.id_mitra,
+                });
             }
             const store = await request_store.getMany();
             for (let item of store) {
@@ -168,10 +171,10 @@ let StoreService = class StoreService {
         const products = await this.productRepository.find({
             where: {
                 store: {
-                    id: id
-                }
+                    id: id,
+                },
             },
-            relations: ['store']
+            relations: ['store'],
         });
         if (products.length > 0) {
             for (let product of products) {

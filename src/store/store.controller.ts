@@ -45,7 +45,7 @@ export class StoreController {
       limits: {
         files: 1,
         fileSize: 1024 * 1024,
-      }
+      },
     }),
   )
   async uploadFile(
@@ -66,7 +66,7 @@ export class StoreController {
       limits: {
         files: 1,
         fileSize: 1024 * 1024,
-      }
+      },
     }),
   )
   async updateFile(
@@ -88,7 +88,7 @@ export class StoreController {
       limits: {
         files: 1,
         fileSize: 1024 * 1024,
-      }
+      },
     }),
   )
   async updateFileStatus(

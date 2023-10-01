@@ -9,8 +9,8 @@ import { LandingPageService } from './landing-page.service'
 import { LandingPageController } from './landing-page.controller'
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Store,User,Product])],
+  imports: [TypeOrmModule.forFeature([Store, User, Product])],
   controllers: [LandingPageController],
-  providers: [UsersService,StorageService,LandingPageService],
+  providers: [UsersService, StorageService, LandingPageService],
 })
 export class LandingPageModule {}

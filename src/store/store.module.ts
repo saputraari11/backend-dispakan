@@ -9,8 +9,8 @@ import { StorageService } from 'src/commons/storage/storage.service'
 import { Product } from 'src/product/product.entity'
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Store,User,Product])],
+  imports: [TypeOrmModule.forFeature([Store, User, Product])],
   controllers: [StoreController],
-  providers: [StoreService, UsersService,StorageService],
+  providers: [StoreService, UsersService, StorageService],
 })
 export class StoreModule {}

@@ -37,7 +37,6 @@ export class ProductService {
 
         item.images = urlImage
       }
-
     }
 
     if (products.length == 0) {
@@ -70,7 +69,7 @@ export class ProductService {
       price,
       others,
       sale,
-      files
+      files,
     } = uploadProduct
     const umkm = (await this.storeService.detailStore(id_umkm)).data
     const product = new Product()
@@ -86,15 +85,15 @@ export class ProductService {
 
     const medias = []
 
-   if (files && files.length > 0) {
-    for(let file of files) {
+    if (files && files.length > 0) {
+      for (let file of files) {
         const mediaId = v4()
         try {
           await this.storageService.save(
             `products/${product.active_on}/${mediaId}`,
             file.mimetype,
             file.buffer,
-            [{ mediaId:mediaId }],
+            [{ mediaId: mediaId }],
           )
           medias.push(mediaId)
         } catch (err) {
@@ -132,7 +131,6 @@ export class ProductService {
     product.store = umkm
     product.category = category
     product.othersSaved = others
-    
 
     if (files && files.length != 0) {
       if (product.images && product.images.length != 0) {
