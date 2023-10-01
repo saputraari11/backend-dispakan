@@ -25,6 +25,11 @@ export class CreateStoreDto {
   @ApiProperty({
     required: false,
   })
+  status: boolean
+
+  @ApiProperty({
+    required: false,
+  })
   aspek: string
 
   @ApiProperty({

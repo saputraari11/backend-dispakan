@@ -16,7 +16,7 @@ let Product = class Product extends typeorm_1.BaseEntity {
     constructor() {
         super(...arguments);
         this.images = null;
-        this.others = null;
+        this.others_descriptions = null;
         this.mediaIds = null;
     }
     async countingDiscount() {
@@ -30,7 +30,7 @@ let Product = class Product extends typeorm_1.BaseEntity {
         if (this.mediaId)
             this.mediaIds = JSON.parse(this.mediaId);
         if (this.othersSaved)
-            this.others = JSON.parse(this.othersSaved);
+            this.others_descriptions = JSON.parse(this.othersSaved);
     }
 };
 __decorate([
@@ -94,6 +94,12 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], Product.prototype, "active_on", void 0);
+__decorate([
+    typeorm_1.Column({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], Product.prototype, "status", void 0);
 __decorate([
     typeorm_1.CreateDateColumn({
         type: 'timestamp',

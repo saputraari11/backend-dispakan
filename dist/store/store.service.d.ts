@@ -4,7 +4,6 @@ import { CreateStoreDto } from './dto/create-store.dto';
 import { UsersService } from 'src/users/users.service';
 import { StorageService } from 'src/commons/storage/storage.service';
 import { FilterStoreDto } from './dto/filter-all.dto';
-import { UpdateStatusStore } from './dto/update-status.dto';
 import { Product } from 'src/product/product.entity';
 export declare class StoreService {
     private readonly storeRepository;
@@ -37,14 +36,6 @@ export declare class StoreService {
         data: any;
     }>;
     updateStore(updateStore: CreateStoreDto, id: string): Promise<{
-        error: boolean;
-        alerts: {
-            code: string;
-            message: string;
-        };
-        data: any;
-    }>;
-    updateStatus(updateComment: UpdateStatusStore, id: string): Promise<{
         error: boolean;
         alerts: {
             code: string;

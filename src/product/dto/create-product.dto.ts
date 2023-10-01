@@ -25,6 +25,11 @@ export class CreateProductDto {
 
   @ApiProperty({
     required: false,
+  })
+  status: boolean
+
+  @ApiProperty({
+    required: false,
     default: 0,
   })
   price: number
@@ -44,7 +49,7 @@ export class CreateProductDto {
     type: 'string',
     required: false,
   })
-  others: string
+  others_description: string
 
   @ApiProperty({
     type: 'array',

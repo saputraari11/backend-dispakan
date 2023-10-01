@@ -3,12 +3,13 @@ import { Repository } from 'typeorm';
 import { CreateProductDto } from './dto/create-product.dto';
 import { StoreService } from 'src/store/store.service';
 import { StorageService } from 'src/commons/storage/storage.service';
+import { FilterAllProducts } from './dto/filter-all.dto';
 export declare class ProductService {
     private readonly productRepository;
     private readonly storeService;
     private readonly storageService;
     constructor(productRepository: Repository<Product>, storeService: StoreService, storageService: StorageService);
-    allProduct(): Promise<{
+    allProduct(filterAllProducts: FilterAllProducts): Promise<{
         error: boolean;
         alerts: {
             code: string;
@@ -16,7 +17,7 @@ export declare class ProductService {
         };
         data: any;
     }>;
-    detailProduct(id: string, url?: string): Promise<{
+    detailProduct(id: string): Promise<{
         error: boolean;
         alerts: {
             code: string;

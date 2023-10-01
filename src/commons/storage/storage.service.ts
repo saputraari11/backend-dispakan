@@ -16,10 +16,14 @@ export class StorageService {
   }
 
   async delete(path: string) {
-    await this.storage
-      .bucket(this.bucket)
-      .file(path)
-      .delete({ ignoreNotFound: true })
+    try {
+      await this.storage
+        .bucket(this.bucket)
+        .file(`${path}.png`)
+        .delete()
+    } catch(err) {
+      console.log("gagal hapus foto",err);
+    }
   }
 
   async get(path: string): Promise<StorageFile> {

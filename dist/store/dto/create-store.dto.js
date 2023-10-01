@@ -42,6 +42,12 @@ __decorate([
     swagger_1.ApiProperty({
         required: false,
     }),
+    __metadata("design:type", Boolean)
+], CreateStoreDto.prototype, "status", void 0);
+__decorate([
+    swagger_1.ApiProperty({
+        required: false,
+    }),
     __metadata("design:type", String)
 ], CreateStoreDto.prototype, "aspek", void 0);
 __decorate([

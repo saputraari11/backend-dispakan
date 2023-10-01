@@ -61,6 +61,11 @@ export class Product extends BaseEntity {
   })
   active_on: string
 
+  @Column({
+    default: false,
+  })
+  status: boolean
+
   @CreateDateColumn({
     type: 'timestamp',
     name: 'createdAt',
@@ -82,7 +87,7 @@ export class Product extends BaseEntity {
   store: Store
 
   images: string[] = null
-  others: string[] = null
+  others_descriptions: string[] = null
   mediaIds: string[] = null
   price_discount: number
   discount: number
@@ -96,6 +101,6 @@ export class Product extends BaseEntity {
   public async convertStringToArray() {
     if (this.imagesSaved) this.images = JSON.parse(this.imagesSaved)
     if (this.mediaId) this.mediaIds = JSON.parse(this.mediaId)
-    if (this.othersSaved) this.others = JSON.parse(this.othersSaved)
+    if (this.othersSaved) this.others_descriptions = JSON.parse(this.othersSaved)
   }
 }

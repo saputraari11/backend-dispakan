@@ -121,6 +121,7 @@ let StoreService = class StoreService {
         store.name = updateStore.name;
         store.address = updateStore.address;
         store.aspek = updateStore.aspek;
+        store.status = String(updateStore.status) === 'true' ? true : false;
         if (updateStore.category && updateStore.category.length != 0) {
             store.katagoriSaved = JSON.stringify(updateStore.category);
         }
@@ -146,25 +147,6 @@ let StoreService = class StoreService {
         await this.storeRepository.save(store);
         return app_utils_1.responseTemplate('200', 'success', store);
     }
-    async updateStatus(updateComment, id) {
-        const store = (await this.detailStore(id)).data;
-        if (!store.id) {
-            return app_utils_1.responseTemplate('404', 'gagal', {});
-        }
-        try {
-            store.status = String(updateComment.status) === 'true' ? true : false;
-        }
-        catch (err) {
-            console.log('error parsing data', err);
-        }
-        try {
-            await this.storeRepository.save(store);
-        }
-        catch (err) {
-            console.log('error query', err);
-        }
-        return app_utils_1.responseTemplate('200', 'success', store);
-    }
     async deleteStore(id) {
         let response = '';
         const store = (await this.detailStore(id)).data;
@@ -178,6 +160,11 @@ let StoreService = class StoreService {
         });
         if (products.length > 0) {
             for (let product of products) {
+                if (product.mediaIds && product.mediaIds.length) {
+                    for (let mediaId of product.mediaIds) {
+                        await this.storageService.delete(`products/${product.active_on}/${mediaId}`);
+                    }
+                }
                 await this.productRepository.delete({ id: product.id });
             }
         }

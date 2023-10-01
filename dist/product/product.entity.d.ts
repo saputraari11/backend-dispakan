@@ -12,11 +12,12 @@ export declare class Product extends BaseEntity {
     category: string;
     mediaId: string;
     active_on: string;
+    status: boolean;
     createdAt: Date;
     updatedAt: Date;
     store: Store;
     images: string[];
-    others: string[];
+    others_descriptions: string[];
     mediaIds: string[];
     price_discount: number;
     discount: number;

@@ -39,11 +39,6 @@ let StoreController = class StoreController {
         const result = await this.storeService.updateStore(data, id);
         return result;
     }
-    async updateFileStatus(id, data, file) {
-        data.file = file;
-        const result = await this.storeService.updateStore(data, id);
-        return result;
-    }
     async detailStore(id) {
         const result = await this.storeService.detailStore(id);
         return result;
@@ -97,24 +92,6 @@ __decorate([
     __metadata("design:paramtypes", [String, create_store_dto_1.CreateStoreDto, Object]),
     __metadata("design:returntype", Promise)
 ], StoreController.prototype, "updateFile", null);
-__decorate([
-    common_1.Post('update/status/:id'),
-    swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
-    swagger_1.ApiConsumes('multipart/form-data'),
-    common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
-        limits: {
-            files: 1,
-            fileSize: 1024 * 1024,
-        },
-    })),
-    __param(0, common_1.Param('id')),
-    __param(1, common_1.Body()),
-    __param(2, common_1.UploadedFile('file')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, create_store_dto_1.CreateStoreDto, Object]),
-    __metadata("design:returntype", Promise)
-], StoreController.prototype, "updateFileStatus", null);
 __decorate([
     common_1.Get('detail/:id'),
     swagger_1.ApiBearerAuth(),

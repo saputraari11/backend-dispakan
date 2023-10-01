@@ -23,6 +23,7 @@ const passport_1 = require("@nestjs/passport");
 const platform_express_1 = require("@nestjs/platform-express");
 const create_product_dto_1 = require("./dto/create-product.dto");
 const app_utils_1 = require("../app.utils");
+const filter_all_dto_1 = require("./dto/filter-all.dto");
 const os = require('os');
 const dir = `public/dispakan/assets/product`;
 const storage = multer.diskStorage({
@@ -44,8 +45,8 @@ let ProductController = class ProductController {
         uploadsDto.files = files;
         return this.productService.saveProduct(uploadsDto);
     }
-    async allProduct(request) {
-        const result = await this.productService.allProduct();
+    async allProduct(filterDto) {
+        const result = await this.productService.allProduct(filterDto);
         return result;
     }
     async updateProduct(id, data, files) {
@@ -54,10 +55,7 @@ let ProductController = class ProductController {
         return result;
     }
     async detailProdcut(id, request) {
-        const protocol = request.protocol;
-        const hostname = request.headers.host;
-        const url = `${protocol}://${hostname}/product/image`;
-        const result = await this.productService.detailProduct(id, url);
+        const result = await this.productService.detailProduct(id);
         return result;
     }
     async deleteProduct(id) {
@@ -86,9 +84,9 @@ __decorate([
     common_1.Get(),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
-    __param(0, common_1.Req()),
+    __param(0, common_1.Query()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [filter_all_dto_1.FilterAllProducts]),
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "allProduct", null);
 __decorate([

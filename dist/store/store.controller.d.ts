@@ -29,14 +29,6 @@ export declare class StoreController {
         };
         data: any;
     }>;
-    updateFileStatus(id: string, data: CreateStoreDto, file: Express.Multer.File): Promise<{
-        error: boolean;
-        alerts: {
-            code: string;
-            message: string;
-        };
-        data: any;
-    }>;
     detailStore(id: string): Promise<{
         error: boolean;
         alerts: {

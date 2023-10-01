@@ -4,6 +4,7 @@ import {
   Get,
   Param,
   Post,
+  Query,
   Req,
   Res,
   UploadedFiles,
@@ -20,6 +21,7 @@ import { FilesInterceptor } from '@nestjs/platform-express'
 import { CreateProductDto } from './dto/create-product.dto'
 import { Request, Response, response } from 'express'
 import { responseTemplate } from 'src/app.utils'
+import { FilterAllProducts } from './dto/filter-all.dto'
 
 const os = require('os')
 const dir = `public/dispakan/assets/product`
@@ -66,8 +68,8 @@ export class ProductController {
   @Get()
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async allProduct(@Req() request: Request) {
-    const result = await this.productService.allProduct()
+  async allProduct(@Query() filterDto: FilterAllProducts) {
+    const result = await this.productService.allProduct(filterDto)
     return result
   }
 
@@ -97,10 +99,7 @@ export class ProductController {
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   async detailProdcut(@Param('id') id: string, @Req() request: Request) {
-    const protocol = request.protocol
-    const hostname = request.headers.host
-    const url = `${protocol}://${hostname}/product/image`
-    const result = await this.productService.detailProduct(id, url)
+    const result = await this.productService.detailProduct(id)
     return result
   }
 

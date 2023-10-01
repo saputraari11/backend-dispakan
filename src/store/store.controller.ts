@@ -79,28 +79,6 @@ export class StoreController {
     return result
   }
 
-  @Post('update/status/:id')
-  @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
-  @ApiConsumes('multipart/form-data')
-  @UseInterceptors(
-    FileInterceptor('file', {
-      limits: {
-        files: 1,
-        fileSize: 1024 * 1024,
-      },
-    }),
-  )
-  async updateFileStatus(
-    @Param('id') id: string,
-    @Body() data: CreateStoreDto,
-    @UploadedFile('file') file: Express.Multer.File,
-  ) {
-    data.file = file
-    const result = await this.storeService.updateStore(data, id)
-    return result
-  }
-
   @Get('detail/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))

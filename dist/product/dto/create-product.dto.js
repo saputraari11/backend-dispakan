@@ -42,6 +42,12 @@ __decorate([
 __decorate([
     swagger_1.ApiProperty({
         required: false,
+    }),
+    __metadata("design:type", Boolean)
+], CreateProductDto.prototype, "status", void 0);
+__decorate([
+    swagger_1.ApiProperty({
+        required: false,
         default: 0,
     }),
     __metadata("design:type", Number)
@@ -65,7 +71,7 @@ __decorate([
         required: false,
     }),
     __metadata("design:type", String)
-], CreateProductDto.prototype, "others", void 0);
+], CreateProductDto.prototype, "others_description", void 0);
 __decorate([
     swagger_1.ApiProperty({
         type: 'array',

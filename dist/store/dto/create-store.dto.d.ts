@@ -4,6 +4,7 @@ export declare class CreateStoreDto {
     id_owner: string;
     address: string;
     phone: string;
+    status: boolean;
     aspek: string;
     category: string[];
     mediaOrder: string[];
