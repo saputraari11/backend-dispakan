@@ -27,7 +27,15 @@ let DatabaseConfig = class DatabaseConfig {
         this.config = config;
     }
     createTypeOrmOptions() {
-        return Object.assign(Object.assign({}, this.config), { type: 'postgres', entities: [user_entity_1.User, product_entity_1.Product, store_entity_1.Store, news_entity_1.News, comment_entity_1.Comment, click_product_entity_1.ClickProduct, like_product_entity_1.LikeProduct], ssl: true });
+        return Object.assign(Object.assign({}, this.config), { type: 'postgres', entities: [
+                user_entity_1.User,
+                product_entity_1.Product,
+                store_entity_1.Store,
+                news_entity_1.News,
+                comment_entity_1.Comment,
+                click_product_entity_1.ClickProduct,
+                like_product_entity_1.LikeProduct,
+            ], ssl: true });
     }
 };
 DatabaseConfig = __decorate([

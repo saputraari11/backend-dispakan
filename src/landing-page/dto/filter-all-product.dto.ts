@@ -21,6 +21,5 @@ export class FilterAllProducts {
   @ApiProperty({
     required: false,
   })
-  @IsNotEmpty()
   catagory: string
 }

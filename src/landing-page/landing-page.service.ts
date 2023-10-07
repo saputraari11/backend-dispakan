@@ -7,6 +7,9 @@ import { v4 } from 'uuid'
 import { Product } from 'src/product/product.entity'
 import { Store } from 'src/store/store.entity'
 import { FilterAllProducts } from './dto/filter-all-product.dto'
+import { IncrementDto } from './dto/increment.dto'
+import { ClickProduct } from './click-product.entity'
+import { LikeProduct } from './like-product.entity'
 
 @Injectable()
 export class LandingPageService {
@@ -15,6 +18,10 @@ export class LandingPageService {
     private readonly storeRepository: Repository<Store>,
     @InjectRepository(Product)
     private readonly productRepository: Repository<Product>,
+    @InjectRepository(ClickProduct)
+    private readonly clickProductRepository: Repository<ClickProduct>,
+    @InjectRepository(LikeProduct)
+    private readonly likeProductRepository:Repository<LikeProduct>
   ) {}
 
   async allProductByStore(filterLandingDto: FilterAllProducts) {
@@ -70,5 +77,38 @@ export class LandingPageService {
     return responseTemplate('200', 'success', products)
   }
 
-  async incrementProperty() {}
+  async incrementProperty(incrementDto:IncrementDto) {
+    const product = await this.productRepository.findOne({where:{id:incrementDto.id_product}})
+     if(!product) {
+      throw new NotFoundException("Product does not exist")
+    }
+
+    const isLikeExist = await this.likeProductRepository.findOne({where:{identifier:incrementDto.identifier,product:product}})
+    const isClickExist = await this.clickProductRepository.findOne({where:{identifier:incrementDto.identifier,product:product}})
+   
+    switch(incrementDto.increment_type) {
+      case "like":
+        console.log(isLikeExist,product);
+        
+        if(!isLikeExist){
+          const newLike = new LikeProduct()
+          newLike.identifier = incrementDto.identifier
+          newLike.product = product
+          await this.likeProductRepository.save(newLike)
+        }
+      break;
+      case 'click':
+        if(!isClickExist){
+          const newClick = new ClickProduct()
+          newClick.identifier = incrementDto.identifier
+          newClick.product = product
+          await this.clickProductRepository.save(newClick)
+        }
+      break;
+      default:
+        throw new NotFoundException("Type product doest not exit")
+    }
+
+    return {status:200,message:"success"}
+  }
 }

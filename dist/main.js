@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@nestjs/core");
 const swagger_1 = require("@nestjs/swagger");
 const app_module_1 = require("./app.module");
+const common_1 = require("@nestjs/common");
 const express = require("express");
 const bodyParser = require("body-parser");
 const path_1 = require("path");
@@ -22,6 +23,7 @@ async function bootstrap() {
     app.use(bodyParser.json({ limit: '50mb' }));
     app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
     app.use(express.static(path_1.join(process.cwd(), '../temp/qrcode/')));
+    app.useGlobalPipes(new common_1.ValidationPipe());
     app.enableCors();
     await app.listen(process.env.PORT || '4000', process.env.HOST);
 }
