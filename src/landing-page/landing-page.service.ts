@@ -31,7 +31,7 @@ export class LandingPageService {
     private readonly newsRepository: Repository<News>,
     @InjectRepository(Comment)
     private readonly commentRepository: Repository<Comment>,
-  ) {}
+  ) { }
 
   async detailProduct(id: string) {
     const product = await this.productRepository.findOne({
@@ -177,6 +177,7 @@ export class LandingPageService {
       })
       .andWhere('news.status = :status', { status: true })
       .leftJoinAndSelect('news.comments', 'comments')
+      .andWhere('comments.status != :status', { status: 'tidak disetujui' })
 
     if (filterAllNews && filterAllNews.search) {
       request_news = request_news.andWhere(
@@ -190,18 +191,6 @@ export class LandingPageService {
     if (news.length == 0) {
       return responseTemplate('400', "news doesn't exist", {}, true)
     }
-
-    news.map(item => {
-      item.url_image = `${process.env.LINK_GCP}/news/${item.active_on}/${item.mediaId}.png`
-
-      if (item.comments.length > 0) {
-        for (let comment of item.comments) {
-          if (comment.is_proved == 'belum disetujui') {
-            item.comments = item.comments.filter(c => c.id != comment.id)
-          }
-        }
-      }
-    })
 
     return responseTemplate('200', 'success', news)
   }
