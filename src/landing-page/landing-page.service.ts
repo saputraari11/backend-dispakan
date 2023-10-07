@@ -31,12 +31,13 @@ export class LandingPageService {
     private readonly newsRepository: Repository<News>,
     @InjectRepository(Comment)
     private readonly commentRepository: Repository<Comment>,
-
-
   ) {}
 
   async detailProduct(id: string) {
-    const product = await this.productRepository.findOne({ where: { id: id } ,relations:['store','click','like']})
+    const product = await this.productRepository.findOne({
+      where: { id: id },
+      relations: ['store', 'click', 'like'],
+    })
     if (!product) {
       throw new NotFoundException(`Product with id ${id} not found`)
     }
@@ -173,8 +174,9 @@ export class LandingPageService {
       .createQueryBuilder('news')
       .where('news.active_on = :activeOn', {
         activeOn: filterAllNews.active_on,
-    }).andWhere('news.status = :status',{status:true})
-    .leftJoinAndSelect('news.comments','comments')
+      })
+      .andWhere('news.status = :status', { status: true })
+      .leftJoinAndSelect('news.comments', 'comments')
 
     if (filterAllNews && filterAllNews.search) {
       request_news = request_news.andWhere(
@@ -189,34 +191,34 @@ export class LandingPageService {
       return responseTemplate('400', "news doesn't exist", {}, true)
     }
 
+    news.map(item => {
+      item.url_image = `${process.env.LINK_GCP}/news/${item.active_on}/${item.mediaId}.png`
 
-    news.map(
-      item => {
-        item.url_image = `${process.env.LINK_GCP}/news/${item.active_on}/${item.mediaId}.png`
-
-        if(item.comments.length > 0) {
-          for (let comment of item.comments) {
-            if (comment.is_proved == 'belum disetujui') {
-              item.comments = item.comments.filter(c => c.id != comment.id)
-            }
+      if (item.comments.length > 0) {
+        for (let comment of item.comments) {
+          if (comment.is_proved == 'belum disetujui') {
+            item.comments = item.comments.filter(c => c.id != comment.id)
           }
         }
       }
-    )
+    })
 
     return responseTemplate('200', 'success', news)
   }
 
   async detailNews(id: string) {
-    const news = await this.newsRepository.findOne({ where: { id: id } ,relations:['comments']})
+    const news = await this.newsRepository.findOne({
+      where: { id: id },
+      relations: ['comments'],
+    })
 
     if (!news) {
       return responseTemplate('404', 'gagal', {})
     }
 
-    if(news.comments.length > 0) {
-      for(let comment of news.comments) {
-        if(comment.is_proved == 'belum disetujui') {
+    if (news.comments.length > 0) {
+      for (let comment of news.comments) {
+        if (comment.is_proved == 'belum disetujui') {
           news.comments = news.comments.filter(item => item.id != comment.id)
         }
       }
@@ -238,7 +240,9 @@ export class LandingPageService {
       ? moment(uploadComment.periode).toDate()
       : moment().toDate()
 
-    const news = await this.newsRepository.findOne({where:{id:uploadComment.id_news}}) 
+    const news = await this.newsRepository.findOne({
+      where: { id: uploadComment.id_news },
+    })
 
     if (!news.id) {
       throw new NotFoundException('beritanya tidak ada kawan!')

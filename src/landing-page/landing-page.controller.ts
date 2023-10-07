@@ -20,7 +20,7 @@ import { FilterAllNews } from 'src/news/dto/filter-all.dto'
 export class LandingPageController {
   constructor(private landingPageService: LandingPageService) {}
 
-  @Get("product")
+  @Get('product')
   @ApiBearerAuth()
   // @UseGuards(AuthGuard('jwt'))
   async allProductByStore(@Query() filter: FilterAllProducts) {
@@ -41,14 +41,14 @@ export class LandingPageController {
     return this.landingPageService.incrementProperty(incrementDto)
   }
 
-  @Get("news")
+  @Get('news')
   @ApiBearerAuth()
   async allNews(@Query() filterDto: FilterAllNews) {
     const result = await this.landingPageService.allNews(filterDto)
     return result
   }
 
-  @Get("news/detail/:id")
+  @Get('news/detail/:id')
   @ApiBearerAuth()
   async detailNews(@Param('id') id: string) {
     const result = await this.landingPageService.detailNews(id)

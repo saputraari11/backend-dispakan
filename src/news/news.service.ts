@@ -22,7 +22,7 @@ export class NewsService {
       .createQueryBuilder('news')
       .where('news.active_on = :activeOn', {
         activeOn: filterAllNews.active_on,
-    })
+      })
 
     if (filterAllNews && filterAllNews.search) {
       request_news = request_news.andWhere(

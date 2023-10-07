@@ -14,7 +14,15 @@ import { Comment } from 'src/comment/comment.entity'
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Store, User, Product, ClickProduct, LikeProduct,News,Comment]),
+    TypeOrmModule.forFeature([
+      Store,
+      User,
+      Product,
+      ClickProduct,
+      LikeProduct,
+      News,
+      Comment,
+    ]),
   ],
   controllers: [LandingPageController],
   providers: [UsersService, StorageService, LandingPageService],

@@ -64,8 +64,6 @@ export class CommentService {
     return responseTemplate('200', 'success', comment)
   }
 
-  
-
   async updateComment(updateComment: CreateCommantDto, id: string) {
     const comment = (await this.detailComment(id)).data
 
