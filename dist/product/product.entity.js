@@ -10,6 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = void 0;
+const click_product_entity_1 = require("../landing-page/click-product.entity");
+const like_product_entity_1 = require("../landing-page/like-product.entity");
 const store_entity_1 = require("../store/store.entity");
 const typeorm_1 = require("typeorm");
 let Product = class Product extends typeorm_1.BaseEntity {
@@ -120,6 +122,14 @@ __decorate([
     typeorm_1.ManyToOne(type => store_entity_1.Store, s => s.product),
     __metadata("design:type", store_entity_1.Store)
 ], Product.prototype, "store", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => like_product_entity_1.LikeProduct, l => l.product),
+    __metadata("design:type", Array)
+], Product.prototype, "like", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => click_product_entity_1.ClickProduct, c => c.product),
+    __metadata("design:type", Array)
+], Product.prototype, "click", void 0);
 Product = __decorate([
     typeorm_1.Entity()
 ], Product);

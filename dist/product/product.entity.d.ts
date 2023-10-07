@@ -1,3 +1,5 @@
+import { ClickProduct } from 'src/landing-page/click-product.entity';
+import { LikeProduct } from 'src/landing-page/like-product.entity';
 import { Store } from 'src/store/store.entity';
 import { BaseEntity } from 'typeorm';
 export declare class Product extends BaseEntity {
@@ -16,6 +18,8 @@ export declare class Product extends BaseEntity {
     createdAt: Date;
     updatedAt: Date;
     store: Store;
+    like: LikeProduct[];
+    click: ClickProduct[];
     images: string[];
     others_descriptions: string[];
     mediaIds: string[];

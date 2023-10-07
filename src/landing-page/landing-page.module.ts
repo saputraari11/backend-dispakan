@@ -7,9 +7,11 @@ import { Product } from 'src/product/product.entity'
 import { Store } from 'src/store/store.entity'
 import { LandingPageService } from './landing-page.service'
 import { LandingPageController } from './landing-page.controller'
+import { ClickProduct } from './click-product.entity'
+import { LikeProduct } from './like-product.entity'
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Store, User, Product])],
+  imports: [TypeOrmModule.forFeature([Store, User, Product,ClickProduct,LikeProduct])],
   controllers: [LandingPageController],
   providers: [UsersService, StorageService, LandingPageService],
 })

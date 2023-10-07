@@ -11,10 +11,11 @@ export class LandingPageController {
 
   @Get()
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
+  // @UseGuards(AuthGuard('jwt'))
   async allProductByStore(@Query() filter: FilterAllProducts) {
-    console.log(JSON.parse(filter.sort_by))
-    const result = await this.landingPageService.allProductByStore()
+    const result = await this.landingPageService.allProductByStore(filter)
     return result
   }
+
+  
 }

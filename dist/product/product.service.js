@@ -28,7 +28,12 @@ let ProductService = class ProductService {
         this.storageService = storageService;
     }
     async allProduct(filterAllProducts) {
-        let queryProducts = this.productRepository.createQueryBuilder('products').innerJoinAndSelect('products.store', 'store').where('products.active_on = :active', { active: filterAllProducts.active_on });
+        let queryProducts = this.productRepository
+            .createQueryBuilder('products')
+            .innerJoinAndSelect('products.store', 'store')
+            .where('products.active_on = :active', {
+            active: filterAllProducts.active_on,
+        });
         if (filterAllProducts && filterAllProducts.search) {
             queryProducts = queryProducts.andWhere('products.name ILIKE :searchTerm or products.description ILIKE :searchTerm', { searchTerm: `%${filterAllProducts.search}%` });
         }
@@ -65,7 +70,7 @@ let ProductService = class ProductService {
     }
     async saveProduct(uploadProduct) {
         try {
-            const { category, description, id_umkm, name, price, others_description, sale, files, status } = uploadProduct;
+            const { category, description, id_umkm, name, price, others_description, sale, files, status, } = uploadProduct;
             const umkm = (await this.storeService.detailStore(id_umkm)).data;
             const product = new product_entity_1.Product();
             product.name = name;
@@ -94,7 +99,7 @@ let ProductService = class ProductService {
                 }
             }
             catch (err) {
-                console.log("gagal up foto", err);
+                console.log('gagal up foto', err);
             }
             if (medias.length > 0)
                 product.mediaId = JSON.stringify(medias);
@@ -109,7 +114,7 @@ let ProductService = class ProductService {
     async updateProduct(updateProduct, id) {
         const product = (await this.detailProduct(id)).data;
         await product.convertStringToArray();
-        const { category, description, files, id_umkm, name, others_description, price, sale, status } = updateProduct;
+        const { category, description, files, id_umkm, name, others_description, price, sale, status, } = updateProduct;
         const umkm = (await this.storeService.detailStore(id_umkm)).data;
         const medias = [];
         if (name)

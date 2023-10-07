@@ -1,3 +1,5 @@
+import { ClickProduct } from 'src/landing-page/click-product.entity'
+import { LikeProduct } from 'src/landing-page/like-product.entity'
 import { Store } from 'src/store/store.entity'
 import {
   BaseEntity,
@@ -7,6 +9,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  OneToMany,
 } from 'typeorm'
 
 @Entity()
@@ -85,6 +88,18 @@ export class Product extends BaseEntity {
     s => s.product,
   )
   store: Store
+
+  @OneToMany(
+    type => LikeProduct,
+    l => l.product,
+  )
+  like: LikeProduct[]
+
+  @OneToMany(
+    type => ClickProduct,
+    c => c.product,
+  )
+  click: ClickProduct[]
 
   images: string[] = null
   others_descriptions: string[] = null

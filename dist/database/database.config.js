@@ -20,12 +20,14 @@ const product_entity_1 = require("../product/product.entity");
 const store_entity_1 = require("../store/store.entity");
 const comment_entity_1 = require("../comment/comment.entity");
 const news_entity_1 = require("../news/news.entity");
+const click_product_entity_1 = require("../landing-page/click-product.entity");
+const like_product_entity_1 = require("../landing-page/like-product.entity");
 let DatabaseConfig = class DatabaseConfig {
     constructor(config) {
         this.config = config;
     }
     createTypeOrmOptions() {
-        return Object.assign(Object.assign({}, this.config), { type: 'postgres', entities: [user_entity_1.User, product_entity_1.Product, store_entity_1.Store, news_entity_1.News, comment_entity_1.Comment], ssl: true });
+        return Object.assign(Object.assign({}, this.config), { type: 'postgres', entities: [user_entity_1.User, product_entity_1.Product, store_entity_1.Store, news_entity_1.News, comment_entity_1.Comment, click_product_entity_1.ClickProduct, like_product_entity_1.LikeProduct], ssl: true });
     }
 };
 DatabaseConfig = __decorate([
