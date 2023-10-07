@@ -41,11 +41,8 @@ let NewsController = class NewsController {
         const result = await this.newsService.updateNews(data, id);
         return result;
     }
-    async detailNews(id, request) {
-        const protocol = request.protocol;
-        const hostname = request.headers.host;
-        const url = `${protocol}://${hostname}/news/image`;
-        const result = await this.newsService.detailNews(id, url);
+    async detailNews(id) {
+        const result = await this.newsService.detailNews(id);
         return result;
     }
     async deleteNews(id) {
@@ -101,9 +98,9 @@ __decorate([
     common_1.Get('detail/:id'),
     swagger_1.ApiBearerAuth(),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
-    __param(0, common_1.Param('id')), __param(1, common_1.Req()),
+    __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], NewsController.prototype, "detailNews", null);
 __decorate([

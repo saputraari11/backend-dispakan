@@ -1,7 +1,6 @@
 /// <reference types="multer" />
 import { CreateNewsDto } from './dto/create-news.dto';
 import { NewsService } from './news.service';
-import { Request } from 'express';
 import { StorageService } from 'src/commons/storage/storage.service';
 import { FilterAllNews } from './dto/filter-all.dto';
 export declare class NewsController {
@@ -32,7 +31,7 @@ export declare class NewsController {
         };
         data: any;
     }>;
-    detailNews(id: string, request: Request): Promise<{
+    detailNews(id: string): Promise<{
         error: boolean;
         alerts: {
             code: string;

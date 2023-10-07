@@ -15,7 +15,7 @@ export declare class NewsService {
         };
         data: any;
     }>;
-    detailNews(id: string, url?: string): Promise<{
+    detailNews(id: string): Promise<{
         error: boolean;
         alerts: {
             code: string;

@@ -8,7 +8,6 @@ import { FilterAllComment } from './dto/filter-all.dto'
 import { News } from 'src/news/news.entity'
 import { NewsService } from 'src/news/news.service'
 import { UpdateStatusCommentDto } from './dto/update-status-comment.dto'
-import * as moment from 'moment'
 
 @Injectable()
 export class CommentService {
@@ -65,31 +64,7 @@ export class CommentService {
     return responseTemplate('200', 'success', comment)
   }
 
-  async uploadComment(uploadComment: CreateCommantDto) {
-    const comment = new Comment()
-    comment.active_on = uploadComment.active_on
-    comment.description = uploadComment.description
-    comment.name = uploadComment.name
-    comment.periode = uploadComment.periode
-      ? moment(uploadComment.periode).toDate()
-      : moment().toDate()
-
-    const news = (await this.newsService.detailNews(uploadComment.id_news)).data
-
-    if (!news.id) {
-      throw new NotFoundException('beritanya tidak ada kawan!')
-    }
-
-    comment.news = news
-
-    try {
-      await this.commenntRepository.save(comment)
-    } catch (err) {
-      console.log('error query', err)
-    }
-
-    return responseTemplate('200', 'success', comment)
-  }
+  
 
   async updateComment(updateComment: CreateCommantDto, id: string) {
     const comment = (await this.detailComment(id)).data

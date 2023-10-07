@@ -22,7 +22,7 @@ export class NewsService {
       .createQueryBuilder('news')
       .where('news.active_on = :activeOn', {
         activeOn: filterAllNews.active_on,
-      })
+    })
 
     if (filterAllNews && filterAllNews.search) {
       request_news = request_news.andWhere(
@@ -45,7 +45,7 @@ export class NewsService {
     return responseTemplate('200', 'success', news)
   }
 
-  async detailNews(id: string, url?: string) {
+  async detailNews(id: string) {
     const news = await this.newsRepository.findOne({ where: { id: id } })
 
     if (!news) {

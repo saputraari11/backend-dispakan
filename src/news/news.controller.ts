@@ -88,11 +88,8 @@ export class NewsController {
   @Get('detail/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async detailNews(@Param('id') id: string, @Req() request: Request) {
-    const protocol = request.protocol
-    const hostname = request.headers.host
-    const url = `${protocol}://${hostname}/news/image`
-    const result = await this.newsService.detailNews(id, url)
+  async detailNews(@Param('id') id: string) {
+    const result = await this.newsService.detailNews(id)
     return result
   }
 

@@ -33,7 +33,8 @@ let Product = class Product extends typeorm_1.BaseEntity {
             this.mediaIds = JSON.parse(this.mediaId);
         if (this.othersSaved)
             this.others_descriptions = JSON.parse(this.othersSaved);
-        this.jumlah_like = this.like.length;
+        if (this.like)
+            this.jumlah_like = this.like.length;
     }
 };
 __decorate([

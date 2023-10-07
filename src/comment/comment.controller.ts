@@ -40,14 +40,6 @@ export class CommentController {
     return result
   }
 
-  @Post('upload')
-  @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
-  async uploadFile(@Body() data: CreateCommantDto) {
-    const result = await this.commentService.uploadComment(data)
-    return result
-  }
-
   @Post('update/status/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))

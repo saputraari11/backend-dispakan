@@ -10,6 +10,11 @@ import { FilterAllProducts } from './dto/filter-all-product.dto'
 import { IncrementDto } from './dto/increment.dto'
 import { ClickProduct } from './click-product.entity'
 import { LikeProduct } from './like-product.entity'
+import { CreateCommantDto } from 'src/comment/dto/create-comment.dto'
+import { News } from 'src/news/news.entity'
+import { Comment } from 'src/comment/comment.entity'
+import * as moment from 'moment'
+import { FilterAllNews } from 'src/news/dto/filter-all.dto'
 
 @Injectable()
 export class LandingPageService {
@@ -22,7 +27,40 @@ export class LandingPageService {
     private readonly clickProductRepository: Repository<ClickProduct>,
     @InjectRepository(LikeProduct)
     private readonly likeProductRepository: Repository<LikeProduct>,
+    @InjectRepository(News)
+    private readonly newsRepository: Repository<News>,
+    @InjectRepository(Comment)
+    private readonly commentRepository: Repository<Comment>,
+
+
   ) {}
+
+  async detailProduct(id: string) {
+    const product = await this.productRepository.findOne({ where: { id: id } ,relations:['store','click','like']})
+    if (!product) {
+      throw new NotFoundException(`Product with id ${id} not found`)
+    }
+
+    if (product.sale && product.price) {
+      await product.countingDiscount()
+    }
+
+    await product.convertStringToArray()
+
+    product.store.url_image = `${process.env.LINK_GCP}/umkm/${product.store.active_on}/${product.store.mediaId}.png`
+    await product.store.convertStringToArray()
+
+    if (product.mediaIds && product.mediaIds.length > 0) {
+      const urlImage = product.mediaIds.map(
+        file =>
+          `${process.env.LINK_GCP}/products/${product.active_on}/${file}.png`,
+      )
+
+      product.images = urlImage
+    }
+
+    return responseTemplate('200', 'success', product)
+  }
 
   async allProductByStore(filterLandingDto: FilterAllProducts) {
     let queryProducts = this.productRepository
@@ -128,5 +166,92 @@ export class LandingPageService {
     }
 
     return { status: 200, message: 'success' }
+  }
+
+  async allNews(filterAllNews: FilterAllNews) {
+    let request_news = this.newsRepository
+      .createQueryBuilder('news')
+      .where('news.active_on = :activeOn', {
+        activeOn: filterAllNews.active_on,
+    }).andWhere('news.status = :status',{status:true})
+    .leftJoinAndSelect('news.comments','comments')
+
+    if (filterAllNews && filterAllNews.search) {
+      request_news = request_news.andWhere(
+        'news.title ILIKE :searchTerm or news.description ILIKE :searchTerm',
+        { searchTerm: `%${filterAllNews.search}%` },
+      )
+    }
+
+    const news = await request_news.getMany()
+
+    if (news.length == 0) {
+      return responseTemplate('400', "news doesn't exist", {}, true)
+    }
+
+
+    news.map(
+      item => {
+        item.url_image = `${process.env.LINK_GCP}/news/${item.active_on}/${item.mediaId}.png`
+
+        if(item.comments.length > 0) {
+          for (let comment of item.comments) {
+            if (comment.is_proved == 'belum disetujui') {
+              item.comments = item.comments.filter(c => c.id != comment.id)
+            }
+          }
+        }
+      }
+    )
+
+    return responseTemplate('200', 'success', news)
+  }
+
+  async detailNews(id: string) {
+    const news = await this.newsRepository.findOne({ where: { id: id } ,relations:['comments']})
+
+    if (!news) {
+      return responseTemplate('404', 'gagal', {})
+    }
+
+    if(news.comments.length > 0) {
+      for(let comment of news.comments) {
+        if(comment.is_proved == 'belum disetujui') {
+          news.comments = news.comments.filter(item => item.id != comment.id)
+        }
+      }
+    }
+
+    if (news.mediaId) {
+      news.url_image = `${process.env.LINK_GCP}/news/${news.active_on}/${news.mediaId}.png`
+    }
+
+    return responseTemplate('200', 'success', news)
+  }
+
+  async uploadComment(uploadComment: CreateCommantDto) {
+    const comment = new Comment()
+    comment.active_on = uploadComment.active_on
+    comment.description = uploadComment.description
+    comment.name = uploadComment.name
+    comment.periode = uploadComment.periode
+      ? moment(uploadComment.periode).toDate()
+      : moment().toDate()
+
+    const news = await this.newsRepository.findOne({where:{id:uploadComment.id_news}}) 
+
+    if (!news.id) {
+      throw new NotFoundException('beritanya tidak ada kawan!')
+    }
+
+    comment.news = news
+
+    try {
+      await this.commentRepository.save(comment)
+    } catch (err) {
+      console.log('error query', err)
+    }
+
+    return responseTemplate('200', 'success', comment)
   }
 }

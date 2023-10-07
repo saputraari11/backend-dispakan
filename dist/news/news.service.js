@@ -41,7 +41,7 @@ let NewsService = class NewsService {
         news.map(item => (item.url_image = `${process.env.LINK_GCP}/news/${item.active_on}/${item.mediaId}.png`));
         return app_utils_1.responseTemplate('200', 'success', news);
     }
-    async detailNews(id, url) {
+    async detailNews(id) {
         const news = await this.newsRepository.findOne({ where: { id: id } });
         if (!news) {
             return app_utils_1.responseTemplate('404', 'gagal', {});

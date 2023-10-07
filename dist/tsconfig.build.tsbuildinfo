@@ -2787,7 +2787,7 @@
         "affectsGlobalScope": false
       },
       "../src/product/product.entity.ts": {
-        "version": "e0f6a7c352a9fff136fa1e7fa2e81a70b60e7e2dc96c82854e5231f347bab0a9",
+        "version": "19350eb70bf13db2f3b761be565cc094fa9e294d4599b88d5e2d57dfabb1b69f",
         "signature": "ae8c8788788506f7f752c9c19d118257eead63eff30f89a1adca48ee55390fad",
         "affectsGlobalScope": false
       },
@@ -4302,13 +4302,13 @@
         "affectsGlobalScope": false
       },
       "../src/news/news.service.ts": {
-        "version": "09d3afc3cd620ec9a899566cd65818bf645dabd7af6d7bd45281e45cfcb652ce",
-        "signature": "981501b538c28b4401728599929f567ed51f9d4f9fc7350b1e940e2eba9997fc",
+        "version": "cedf000b5648b3908d8afba4f583b114b8e081d3e7ccc72202b0a1b05723e69c",
+        "signature": "cd287ef15b076bbb88c09e8974b3345cc4a3bf1eada771dcdf4b16c7e505c29b",
         "affectsGlobalScope": false
       },
       "../src/news/news.controller.ts": {
-        "version": "d43f5d4e11f96c70c9a047ee3912f9b61297cdd0bbbc16fb18e6f50c48e375df",
-        "signature": "162fb79d4d180a066cdc1c85fa3f15b7b9470fb27fb4df6519e479450534dd61",
+        "version": "eeeead1f97668ae6f4623e1446fefb0d5f887fb930ba41419d11fed96ea0c425",
+        "signature": "03ecc1499c3e4930d5ee2ec0b386c5a1e0c6c82f2e6ae48d7f3e37444ab21bc1",
         "affectsGlobalScope": false
       },
       "../src/news/news.module.ts": {
@@ -4386,19 +4386,14 @@
         "signature": "74f941f769b77bb223d9ca6d797fef27093dab8ee2c4826bea2bb7aaefc0470e",
         "affectsGlobalScope": false
       },
-      "../node_modules/moment/ts3.1-typings/moment.d.ts": {
-        "version": "4051f6311deb0ce6052329eeb1cd4b1b104378fe52f882f483130bea75f92197",
-        "signature": "4051f6311deb0ce6052329eeb1cd4b1b104378fe52f882f483130bea75f92197",
-        "affectsGlobalScope": false
-      },
       "../src/comment/comment.service.ts": {
-        "version": "c97e101b530c34260eb05de4b3a890ab21e60a6d3ad396f50f5c38efec42543a",
-        "signature": "76407fec715d53736c58c1f30a75621010928443e90eb86e9a2caa22e454b9da",
+        "version": "91e942a2eb763de996c8b766f9dec03d358bfa8d0d01f9ea4702d67d6142d335",
+        "signature": "cb0ab325df117f9467a8f2101a95f2b42d709fa3e6884c704214b81b6eeb2c8d",
         "affectsGlobalScope": false
       },
       "../src/comment/comment.controller.ts": {
-        "version": "540da1e729fed85b0747d5aa4b5efe39ff6d047c15c9f72580226f1dce6995e1",
-        "signature": "617fcad0ee232d7db166beaa6c1b7dece2197fc9e79bec11e83ab45e31085d6f",
+        "version": "b572cbe661eed715a8c4cc1fba79874f61886673ba295fbc5035f5e8b1119837",
+        "signature": "8c55424bec52b242be3fa66d983048930ee707bba35f49cd3efcee8c6f67717d",
         "affectsGlobalScope": false
       },
       "../src/comment/comment.module.ts": {
@@ -4416,18 +4411,23 @@
         "signature": "b41b3a2986e987d8ba08026540708494f7ecb856789a72fa2a0e0391d53a23c3",
         "affectsGlobalScope": false
       },
+      "../node_modules/moment/ts3.1-typings/moment.d.ts": {
+        "version": "4051f6311deb0ce6052329eeb1cd4b1b104378fe52f882f483130bea75f92197",
+        "signature": "4051f6311deb0ce6052329eeb1cd4b1b104378fe52f882f483130bea75f92197",
+        "affectsGlobalScope": false
+      },
       "../src/landing-page/landing-page.service.ts": {
-        "version": "db6a2217f26c078d035305dbc43a16d557acffe40caadad8a44ae202aa277727",
-        "signature": "8c3dd7c6b9d63033290507c120359416a0d4d3757b6e0c19a26ee914724ad41d",
+        "version": "f79fa24279e6e5460af5e6b096d07bf9483f3407c479d47a7aa1f8422848114d",
+        "signature": "ac6d6f433426929013c42dfa80082a8e31608887ef885b7a62e715d1feac23d4",
         "affectsGlobalScope": false
       },
       "../src/landing-page/landing-page.controller.ts": {
-        "version": "fc9f6820f215e9f0be1874045e431b1101b2ba95a529371c50f959f05ad7af43",
-        "signature": "d9edb8707c60d74300d471273e141978e847ca56c7c8233ceb8febe9fc2f0f4e",
+        "version": "4a8d35f87ba8641f4c92512916a4c4bac9c9618ca4e443bc564c4589f955d89d",
+        "signature": "ce678dc38a84f9c671b411cd8f30da64d12640dec422fde2f9ce0fb2e4a4b73c",
         "affectsGlobalScope": false
       },
       "../src/landing-page/landing-page.module.ts": {
-        "version": "60d15e39c16b5dc42d1a8d2c2cd1419698af1c01cbec883de53f77e2a1dae7ee",
+        "version": "450a88963eff4def535afc6b900364e8f088ef62c9525ce23e2bc761cd1d6298",
         "signature": "1adaf429151d2b4e64532226c7525c7b339c540ae8482638fdc7f5953a0587c6",
         "affectsGlobalScope": false
       },
@@ -11075,7 +11075,6 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../node_modules/moment/ts3.1-typings/moment.d.ts",
         "../node_modules/typeorm/index.d.ts",
         "../src/app.utils.ts",
         "../src/comment/comment.entity.ts",
@@ -11170,19 +11169,23 @@
         "../node_modules/@nestjs/passport/index.d.ts",
         "../node_modules/@nestjs/swagger/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/comment/dto/create-comment.dto.ts",
         "../src/landing-page/dto/filter-all-product.dto.ts",
         "../src/landing-page/dto/increment.dto.ts",
-        "../src/landing-page/landing-page.service.ts"
+        "../src/landing-page/landing-page.service.ts",
+        "../src/news/dto/filter-all.dto.ts"
       ],
       "../src/landing-page/landing-page.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/comment/comment.entity.ts",
         "../src/commons/storage/storage.service.ts",
         "../src/landing-page/click-product.entity.ts",
         "../src/landing-page/landing-page.controller.ts",
         "../src/landing-page/landing-page.service.ts",
         "../src/landing-page/like-product.entity.ts",
+        "../src/news/news.entity.ts",
         "../src/product/product.entity.ts",
         "../src/store/store.entity.ts",
         "../src/users/user.entity.ts",
@@ -11194,12 +11197,17 @@
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/uuid/index.d.ts",
+        "../node_modules/moment/ts3.1-typings/moment.d.ts",
         "../node_modules/typeorm/index.d.ts",
         "../src/app.utils.ts",
+        "../src/comment/comment.entity.ts",
+        "../src/comment/dto/create-comment.dto.ts",
         "../src/landing-page/click-product.entity.ts",
         "../src/landing-page/dto/filter-all-product.dto.ts",
         "../src/landing-page/dto/increment.dto.ts",
         "../src/landing-page/like-product.entity.ts",
+        "../src/news/dto/filter-all.dto.ts",
+        "../src/news/news.entity.ts",
         "../src/product/product.entity.ts",
         "../src/store/store.entity.ts"
       ],
@@ -17051,16 +17059,22 @@
         "../src/product/product.entity.ts"
       ],
       "../src/landing-page/landing-page.controller.ts": [
+        "../src/comment/dto/create-comment.dto.ts",
         "../src/landing-page/dto/filter-all-product.dto.ts",
         "../src/landing-page/dto/increment.dto.ts",
-        "../src/landing-page/landing-page.service.ts"
+        "../src/landing-page/landing-page.service.ts",
+        "../src/news/dto/filter-all.dto.ts"
       ],
       "../src/landing-page/landing-page.service.ts": [
         "../node_modules/typeorm/index.d.ts",
+        "../src/comment/comment.entity.ts",
+        "../src/comment/dto/create-comment.dto.ts",
         "../src/landing-page/click-product.entity.ts",
         "../src/landing-page/dto/filter-all-product.dto.ts",
         "../src/landing-page/dto/increment.dto.ts",
         "../src/landing-page/like-product.entity.ts",
+        "../src/news/dto/filter-all.dto.ts",
+        "../src/news/news.entity.ts",
         "../src/product/product.entity.ts",
         "../src/store/store.entity.ts"
       ],
@@ -17069,7 +17083,6 @@
         "../src/product/product.entity.ts"
       ],
       "../src/news/news.controller.ts": [
-        "../node_modules/@types/express/ts4.0/index.d.ts",
         "../src/commons/storage/storage.service.ts",
         "../src/news/dto/create-news.dto.ts",
         "../src/news/dto/filter-all.dto.ts",
