@@ -12,13 +12,13 @@ export class IncrementDto {
     required: false,
   })
   @IsNotEmpty()
-  @IsUUID('all',{each:true})
+  @IsUUID('all', { each: true })
   identifier: string
 
   @ApiProperty({
     required: false,
   })
   @IsNotEmpty()
-  @IsUUID('all',{each:true})
+  @IsUUID('all', { each: true })
   id_product: string
 }

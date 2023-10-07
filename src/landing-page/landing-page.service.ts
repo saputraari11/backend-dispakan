@@ -21,7 +21,7 @@ export class LandingPageService {
     @InjectRepository(ClickProduct)
     private readonly clickProductRepository: Repository<ClickProduct>,
     @InjectRepository(LikeProduct)
-    private readonly likeProductRepository:Repository<LikeProduct>
+    private readonly likeProductRepository: Repository<LikeProduct>,
   ) {}
 
   async allProductByStore(filterLandingDto: FilterAllProducts) {
@@ -77,38 +77,44 @@ export class LandingPageService {
     return responseTemplate('200', 'success', products)
   }
 
-  async incrementProperty(incrementDto:IncrementDto) {
-    const product = await this.productRepository.findOne({where:{id:incrementDto.id_product}})
-     if(!product) {
-      throw new NotFoundException("Product does not exist")
+  async incrementProperty(incrementDto: IncrementDto) {
+    const product = await this.productRepository.findOne({
+      where: { id: incrementDto.id_product },
+    })
+    if (!product) {
+      throw new NotFoundException('Product does not exist')
     }
 
-    const isLikeExist = await this.likeProductRepository.findOne({where:{identifier:incrementDto.identifier,product:product}})
-    const isClickExist = await this.clickProductRepository.findOne({where:{identifier:incrementDto.identifier,product:product}})
-   
-    switch(incrementDto.increment_type) {
-      case "like":
-        console.log(isLikeExist,product);
-        
-        if(!isLikeExist){
+    const isLikeExist = await this.likeProductRepository.findOne({
+      where: { identifier: incrementDto.identifier, product: product },
+    })
+    const isClickExist = await this.clickProductRepository.findOne({
+      where: { identifier: incrementDto.identifier, product: product },
+    })
+
+    switch (incrementDto.increment_type) {
+      case 'like':
+        console.log(isLikeExist, product)
+
+        if (!isLikeExist) {
           const newLike = new LikeProduct()
           newLike.identifier = incrementDto.identifier
           newLike.product = product
           await this.likeProductRepository.save(newLike)
         }
-      break;
+        break
       case 'click':
-        if(!isClickExist){
+        if (!isClickExist) {
           const newClick = new ClickProduct()
           newClick.identifier = incrementDto.identifier
           newClick.product = product
           await this.clickProductRepository.save(newClick)
         }
-      break;
+        break
       default:
-        throw new NotFoundException("Type product doest not exit")
+        throw new NotFoundException('Type product doest not exit')
     }
 
-    return {status:200,message:"success"}
+    return { status: 200, message: 'success' }
   }
 }

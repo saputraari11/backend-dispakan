@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, Query, UseGuards } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Query,
+  UseGuards,
+} from '@nestjs/common'
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
 import { AuthGuard } from '@nestjs/passport'
 import { LandingPageService } from './landing-page.service'
@@ -20,8 +28,7 @@ export class LandingPageController {
 
   @Post('/action')
   @ApiBearerAuth()
-  async actionLandingPage(@Body() incrementDto:IncrementDto){
+  async actionLandingPage(@Body() incrementDto: IncrementDto) {
     return this.landingPageService.incrementProperty(incrementDto)
   }
-
 }
