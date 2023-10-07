@@ -28,6 +28,7 @@ export class LandingPageService {
     let queryProducts = this.productRepository
       .createQueryBuilder('product')
       .innerJoinAndSelect('product.store', 'store')
+      .leftJoinAndSelect('product.like', 'like')
 
     if (filterLandingDto.catagory) {
       queryProducts = queryProducts.andWhere('product.category = :catagory', {
@@ -35,18 +36,22 @@ export class LandingPageService {
       })
     }
 
+    let isSortedBy = false
+    let filterBy = {}
+
     if (filterLandingDto.sort_by && filterLandingDto.sort_by != '') {
-      const filterBy = JSON.parse(filterLandingDto.sort_by)
+      filterBy = JSON.parse(filterLandingDto.sort_by)
 
       if ('best_sale' in filterBy && filterBy['best_sale']) {
         queryProducts = queryProducts
           .andWhere('product.sale > 0')
           .orderBy('sale', 'DESC')
           .orderBy('random()')
-      } else if ('best_seller' in filterBy && filterBy['best_seller']) {
       } else {
         queryProducts = queryProducts.orderBy('random()')
       }
+
+      isSortedBy = true
     } else {
       queryProducts = queryProducts.orderBy('random()')
     }
@@ -58,10 +63,11 @@ export class LandingPageService {
       )
     }
 
-    const products = await queryProducts.getMany()
+    let products = await queryProducts.getMany()
 
     for (let product of products) {
       await product.convertStringToArray()
+
       if (product.mediaIds && product.mediaIds.length > 0) {
         const urlImage = product.mediaIds.map(
           file =>
@@ -72,6 +78,12 @@ export class LandingPageService {
       }
       await product.store.convertStringToArray()
       product.store.url_image = `${process.env.LINK_GCP}/umkm/${product.store.active_on}/${product.store.mediaId}.png`
+    }
+
+    if(isSortedBy) {
+      if('best_seller' in filterBy && filterBy['best_seller']) {
+        products = products.filter(item => item.jumlah_like > 0)
+      }
     }
 
     return responseTemplate('200', 'success', products)

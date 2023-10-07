@@ -25,6 +25,7 @@ export declare class Product extends BaseEntity {
     mediaIds: string[];
     price_discount: number;
     discount: number;
+    jumlah_like: number;
     countingDiscount(): Promise<void>;
     convertStringToArray(): Promise<void>;
 }

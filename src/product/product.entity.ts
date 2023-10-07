@@ -106,6 +106,7 @@ export class Product extends BaseEntity {
   mediaIds: string[] = null
   price_discount: number
   discount: number
+  jumlah_like:number
 
   public async countingDiscount() {
     const discount = (this.sale / 100) * this.price
@@ -116,7 +117,7 @@ export class Product extends BaseEntity {
   public async convertStringToArray() {
     if (this.imagesSaved) this.images = JSON.parse(this.imagesSaved)
     if (this.mediaId) this.mediaIds = JSON.parse(this.mediaId)
-    if (this.othersSaved)
-      this.others_descriptions = JSON.parse(this.othersSaved)
+    if (this.othersSaved) this.others_descriptions = JSON.parse(this.othersSaved)
+    this.jumlah_like = this.like.length
   }
 }
