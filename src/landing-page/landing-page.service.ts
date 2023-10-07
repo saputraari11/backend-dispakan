@@ -80,8 +80,8 @@ export class LandingPageService {
       product.store.url_image = `${process.env.LINK_GCP}/umkm/${product.store.active_on}/${product.store.mediaId}.png`
     }
 
-    if(isSortedBy) {
-      if('best_seller' in filterBy && filterBy['best_seller']) {
+    if (isSortedBy) {
+      if ('best_seller' in filterBy && filterBy['best_seller']) {
         products = products.filter(item => item.jumlah_like > 0)
       }
     }
