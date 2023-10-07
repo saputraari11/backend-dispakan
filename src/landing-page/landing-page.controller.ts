@@ -16,6 +16,4 @@ export class LandingPageController {
     const result = await this.landingPageService.allProductByStore(filter)
     return result
   }
-
-  
 }

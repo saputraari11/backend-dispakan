@@ -11,7 +11,9 @@ import { ClickProduct } from './click-product.entity'
 import { LikeProduct } from './like-product.entity'
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Store, User, Product,ClickProduct,LikeProduct])],
+  imports: [
+    TypeOrmModule.forFeature([Store, User, Product, ClickProduct, LikeProduct]),
+  ],
   controllers: [LandingPageController],
   providers: [UsersService, StorageService, LandingPageService],
 })

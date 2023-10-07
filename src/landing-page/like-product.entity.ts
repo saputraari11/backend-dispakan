@@ -32,7 +32,7 @@ export class LikeProduct extends BaseEntity {
   })
   updatedAt: Date
 
-   @ManyToOne(
+  @ManyToOne(
     type => Product,
     p => p.like,
   )

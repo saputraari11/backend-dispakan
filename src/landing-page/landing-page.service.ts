@@ -17,28 +17,34 @@ export class LandingPageService {
     private readonly productRepository: Repository<Product>,
   ) {}
 
-  async allProductByStore(filterLandingDto:FilterAllProducts) {
-    let queryProducts = this.productRepository.createQueryBuilder('product').innerJoinAndSelect('product.store','store')
+  async allProductByStore(filterLandingDto: FilterAllProducts) {
+    let queryProducts = this.productRepository
+      .createQueryBuilder('product')
+      .innerJoinAndSelect('product.store', 'store')
 
-    if(filterLandingDto.catagory) {
-      queryProducts = queryProducts.andWhere('product.category = :catagory',{catagory:filterLandingDto.catagory})
+    if (filterLandingDto.catagory) {
+      queryProducts = queryProducts.andWhere('product.category = :catagory', {
+        catagory: filterLandingDto.catagory,
+      })
     }
 
-    if(filterLandingDto.sort_by && filterLandingDto.sort_by != '') {
+    if (filterLandingDto.sort_by && filterLandingDto.sort_by != '') {
       const filterBy = JSON.parse(filterLandingDto.sort_by)
 
-      if("best_sale" in filterBy && filterBy["best_sale"]) {
-        queryProducts = queryProducts.andWhere('product.sale > 0').orderBy('sale','DESC').orderBy('random()')
-      } else if("best_seller" in filterBy && filterBy['best_seller']) {
+      if ('best_sale' in filterBy && filterBy['best_sale']) {
+        queryProducts = queryProducts
+          .andWhere('product.sale > 0')
+          .orderBy('sale', 'DESC')
+          .orderBy('random()')
+      } else if ('best_seller' in filterBy && filterBy['best_seller']) {
       } else {
         queryProducts = queryProducts.orderBy('random()')
       }
-
     } else {
       queryProducts = queryProducts.orderBy('random()')
     }
 
-    if(filterLandingDto.search) {
+    if (filterLandingDto.search) {
       queryProducts = queryProducts.andWhere(
         'products.name ILIKE :searchTerm or products.description ILIKE :searchTerm or store.name ILIKE :searchTerm or store.address ILIKE :searchTerm or store.phone ILIKE :searchTerm or store.omset ILIKE :searchTerm or store.aspek ILIKE :searchTerm',
         { searchTerm: `%${filterLandingDto.search}%` },
@@ -47,7 +53,7 @@ export class LandingPageService {
 
     const products = await queryProducts.getMany()
 
-    for(let product of products) {
+    for (let product of products) {
       await product.convertStringToArray()
       if (product.mediaIds && product.mediaIds.length > 0) {
         const urlImage = product.mediaIds.map(
@@ -64,7 +70,5 @@ export class LandingPageService {
     return responseTemplate('200', 'success', products)
   }
 
-  async incrementProperty() {
-    
-  }
+  async incrementProperty() {}
 }

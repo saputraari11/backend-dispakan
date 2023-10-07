@@ -32,9 +32,9 @@ export class ClickProduct extends BaseEntity {
   })
   updatedAt: Date
 
-   @ManyToOne(
+  @ManyToOne(
     type => Product,
     p => p.click,
   )
-  product: Product 
+  product: Product
 }
