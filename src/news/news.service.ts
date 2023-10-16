@@ -8,12 +8,15 @@ import * as fs from 'fs'
 import { StorageService } from 'src/commons/storage/storage.service'
 import { v4 } from 'uuid'
 import { FilterAllNews } from './dto/filter-all.dto'
+import { Comment } from 'src/comment/comment.entity'
 
 @Injectable()
 export class NewsService {
   constructor(
     @InjectRepository(News)
     private readonly newsRepository: Repository<News>,
+    @InjectRepository(Comment)
+    private readonly commentRepository: Repository<Comment>,
     private storageService: StorageService,
   ) {}
 
@@ -23,6 +26,7 @@ export class NewsService {
       .where('news.active_on = :activeOn', {
         activeOn: filterAllNews.active_on,
       })
+      .innerJoinAndSelect('news.comments','comments')
 
     if (filterAllNews && filterAllNews.search) {
       request_news = request_news.andWhere(
@@ -46,7 +50,7 @@ export class NewsService {
   }
 
   async detailNews(id: string) {
-    const news = await this.newsRepository.findOne({ where: { id: id } })
+    const news = await this.newsRepository.findOne({ where: { id: id } ,relations:['comments']})
 
     if (!news) {
       return responseTemplate('404', 'gagal', {})
@@ -141,6 +145,12 @@ export class NewsService {
   async deleteNews(id: string) {
     let response = ''
     const news = (await this.detailNews(id)).data
+    
+    if(news.comments.length > 0) {
+      for(let c of news.comments) {
+        await this.commentRepository.remove(c)
+      }
+    }
 
     try {
       await this.storageService.delete(`news/${news.active_on}/${news.mediaId}`)

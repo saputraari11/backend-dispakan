@@ -13,11 +13,12 @@ const news_entity_1 = require("./news.entity");
 const news_controller_1 = require("./news.controller");
 const news_service_1 = require("./news.service");
 const storage_service_1 = require("../commons/storage/storage.service");
+const comment_entity_1 = require("../comment/comment.entity");
 let NewsModule = class NewsModule {
 };
 NewsModule = __decorate([
     common_1.Module({
-        imports: [typeorm_1.TypeOrmModule.forFeature([news_entity_1.News])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([news_entity_1.News, comment_entity_1.Comment])],
         controllers: [news_controller_1.NewsController],
         providers: [news_service_1.NewsService, storage_service_1.StorageService],
     })

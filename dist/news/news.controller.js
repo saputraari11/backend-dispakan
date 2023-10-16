@@ -19,7 +19,6 @@ const platform_express_1 = require("@nestjs/platform-express");
 const create_news_dto_1 = require("./dto/create-news.dto");
 const news_service_1 = require("./news.service");
 const passport_1 = require("@nestjs/passport");
-const storage_file_1 = require("../commons/storage/storage-file");
 const storage_service_1 = require("../commons/storage/storage.service");
 const filter_all_dto_1 = require("./dto/filter-all.dto");
 let NewsController = class NewsController {

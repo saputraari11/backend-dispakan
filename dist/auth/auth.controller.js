@@ -33,7 +33,7 @@ let AuthController = class AuthController {
             return err;
         }
     }
-    async signUp(signUpCredentialsDto, res) {
+    async signUp(signUpCredentialsDto) {
         const data = await this.authService.signUp(signUpCredentialsDto);
         return data;
     }
@@ -53,9 +53,8 @@ __decorate([
     common_1.Post('signup/bumdes'),
     swagger_1.ApiSecurity('X-API-KEY', ['X-API-KEY']),
     __param(0, common_1.Body(app_utils_1.SETTINGS.VALIDATION_PIPE)),
-    __param(1, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [signup_credentials_dto_1.SignupCredentialsDto, Object]),
+    __metadata("design:paramtypes", [signup_credentials_dto_1.SignupCredentialsDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "signUp", null);
 __decorate([

@@ -109,7 +109,7 @@ export class Product extends BaseEntity {
   jumlah_like: number
 
   public async countingDiscount() {
-    const discount = (this.sale / 100) * this.price
+    const discount = (Number(this.sale) / 100) * Number(this.price)
     this.discount = discount
     this.price_discount = this.price - discount
   }

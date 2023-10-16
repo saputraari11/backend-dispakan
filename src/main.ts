@@ -1,14 +1,12 @@
 import { NestFactory } from '@nestjs/core'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 import { AppModule } from './app.module'
-import { ValidationPipe, BadRequestException } from '@nestjs/common'
-import { ValidationError } from 'class-validator'
+import { ValidationPipe } from '@nestjs/common'
 import * as express from 'express'
 
 import * as bodyParser from 'body-parser'
 import { join } from 'path'
 import { Logger } from 'winston'
-import { TimeoutInterceptor } from './commons/interceptors/timeout.interceptor'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -28,9 +26,8 @@ async function bootstrap() {
   app.use(bodyParser.json({ limit: '50mb' }))
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
   app.use(express.static(join(process.cwd(), '../temp/qrcode/')))
-  // app.useGlobalInterceptors(new TimeoutInterceptor(logger))
   app.useGlobalPipes(new ValidationPipe())
-  app.enableCors()
+  // app.enableCors()
 
   await app.listen(process.env.PORT || '4000', process.env.HOST)
 }

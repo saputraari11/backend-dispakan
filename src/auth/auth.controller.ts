@@ -49,8 +49,7 @@ export class AuthController {
   @ApiSecurity('X-API-KEY', ['X-API-KEY'])
   async signUp(
     @Body(SETTINGS.VALIDATION_PIPE)
-    signUpCredentialsDto: SignupCredentialsDto,
-    @Res() res: Response,
+    signUpCredentialsDto: SignupCredentialsDto
   ): Promise<User> {
     const data = await this.authService.signUp(signUpCredentialsDto)
     return data

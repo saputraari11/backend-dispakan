@@ -224,7 +224,7 @@ export class ProductService {
       }
     }
 
-    // await this.productRepository.remove(product)
+    await this.productRepository.remove(product)
 
     return responseTemplate('200', 'success', response)
   }

@@ -3,10 +3,12 @@ import { Repository } from 'typeorm';
 import { CreateNewsDto } from './dto/create-news.dto';
 import { StorageService } from 'src/commons/storage/storage.service';
 import { FilterAllNews } from './dto/filter-all.dto';
+import { Comment } from 'src/comment/comment.entity';
 export declare class NewsService {
     private readonly newsRepository;
+    private readonly commentRepository;
     private storageService;
-    constructor(newsRepository: Repository<News>, storageService: StorageService);
+    constructor(newsRepository: Repository<News>, commentRepository: Repository<Comment>, storageService: StorageService);
     allNews(filterAllNews: FilterAllNews): Promise<{
         error: boolean;
         alerts: {

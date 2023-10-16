@@ -173,6 +173,7 @@ let ProductService = class ProductService {
                 }
             }
         }
+        await this.productRepository.remove(product);
         return app_utils_1.responseTemplate('200', 'success', response);
     }
 };

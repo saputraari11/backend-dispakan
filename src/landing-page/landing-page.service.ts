@@ -15,6 +15,8 @@ import { News } from 'src/news/news.entity'
 import { Comment } from 'src/comment/comment.entity'
 import * as moment from 'moment'
 import { FilterAllNews } from 'src/news/dto/filter-all.dto'
+import { User } from 'src/users/user.entity'
+import { UserLevel } from 'src/users/user-level.enum'
 
 @Injectable()
 export class LandingPageService {
@@ -31,6 +33,8 @@ export class LandingPageService {
     private readonly newsRepository: Repository<News>,
     @InjectRepository(Comment)
     private readonly commentRepository: Repository<Comment>,
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
   ) {}
 
   async detailProduct(id: string) {
@@ -257,5 +261,59 @@ export class LandingPageService {
     }
 
     return responseTemplate('200', 'success', comment)
+  }
+
+  // bumdes page admin
+  async getBumdesDashboard(active_on:string){
+    const countUmkm = await this.storeRepository.findAndCount({where:{active_on:active_on}})
+    const countUsers = await this.userRepository.findAndCount({where:{active_on:active_on,level:UserLevel.UMKM}})
+    const products = await this.productRepository.find({where:{active_on:active_on},relations:['click','like']})
+    const store = await this.storeRepository.find({where:{active_on:active_on}})
+
+    let countVisited = 0
+    const countLikeProduct = {}
+
+     // pie chart 
+    const countCatagory = {}
+
+    for (let p of products) {
+        countVisited += p.click.length
+        
+
+        if(p.name in countLikeProduct) {
+          countLikeProduct[p.name] += p.like.length
+        } else {
+          countLikeProduct[p.name]  = p.like.length
+        }
+    }
+
+      for (let s of store) {
+        await s.convertStringToArray()
+
+        if (s.katagori_umkm && s.katagori_umkm.length > 0) {
+          for (let item of s.katagori_umkm) {
+            if (item in countCatagory) {
+              countCatagory[item]++
+            } else {
+              countCatagory[item] = 1
+            }
+          }
+        }
+      }
+
+
+    return {
+      data_bar_chart: {
+          countedUmkm:countUmkm[1],
+          countedUsers:countUsers[1],
+          countedVisited:countVisited
+      },
+      data_pie_chart: countCatagory,
+      data_rank_like: countLikeProduct
+    }
+  }
+
+  async getUmkmDashboard(active_on:string){
+    
   }
 }

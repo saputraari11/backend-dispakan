@@ -20,9 +20,11 @@ const typeorm_2 = require("typeorm");
 const app_utils_1 = require("../app.utils");
 const storage_service_1 = require("../commons/storage/storage.service");
 const uuid_1 = require("uuid");
+const comment_entity_1 = require("../comment/comment.entity");
 let NewsService = class NewsService {
-    constructor(newsRepository, storageService) {
+    constructor(newsRepository, commentRepository, storageService) {
         this.newsRepository = newsRepository;
+        this.commentRepository = commentRepository;
         this.storageService = storageService;
     }
     async allNews(filterAllNews) {
@@ -30,7 +32,8 @@ let NewsService = class NewsService {
             .createQueryBuilder('news')
             .where('news.active_on = :activeOn', {
             activeOn: filterAllNews.active_on,
-        });
+        })
+            .innerJoinAndSelect('news.comments', 'comments');
         if (filterAllNews && filterAllNews.search) {
             request_news = request_news.andWhere('news.title ILIKE :searchTerm or news.description ILIKE :searchTerm', { searchTerm: `%${filterAllNews.search}%` });
         }
@@ -42,7 +45,7 @@ let NewsService = class NewsService {
         return app_utils_1.responseTemplate('200', 'success', news);
     }
     async detailNews(id) {
-        const news = await this.newsRepository.findOne({ where: { id: id } });
+        const news = await this.newsRepository.findOne({ where: { id: id }, relations: ['comments'] });
         if (!news) {
             return app_utils_1.responseTemplate('404', 'gagal', {});
         }
@@ -117,6 +120,11 @@ let NewsService = class NewsService {
     async deleteNews(id) {
         let response = '';
         const news = (await this.detailNews(id)).data;
+        if (news.comments.length > 0) {
+            for (let c of news.comments) {
+                await this.commentRepository.remove(c);
+            }
+        }
         try {
             await this.storageService.delete(`news/${news.active_on}/${news.mediaId}`);
             response = `${news.posted_date}. ${news.mediaId} deleted`;
@@ -131,7 +139,9 @@ let NewsService = class NewsService {
 NewsService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_1.InjectRepository(news_entity_1.News)),
+    __param(1, typeorm_1.InjectRepository(comment_entity_1.Comment)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository,
         storage_service_1.StorageService])
 ], NewsService);
 exports.NewsService = NewsService;

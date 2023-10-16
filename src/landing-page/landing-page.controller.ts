@@ -15,12 +15,12 @@ import { IncrementDto } from './dto/increment.dto'
 import { CreateCommantDto } from 'src/comment/dto/create-comment.dto'
 import { FilterAllNews } from 'src/news/dto/filter-all.dto'
 
-@ApiTags('Landing Page')
 @Controller('landing-page')
 export class LandingPageController {
   constructor(private landingPageService: LandingPageService) {}
 
   @Get('product')
+  @ApiTags('Landing Page')
   @ApiBearerAuth()
   // @UseGuards(AuthGuard('jwt'))
   async allProductByStore(@Query() filter: FilterAllProducts) {
@@ -29,6 +29,7 @@ export class LandingPageController {
   }
 
   @Get('product/detail/:id')
+  @ApiTags('Landing Page')
   @ApiBearerAuth()
   async detailProdcut(@Param('id') id: string) {
     const result = await this.landingPageService.detailProduct(id)
@@ -36,12 +37,14 @@ export class LandingPageController {
   }
 
   @Post('/action')
+  @ApiTags('Landing Page')
   @ApiBearerAuth()
   async actionLandingPage(@Body() incrementDto: IncrementDto) {
     return this.landingPageService.incrementProperty(incrementDto)
   }
 
   @Get('news')
+  @ApiTags('Landing Page')
   @ApiBearerAuth()
   async allNews(@Query() filterDto: FilterAllNews) {
     const result = await this.landingPageService.allNews(filterDto)
@@ -49,6 +52,7 @@ export class LandingPageController {
   }
 
   @Get('news/detail/:id')
+  @ApiTags('Landing Page')
   @ApiBearerAuth()
   async detailNews(@Param('id') id: string) {
     const result = await this.landingPageService.detailNews(id)
@@ -56,9 +60,26 @@ export class LandingPageController {
   }
 
   @Post('news/comment')
+  @ApiTags('Landing Page')
   @ApiBearerAuth()
   async uploadFile(@Body() data: CreateCommantDto) {
     const result = await this.landingPageService.uploadComment(data)
+    return result
+  }
+
+  @Get('bumdes/dashboard')
+  @ApiTags('dashboard')
+  @ApiBearerAuth()
+  async getBumdes(@Query() data:FilterAllProducts ) {
+    const result = await this.landingPageService.getBumdesDashboard(data.active_on)
+    return result
+  }
+
+  @Get('umkm/dashboard')
+  @ApiTags('dashboard')
+  @ApiBearerAuth()
+  async getUmkm(@Query() data:FilterAllProducts ) {
+    const result = await this.landingPageService.getUmkmDashboard(data.active_on)
     return result
   }
 }

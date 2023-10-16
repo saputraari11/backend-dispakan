@@ -7,7 +7,6 @@ import {
 import { AuthModule } from './auth/auth.module'
 import { AppConfigModule } from './config/config.module'
 import { DatabaseModule } from './database/database.module'
-import { UsersMiddleware } from './users/users.middleware'
 import { UsersModule } from './users/users.module'
 import { AuthMiddleware } from './auth/auth.middleware'
 import { NewsModule } from './news/news.module'

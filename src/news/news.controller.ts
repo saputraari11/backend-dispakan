@@ -22,7 +22,6 @@ import * as path from 'path'
 import { NewsService } from './news.service'
 import { Request, Response } from 'express'
 import { AuthGuard } from '@nestjs/passport'
-import { StorageFile } from 'src/commons/storage/storage-file'
 import { StorageService } from 'src/commons/storage/storage.service'
 import { FilterAllNews } from './dto/filter-all.dto'
 

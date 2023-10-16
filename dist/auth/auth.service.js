@@ -47,18 +47,19 @@ let AuthService = class AuthService {
         const userExist = await user_entity_1.User.findOne({
             where: { email: userRegister.email, active_on: userRegister.active_on },
         });
+        let user = new user_entity_1.User();
         userRegister.level = level;
         if (userExist) {
             throw new common_1.ConflictException('User is Already Exist!');
         }
         try {
-            const user = this.userRepository.signup(userRegister);
-            return user;
+            user = await this.userRepository.signup(userRegister);
         }
         catch (err) {
             console.log('error query', err);
             return err;
         }
+        return user;
     }
     async validate(username, password, active_on) {
         const user = await user_entity_1.User.getRepository()

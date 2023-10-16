@@ -68,6 +68,7 @@ export class AuthService {
       where: { email: userRegister.email, active_on: userRegister.active_on },
     })
 
+    let user = new User()
     userRegister.level = level
 
     if (userExist) {
@@ -75,12 +76,13 @@ export class AuthService {
     }
 
     try {
-      const user = this.userRepository.signup(userRegister)
-      return user
+      user = await this.userRepository.signup(userRegister)
     } catch (err) {
       console.log('error query', err)
       return err
     }
+
+      return user
   }
 
   async validate(username: string, password: string, active_on: string) {
