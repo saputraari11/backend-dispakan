@@ -45,7 +45,10 @@ let NewsService = class NewsService {
         return app_utils_1.responseTemplate('200', 'success', news);
     }
     async detailNews(id) {
-        const news = await this.newsRepository.findOne({ where: { id: id }, relations: ['comments'] });
+        const news = await this.newsRepository.findOne({
+            where: { id: id },
+            relations: ['comments'],
+        });
         if (!news) {
             return app_utils_1.responseTemplate('404', 'gagal', {});
         }

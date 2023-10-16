@@ -70,16 +70,20 @@ export class LandingPageController {
   @Get('bumdes/dashboard')
   @ApiTags('dashboard')
   @ApiBearerAuth()
-  async getBumdes(@Query() data:FilterAllProducts ) {
-    const result = await this.landingPageService.getBumdesDashboard(data.active_on)
+  async getBumdes(@Query() data: FilterAllProducts) {
+    const result = await this.landingPageService.getBumdesDashboard(
+      data.active_on,
+    )
     return result
   }
 
   @Get('umkm/dashboard')
   @ApiTags('dashboard')
   @ApiBearerAuth()
-  async getUmkm(@Query() data:FilterAllProducts ) {
-    const result = await this.landingPageService.getUmkmDashboard(data.active_on)
+  async getUmkm(@Query() data: FilterAllProducts) {
+    const result = await this.landingPageService.getUmkmDashboard(
+      data.active_on,
+    )
     return result
   }
 }

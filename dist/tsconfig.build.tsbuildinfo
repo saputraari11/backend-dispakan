@@ -3757,7 +3757,7 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.service.ts": {
-        "version": "5fe3d3320883f3754ec6abf2f272a473904b3bb193b7680be639dad1febf7267",
+        "version": "9702b56d553a9a1df2a0cacf7046f53ea2fa29835fd2c320183ca7697125ab21",
         "signature": "d2f0b5f9f203ccc3d84cebc537dfc778e69ac26a59f06d465ae7c65e2a8cda89",
         "affectsGlobalScope": false
       },
@@ -3812,7 +3812,7 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.controller.ts": {
-        "version": "1854da12a6c8eb4caca320966ce83c49dbaa03ab4ee5382540aa8faa27e53afa",
+        "version": "9af89567f4061861c3f99dbd1745a938b9b98207c4c3d7096dc4caa573e77067",
         "signature": "586ec59228c21bedf16e1b39f6bd287da88074a6f09a9f4600527c238a486414",
         "affectsGlobalScope": false
       },
@@ -4287,7 +4287,7 @@
         "affectsGlobalScope": false
       },
       "../src/news/news.service.ts": {
-        "version": "7f1b75abe4c684a34eda28e01b9fe09f26e17e2fab66e83ed775e22fca5c6008",
+        "version": "9d60583afed05808416d5421f9470d22bdf0dafa0e949c51437ce6d307029eb7",
         "signature": "b1b7a1414ce4b7789d2f6b5f25478ff0fa0679e476d6820f991e47a29c6b4b34",
         "affectsGlobalScope": false
       },
@@ -4297,7 +4297,7 @@
         "affectsGlobalScope": false
       },
       "../src/news/news.module.ts": {
-        "version": "f398392c413c509579399cbfc5d713341c382a54b3c6d7fe78fd79585765cddf",
+        "version": "08abf8f7cf2a2db73b17a3d0152ccff88933eb3d4cc891bcf5f99acb168a5350",
         "signature": "c2e1c36ea0b9a84c44c052c92127dd00f0437b69ec2313a4e5296e0ad9457fda",
         "affectsGlobalScope": false
       },
@@ -4402,12 +4402,12 @@
         "affectsGlobalScope": false
       },
       "../src/landing-page/landing-page.service.ts": {
-        "version": "84221efe60934155d8e5b358c708676feb1e33609839e227eaa06c9683aa9930",
+        "version": "cc070ab602a70f3027e6431e50f0c87f02865d9d6642c52e336d30a59e3584ef",
         "signature": "3fccf56b7b362ae1c7e05f74873b17e746ce9d366a6c86ed9f34eadbffe74c3d",
         "affectsGlobalScope": false
       },
       "../src/landing-page/landing-page.controller.ts": {
-        "version": "ef8abeead7b585fb58f7744d091c898acbb5dfbdcc5bb6cc8dddb734091be561",
+        "version": "d6c909f2516d10d32ae5b86e703e40ff6803eb6553f413079d657d87f5e6928f",
         "signature": "38cee96581efe8d6740b6befd70a7710e9ffb71b3a7596b7f645a30ba9c9d17d",
         "affectsGlobalScope": false
       },

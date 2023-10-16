@@ -26,7 +26,7 @@ export class NewsService {
       .where('news.active_on = :activeOn', {
         activeOn: filterAllNews.active_on,
       })
-      .innerJoinAndSelect('news.comments','comments')
+      .innerJoinAndSelect('news.comments', 'comments')
 
     if (filterAllNews && filterAllNews.search) {
       request_news = request_news.andWhere(
@@ -50,7 +50,10 @@ export class NewsService {
   }
 
   async detailNews(id: string) {
-    const news = await this.newsRepository.findOne({ where: { id: id } ,relations:['comments']})
+    const news = await this.newsRepository.findOne({
+      where: { id: id },
+      relations: ['comments'],
+    })
 
     if (!news) {
       return responseTemplate('404', 'gagal', {})
@@ -145,9 +148,9 @@ export class NewsService {
   async deleteNews(id: string) {
     let response = ''
     const news = (await this.detailNews(id)).data
-    
-    if(news.comments.length > 0) {
-      for(let c of news.comments) {
+
+    if (news.comments.length > 0) {
+      for (let c of news.comments) {
         await this.commentRepository.remove(c)
       }
     }

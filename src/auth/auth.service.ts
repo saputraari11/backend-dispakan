@@ -82,7 +82,7 @@ export class AuthService {
       return err
     }
 
-      return user
+    return user
   }
 
   async validate(username: string, password: string, active_on: string) {
