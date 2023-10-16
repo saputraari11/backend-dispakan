@@ -23,7 +23,7 @@ let AppModule = class AppModule {
     configure(consumer) {
         consumer
             .apply(auth_middleware_1.AuthMiddleware)
-            .forRoutes({ path: '/auth/signup/bumdes', method: common_1.RequestMethod.POST });
+            .forRoutes({ path: '/auth/signup/bumdes', method: common_1.RequestMethod.POST }, { path: '/landing-page/news', method: common_1.RequestMethod.ALL }, { path: '/landing-page/product', method: common_1.RequestMethod.ALL }, { path: '/landing-page/action', method: common_1.RequestMethod.ALL });
         consumer.apply(app_logger_middleware_1.AppLoggerMiddleware).forRoutes('*');
     }
 };

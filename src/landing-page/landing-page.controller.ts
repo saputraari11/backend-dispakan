@@ -7,7 +7,7 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common'
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
+import { ApiBearerAuth, ApiSecurity, ApiTags } from '@nestjs/swagger'
 import { AuthGuard } from '@nestjs/passport'
 import { LandingPageService } from './landing-page.service'
 import { FilterAllProducts } from './dto/filter-all-product.dto'
@@ -20,48 +20,47 @@ export class LandingPageController {
   constructor(private landingPageService: LandingPageService) {}
 
   @Get('product')
-  @ApiTags('Landing Page')
-  @ApiBearerAuth()
-  // @UseGuards(AuthGuard('jwt'))
+  @ApiTags('landing page')
+  @ApiSecurity('X-API-KEY', ['X-API-KEY'])
   async allProductByStore(@Query() filter: FilterAllProducts) {
     const result = await this.landingPageService.allProductByStore(filter)
     return result
   }
 
   @Get('product/detail/:id')
-  @ApiTags('Landing Page')
-  @ApiBearerAuth()
+  @ApiTags('landing page')
+  @ApiSecurity('X-API-KEY', ['X-API-KEY'])
   async detailProdcut(@Param('id') id: string) {
     const result = await this.landingPageService.detailProduct(id)
     return result
   }
 
   @Post('/action')
-  @ApiTags('Landing Page')
-  @ApiBearerAuth()
+  @ApiTags('landing page')
+  @ApiSecurity('X-API-KEY', ['X-API-KEY'])
   async actionLandingPage(@Body() incrementDto: IncrementDto) {
     return this.landingPageService.incrementProperty(incrementDto)
   }
 
   @Get('news')
-  @ApiTags('Landing Page')
-  @ApiBearerAuth()
+  @ApiTags('landing page')
+  @ApiSecurity('X-API-KEY', ['X-API-KEY'])
   async allNews(@Query() filterDto: FilterAllNews) {
     const result = await this.landingPageService.allNews(filterDto)
     return result
   }
 
   @Get('news/detail/:id')
-  @ApiTags('Landing Page')
-  @ApiBearerAuth()
+  @ApiTags('landing page')
+  @ApiSecurity('X-API-KEY', ['X-API-KEY'])
   async detailNews(@Param('id') id: string) {
     const result = await this.landingPageService.detailNews(id)
     return result
   }
 
   @Post('news/comment')
-  @ApiTags('Landing Page')
-  @ApiBearerAuth()
+  @ApiTags('landing page')
+  @ApiSecurity('X-API-KEY', ['X-API-KEY'])
   async uploadFile(@Body() data: CreateCommantDto) {
     const result = await this.landingPageService.uploadComment(data)
     return result
@@ -70,6 +69,7 @@ export class LandingPageController {
   @Get('bumdes/dashboard')
   @ApiTags('dashboard')
   @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
   async getBumdes(@Query() data: FilterAllProducts) {
     const result = await this.landingPageService.getBumdesDashboard(
       data.active_on,
@@ -80,6 +80,7 @@ export class LandingPageController {
   @Get('umkm/dashboard')
   @ApiTags('dashboard')
   @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
   async getUmkm(@Query() data: FilterAllProducts) {
     const result = await this.landingPageService.getUmkmDashboard(
       data.active_on,

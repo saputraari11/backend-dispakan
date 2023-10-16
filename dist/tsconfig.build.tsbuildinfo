@@ -4402,13 +4402,13 @@
         "affectsGlobalScope": false
       },
       "../src/landing-page/landing-page.service.ts": {
-        "version": "cc070ab602a70f3027e6431e50f0c87f02865d9d6642c52e336d30a59e3584ef",
-        "signature": "3fccf56b7b362ae1c7e05f74873b17e746ce9d366a6c86ed9f34eadbffe74c3d",
+        "version": "e2c11399ef6518529e5e1da1c3e2dcb2187ffad828b287ef03fefd15a4338943",
+        "signature": "a3d2c7411e6de71397fa5b21e01c03c951d60e5f52ba997e8de3616779c534d3",
         "affectsGlobalScope": false
       },
       "../src/landing-page/landing-page.controller.ts": {
-        "version": "d6c909f2516d10d32ae5b86e703e40ff6803eb6553f413079d657d87f5e6928f",
-        "signature": "38cee96581efe8d6740b6befd70a7710e9ffb71b3a7596b7f645a30ba9c9d17d",
+        "version": "c1d117879d83a18bb0fcc0b2e852ebe63f997256df288593231b965a85831bbc",
+        "signature": "ae33f448fc93925da734e6bc7907079f1e1b5d056e5de2bd2716a63d1aa3ba4f",
         "affectsGlobalScope": false
       },
       "../src/landing-page/landing-page.module.ts": {
@@ -4417,7 +4417,7 @@
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
-        "version": "f86a0b2a6a86703782496dca09d4399a66b63bb0aaa7bd8e608bfca5daf952a3",
+        "version": "6ef05c66b04c8155589c433e52bf1ad3cd4abf95a059d916ce0a54355876e451",
         "signature": "9e55d69c2879e4c1f6039d177c0daf79a72435ac51ec7d4f46fc72e8b0c503d6",
         "affectsGlobalScope": false
       },

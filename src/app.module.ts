@@ -34,7 +34,12 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(AuthMiddleware)
-      .forRoutes({ path: '/auth/signup/bumdes', method: RequestMethod.POST })
+      .forRoutes(
+      { path: '/auth/signup/bumdes', method: RequestMethod.POST },
+      { path: '/landing-page/news', method: RequestMethod.ALL },
+      { path: '/landing-page/product', method: RequestMethod.ALL },
+      { path: '/landing-page/action', method: RequestMethod.ALL },
+    )
     consumer.apply(AppLoggerMiddleware).forRoutes('*')
   }
 }
