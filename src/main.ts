@@ -27,7 +27,7 @@ async function bootstrap() {
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
   app.use(express.static(join(process.cwd(), '../temp/qrcode/')))
   app.useGlobalPipes(new ValidationPipe())
-  // app.enableCors()
+  app.enableCors() // kocak di disable
 
   await app.listen(process.env.PORT || '4000', process.env.HOST)
 }
