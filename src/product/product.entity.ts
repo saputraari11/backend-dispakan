@@ -20,10 +20,10 @@ export class Product extends BaseEntity {
   @Column()
   name: string
 
-  @Column({nullable:true})
+  @Column({ nullable: true })
   sale: number
 
-  @Column({nullable:true})
+  @Column({ nullable: true })
   price: number
 
   @Column({
