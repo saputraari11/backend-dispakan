@@ -41,7 +41,7 @@ export class StoreService {
           { searchTerm: `%${filterDto.search}%` },
         )
       }
-      
+
       if (filterDto.active_on) {
         request_store = request_store.andWhere('store.active_on = :activeOn', {
           activeOn: filterDto.active_on,
@@ -88,7 +88,7 @@ export class StoreService {
       omset,
       mediaContact,
       mediaOrder,
-      status
+      status,
     } = uploadStore
     const owner = await this.userService.userDetail(id_owner)
     const store = new Store()
@@ -105,9 +105,10 @@ export class StoreService {
     store.omset = omset || ''
     store.active_on = uploadStore.active_on
 
-    if(status) {
-        if (typeof status == 'string') store.status = status == 'true' ? true:false
-        else store.status = status
+    if (status) {
+      if (typeof status == 'string')
+        store.status = status == 'true' ? true : false
+      else store.status = status
     }
 
     if (mediaContact && mediaContact.length != 0)
@@ -140,7 +141,7 @@ export class StoreService {
   async updateStore(updateStore: UpdateStoreDto, id: string) {
     const store: Store = (await this.detailStore(id)).data
     const owner = await this.userService.userDetail(updateStore.id_owner)
-    const {status} =  updateStore
+    const { status } = updateStore
 
     if (updateStore.file) {
       try {
@@ -169,9 +170,10 @@ export class StoreService {
     store.address = updateStore.address
     store.aspek = updateStore.aspek
 
-    if(status) {
-        if (typeof status == 'string') store.status = status == 'true' ? true:false
-        else store.status = status
+    if (status) {
+      if (typeof status == 'string')
+        store.status = status == 'true' ? true : false
+      else store.status = status
     }
 
     if (updateStore.category && updateStore.category.length != 0) {

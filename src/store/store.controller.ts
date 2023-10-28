@@ -36,8 +36,8 @@ export class StoreController {
 
   @Get()
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'),RolesGuard)
-  @Roles(UserLevel.UMKM,UserLevel.BUMDES)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Roles(UserLevel.UMKM, UserLevel.BUMDES)
   async allStore(@Query() request: FilterStoreDto) {
     const result = await this.storeService.allStore(request)
     return result
@@ -45,7 +45,7 @@ export class StoreController {
 
   @Post('upload')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(UserLevel.BUMDES)
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
@@ -67,8 +67,8 @@ export class StoreController {
 
   @Post('update/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'),RolesGuard)
-  @Roles(UserLevel.BUMDES,UserLevel.UMKM)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Roles(UserLevel.BUMDES, UserLevel.UMKM)
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FileInterceptor('file', {
@@ -90,8 +90,8 @@ export class StoreController {
 
   @Get('detail/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'),RolesGuard)
-  @Roles(UserLevel.BUMDES,UserLevel.UMKM)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Roles(UserLevel.BUMDES, UserLevel.UMKM)
   async detailStore(@Param('id') id: string) {
     const result = await this.storeService.detailStore(id)
     return result
@@ -99,7 +99,7 @@ export class StoreController {
 
   @Get('delete/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(UserLevel.BUMDES)
   async deleteStore(@Param('id') id: string) {
     const result = await this.storeService.deleteStore(id)

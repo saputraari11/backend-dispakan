@@ -75,7 +75,7 @@ export class LandingPageController {
   @Get('bumdes/dashboard')
   @ApiTags('dashboard')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(UserLevel.BUMDES)
   async getBumdes(@Query() data: BaseDto) {
     const result = await this.landingPageService.getBumdesDashboard(
@@ -88,7 +88,7 @@ export class LandingPageController {
   @ApiTags('dashboard')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(UserLevel.UMKM)
   async getUmkm(@Query() data: BaseDto) {
     const result = await this.landingPageService.getUmkmDashboard(

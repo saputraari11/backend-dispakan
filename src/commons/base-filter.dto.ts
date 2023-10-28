@@ -1,7 +1,7 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { IsBoolean, IsNumber} from "class-validator";
+import { ApiProperty } from '@nestjs/swagger'
+import { IsBoolean, IsNumber } from 'class-validator'
 
-export class BaseFilterDto{
+export class BaseFilterDto {
   @ApiProperty({
     required: false,
   })

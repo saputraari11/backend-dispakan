@@ -37,7 +37,7 @@ __decorate([
         required: false,
         default: 0,
         minimum: 0,
-        type: Number
+        type: Number,
     }),
     class_transformer_1.Transform(value => Number(value)),
     class_validator_1.IsNumber(),
@@ -64,7 +64,7 @@ __decorate([
         required: false,
         default: 0,
         minimum: 0,
-        type: Number
+        type: Number,
     }),
     class_transformer_1.Transform(value => Number(value)),
     class_validator_1.IsNumber(),

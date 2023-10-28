@@ -22,8 +22,7 @@ export class NewsService {
   ) {}
 
   async allNews(filterAllNews: FilterAllNews) {
-    let request_news = this.newsRepository
-      .createQueryBuilder('news')
+    let request_news = this.newsRepository.createQueryBuilder('news')
 
     if (filterAllNews && filterAllNews.search) {
       request_news = request_news.andWhere(
@@ -32,9 +31,11 @@ export class NewsService {
       )
     }
 
-    request_news = request_news.andWhere('news.active_on = :activeOn', {
+    request_news = request_news
+      .andWhere('news.active_on = :activeOn', {
         activeOn: filterAllNews.active_on,
-      }).leftJoinAndSelect('news.comments', 'comments')
+      })
+      .leftJoinAndSelect('news.comments', 'comments')
 
     const news = await request_news.getMany()
 
@@ -76,7 +77,7 @@ export class NewsService {
     news.description = uploadNews.description || ''
     news.active_on = active_on || ''
 
-    if (typeof status == 'string') news.status = status == 'true' ? true:false
+    if (typeof status == 'string') news.status = status == 'true' ? true : false
     else news.status = status
 
     if (uploadNews.file) {
@@ -130,7 +131,8 @@ export class NewsService {
 
     try {
       if (updateNews.status) {
-        if (typeof updateNews.status == 'string') news.status = updateNews.status == 'true' ? true:false
+        if (typeof updateNews.status == 'string')
+          news.status = updateNews.status == 'true' ? true : false
         else news.status = updateNews.status
       }
 

@@ -22,40 +22,40 @@ export class UsersService {
   ) {}
 
   async userUmkm(filterUmkm: FilterUmkmDto) {
-    let request_user = this.userRepository
-      .createQueryBuilder('user')
-      
+    let request_user = this.userRepository.createQueryBuilder('user')
 
     if (filterUmkm.search) {
       request_user = request_user.andWhere(
-        "user.name ILIKE :searchTerm or user.address ILIKE :searchTerm or user.phone ILIKE :searchTerm or user.email ILIKE :searchTerm",
-        {searchTerm:`%${filterUmkm.search}%`}
+        'user.name ILIKE :searchTerm or user.address ILIKE :searchTerm or user.phone ILIKE :searchTerm or user.email ILIKE :searchTerm',
+        { searchTerm: `%${filterUmkm.search}%` },
       )
     }
 
-    request_user = request_user.andWhere('user.level = :level', { level: UserLevel.UMKM }).andWhere('user.active_on = :activeOn', {
+    request_user = request_user
+      .andWhere('user.level = :level', { level: UserLevel.UMKM })
+      .andWhere('user.active_on = :activeOn', {
         activeOn: filterUmkm.active_on,
-    })
+      })
 
     const user = await request_user.getMany()
     return responseTemplate('200', 'success', user)
   }
 
   async userBumdes(filterUmkm: FilterUmkmDto) {
-    let request_user = this.userRepository
-      .createQueryBuilder('user')
-      
+    let request_user = this.userRepository.createQueryBuilder('user')
 
     if (filterUmkm.search) {
       request_user = request_user.andWhere(
         'user.name ILIKE :searchTerm or user.address ILIKE :searchTerm or user.phone ILIKE :searchTerm or user.email ILIKE :searchTerm',
-        {searchTerm:`%${filterUmkm.search}%`}
+        { searchTerm: `%${filterUmkm.search}%` },
       )
     }
 
-    request_user = request_user.andWhere('user.level = :level', { level: UserLevel.BUMDES }).andWhere('user.active_on = :activeOn', {
+    request_user = request_user
+      .andWhere('user.level = :level', { level: UserLevel.BUMDES })
+      .andWhere('user.active_on = :activeOn', {
         activeOn: filterUmkm.active_on,
-    })
+      })
 
     const user = await request_user.getMany()
     user.map(
@@ -115,7 +115,8 @@ export class UsersService {
     if (updateProfile.phone) user.phone = updateProfile.phone
     if (updateProfile.address) user.address = updateProfile.address
     if (updateProfile.status) {
-      if (typeof updateProfile.status == 'string') user.status = updateProfile.status == 'true' ? true:false
+      if (typeof updateProfile.status == 'string')
+        user.status = updateProfile.status == 'true' ? true : false
       else updateProfile.status = updateProfile.status
     }
 
@@ -165,7 +166,8 @@ export class UsersService {
 
   async updateStatus(updateStatus: UpdateStatusDto, id: string) {
     const user = await this.userDetail(id)
-    if (typeof updateStatus.status == 'string') user.status = updateStatus.status == 'true' ? true:false
+    if (typeof updateStatus.status == 'string')
+      user.status = updateStatus.status == 'true' ? true : false
     else user.status = updateStatus.status
     await this.userRepository.save(user)
 

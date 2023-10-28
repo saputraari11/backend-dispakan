@@ -33,7 +33,7 @@ import { ThrottlerGuard } from '@nestjs/throttler'
 
 @ApiTags('Comments')
 @Controller('comment')
-@UseGuards(AuthGuard('jwt'),RolesGuard,ThrottlerGuard)
+@UseGuards(AuthGuard('jwt'), RolesGuard, ThrottlerGuard)
 @Roles(UserLevel.BUMDES)
 export class CommentController {
   constructor(private commentService: CommentService) {}

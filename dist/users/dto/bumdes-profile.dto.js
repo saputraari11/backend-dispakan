@@ -47,7 +47,7 @@ __decorate([
 __decorate([
     swagger_1.ApiProperty({
         required: false,
-        type: 'string'
+        type: 'string',
     }),
     class_validator_1.IsString(),
     __metadata("design:type", String)

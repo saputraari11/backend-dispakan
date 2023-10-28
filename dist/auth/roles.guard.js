@@ -18,7 +18,10 @@ let RolesGuard = class RolesGuard {
         this.reflector = reflector;
     }
     async canActivate(context) {
-        const roles = this.reflector.getAllAndOverride('roles', [context.getHandler(), context.getClass()]);
+        const roles = this.reflector.getAllAndOverride('roles', [
+            context.getHandler(),
+            context.getClass(),
+        ]);
         const request = context.switchToHttp().getRequest();
         const userRequest = request.user;
         return roles.includes(userRequest.level);

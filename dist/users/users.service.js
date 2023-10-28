@@ -27,24 +27,26 @@ let UsersService = class UsersService {
         this.storageService = storageService;
     }
     async userUmkm(filterUmkm) {
-        let request_user = this.userRepository
-            .createQueryBuilder('user');
+        let request_user = this.userRepository.createQueryBuilder('user');
         if (filterUmkm.search) {
-            request_user = request_user.andWhere("user.name ILIKE :searchTerm or user.address ILIKE :searchTerm or user.phone ILIKE :searchTerm or user.email ILIKE :searchTerm", { searchTerm: `%${filterUmkm.search}%` });
+            request_user = request_user.andWhere('user.name ILIKE :searchTerm or user.address ILIKE :searchTerm or user.phone ILIKE :searchTerm or user.email ILIKE :searchTerm', { searchTerm: `%${filterUmkm.search}%` });
         }
-        request_user = request_user.andWhere('user.level = :level', { level: user_level_enum_1.UserLevel.UMKM }).andWhere('user.active_on = :activeOn', {
+        request_user = request_user
+            .andWhere('user.level = :level', { level: user_level_enum_1.UserLevel.UMKM })
+            .andWhere('user.active_on = :activeOn', {
             activeOn: filterUmkm.active_on,
         });
         const user = await request_user.getMany();
         return app_utils_1.responseTemplate('200', 'success', user);
     }
     async userBumdes(filterUmkm) {
-        let request_user = this.userRepository
-            .createQueryBuilder('user');
+        let request_user = this.userRepository.createQueryBuilder('user');
         if (filterUmkm.search) {
             request_user = request_user.andWhere('user.name ILIKE :searchTerm or user.address ILIKE :searchTerm or user.phone ILIKE :searchTerm or user.email ILIKE :searchTerm', { searchTerm: `%${filterUmkm.search}%` });
         }
-        request_user = request_user.andWhere('user.level = :level', { level: user_level_enum_1.UserLevel.BUMDES }).andWhere('user.active_on = :activeOn', {
+        request_user = request_user
+            .andWhere('user.level = :level', { level: user_level_enum_1.UserLevel.BUMDES })
+            .andWhere('user.active_on = :activeOn', {
             activeOn: filterUmkm.active_on,
         });
         const user = await request_user.getMany();

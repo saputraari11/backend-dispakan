@@ -17,7 +17,7 @@ export class Product extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @Column({nullable:true})
+  @Column({ nullable: true })
   name: string
 
   @Column({ default: 0 })

@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger'
 import { IsBoolean, IsNotEmpty, IsString } from 'class-validator'
 import { BaseDto } from 'src/commons/base.dto'
 
-export class CreateCommantDto extends BaseDto{
+export class CreateCommantDto extends BaseDto {
   @ApiProperty({
     required: false,
   })

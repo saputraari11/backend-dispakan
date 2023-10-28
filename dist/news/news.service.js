@@ -28,14 +28,15 @@ let NewsService = class NewsService {
         this.storageService = storageService;
     }
     async allNews(filterAllNews) {
-        let request_news = this.newsRepository
-            .createQueryBuilder('news');
+        let request_news = this.newsRepository.createQueryBuilder('news');
         if (filterAllNews && filterAllNews.search) {
             request_news = request_news.andWhere('news.title ILIKE :searchTerm or news.description ILIKE :searchTerm', { searchTerm: `%${filterAllNews.search}%` });
         }
-        request_news = request_news.andWhere('news.active_on = :activeOn', {
+        request_news = request_news
+            .andWhere('news.active_on = :activeOn', {
             activeOn: filterAllNews.active_on,
-        }).leftJoinAndSelect('news.comments', 'comments');
+        })
+            .leftJoinAndSelect('news.comments', 'comments');
         const news = await request_news.getMany();
         if (news.length == 0) {
             return app_utils_1.responseTemplate('400', "news doesn't exist", {}, true);

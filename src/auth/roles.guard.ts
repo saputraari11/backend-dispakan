@@ -5,16 +5,16 @@ import { UserLevel } from 'src/users/user-level.enum'
 
 @Injectable()
 export class RolesGuard implements CanActivate {
-  constructor(
-    private reflector: Reflector,
-  ) {}
+  constructor(private reflector: Reflector) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const roles = this.reflector.getAllAndOverride<UserLevel[]>('roles', [context.getHandler(),context.getClass()])
+    const roles = this.reflector.getAllAndOverride<UserLevel[]>('roles', [
+      context.getHandler(),
+      context.getClass(),
+    ])
     const request = context.switchToHttp().getRequest()
     const userRequest = request.user
 
     return roles.includes(userRequest.level)
-      
   }
 }

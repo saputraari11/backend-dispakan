@@ -17,13 +17,13 @@ export class Store extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @Column({nullable:true})
+  @Column({ nullable: true })
   name: string
 
-  @Column({nullable:true})
+  @Column({ nullable: true })
   address: string
 
-  @Column({nullable:true})
+  @Column({ nullable: true })
   phone: string
 
   @Column({
@@ -38,7 +38,7 @@ export class Store extends BaseEntity {
   })
   mediaContact: string
 
-  @Column({nullable:true})
+  @Column({ nullable: true })
   omset: string
 
   @Column({
@@ -57,7 +57,7 @@ export class Store extends BaseEntity {
   })
   katagoriSaved: string
 
-  @Column({nullable:true})
+  @Column({ nullable: true })
   aspek: string
 
   @Column({

@@ -1,9 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { Transform } from 'class-transformer'
-import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator'
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator'
 import { BaseDto } from 'src/commons/base.dto'
 
-export class CreateProductDto extends BaseDto{
+export class CreateProductDto extends BaseDto {
   @ApiProperty({
     required: false,
   })
@@ -21,8 +27,8 @@ export class CreateProductDto extends BaseDto{
   @ApiProperty({
     required: false,
     default: 0,
-    minimum:0,
-    type:Number
+    minimum: 0,
+    type: Number,
   })
   @Transform(value => Number(value))
   @IsNumber()
@@ -45,8 +51,8 @@ export class CreateProductDto extends BaseDto{
   @ApiProperty({
     required: false,
     default: 0,
-    minimum:0,
-    type:Number
+    minimum: 0,
+    type: Number,
   })
   @Transform(value => Number(value))
   @IsNumber()

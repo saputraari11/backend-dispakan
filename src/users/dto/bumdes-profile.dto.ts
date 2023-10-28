@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger'
 import { IsNotEmpty, IsString, IsEnum, IsBoolean } from 'class-validator'
 import { BaseDto } from 'src/commons/base.dto'
 
-export class BumdesProfileDto{
+export class BumdesProfileDto {
   @ApiProperty({
     required: true,
   })
@@ -30,7 +30,7 @@ export class BumdesProfileDto{
 
   @ApiProperty({
     required: false,
-    type:'string'
+    type: 'string',
   })
   @IsString()
   status?: string

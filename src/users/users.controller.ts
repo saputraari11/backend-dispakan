@@ -38,7 +38,7 @@ dir = path.join(__dirname, '..', '..', '..', '..', '..', dir)
 
 @ApiTags('User')
 @Controller('user')
-@UseGuards(AuthGuard('jwt'),RolesGuard,ThrottlerGuard)
+@UseGuards(AuthGuard('jwt'), RolesGuard, ThrottlerGuard)
 @Roles(UserLevel.BUMDES)
 export class UsersController {
   constructor(private userService: UsersService) {}
@@ -59,7 +59,7 @@ export class UsersController {
 
   @Get('detail/:id')
   @ApiBearerAuth()
-  @Roles(UserLevel.BUMDES,UserLevel.UMKM)
+  @Roles(UserLevel.BUMDES, UserLevel.UMKM)
   async detailUser(@Param('id') id: string, @Req() request: Request) {
     const protocol = request.protocol
     const hostname = request.headers.host

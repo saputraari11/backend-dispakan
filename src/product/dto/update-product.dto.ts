@@ -1,8 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator'
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator'
 import { Transform } from 'class-transformer'
 
-export class UpdateProductDto{
+export class UpdateProductDto {
   @ApiProperty({
     required: false,
   })
@@ -20,8 +26,8 @@ export class UpdateProductDto{
   @ApiProperty({
     required: false,
     default: 0,
-    minimum:0,
-    type:Number
+    minimum: 0,
+    type: Number,
   })
   @Transform(value => Number(value))
   @IsNumber()
@@ -44,8 +50,8 @@ export class UpdateProductDto{
   @ApiProperty({
     required: false,
     default: 0,
-    minimum:0,
-    type:Number
+    minimum: 0,
+    type: Number,
   })
   @Transform(value => Number(value))
   @IsNumber()

@@ -20,7 +20,7 @@ __decorate([
 ], News.prototype, "id", void 0);
 __decorate([
     typeorm_1.Column({
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], News.prototype, "title", void 0);

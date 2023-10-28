@@ -26,7 +26,7 @@ import { UpdateProductDto } from './dto/update-product.dto'
 
 @ApiTags('Product UMKM')
 @Controller('product')
-@UseGuards(AuthGuard('jwt'),RolesGuard)
+@UseGuards(AuthGuard('jwt'), RolesGuard)
 @Roles(UserLevel.BUMDES)
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
@@ -34,7 +34,7 @@ export class ProductController {
   @Post('upload')
   @ApiBearerAuth()
   @ApiConsumes('multipart/form-data')
-  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(UserLevel.UMKM)
   @UseInterceptors(
     FilesInterceptor('files', 24, {
@@ -54,8 +54,8 @@ export class ProductController {
 
   @Get()
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'),RolesGuard)
-  @Roles(UserLevel.BUMDES,UserLevel.UMKM)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Roles(UserLevel.BUMDES, UserLevel.UMKM)
   async allProduct(@Query() filterDto: FilterAllProducts) {
     const result = await this.productService.allProduct(filterDto)
     return result
@@ -63,7 +63,7 @@ export class ProductController {
 
   @Post('update/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'),RolesGuard,ThrottlerGuard)
+  @UseGuards(AuthGuard('jwt'), RolesGuard, ThrottlerGuard)
   @Roles(UserLevel.UMKM)
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
@@ -86,8 +86,8 @@ export class ProductController {
 
   @Get('detail/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'),RolesGuard)
-  @Roles(UserLevel.BUMDES,UserLevel.UMKM)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Roles(UserLevel.BUMDES, UserLevel.UMKM)
   async detailProdcut(@Param('id') id: string, @Req() request: Request) {
     const result = await this.productService.detailProduct(id)
     return result
@@ -95,7 +95,7 @@ export class ProductController {
 
   @Get('delete/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(UserLevel.UMKM)
   async deleteProduct(@Param('id') id: string) {
     const result = await this.productService.deleteProduct(id)

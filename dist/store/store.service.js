@@ -71,7 +71,7 @@ let StoreService = class StoreService {
         return app_utils_1.responseTemplate('200', 'success', store);
     }
     async uploadStore(uploadStore) {
-        const { file, name, address, aspek, category, id_owner, phone, omset, mediaContact, mediaOrder, status } = uploadStore;
+        const { file, name, address, aspek, category, id_owner, phone, omset, mediaContact, mediaOrder, status, } = uploadStore;
         const owner = await this.userService.userDetail(id_owner);
         const store = new store_entity_1.Store();
         store.name = name || '';

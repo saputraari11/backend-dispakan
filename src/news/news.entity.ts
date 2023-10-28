@@ -15,7 +15,7 @@ export class News extends BaseEntity {
   id: string
 
   @Column({
-    nullable:true
+    nullable: true,
   })
   title: string
 
@@ -35,7 +35,7 @@ export class News extends BaseEntity {
   })
   image: string
 
-  @Column({default:false})
+  @Column({ default: false })
   status: boolean
 
   @Column({

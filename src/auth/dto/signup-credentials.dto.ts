@@ -11,7 +11,7 @@ import {
 import { BaseDto } from 'src/commons/base.dto'
 import { UserLevel } from 'src/users/user-level.enum'
 
-export class SignupCredentialsDto extends BaseDto{
+export class SignupCredentialsDto extends BaseDto {
   @ApiProperty()
   @IsString()
   @IsOptional()

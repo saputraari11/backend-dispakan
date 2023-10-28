@@ -3,7 +3,7 @@ import { IsEmail, IsNotEmpty, IsString, Matches } from 'class-validator'
 import { REGEX } from '../../app.utils'
 import { BaseDto } from 'src/commons/base.dto'
 
-export class SignInDto extends BaseDto{
+export class SignInDto extends BaseDto {
   @ApiProperty({
     description: 'Email address of the user',
   })

@@ -23,16 +23,14 @@ import { UpdateNewsDto } from './dto/update-news.dto'
 
 @ApiTags('News')
 @Controller('news')
-@UseGuards(AuthGuard('jwt'),RolesGuard,ThrottlerGuard)
+@UseGuards(AuthGuard('jwt'), RolesGuard, ThrottlerGuard)
 @Roles(UserLevel.BUMDES)
 export class NewsController {
-  constructor(
-    private newsService: NewsService,
-  ) {}
+  constructor(private newsService: NewsService) {}
 
   @Get()
   @ApiBearerAuth()
- async allNews(@Query() filterDto: FilterAllNews) {
+  async allNews(@Query() filterDto: FilterAllNews) {
     const result = await this.newsService.allNews(filterDto)
     return result
   }

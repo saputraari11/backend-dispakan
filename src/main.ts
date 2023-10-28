@@ -7,8 +7,7 @@ import * as express from 'express'
 import * as bodyParser from 'body-parser'
 import { join } from 'path'
 import { Logger } from 'winston'
-import * as csurf from 'csurf';
-
+import * as csurf from 'csurf'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
