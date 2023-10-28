@@ -25,11 +25,12 @@ import { User } from '../users/user.entity'
 import { AuthService } from './auth.service'
 import { SignupCredentialsDto } from './dto/signup-credentials.dto'
 import { SignInDto } from './dto/signin.dto'
-import { Request, Response } from 'express'
-import { BadRequestError } from 'passport-headerapikey'
+import { Request } from 'express'
+import { ThrottlerGuard } from '@nestjs/throttler'
 
 @ApiTags('Auth')
 @Controller('auth')
+@UseGuards(ThrottlerGuard)
 export class AuthController {
   constructor(private authService: AuthService) {}
 

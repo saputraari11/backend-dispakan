@@ -28,38 +28,23 @@ import { BumdesProfileDto } from './dto/bumdes-profile.dto'
 import { UpdatePasswordDto } from './dto/update-password.dto'
 import { UpdateStatusDto } from './dto/update-status.dto'
 import { FilterUmkmDto } from './dto/filter-all.dto'
+import { RolesGuard } from 'src/auth/roles.guard'
+import { UserLevel } from './user-level.enum'
+import { Roles } from 'src/auth/roles.decorator'
+import { ThrottlerGuard } from '@nestjs/throttler'
 
 let dir = `public/dispakan/assets/bumdes`
 dir = path.join(__dirname, '..', '..', '..', '..', '..', dir)
 
-const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true })
-    }
-
-    cb(null, dir)
-  },
-
-  filename: function(req, file, cb) {
-    cb(null, Date.now() + '-' + path.basename(file.originalname))
-  },
-})
-
 @ApiTags('User')
 @Controller('user')
+@UseGuards(AuthGuard('jwt'),RolesGuard,ThrottlerGuard)
+@Roles(UserLevel.BUMDES)
 export class UsersController {
   constructor(private userService: UsersService) {}
-  @Get('ip')
-  getIpAddress(@Req() request: Request): string {
-    const ipAddress = request.ip
-    console.log(request.ips, request.ip)
-    return
-  }
 
   @Get('umkm')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   async allUmkm(@Query() filterAllUmkm: FilterUmkmDto) {
     const result = await this.userService.userUmkm(filterAllUmkm)
     return result
@@ -67,18 +52,14 @@ export class UsersController {
 
   @Get('bumdes')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
-  async allBumdes(@Req() request: Request) {
-    const protocol = request.protocol
-    const hostname = request.headers.host
-    const url = `${protocol}://${hostname}/bumdes/profile/image`
-    const result = await this.userService.userBumdes(url)
+  async allBumdes(@Query() filterAllUmkm: FilterUmkmDto) {
+    const result = await this.userService.userBumdes(filterAllUmkm)
     return result
   }
 
   @Get('detail/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
+  @Roles(UserLevel.BUMDES,UserLevel.UMKM)
   async detailUser(@Param('id') id: string, @Req() request: Request) {
     const protocol = request.protocol
     const hostname = request.headers.host
@@ -89,7 +70,6 @@ export class UsersController {
 
   @Get('delete-umkm/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   async deleteUmkm(@Param('id') id: string) {
     const result = await this.userService.deleteUmkm(id)
     return result
@@ -97,7 +77,6 @@ export class UsersController {
 
   @Post('umkm/profil')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   async updateProfilUmkm(@Body() body: UpdateProfileDto) {
     const result = await this.userService.updateProfile(body)
     return result
@@ -105,7 +84,6 @@ export class UsersController {
 
   @Post('bumdes/profil')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FileInterceptor('file', {
@@ -126,7 +104,6 @@ export class UsersController {
 
   @Post('update/password/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   async updatePassword(
     @Body() body: UpdatePasswordDto,
     @Param('id') id: string,
@@ -138,7 +115,6 @@ export class UsersController {
 
   @Post('update/status/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   async updateStatus(@Body() body: UpdateStatusDto, @Param('id') id: string) {
     const result = await this.userService.updateStatus(body, id)
     return result

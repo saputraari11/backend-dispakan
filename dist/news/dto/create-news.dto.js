@@ -11,18 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateNewsDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
-class CreateNewsDto {
+const class_validator_1 = require("class-validator");
+const base_dto_1 = require("../../commons/base.dto");
+class CreateNewsDto extends base_dto_1.BaseDto {
 }
 __decorate([
     swagger_1.ApiProperty({
         required: false,
     }),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], CreateNewsDto.prototype, "title", void 0);
 __decorate([
     swagger_1.ApiProperty({
         required: false,
     }),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], CreateNewsDto.prototype, "posted_date", void 0);
 __decorate([
@@ -30,23 +34,19 @@ __decorate([
         required: false,
         type: Boolean,
     }),
-    __metadata("design:type", Boolean)
+    class_validator_1.IsString(),
+    __metadata("design:type", Object)
 ], CreateNewsDto.prototype, "status", void 0);
 __decorate([
     swagger_1.ApiProperty({
         required: false,
     }),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], CreateNewsDto.prototype, "description", void 0);
 __decorate([
     swagger_1.ApiProperty({ type: 'string', format: 'binary', required: false }),
     __metadata("design:type", Object)
 ], CreateNewsDto.prototype, "file", void 0);
-__decorate([
-    swagger_1.ApiProperty({
-        required: true,
-    }),
-    __metadata("design:type", String)
-], CreateNewsDto.prototype, "active_on", void 0);
 exports.CreateNewsDto = CreateNewsDto;
 //# sourceMappingURL=create-news.dto.js.map

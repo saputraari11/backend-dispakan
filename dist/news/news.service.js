@@ -29,14 +29,13 @@ let NewsService = class NewsService {
     }
     async allNews(filterAllNews) {
         let request_news = this.newsRepository
-            .createQueryBuilder('news')
-            .where('news.active_on = :activeOn', {
-            activeOn: filterAllNews.active_on,
-        })
-            .innerJoinAndSelect('news.comments', 'comments');
+            .createQueryBuilder('news');
         if (filterAllNews && filterAllNews.search) {
             request_news = request_news.andWhere('news.title ILIKE :searchTerm or news.description ILIKE :searchTerm', { searchTerm: `%${filterAllNews.search}%` });
         }
+        request_news = request_news.andWhere('news.active_on = :activeOn', {
+            activeOn: filterAllNews.active_on,
+        }).leftJoinAndSelect('news.comments', 'comments');
         const news = await request_news.getMany();
         if (news.length == 0) {
             return app_utils_1.responseTemplate('400', "news doesn't exist", {}, true);
@@ -60,11 +59,14 @@ let NewsService = class NewsService {
     async uploadNews(uploadNews) {
         const { file, status, title, posted_date, active_on } = uploadNews;
         const news = new news_entity_1.News();
-        news.status = !!status;
         news.title = title || '';
         news.posted_date = posted_date ? new Date(posted_date) : new Date();
         news.description = uploadNews.description || '';
         news.active_on = active_on || '';
+        if (typeof status == 'string')
+            news.status = status == 'true' ? true : false;
+        else
+            news.status = status;
         if (uploadNews.file) {
             news.mediaId = uuid_1.v4();
             await this.storageService.save(`news/${news.active_on}/${news.mediaId}`, file.mimetype, file.buffer, [{ mediaId: news.mediaId }]);
@@ -98,8 +100,12 @@ let NewsService = class NewsService {
             }
         }
         try {
-            if (updateNews.status)
-                news.status = !!updateNews.status;
+            if (updateNews.status) {
+                if (typeof updateNews.status == 'string')
+                    news.status = updateNews.status == 'true' ? true : false;
+                else
+                    news.status = updateNews.status;
+            }
             if (updateNews.title)
                 news.title = updateNews.title;
             if (updateNews.posted_date)

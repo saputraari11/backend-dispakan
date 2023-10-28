@@ -1,6 +1,5 @@
 import { UserLevel } from '../user-level.enum';
-export declare class FilterUserDto {
+import { BaseDto } from 'src/commons/base.dto';
+export declare class FilterUserDto extends BaseDto {
     level: UserLevel;
-    page: number;
-    limit: number;
 }

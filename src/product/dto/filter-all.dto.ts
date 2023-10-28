@@ -1,15 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsNotEmpty } from 'class-validator'
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator'
+import { BaseDto } from 'src/commons/base.dto'
 
-export class FilterAllProducts {
+export class FilterAllProducts extends BaseDto{
   @ApiProperty({
     required: false,
   })
+  @IsString()
+  @IsOptional()
   search: string
-
-  @ApiProperty({
-    required: true,
-  })
-  @IsNotEmpty()
-  active_on: string
 }

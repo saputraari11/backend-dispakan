@@ -34,17 +34,17 @@ let StoreService = class StoreService {
             .createQueryBuilder('store')
             .innerJoinAndSelect('store.user', 'user');
         try {
-            if (filterDto.active_on) {
-                request_store = request_store.andWhere('store.active_on = :activeOn', {
-                    activeOn: filterDto.active_on,
+            if (filterDto.id_mitra) {
+                request_store = request_store.andWhere('user.id = :idMitra', {
+                    idMitra: filterDto.id_mitra,
                 });
             }
             if (filterDto.search) {
                 request_store = request_store.andWhere('store.name ILIKE :searchTerm or store.address ILIKE :searchTerm or store.phone ILIKE :searchTerm or store.omset ILIKE :searchTerm or store.aspek ILIKE :searchTerm', { searchTerm: `%${filterDto.search}%` });
             }
-            if (filterDto.id_mitra) {
-                request_store = request_store.andWhere('user.id = :idMitra', {
-                    idMitra: filterDto.id_mitra,
+            if (filterDto.active_on) {
+                request_store = request_store.andWhere('store.active_on = :activeOn', {
+                    activeOn: filterDto.active_on,
                 });
             }
             const store = await request_store.getMany();
@@ -71,7 +71,7 @@ let StoreService = class StoreService {
         return app_utils_1.responseTemplate('200', 'success', store);
     }
     async uploadStore(uploadStore) {
-        const { file, name, address, aspek, category, id_owner, phone, omset, mediaContact, mediaOrder, } = uploadStore;
+        const { file, name, address, aspek, category, id_owner, phone, omset, mediaContact, mediaOrder, status } = uploadStore;
         const owner = await this.userService.userDetail(id_owner);
         const store = new store_entity_1.Store();
         store.name = name || '';
@@ -83,6 +83,12 @@ let StoreService = class StoreService {
         store.phone = phone || '';
         store.omset = omset || '';
         store.active_on = uploadStore.active_on;
+        if (status) {
+            if (typeof status == 'string')
+                store.status = status == 'true' ? true : false;
+            else
+                store.status = status;
+        }
         if (mediaContact && mediaContact.length != 0)
             store.mediaContact = JSON.stringify(mediaContact);
         if (mediaOrder && mediaContact.length != 0)
@@ -103,6 +109,7 @@ let StoreService = class StoreService {
     async updateStore(updateStore, id) {
         const store = (await this.detailStore(id)).data;
         const owner = await this.userService.userDetail(updateStore.id_owner);
+        const { status } = updateStore;
         if (updateStore.file) {
             try {
                 await this.storageService.delete(`umkm/${store.active_on}/${store.mediaId}`);
@@ -121,7 +128,12 @@ let StoreService = class StoreService {
         store.name = updateStore.name;
         store.address = updateStore.address;
         store.aspek = updateStore.aspek;
-        store.status = String(updateStore.status) === 'true' ? true : false;
+        if (status) {
+            if (typeof status == 'string')
+                store.status = status == 'true' ? true : false;
+            else
+                store.status = status;
+        }
         if (updateStore.category && updateStore.category.length != 0) {
             store.katagoriSaved = JSON.stringify(updateStore.category);
         }

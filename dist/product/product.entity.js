@@ -42,15 +42,15 @@ __decorate([
     __metadata("design:type", String)
 ], Product.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ nullable: true }),
     __metadata("design:type", String)
 ], Product.prototype, "name", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ default: 0 }),
     __metadata("design:type", Number)
 ], Product.prototype, "sale", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ default: 0 }),
     __metadata("design:type", Number)
 ], Product.prototype, "price", void 0);
 __decorate([

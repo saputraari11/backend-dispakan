@@ -12,19 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FilterUserDto = void 0;
 const class_validator_1 = require("class-validator");
 const user_level_enum_1 = require("../user-level.enum");
-class FilterUserDto {
+const base_dto_1 = require("../../commons/base.dto");
+class FilterUserDto extends base_dto_1.BaseDto {
 }
 __decorate([
     class_validator_1.IsOptional(),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], FilterUserDto.prototype, "level", void 0);
-__decorate([
-    class_validator_1.IsOptional(),
-    __metadata("design:type", Number)
-], FilterUserDto.prototype, "page", void 0);
-__decorate([
-    class_validator_1.IsOptional(),
-    __metadata("design:type", Number)
-], FilterUserDto.prototype, "limit", void 0);
 exports.FilterUserDto = FilterUserDto;
 //# sourceMappingURL=filter-user.dto.js.map

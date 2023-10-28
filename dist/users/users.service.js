@@ -28,23 +28,26 @@ let UsersService = class UsersService {
     }
     async userUmkm(filterUmkm) {
         let request_user = this.userRepository
-            .createQueryBuilder('user')
-            .where('user.level = :level', { level: user_level_enum_1.UserLevel.UMKM })
-            .andWhere('user.active_on = :activeOn', {
+            .createQueryBuilder('user');
+        if (filterUmkm.search) {
+            request_user = request_user.andWhere("user.name ILIKE :searchTerm or user.address ILIKE :searchTerm or user.phone ILIKE :searchTerm or user.email ILIKE :searchTerm", { searchTerm: `%${filterUmkm.search}%` });
+        }
+        request_user = request_user.andWhere('user.level = :level', { level: user_level_enum_1.UserLevel.UMKM }).andWhere('user.active_on = :activeOn', {
             activeOn: filterUmkm.active_on,
         });
-        if (filterUmkm.search) {
-            request_user = request_user.andWhere('user.name ILIKE :searchTerm or user.address ILIKE :searchTerm or user.phone ILIKE :searchTerm or user.email ILIKE :searchTerm');
-        }
         const user = await request_user.getMany();
         return app_utils_1.responseTemplate('200', 'success', user);
     }
-    async userBumdes(url) {
-        const user = await this.userRepository.find({
-            where: {
-                level: user_level_enum_1.UserLevel.BUMDES,
-            },
+    async userBumdes(filterUmkm) {
+        let request_user = this.userRepository
+            .createQueryBuilder('user');
+        if (filterUmkm.search) {
+            request_user = request_user.andWhere('user.name ILIKE :searchTerm or user.address ILIKE :searchTerm or user.phone ILIKE :searchTerm or user.email ILIKE :searchTerm', { searchTerm: `%${filterUmkm.search}%` });
+        }
+        request_user = request_user.andWhere('user.level = :level', { level: user_level_enum_1.UserLevel.BUMDES }).andWhere('user.active_on = :activeOn', {
+            activeOn: filterUmkm.active_on,
         });
+        const user = await request_user.getMany();
         user.map(item => (item.url_image = `${process.env.LINK_GCP}/users/${item.active_on}/${item.mediaId}.png`));
         return app_utils_1.responseTemplate('200', 'success', user);
     }
@@ -94,8 +97,12 @@ let UsersService = class UsersService {
             user.phone = updateProfile.phone;
         if (updateProfile.address)
             user.address = updateProfile.address;
-        if (updateProfile.status)
-            user.status = updateProfile.status;
+        if (updateProfile.status) {
+            if (typeof updateProfile.status == 'string')
+                user.status = updateProfile.status == 'true' ? true : false;
+            else
+                updateProfile.status = updateProfile.status;
+        }
         if (updateProfile.file) {
             try {
                 await this.storageService.delete(`users/${user.active_on}/${user.mediaId}`);
@@ -127,7 +134,10 @@ let UsersService = class UsersService {
     }
     async updateStatus(updateStatus, id) {
         const user = await this.userDetail(id);
-        user.status = updateStatus.status;
+        if (typeof updateStatus.status == 'string')
+            user.status = updateStatus.status == 'true' ? true : false;
+        else
+            user.status = updateStatus.status;
         await this.userRepository.save(user);
         return app_utils_1.responseTemplate('200', 'success', user);
     }

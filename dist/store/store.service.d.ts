@@ -5,6 +5,7 @@ import { UsersService } from 'src/users/users.service';
 import { StorageService } from 'src/commons/storage/storage.service';
 import { FilterStoreDto } from './dto/filter-all.dto';
 import { Product } from 'src/product/product.entity';
+import { UpdateStoreDto } from './dto/update-store.dto';
 export declare class StoreService {
     private readonly storeRepository;
     private readonly userService;
@@ -35,7 +36,7 @@ export declare class StoreService {
         };
         data: any;
     }>;
-    updateStore(updateStore: CreateStoreDto, id: string): Promise<{
+    updateStore(updateStore: UpdateStoreDto, id: string): Promise<{
         error: boolean;
         alerts: {
             code: string;

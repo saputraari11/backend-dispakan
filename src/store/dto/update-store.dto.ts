@@ -1,8 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator'
-import { BaseDto } from 'src/commons/base.dto'
+import { IsBoolean, IsNotEmpty, IsString } from 'class-validator'
 
-export class CreateStoreDto extends BaseDto{
+export class UpdateStoreDto{
   @ApiProperty({
     required: false,
   })
@@ -31,7 +30,6 @@ export class CreateStoreDto extends BaseDto{
   @ApiProperty({
     required: false,
   })
-  @IsOptional()
   status: string | boolean
 
   @ApiProperty({

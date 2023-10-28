@@ -4,6 +4,7 @@ import { CreateNewsDto } from './dto/create-news.dto';
 import { StorageService } from 'src/commons/storage/storage.service';
 import { FilterAllNews } from './dto/filter-all.dto';
 import { Comment } from 'src/comment/comment.entity';
+import { UpdateNewsDto } from './dto/update-news.dto';
 export declare class NewsService {
     private readonly newsRepository;
     private readonly commentRepository;
@@ -33,7 +34,7 @@ export declare class NewsService {
         };
         data: any;
     }>;
-    updateNews(updateNews: CreateNewsDto, id: string): Promise<{
+    updateNews(updateNews: UpdateNewsDto, id: string): Promise<{
         error: boolean;
         alerts: {
             code: string;

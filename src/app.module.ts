@@ -15,6 +15,7 @@ import { ProductModule } from './product/product.module'
 import { AppLoggerMiddleware } from './commons/middlewares/app-logger-middleware'
 import { CommentModule } from './comment/comment.module'
 import { LandingPageModule } from './landing-page/landing-page.module'
+import { ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
   imports: [
@@ -28,6 +29,23 @@ import { LandingPageModule } from './landing-page/landing-page.module'
     ProductModule,
     CommentModule,
     LandingPageModule,
+    ThrottlerModule.forRoot([
+      {
+        name: 'short',
+        ttl: 1000,
+        limit: 3,
+      },
+      {
+        name: 'medium',
+        ttl: 10000,
+        limit: 20
+      },
+      {
+        name: 'long',
+        ttl: 60000,
+        limit: 100
+      }
+    ])
   ],
 })
 export class AppModule implements NestModule {

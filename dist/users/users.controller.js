@@ -19,45 +19,28 @@ const users_service_1 = require("./users.service");
 const passport_1 = require("@nestjs/passport");
 const update_profile_dto_1 = require("./dto/update-profile.dto");
 const app_utils_1 = require("../app.utils");
-const multer = require("multer");
-const fs = require("fs");
 const path = require("path");
 const platform_express_1 = require("@nestjs/platform-express");
 const bumdes_profile_dto_1 = require("./dto/bumdes-profile.dto");
 const update_password_dto_1 = require("./dto/update-password.dto");
 const update_status_dto_1 = require("./dto/update-status.dto");
 const filter_all_dto_1 = require("./dto/filter-all.dto");
+const roles_guard_1 = require("../auth/roles.guard");
+const user_level_enum_1 = require("./user-level.enum");
+const roles_decorator_1 = require("../auth/roles.decorator");
+const throttler_1 = require("@nestjs/throttler");
 let dir = `public/dispakan/assets/bumdes`;
 dir = path.join(__dirname, '..', '..', '..', '..', '..', dir);
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir, { recursive: true });
-        }
-        cb(null, dir);
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + path.basename(file.originalname));
-    },
-});
 let UsersController = class UsersController {
     constructor(userService) {
         this.userService = userService;
-    }
-    getIpAddress(request) {
-        const ipAddress = request.ip;
-        console.log(request.ips, request.ip);
-        return;
     }
     async allUmkm(filterAllUmkm) {
         const result = await this.userService.userUmkm(filterAllUmkm);
         return result;
     }
-    async allBumdes(request) {
-        const protocol = request.protocol;
-        const hostname = request.headers.host;
-        const url = `${protocol}://${hostname}/bumdes/profile/image`;
-        const result = await this.userService.userBumdes(url);
+    async allBumdes(filterAllUmkm) {
+        const result = await this.userService.userBumdes(filterAllUmkm);
         return result;
     }
     async detailUser(id, request) {
@@ -91,16 +74,8 @@ let UsersController = class UsersController {
     }
 };
 __decorate([
-    common_1.Get('ip'),
-    __param(0, common_1.Req()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", String)
-], UsersController.prototype, "getIpAddress", null);
-__decorate([
     common_1.Get('umkm'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Query()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [filter_all_dto_1.FilterUmkmDto]),
@@ -109,16 +84,15 @@ __decorate([
 __decorate([
     common_1.Get('bumdes'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
-    __param(0, common_1.Req()),
+    __param(0, common_1.Query()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [filter_all_dto_1.FilterUmkmDto]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "allBumdes", null);
 __decorate([
     common_1.Get('detail/:id'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    roles_decorator_1.Roles(user_level_enum_1.UserLevel.BUMDES, user_level_enum_1.UserLevel.UMKM),
     __param(0, common_1.Param('id')), __param(1, common_1.Req()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),
@@ -127,7 +101,6 @@ __decorate([
 __decorate([
     common_1.Get('delete-umkm/:id'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -136,7 +109,6 @@ __decorate([
 __decorate([
     common_1.Post('umkm/profil'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [update_profile_dto_1.UpdateProfileDto]),
@@ -145,7 +117,6 @@ __decorate([
 __decorate([
     common_1.Post('bumdes/profil'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
         limits: {
@@ -162,7 +133,6 @@ __decorate([
 __decorate([
     common_1.Post('update/password/:id'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Body()),
     __param(1, common_1.Param('id')),
     __metadata("design:type", Function),
@@ -172,7 +142,6 @@ __decorate([
 __decorate([
     common_1.Post('update/status/:id'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Body()), __param(1, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [update_status_dto_1.UpdateStatusDto, String]),
@@ -181,6 +150,8 @@ __decorate([
 UsersController = __decorate([
     swagger_1.ApiTags('User'),
     common_1.Controller('user'),
+    common_1.UseGuards(passport_1.AuthGuard('jwt'), roles_guard_1.RolesGuard, throttler_1.ThrottlerGuard),
+    roles_decorator_1.Roles(user_level_enum_1.UserLevel.BUMDES),
     __metadata("design:paramtypes", [users_service_1.UsersService])
 ], UsersController);
 exports.UsersController = UsersController;

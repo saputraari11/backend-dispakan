@@ -1,15 +1,15 @@
 /// <reference types="multer" />
-export declare class CreateStoreDto {
+import { BaseDto } from 'src/commons/base.dto';
+export declare class CreateStoreDto extends BaseDto {
     name: string;
     id_owner: string;
     address: string;
     phone: string;
-    status: boolean;
+    status: string | boolean;
     aspek: string;
     category: string[];
     mediaOrder: string[];
     mediaContact: string[];
     omset: string;
-    active_on: string;
     file: Express.Multer.File;
 }

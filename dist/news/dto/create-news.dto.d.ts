@@ -1,9 +1,9 @@
 /// <reference types="multer" />
-export declare class CreateNewsDto {
+import { BaseDto } from 'src/commons/base.dto';
+export declare class CreateNewsDto extends BaseDto {
     title: string;
     posted_date: string;
-    status: boolean;
+    status: string | boolean;
     description: string;
     file: Express.Multer.File;
-    active_on: string;
 }

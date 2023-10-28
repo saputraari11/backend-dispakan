@@ -1,39 +1,34 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsNotEmpty, IsString, IsEnum, IsBoolean } from 'class-validator'
-import { BaseDto } from 'src/commons/base.dto'
+import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator'
 
-export class BumdesProfileDto{
+export class UpdateNewsDto{
   @ApiProperty({
-    required: true,
+    required: false,
   })
   @IsString()
-  @IsNotEmpty()
-  id_bumdes_umkm: string
+  @IsOptional()
+  title: string
 
   @ApiProperty({
     required: false,
   })
   @IsString()
-  name?: string
+  @IsOptional()
+  posted_date: string
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsOptional()
+  status: string | boolean
 
   @ApiProperty({
     required: false,
   })
   @IsString()
-  address?: string
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsString()
-  phone?: string
-
-  @ApiProperty({
-    required: false,
-    type:'string'
-  })
-  @IsString()
-  status?: string
+  @IsOptional()
+  description: string
 
   @ApiProperty({ type: 'string', format: 'binary', required: false })
   file: Express.Multer.File

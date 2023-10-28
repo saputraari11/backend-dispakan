@@ -12,27 +12,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RolesGuard = void 0;
 const common_1 = require("@nestjs/common");
 const core_1 = require("@nestjs/core");
-const users_service_1 = require("../users/users.service");
+const user_level_enum_1 = require("../users/user-level.enum");
 let RolesGuard = class RolesGuard {
-    constructor(reflector, userService) {
+    constructor(reflector) {
         this.reflector = reflector;
-        this.userService = userService;
     }
     async canActivate(context) {
-        const roles = this.reflector.get('roles', context.getHandler());
+        const roles = this.reflector.getAllAndOverride('roles', [context.getHandler(), context.getClass()]);
         const request = context.switchToHttp().getRequest();
-        if (request.user) {
-            const { id } = request.user;
-            const user = { level: '' };
-            return roles.includes(user.level);
-        }
-        return false;
+        const userRequest = request.user;
+        return roles.includes(userRequest.level);
     }
 };
 RolesGuard = __decorate([
     common_1.Injectable(),
-    __metadata("design:paramtypes", [core_1.Reflector,
-        users_service_1.UsersService])
+    __metadata("design:paramtypes", [core_1.Reflector])
 ], RolesGuard);
 exports.RolesGuard = RolesGuard;
 //# sourceMappingURL=roles.guard.js.map

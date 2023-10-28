@@ -17,13 +17,13 @@ export class Product extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @Column()
+  @Column({nullable:true})
   name: string
 
-  @Column({ nullable: true })
+  @Column({ default: 0 })
   sale: number
 
-  @Column({ nullable: true })
+  @Column({ default: 0 })
   price: number
 
   @Column({

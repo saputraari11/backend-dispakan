@@ -14,8 +14,14 @@ import { FilterAllProducts } from './dto/filter-all-product.dto'
 import { IncrementDto } from './dto/increment.dto'
 import { CreateCommantDto } from 'src/comment/dto/create-comment.dto'
 import { FilterAllNews } from 'src/news/dto/filter-all.dto'
+import { Roles } from 'src/auth/roles.decorator'
+import { RolesGuard } from 'src/auth/roles.guard'
+import { UserLevel } from 'src/users/user-level.enum'
+import { BaseDto } from 'src/commons/base.dto'
+import { ThrottlerGuard } from '@nestjs/throttler'
 
 @Controller('landing-page')
+@UseGuards(ThrottlerGuard)
 export class LandingPageController {
   constructor(private landingPageService: LandingPageService) {}
 
@@ -69,8 +75,9 @@ export class LandingPageController {
   @Get('bumdes/dashboard')
   @ApiTags('dashboard')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
-  async getBumdes(@Query() data: FilterAllProducts) {
+  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @Roles(UserLevel.BUMDES)
+  async getBumdes(@Query() data: BaseDto) {
     const result = await this.landingPageService.getBumdesDashboard(
       data.active_on,
     )
@@ -81,7 +88,9 @@ export class LandingPageController {
   @ApiTags('dashboard')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  async getUmkm(@Query() data: FilterAllProducts) {
+  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @Roles(UserLevel.UMKM)
+  async getUmkm(@Query() data: BaseDto) {
     const result = await this.landingPageService.getUmkmDashboard(
       data.active_on,
     )

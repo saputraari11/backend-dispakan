@@ -14,7 +14,9 @@ export class News extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @Column()
+  @Column({
+    nullable:true
+  })
   title: string
 
   @Column({
@@ -33,7 +35,7 @@ export class News extends BaseEntity {
   })
   image: string
 
-  @Column()
+  @Column({default:false})
   status: boolean
 
   @Column({

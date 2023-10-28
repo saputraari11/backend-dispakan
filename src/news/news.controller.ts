@@ -2,13 +2,9 @@ import {
   Body,
   Controller,
   Get,
-  NotFoundException,
   Param,
   Post,
   Query,
-  Req,
-  Res,
-  ServiceUnavailableException,
   UploadedFile,
   UseGuards,
   UseInterceptors,
@@ -16,34 +12,33 @@ import {
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { CreateNewsDto } from './dto/create-news.dto'
-import * as multer from 'multer'
-import * as fs from 'fs'
-import * as path from 'path'
 import { NewsService } from './news.service'
-import { Request, Response } from 'express'
 import { AuthGuard } from '@nestjs/passport'
-import { StorageService } from 'src/commons/storage/storage.service'
 import { FilterAllNews } from './dto/filter-all.dto'
+import { Roles } from 'src/auth/roles.decorator'
+import { UserLevel } from 'src/users/user-level.enum'
+import { RolesGuard } from 'src/auth/roles.guard'
+import { ThrottlerGuard } from '@nestjs/throttler'
+import { UpdateNewsDto } from './dto/update-news.dto'
 
 @ApiTags('News')
 @Controller('news')
+@UseGuards(AuthGuard('jwt'),RolesGuard,ThrottlerGuard)
+@Roles(UserLevel.BUMDES)
 export class NewsController {
   constructor(
     private newsService: NewsService,
-    private storageService: StorageService,
   ) {}
 
   @Get()
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
-  async allNews(@Query() filterDto: FilterAllNews) {
+ async allNews(@Query() filterDto: FilterAllNews) {
     const result = await this.newsService.allNews(filterDto)
     return result
   }
 
   @Post('upload')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FileInterceptor('file', {
@@ -64,7 +59,6 @@ export class NewsController {
 
   @Post('update/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FileInterceptor('file', {
@@ -76,7 +70,7 @@ export class NewsController {
   )
   async updateFile(
     @Param('id') id: string,
-    @Body() data: CreateNewsDto,
+    @Body() data: UpdateNewsDto,
     @UploadedFile('file') file: Express.Multer.File,
   ) {
     data.file = file
@@ -86,7 +80,6 @@ export class NewsController {
 
   @Get('detail/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   async detailNews(@Param('id') id: string) {
     const result = await this.newsService.detailNews(id)
     return result
@@ -94,7 +87,6 @@ export class NewsController {
 
   @Get('delete/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   async deleteNews(@Param('id') id: string) {
     const result = await this.newsService.deleteNews(id)
     return result

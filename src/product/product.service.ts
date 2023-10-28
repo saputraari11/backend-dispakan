@@ -9,6 +9,7 @@ import * as fs from 'fs'
 import { StorageService } from 'src/commons/storage/storage.service'
 import { v4 } from 'uuid'
 import { FilterAllProducts } from './dto/filter-all.dto'
+import { UpdateProductDto } from './dto/update-product.dto'
 
 @Injectable()
 export class ProductService {
@@ -101,8 +102,8 @@ export class ProductService {
       const product = new Product()
 
       product.name = name
-      product.price = price
-      product.sale = sale
+      product.price = Number(price)
+      product.sale = Number(sale)
       product.description = description
       product.store = umkm
       product.category = category
@@ -143,7 +144,7 @@ export class ProductService {
     }
   }
 
-  async updateProduct(updateProduct: CreateProductDto, id: string) {
+  async updateProduct(updateProduct: UpdateProductDto, id: string) {
     const product: Product = (await this.detailProduct(id)).data
     await product.convertStringToArray()
     const {

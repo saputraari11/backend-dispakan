@@ -11,34 +11,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateProfileDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
+const class_validator_1 = require("class-validator");
+const base_dto_1 = require("../../commons/base.dto");
 class UpdateProfileDto {
 }
 __decorate([
     swagger_1.ApiProperty(),
+    class_validator_1.IsString(),
+    class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
 ], UpdateProfileDto.prototype, "id_owner_umkm", void 0);
 __decorate([
     swagger_1.ApiProperty(),
+    class_validator_1.IsOptional(),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], UpdateProfileDto.prototype, "name", void 0);
 __decorate([
     swagger_1.ApiProperty(),
+    class_validator_1.IsOptional(),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], UpdateProfileDto.prototype, "address", void 0);
 __decorate([
     swagger_1.ApiProperty(),
+    class_validator_1.IsOptional(),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], UpdateProfileDto.prototype, "phone", void 0);
 __decorate([
     swagger_1.ApiProperty(),
+    class_validator_1.IsOptional(),
+    class_validator_1.IsEmail(),
     __metadata("design:type", String)
 ], UpdateProfileDto.prototype, "email", void 0);
 __decorate([
     swagger_1.ApiProperty(),
+    class_validator_1.IsOptional(),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], UpdateProfileDto.prototype, "new_password", void 0);
 __decorate([
     swagger_1.ApiProperty(),
+    class_validator_1.IsOptional(),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], UpdateProfileDto.prototype, "old_password", void 0);
 exports.UpdateProfileDto = UpdateProfileDto;

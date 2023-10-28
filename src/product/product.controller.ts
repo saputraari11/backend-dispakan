@@ -13,42 +13,29 @@ import {
 } from '@nestjs/common'
 import { ApiBearerAuth, ApiConsumes, ApiTags } from '@nestjs/swagger'
 import { ProductService } from './product.service'
-import * as multer from 'multer'
-import * as fs from 'fs'
-import * as path from 'path'
 import { AuthGuard } from '@nestjs/passport'
 import { FilesInterceptor } from '@nestjs/platform-express'
 import { CreateProductDto } from './dto/create-product.dto'
-import { Request, Response, response } from 'express'
-import { responseTemplate } from 'src/app.utils'
+import { Request } from 'express'
 import { FilterAllProducts } from './dto/filter-all.dto'
-
-const os = require('os')
-const dir = `public/dispakan/assets/product`
-
-const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true })
-    }
-
-    cb(null, dir)
-  },
-
-  filename: function(req, file, cb) {
-    cb(null, Date.now() + '-' + path.basename(file.originalname))
-  },
-})
+import { RolesGuard } from 'src/auth/roles.guard'
+import { UserLevel } from 'src/users/user-level.enum'
+import { Roles } from 'src/auth/roles.decorator'
+import { ThrottlerGuard } from '@nestjs/throttler'
+import { UpdateProductDto } from './dto/update-product.dto'
 
 @ApiTags('Product UMKM')
 @Controller('product')
+@UseGuards(AuthGuard('jwt'),RolesGuard)
+@Roles(UserLevel.BUMDES)
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Post('upload')
   @ApiBearerAuth()
   @ApiConsumes('multipart/form-data')
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @Roles(UserLevel.UMKM)
   @UseInterceptors(
     FilesInterceptor('files', 24, {
       limits: {
@@ -67,7 +54,8 @@ export class ProductController {
 
   @Get()
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @Roles(UserLevel.BUMDES,UserLevel.UMKM)
   async allProduct(@Query() filterDto: FilterAllProducts) {
     const result = await this.productService.allProduct(filterDto)
     return result
@@ -75,7 +63,8 @@ export class ProductController {
 
   @Post('update/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'),RolesGuard,ThrottlerGuard)
+  @Roles(UserLevel.UMKM)
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FilesInterceptor('files', 24, {
@@ -87,7 +76,7 @@ export class ProductController {
   )
   async updateProduct(
     @Param('id') id: string,
-    @Body() data: CreateProductDto,
+    @Body() data: UpdateProductDto,
     @UploadedFiles() files: Express.Multer.File[],
   ) {
     data.files = files
@@ -97,7 +86,8 @@ export class ProductController {
 
   @Get('detail/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @Roles(UserLevel.BUMDES,UserLevel.UMKM)
   async detailProdcut(@Param('id') id: string, @Req() request: Request) {
     const result = await this.productService.detailProduct(id)
     return result
@@ -105,7 +95,8 @@ export class ProductController {
 
   @Get('delete/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @Roles(UserLevel.UMKM)
   async deleteProduct(@Param('id') id: string) {
     const result = await this.productService.deleteProduct(id)
     return result

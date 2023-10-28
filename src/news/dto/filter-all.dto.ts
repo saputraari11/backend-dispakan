@@ -1,13 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger'
+import { IsOptional, IsString } from 'class-validator'
+import { BaseDto } from 'src/commons/base.dto'
 
-export class FilterAllNews {
+export class FilterAllNews extends BaseDto {
   @ApiProperty({
     required: false,
   })
+  @IsString()
+  @IsOptional()
   search: string
-
-  @ApiProperty({
-    required: false,
-  })
-  active_on: string
 }

@@ -94,8 +94,6 @@ export class AuthService {
       .andWhere('user.active_on = :activeOn', { activeOn: active_on })
       .getOne()
 
-    console.log(active_on)
-
     if (user && (await user.validatePassword(password))) {
       return user
     } else {

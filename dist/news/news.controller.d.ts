@@ -1,12 +1,11 @@
 /// <reference types="multer" />
 import { CreateNewsDto } from './dto/create-news.dto';
 import { NewsService } from './news.service';
-import { StorageService } from 'src/commons/storage/storage.service';
 import { FilterAllNews } from './dto/filter-all.dto';
+import { UpdateNewsDto } from './dto/update-news.dto';
 export declare class NewsController {
     private newsService;
-    private storageService;
-    constructor(newsService: NewsService, storageService: StorageService);
+    constructor(newsService: NewsService);
     allNews(filterDto: FilterAllNews): Promise<{
         error: boolean;
         alerts: {
@@ -23,7 +22,7 @@ export declare class NewsController {
         };
         data: any;
     }>;
-    updateFile(id: string, data: CreateNewsDto, file: Express.Multer.File): Promise<{
+    updateFile(id: string, data: UpdateNewsDto, file: Express.Multer.File): Promise<{
         error: boolean;
         alerts: {
             code: string;

@@ -21,6 +21,7 @@ const app_utils_1 = require("../app.utils");
 const auth_service_1 = require("./auth.service");
 const signup_credentials_dto_1 = require("./dto/signup-credentials.dto");
 const signin_dto_1 = require("./dto/signin.dto");
+const throttler_1 = require("@nestjs/throttler");
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
@@ -70,6 +71,7 @@ __decorate([
 AuthController = __decorate([
     swagger_1.ApiTags('Auth'),
     common_1.Controller('auth'),
+    common_1.UseGuards(throttler_1.ThrottlerGuard),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], AuthController);
 exports.AuthController = AuthController;

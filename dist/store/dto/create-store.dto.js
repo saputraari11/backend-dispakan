@@ -12,42 +12,50 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateStoreDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
-class CreateStoreDto {
+const base_dto_1 = require("../../commons/base.dto");
+class CreateStoreDto extends base_dto_1.BaseDto {
 }
 __decorate([
     swagger_1.ApiProperty({
         required: false,
     }),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], CreateStoreDto.prototype, "name", void 0);
 __decorate([
     swagger_1.ApiProperty({
         required: true,
     }),
+    class_validator_1.IsString(),
+    class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
 ], CreateStoreDto.prototype, "id_owner", void 0);
 __decorate([
     swagger_1.ApiProperty({
         required: false,
     }),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], CreateStoreDto.prototype, "address", void 0);
 __decorate([
     swagger_1.ApiProperty({
         required: false,
     }),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], CreateStoreDto.prototype, "phone", void 0);
 __decorate([
     swagger_1.ApiProperty({
         required: false,
     }),
-    __metadata("design:type", Boolean)
+    class_validator_1.IsOptional(),
+    __metadata("design:type", Object)
 ], CreateStoreDto.prototype, "status", void 0);
 __decorate([
     swagger_1.ApiProperty({
         required: false,
     }),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], CreateStoreDto.prototype, "aspek", void 0);
 __decorate([
@@ -56,6 +64,7 @@ __decorate([
         isArray: true,
         type: String,
     }),
+    class_validator_1.IsString(),
     __metadata("design:type", Array)
 ], CreateStoreDto.prototype, "category", void 0);
 __decorate([
@@ -64,6 +73,7 @@ __decorate([
         required: false,
         type: String,
     }),
+    class_validator_1.IsString(),
     __metadata("design:type", Array)
 ], CreateStoreDto.prototype, "mediaOrder", void 0);
 __decorate([
@@ -72,20 +82,16 @@ __decorate([
         required: false,
         type: String,
     }),
+    class_validator_1.IsString(),
     __metadata("design:type", Array)
 ], CreateStoreDto.prototype, "mediaContact", void 0);
 __decorate([
     swagger_1.ApiProperty({
         required: false,
     }),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], CreateStoreDto.prototype, "omset", void 0);
-__decorate([
-    swagger_1.ApiProperty(),
-    class_validator_1.IsString(),
-    class_validator_1.IsNotEmpty(),
-    __metadata("design:type", String)
-], CreateStoreDto.prototype, "active_on", void 0);
 __decorate([
     swagger_1.ApiProperty({ type: 'string', format: 'binary', required: false }),
     __metadata("design:type", Object)

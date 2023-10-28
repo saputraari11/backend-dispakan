@@ -3,6 +3,7 @@ import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { Request } from 'express';
 import { FilterAllProducts } from './dto/filter-all.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
 export declare class ProductController {
     private readonly productService;
     constructor(productService: ProductService);
@@ -22,7 +23,7 @@ export declare class ProductController {
         };
         data: any;
     }>;
-    updateProduct(id: string, data: CreateProductDto, files: Express.Multer.File[]): Promise<{
+    updateProduct(id: string, data: UpdateProductDto, files: Express.Multer.File[]): Promise<{
         error: boolean;
         alerts: {
             code: string;

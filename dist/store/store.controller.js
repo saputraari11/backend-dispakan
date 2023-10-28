@@ -21,6 +21,11 @@ const store_service_1 = require("./store.service");
 const create_store_dto_1 = require("./dto/create-store.dto");
 const app_utils_1 = require("../app.utils");
 const filter_all_dto_1 = require("./dto/filter-all.dto");
+const roles_decorator_1 = require("../auth/roles.decorator");
+const user_level_enum_1 = require("../users/user-level.enum");
+const roles_guard_1 = require("../auth/roles.guard");
+const throttler_1 = require("@nestjs/throttler");
+const update_store_dto_1 = require("./dto/update-store.dto");
 let StoreController = class StoreController {
     constructor(storeService) {
         this.storeService = storeService;
@@ -51,7 +56,8 @@ let StoreController = class StoreController {
 __decorate([
     common_1.Get(),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    common_1.UseGuards(passport_1.AuthGuard('jwt'), roles_guard_1.RolesGuard),
+    roles_decorator_1.Roles(user_level_enum_1.UserLevel.UMKM, user_level_enum_1.UserLevel.BUMDES),
     __param(0, common_1.Query()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [filter_all_dto_1.FilterStoreDto]),
@@ -60,7 +66,8 @@ __decorate([
 __decorate([
     common_1.Post('upload'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    common_1.UseGuards(passport_1.AuthGuard('jwt'), roles_guard_1.RolesGuard),
+    roles_decorator_1.Roles(user_level_enum_1.UserLevel.BUMDES),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
         limits: {
@@ -77,7 +84,8 @@ __decorate([
 __decorate([
     common_1.Post('update/:id'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    common_1.UseGuards(passport_1.AuthGuard('jwt'), roles_guard_1.RolesGuard),
+    roles_decorator_1.Roles(user_level_enum_1.UserLevel.BUMDES, user_level_enum_1.UserLevel.UMKM),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
         limits: {
@@ -89,13 +97,14 @@ __decorate([
     __param(1, common_1.Body()),
     __param(2, common_1.UploadedFile('file')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, create_store_dto_1.CreateStoreDto, Object]),
+    __metadata("design:paramtypes", [String, update_store_dto_1.UpdateStoreDto, Object]),
     __metadata("design:returntype", Promise)
 ], StoreController.prototype, "updateFile", null);
 __decorate([
     common_1.Get('detail/:id'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    common_1.UseGuards(passport_1.AuthGuard('jwt'), roles_guard_1.RolesGuard),
+    roles_decorator_1.Roles(user_level_enum_1.UserLevel.BUMDES, user_level_enum_1.UserLevel.UMKM),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -104,7 +113,8 @@ __decorate([
 __decorate([
     common_1.Get('delete/:id'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    common_1.UseGuards(passport_1.AuthGuard('jwt'), roles_guard_1.RolesGuard),
+    roles_decorator_1.Roles(user_level_enum_1.UserLevel.BUMDES),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -113,6 +123,7 @@ __decorate([
 StoreController = __decorate([
     swagger_1.ApiTags('UMKM'),
     common_1.Controller('store'),
+    common_1.UseGuards(throttler_1.ThrottlerGuard),
     __metadata("design:paramtypes", [store_service_1.StoreService])
 ], StoreController);
 exports.StoreController = StoreController;

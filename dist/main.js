@@ -24,6 +24,7 @@ async function bootstrap() {
     app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
     app.use(express.static(path_1.join(process.cwd(), '../temp/qrcode/')));
     app.useGlobalPipes(new common_1.ValidationPipe());
+    app.enableCors();
     await app.listen(process.env.PORT || '4000', process.env.HOST);
 }
 bootstrap();

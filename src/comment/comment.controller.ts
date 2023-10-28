@@ -26,15 +26,20 @@ import { CommentService } from './comment.service'
 import { FilterAllComment } from './dto/filter-all.dto'
 import { CreateCommantDto } from './dto/create-comment.dto'
 import { UpdateStatusCommentDto } from './dto/update-status-comment.dto'
+import { Roles } from 'src/auth/roles.decorator'
+import { UserLevel } from 'src/users/user-level.enum'
+import { RolesGuard } from 'src/auth/roles.guard'
+import { ThrottlerGuard } from '@nestjs/throttler'
 
 @ApiTags('Comments')
 @Controller('comment')
+@UseGuards(AuthGuard('jwt'),RolesGuard,ThrottlerGuard)
+@Roles(UserLevel.BUMDES)
 export class CommentController {
   constructor(private commentService: CommentService) {}
 
   @Get()
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   async allComment(@Query() filterDto: FilterAllComment) {
     const result = await this.commentService.allComment(filterDto)
     return result
@@ -42,7 +47,6 @@ export class CommentController {
 
   @Post('update/status/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   async updateStatus(
     @Param('id') id: string,
     @Body() data: UpdateStatusCommentDto,
@@ -53,7 +57,6 @@ export class CommentController {
 
   @Post('update/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   async updateComment(@Param('id') id: string, @Body() data: CreateCommantDto) {
     const result = await this.commentService.updateComment(data, id)
     return result
@@ -61,7 +64,6 @@ export class CommentController {
 
   @Get('detail/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   async detailComment(@Param('id') id: string) {
     const result = await this.commentService.detailComment(id)
     return result
@@ -69,7 +71,6 @@ export class CommentController {
 
   @Get('delete/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
   async deleteComment(@Param('id') id: string) {
     const result = await this.commentService.deleteComment(id)
     return result

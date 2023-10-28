@@ -9,7 +9,6 @@ import { FilterUmkmDto } from './dto/filter-all.dto';
 export declare class UsersController {
     private userService;
     constructor(userService: UsersService);
-    getIpAddress(request: Request): string;
     allUmkm(filterAllUmkm: FilterUmkmDto): Promise<{
         error: boolean;
         alerts: {
@@ -18,7 +17,7 @@ export declare class UsersController {
         };
         data: any;
     }>;
-    allBumdes(request: Request): Promise<{
+    allBumdes(filterAllUmkm: FilterUmkmDto): Promise<{
         error: boolean;
         alerts: {
             code: string;

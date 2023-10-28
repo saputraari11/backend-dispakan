@@ -19,12 +19,15 @@ const platform_express_1 = require("@nestjs/platform-express");
 const create_news_dto_1 = require("./dto/create-news.dto");
 const news_service_1 = require("./news.service");
 const passport_1 = require("@nestjs/passport");
-const storage_service_1 = require("../commons/storage/storage.service");
 const filter_all_dto_1 = require("./dto/filter-all.dto");
+const roles_decorator_1 = require("../auth/roles.decorator");
+const user_level_enum_1 = require("../users/user-level.enum");
+const roles_guard_1 = require("../auth/roles.guard");
+const throttler_1 = require("@nestjs/throttler");
+const update_news_dto_1 = require("./dto/update-news.dto");
 let NewsController = class NewsController {
-    constructor(newsService, storageService) {
+    constructor(newsService) {
         this.newsService = newsService;
-        this.storageService = storageService;
     }
     async allNews(filterDto) {
         const result = await this.newsService.allNews(filterDto);
@@ -52,7 +55,6 @@ let NewsController = class NewsController {
 __decorate([
     common_1.Get(),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Query()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [filter_all_dto_1.FilterAllNews]),
@@ -61,7 +63,6 @@ __decorate([
 __decorate([
     common_1.Post('upload'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
         limits: {
@@ -78,7 +79,6 @@ __decorate([
 __decorate([
     common_1.Post('update/:id'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
         limits: {
@@ -90,13 +90,12 @@ __decorate([
     __param(1, common_1.Body()),
     __param(2, common_1.UploadedFile('file')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, create_news_dto_1.CreateNewsDto, Object]),
+    __metadata("design:paramtypes", [String, update_news_dto_1.UpdateNewsDto, Object]),
     __metadata("design:returntype", Promise)
 ], NewsController.prototype, "updateFile", null);
 __decorate([
     common_1.Get('detail/:id'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -105,7 +104,6 @@ __decorate([
 __decorate([
     common_1.Get('delete/:id'),
     swagger_1.ApiBearerAuth(),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -114,8 +112,9 @@ __decorate([
 NewsController = __decorate([
     swagger_1.ApiTags('News'),
     common_1.Controller('news'),
-    __metadata("design:paramtypes", [news_service_1.NewsService,
-        storage_service_1.StorageService])
+    common_1.UseGuards(passport_1.AuthGuard('jwt'), roles_guard_1.RolesGuard, throttler_1.ThrottlerGuard),
+    roles_decorator_1.Roles(user_level_enum_1.UserLevel.BUMDES),
+    __metadata("design:paramtypes", [news_service_1.NewsService])
 ], NewsController);
 exports.NewsController = NewsController;
 //# sourceMappingURL=news.controller.js.map

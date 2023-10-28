@@ -19,6 +19,7 @@ const product_module_1 = require("./product/product.module");
 const app_logger_middleware_1 = require("./commons/middlewares/app-logger-middleware");
 const comment_module_1 = require("./comment/comment.module");
 const landing_page_module_1 = require("./landing-page/landing-page.module");
+const throttler_1 = require("@nestjs/throttler");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
@@ -40,6 +41,23 @@ AppModule = __decorate([
             product_module_1.ProductModule,
             comment_module_1.CommentModule,
             landing_page_module_1.LandingPageModule,
+            throttler_1.ThrottlerModule.forRoot([
+                {
+                    name: 'short',
+                    ttl: 1000,
+                    limit: 3,
+                },
+                {
+                    name: 'medium',
+                    ttl: 10000,
+                    limit: 20
+                },
+                {
+                    name: 'long',
+                    ttl: 60000,
+                    limit: 100
+                }
+            ])
         ],
     })
 ], AppModule);

@@ -34,15 +34,15 @@ __decorate([
     __metadata("design:type", String)
 ], Store.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ nullable: true }),
     __metadata("design:type", String)
 ], Store.prototype, "name", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ nullable: true }),
     __metadata("design:type", String)
 ], Store.prototype, "address", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ nullable: true }),
     __metadata("design:type", String)
 ], Store.prototype, "phone", void 0);
 __decorate([
@@ -60,7 +60,7 @@ __decorate([
     __metadata("design:type", String)
 ], Store.prototype, "mediaContact", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ nullable: true }),
     __metadata("design:type", String)
 ], Store.prototype, "omset", void 0);
 __decorate([
@@ -83,7 +83,7 @@ __decorate([
     __metadata("design:type", String)
 ], Store.prototype, "katagoriSaved", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ nullable: true }),
     __metadata("design:type", String)
 ], Store.prototype, "aspek", void 0);
 __decorate([

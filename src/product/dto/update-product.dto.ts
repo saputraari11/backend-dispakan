@@ -1,9 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { Transform } from 'class-transformer'
 import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator'
-import { BaseDto } from 'src/commons/base.dto'
+import { Transform } from 'class-transformer'
 
-export class CreateProductDto extends BaseDto{
+export class UpdateProductDto{
   @ApiProperty({
     required: false,
   })

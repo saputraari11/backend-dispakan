@@ -1,5 +1,6 @@
 /// <reference types="multer" />
-export declare class CreateProductDto {
+import { BaseDto } from 'src/commons/base.dto';
+export declare class CreateProductDto extends BaseDto {
     name: string;
     id_umkm: string;
     sale: number;
@@ -7,7 +8,6 @@ export declare class CreateProductDto {
     status: boolean;
     price: number;
     category: string;
-    active_on: string;
     others_description: string;
     files: Express.Multer.File[];
 }

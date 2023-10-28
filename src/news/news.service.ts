@@ -9,6 +9,7 @@ import { StorageService } from 'src/commons/storage/storage.service'
 import { v4 } from 'uuid'
 import { FilterAllNews } from './dto/filter-all.dto'
 import { Comment } from 'src/comment/comment.entity'
+import { UpdateNewsDto } from './dto/update-news.dto'
 
 @Injectable()
 export class NewsService {
@@ -23,10 +24,6 @@ export class NewsService {
   async allNews(filterAllNews: FilterAllNews) {
     let request_news = this.newsRepository
       .createQueryBuilder('news')
-      .where('news.active_on = :activeOn', {
-        activeOn: filterAllNews.active_on,
-      })
-      .innerJoinAndSelect('news.comments', 'comments')
 
     if (filterAllNews && filterAllNews.search) {
       request_news = request_news.andWhere(
@@ -34,6 +31,10 @@ export class NewsService {
         { searchTerm: `%${filterAllNews.search}%` },
       )
     }
+
+    request_news = request_news.andWhere('news.active_on = :activeOn', {
+        activeOn: filterAllNews.active_on,
+      }).leftJoinAndSelect('news.comments', 'comments')
 
     const news = await request_news.getMany()
 
@@ -70,11 +71,13 @@ export class NewsService {
     const { file, status, title, posted_date, active_on } = uploadNews
 
     const news = new News()
-    news.status = !!status
     news.title = title || ''
     news.posted_date = posted_date ? new Date(posted_date) : new Date()
     news.description = uploadNews.description || ''
     news.active_on = active_on || ''
+
+    if (typeof status == 'string') news.status = status == 'true' ? true:false
+    else news.status = status
 
     if (uploadNews.file) {
       news.mediaId = v4()
@@ -95,7 +98,7 @@ export class NewsService {
     return responseTemplate('200', 'success', news)
   }
 
-  async updateNews(updateNews: CreateNewsDto, id: string) {
+  async updateNews(updateNews: UpdateNewsDto, id: string) {
     const news = (await this.detailNews(id)).data
 
     if (!news.title) {
@@ -126,7 +129,11 @@ export class NewsService {
     }
 
     try {
-      if (updateNews.status) news.status = !!updateNews.status
+      if (updateNews.status) {
+        if (typeof updateNews.status == 'string') news.status = updateNews.status == 'true' ? true:false
+        else news.status = updateNews.status
+      }
+
       if (updateNews.title) news.title = updateNews.title
       if (updateNews.posted_date)
         news.posted_date = updateNews.posted_date

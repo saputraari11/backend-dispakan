@@ -18,7 +18,7 @@ export declare class UsersService {
         };
         data: any;
     }>;
-    userBumdes(url: string): Promise<{
+    userBumdes(filterUmkm: FilterUmkmDto): Promise<{
         error: boolean;
         alerts: {
             code: string;

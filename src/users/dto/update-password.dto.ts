@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsNotEmpty, IsString, IsEnum } from 'class-validator'
+import { IsNotEmpty, IsString } from 'class-validator'
 
 export class UpdatePasswordDto {
   id_user?: string

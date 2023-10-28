@@ -10,6 +10,7 @@ import { v4 } from 'uuid'
 import { StorageService } from 'src/commons/storage/storage.service'
 import { FilterStoreDto } from './dto/filter-all.dto'
 import { Product } from 'src/product/product.entity'
+import { UpdateStoreDto } from './dto/update-store.dto'
 
 @Injectable()
 export class StoreService {
@@ -28,9 +29,9 @@ export class StoreService {
       .innerJoinAndSelect('store.user', 'user')
 
     try {
-      if (filterDto.active_on) {
-        request_store = request_store.andWhere('store.active_on = :activeOn', {
-          activeOn: filterDto.active_on,
+      if (filterDto.id_mitra) {
+        request_store = request_store.andWhere('user.id = :idMitra', {
+          idMitra: filterDto.id_mitra,
         })
       }
 
@@ -40,13 +41,12 @@ export class StoreService {
           { searchTerm: `%${filterDto.search}%` },
         )
       }
-
-      if (filterDto.id_mitra) {
-        request_store = request_store.andWhere('user.id = :idMitra', {
-          idMitra: filterDto.id_mitra,
+      
+      if (filterDto.active_on) {
+        request_store = request_store.andWhere('store.active_on = :activeOn', {
+          activeOn: filterDto.active_on,
         })
       }
-
       const store = await request_store.getMany()
 
       for (let item of store) {
@@ -88,6 +88,7 @@ export class StoreService {
       omset,
       mediaContact,
       mediaOrder,
+      status
     } = uploadStore
     const owner = await this.userService.userDetail(id_owner)
     const store = new Store()
@@ -103,6 +104,11 @@ export class StoreService {
     store.phone = phone || ''
     store.omset = omset || ''
     store.active_on = uploadStore.active_on
+
+    if(status) {
+        if (typeof status == 'string') store.status = status == 'true' ? true:false
+        else store.status = status
+    }
 
     if (mediaContact && mediaContact.length != 0)
       store.mediaContact = JSON.stringify(mediaContact)
@@ -131,9 +137,10 @@ export class StoreService {
     return responseTemplate('200', 'success', store)
   }
 
-  async updateStore(updateStore: CreateStoreDto, id: string) {
+  async updateStore(updateStore: UpdateStoreDto, id: string) {
     const store: Store = (await this.detailStore(id)).data
     const owner = await this.userService.userDetail(updateStore.id_owner)
+    const {status} =  updateStore
 
     if (updateStore.file) {
       try {
@@ -161,7 +168,12 @@ export class StoreService {
     store.name = updateStore.name
     store.address = updateStore.address
     store.aspek = updateStore.aspek
-    store.status = String(updateStore.status) === 'true' ? true : false
+
+    if(status) {
+        if (typeof status == 'string') store.status = status == 'true' ? true:false
+        else store.status = status
+    }
+
     if (updateStore.category && updateStore.category.length != 0) {
       store.katagoriSaved = JSON.stringify(updateStore.category)
     } else {

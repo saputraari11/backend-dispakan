@@ -12,23 +12,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SignupCredentialsDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
+const base_dto_1 = require("../../commons/base.dto");
 const user_level_enum_1 = require("../../users/user-level.enum");
-class SignupCredentialsDto {
+class SignupCredentialsDto extends base_dto_1.BaseDto {
 }
 __decorate([
     swagger_1.ApiProperty(),
+    class_validator_1.IsString(),
+    class_validator_1.IsOptional(),
     __metadata("design:type", String)
 ], SignupCredentialsDto.prototype, "name", void 0);
 __decorate([
     swagger_1.ApiProperty(),
+    class_validator_1.IsString(),
+    class_validator_1.IsOptional(),
     __metadata("design:type", String)
 ], SignupCredentialsDto.prototype, "address", void 0);
 __decorate([
     swagger_1.ApiProperty(),
+    class_validator_1.IsString(),
+    class_validator_1.IsOptional(),
     __metadata("design:type", String)
 ], SignupCredentialsDto.prototype, "phone", void 0);
 __decorate([
     swagger_1.ApiProperty(),
+    class_validator_1.IsString(),
+    class_validator_1.IsOptional(),
     __metadata("design:type", String)
 ], SignupCredentialsDto.prototype, "email", void 0);
 __decorate([
@@ -41,9 +50,5 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], SignupCredentialsDto.prototype, "password", void 0);
-__decorate([
-    swagger_1.ApiProperty(),
-    __metadata("design:type", String)
-], SignupCredentialsDto.prototype, "active_on", void 0);
 exports.SignupCredentialsDto = SignupCredentialsDto;
 //# sourceMappingURL=signup-credentials.dto.js.map

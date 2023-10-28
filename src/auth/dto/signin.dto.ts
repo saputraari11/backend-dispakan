@@ -1,8 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { IsEmail, IsNotEmpty, IsString, Matches } from 'class-validator'
 import { REGEX } from '../../app.utils'
+import { BaseDto } from 'src/commons/base.dto'
 
-export class SignInDto {
+export class SignInDto extends BaseDto{
   @ApiProperty({
     description: 'Email address of the user',
   })
@@ -16,11 +17,4 @@ export class SignInDto {
   @IsNotEmpty()
   @Matches(REGEX.PASSWORD_RULE)
   password: string
-
-  @ApiProperty({
-    description: 'Active of the user',
-  })
-  @IsString()
-  @IsNotEmpty()
-  active_on: string
 }

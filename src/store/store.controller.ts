@@ -22,15 +22,22 @@ import { StoreService } from './store.service'
 import { CreateStoreDto } from './dto/create-store.dto'
 import { responseTemplate } from 'src/app.utils'
 import { FilterStoreDto } from './dto/filter-all.dto'
+import { Roles } from 'src/auth/roles.decorator'
+import { UserLevel } from 'src/users/user-level.enum'
+import { RolesGuard } from 'src/auth/roles.guard'
+import { ThrottlerGuard } from '@nestjs/throttler'
+import { UpdateStoreDto } from './dto/update-store.dto'
 
 @ApiTags('UMKM')
 @Controller('store')
+@UseGuards(ThrottlerGuard)
 export class StoreController {
   constructor(private storeService: StoreService) {}
 
   @Get()
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @Roles(UserLevel.UMKM,UserLevel.BUMDES)
   async allStore(@Query() request: FilterStoreDto) {
     const result = await this.storeService.allStore(request)
     return result
@@ -38,7 +45,8 @@ export class StoreController {
 
   @Post('upload')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @Roles(UserLevel.BUMDES)
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FileInterceptor('file', {
@@ -59,7 +67,8 @@ export class StoreController {
 
   @Post('update/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @Roles(UserLevel.BUMDES,UserLevel.UMKM)
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FileInterceptor('file', {
@@ -71,7 +80,7 @@ export class StoreController {
   )
   async updateFile(
     @Param('id') id: string,
-    @Body() data: CreateStoreDto,
+    @Body() data: UpdateStoreDto,
     @UploadedFile('file') file: Express.Multer.File,
   ) {
     data.file = file
@@ -81,7 +90,8 @@ export class StoreController {
 
   @Get('detail/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @Roles(UserLevel.BUMDES,UserLevel.UMKM)
   async detailStore(@Param('id') id: string) {
     const result = await this.storeService.detailStore(id)
     return result
@@ -89,7 +99,8 @@ export class StoreController {
 
   @Get('delete/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'),RolesGuard)
+  @Roles(UserLevel.BUMDES)
   async deleteStore(@Param('id') id: string) {
     const result = await this.storeService.deleteStore(id)
     return result
