@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateProfileDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
-const base_dto_1 = require("../../commons/base.dto");
 class UpdateProfileDto {
 }
 __decorate([

@@ -5,7 +5,5 @@ export class BaseDto {
   @ApiProperty({
     required: true,
   })
-  @IsNotEmpty()
-  @IsString()
   active_on: string
 }

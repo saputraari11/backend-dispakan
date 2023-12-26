@@ -19,7 +19,7 @@ import {
   ApiSecurity,
   ApiTags,
 } from '@nestjs/swagger'
-import { UserLevel } from 'src/users/user-level.enum'
+import { UserLevel } from '../users/user-level.enum'
 import { SETTINGS } from '../app.utils'
 import { User } from '../users/user.entity'
 import { AuthService } from './auth.service'

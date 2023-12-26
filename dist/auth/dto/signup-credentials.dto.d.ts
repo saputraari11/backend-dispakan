@@ -1,5 +1,5 @@
-import { BaseDto } from 'src/commons/base.dto';
-import { UserLevel } from 'src/users/user-level.enum';
+import { BaseDto } from '../../commons/base.dto';
+import { UserLevel } from '../../users/user-level.enum';
 export declare class SignupCredentialsDto extends BaseDto {
     name?: string;
     address?: string;

@@ -1,6 +1,6 @@
 import { JwtService } from '@nestjs/jwt';
-import { UserLevel } from 'src/users/user-level.enum';
-import { UserRepository } from 'src/users/user.repository';
+import { UserLevel } from '../users/user-level.enum';
+import { UserRepository } from '../users/user.repository';
 import { User } from '../users/user.entity';
 import { SignupCredentialsDto } from './dto/signup-credentials.dto';
 import { ConfigService } from '@nestjs/config';

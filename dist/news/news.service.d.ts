@@ -1,9 +1,9 @@
 import { News } from './news.entity';
 import { Repository } from 'typeorm';
 import { CreateNewsDto } from './dto/create-news.dto';
-import { StorageService } from 'src/commons/storage/storage.service';
+import { StorageService } from '../commons/storage/storage.service';
 import { FilterAllNews } from './dto/filter-all.dto';
-import { Comment } from 'src/comment/comment.entity';
+import { Comment } from '../comment/comment.entity';
 import { UpdateNewsDto } from './dto/update-news.dto';
 export declare class NewsService {
     private readonly newsRepository;

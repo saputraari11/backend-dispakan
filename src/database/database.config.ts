@@ -4,12 +4,12 @@ import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm'
 import databaseConfig from '../config/database.config'
 
 import { User } from '../users/user.entity'
-import { Product } from 'src/product/product.entity'
-import { Store } from 'src/store/store.entity'
-import { Comment } from 'src/comment/comment.entity'
-import { News } from 'src/news/news.entity'
-import { ClickProduct } from 'src/landing-page/click-product.entity'
-import { LikeProduct } from 'src/landing-page/like-product.entity'
+import { Product } from '../product/product.entity'
+import { Store } from '../store/store.entity'
+import { Comment } from '../comment/comment.entity'
+import { News } from '../news/news.entity'
+import { ClickProduct } from '../landing-page/click-product.entity'
+import { LikeProduct } from '../landing-page/like-product.entity'
 
 export class DatabaseConfig implements TypeOrmOptionsFactory {
   constructor(

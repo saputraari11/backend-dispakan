@@ -1,10 +1,10 @@
 import { Repository } from 'typeorm';
 import { Store } from './store.entity';
 import { CreateStoreDto } from './dto/create-store.dto';
-import { UsersService } from 'src/users/users.service';
-import { StorageService } from 'src/commons/storage/storage.service';
+import { UsersService } from '../users/users.service';
+import { StorageService } from '../commons/storage/storage.service';
 import { FilterStoreDto } from './dto/filter-all.dto';
-import { Product } from 'src/product/product.entity';
+import { Product } from '../product/product.entity';
 import { UpdateStoreDto } from './dto/update-store.dto';
 export declare class StoreService {
     private readonly storeRepository;

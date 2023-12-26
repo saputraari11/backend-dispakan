@@ -9,7 +9,7 @@ import {
 } from 'typeorm'
 import * as bcrypt from 'bcrypt'
 import { UserLevel } from './user-level.enum'
-import { Store } from 'src/store/store.entity'
+import { Store } from '../store/store.entity'
 
 @Entity()
 export class User extends BaseEntity {

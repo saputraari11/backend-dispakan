@@ -1,4 +1,4 @@
-import { User } from 'src/users/user.entity';
+import { User } from '../users/user.entity';
 import { AuthService } from './auth.service';
 import { JwtPayload } from './jwt-payload.interface';
 declare const JwtStrategy_base: new (...args: any[]) => any;

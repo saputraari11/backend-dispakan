@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { IsEmail, IsNotEmpty, IsString, Matches } from 'class-validator'
 import { REGEX } from '../../app.utils'
-import { BaseDto } from 'src/commons/base.dto'
+import { BaseDto } from '../../commons/base.dto'
 
 export class SignInDto extends BaseDto {
   @ApiProperty({

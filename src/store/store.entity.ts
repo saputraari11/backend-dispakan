@@ -1,5 +1,5 @@
-import { Product } from 'src/product/product.entity'
-import { User } from 'src/users/user.entity'
+import { Product } from '../product/product.entity'
+import { User } from '../users/user.entity'
 import {
   BaseEntity,
   Entity,

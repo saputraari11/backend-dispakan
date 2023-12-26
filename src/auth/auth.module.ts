@@ -5,10 +5,10 @@ import { UsersModule } from '../users/users.module'
 import { PassportModule } from '@nestjs/passport'
 import { JwtModule } from '@nestjs/jwt'
 import { JwtStrategy } from './jwt.strategy'
-import { UserRepository } from 'src/users/user.repository'
-import { UsersService } from 'src/users/users.service'
+import { UserRepository } from '../users/user.repository'
+import { UsersService } from '../users/users.service'
 import { ApiKeyStrategy } from './apikey.strategy'
-import { StorageService } from 'src/commons/storage/storage.service'
+import { StorageService } from '../commons/storage/storage.service'
 
 @Module({
   imports: [
