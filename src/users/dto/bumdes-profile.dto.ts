@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { IsNotEmpty, IsString, IsEnum, IsBoolean } from 'class-validator'
-import { BaseDto } from 'src/commons/base.dto'
 
 export class BumdesProfileDto {
   @ApiProperty({
@@ -32,7 +31,6 @@ export class BumdesProfileDto {
     required: false,
     type: 'string',
   })
-  @IsString()
   status?: string
 
   @ApiProperty({ type: 'string', format: 'binary', required: false })

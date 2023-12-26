@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BumdesProfileDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
-const base_dto_1 = require("../../commons/base.dto");
 class BumdesProfileDto {
 }
 __decorate([
@@ -49,7 +48,6 @@ __decorate([
         required: false,
         type: 'string',
     }),
-    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], BumdesProfileDto.prototype, "status", void 0);
 __decorate([

@@ -3,7 +3,7 @@ import { UsersController } from './users.controller'
 import { UsersService } from './users.service'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { UserRepository } from './user.repository'
-import { StorageService } from 'src/commons/storage/storage.service'
+import { StorageService } from '../commons/storage/storage.service'
 
 @Module({
   imports: [TypeOrmModule.forFeature([UserRepository]), StorageService],

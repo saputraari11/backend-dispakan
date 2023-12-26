@@ -1,5 +1,5 @@
 /// <reference types="multer" />
-import { BaseDto } from 'src/commons/base.dto';
+import { BaseDto } from '../../commons/base.dto';
 export declare class CreateStoreDto extends BaseDto {
     name: string;
     id_owner: string;

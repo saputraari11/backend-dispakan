@@ -1,4 +1,4 @@
-import { News } from 'src/news/news.entity';
+import { News } from '../news/news.entity';
 import { BaseEntity } from 'typeorm';
 export declare class Comment extends BaseEntity {
     id: string;

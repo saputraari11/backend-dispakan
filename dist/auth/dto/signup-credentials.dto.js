@@ -13,7 +13,6 @@ exports.SignupCredentialsDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const base_dto_1 = require("../../commons/base.dto");
-const user_level_enum_1 = require("../../users/user-level.enum");
 class SignupCredentialsDto extends base_dto_1.BaseDto {
 }
 __decorate([

@@ -2,7 +2,7 @@ import { UserRepository } from './user.repository';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { BumdesProfileDto } from './dto/bumdes-profile.dto';
 import { UpdatePasswordDto } from './dto/update-password.dto';
-import { StorageService } from 'src/commons/storage/storage.service';
+import { StorageService } from '../commons/storage/storage.service';
 import { User } from './user.entity';
 import { UpdateStatusDto } from './dto/update-status.dto';
 import { FilterUmkmDto } from './dto/filter-all.dto';

@@ -4,14 +4,14 @@ import {
   Injectable,
 } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
-import { UserLevel } from 'src/users/user-level.enum'
-import { UserRepository } from 'src/users/user.repository'
+import { UserLevel } from '../users/user-level.enum'
+import { UserRepository } from '../users/user.repository'
 import { User } from '../users/user.entity'
 import { SignupCredentialsDto } from './dto/signup-credentials.dto'
 import { JwtPayload } from './jwt-payload.interface'
 import { ConfigService } from '@nestjs/config'
 import { SignInDto } from './dto/signin.dto'
-import { responseTemplate } from 'src/app.utils'
+import { responseTemplate } from '../app.utils'
 import { BadRequestError } from 'passport-headerapikey'
 
 @Injectable()

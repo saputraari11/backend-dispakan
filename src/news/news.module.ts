@@ -3,8 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import { News } from './news.entity'
 import { NewsController } from './news.controller'
 import { NewsService } from './news.service'
-import { StorageService } from 'src/commons/storage/storage.service'
-import { Comment } from 'src/comment/comment.entity'
+import { StorageService } from '../commons/storage/storage.service'
+import { Comment } from '../comment/comment.entity'
 
 @Module({
   imports: [TypeOrmModule.forFeature([News, Comment])],

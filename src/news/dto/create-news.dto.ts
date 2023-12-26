@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { IsBoolean, IsNotEmpty, IsString } from 'class-validator'
-import { BaseDto } from 'src/commons/base.dto'
+import { BaseDto } from '../../commons/base.dto'
 
 export class CreateNewsDto extends BaseDto {
   @ApiProperty({

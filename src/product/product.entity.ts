@@ -1,6 +1,6 @@
-import { ClickProduct } from 'src/landing-page/click-product.entity'
-import { LikeProduct } from 'src/landing-page/like-product.entity'
-import { Store } from 'src/store/store.entity'
+import { ClickProduct } from '../landing-page/click-product.entity'
+import { LikeProduct } from '../landing-page/like-product.entity'
+import { Store } from '../store/store.entity'
 import {
   BaseEntity,
   Entity,

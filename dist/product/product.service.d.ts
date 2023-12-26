@@ -1,8 +1,8 @@
 import { Product } from './product.entity';
 import { Repository } from 'typeorm';
 import { CreateProductDto } from './dto/create-product.dto';
-import { StoreService } from 'src/store/store.service';
-import { StorageService } from 'src/commons/storage/storage.service';
+import { StoreService } from '../store/store.service';
+import { StorageService } from '../commons/storage/storage.service';
 import { FilterAllProducts } from './dto/filter-all.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 export declare class ProductService {

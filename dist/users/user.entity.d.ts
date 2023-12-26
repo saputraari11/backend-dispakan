@@ -1,6 +1,6 @@
 import { BaseEntity } from 'typeorm';
 import { UserLevel } from './user-level.enum';
-import { Store } from 'src/store/store.entity';
+import { Store } from '../store/store.entity';
 export declare class User extends BaseEntity {
     id: string;
     name: string;

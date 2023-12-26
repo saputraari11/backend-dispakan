@@ -1,5 +1,5 @@
-import { Product } from 'src/product/product.entity'
-import { Store } from 'src/store/store.entity'
+import { Product } from '../product/product.entity'
+import { Store } from '../store/store.entity'
 import {
   BaseEntity,
   Entity,
